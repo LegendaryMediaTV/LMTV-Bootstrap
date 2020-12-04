@@ -93,4 +93,4 @@ console.log(html);
 
 ## Diving deeper
 
-For more examples of usage, see [test.js](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/blob/master/LMTV-Bootstrap/test.js)
+For more examples of usage, see [test.js](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/blob/main/test.js)

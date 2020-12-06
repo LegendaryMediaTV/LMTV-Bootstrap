@@ -6,7 +6,7 @@
  **************************************************************************************************************/
 
 /** baseline HTML element (abstract) */
-class bs {
+class BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -917,7 +917,7 @@ class bs {
      * @param {boolean} blockClose insert new line after comment close
      * @param {boolean} inline all on one line
      */
-    comment(contents, blockClose, inline) { this.add(new comment(contents, blockClose, inline)); }
+    comment(contents, blockClose, inline) { this.add(new Comment(contents, blockClose, inline)); }
 
 
     /***************************
@@ -931,7 +931,7 @@ class bs {
      * @param {string} title expands the abbreviation
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    abbreviation(contents, title, attributes) { this.add(new abbreviation(contents, title, attributes)); }
+    abbreviation(contents, title, attributes) { this.add(new Abbreviation(contents, title, attributes)); }
 
     /**
      * contact information for the author/owner of a document (within <body>) or an article (within <article>)
@@ -939,7 +939,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    address(contents, attributes) { this.add(new address(contents, attributes)); }
+    address(contents, attributes) { this.add(new Address(contents, attributes)); }
 
     /**
      * standalone piece of content that would make sense if syndicated as a news item
@@ -947,7 +947,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    article(contents, attributes) { this.add(new article(contents, attributes)); }
+    article(contents, attributes) { this.add(new Article(contents, attributes)); }
 
     /**
      * block of content that is related to the main content around it, but can be removed without reducing the main content meaning
@@ -955,7 +955,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    aside(contents, attributes) { this.add(new aside(contents, attributes)); }
+    aside(contents, attributes) { this.add(new Aside(contents, attributes)); }
 
     /**
      * highlight without emphasis (bold)
@@ -963,7 +963,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    bold(contents, attributes) { this.add(new bold(contents, attributes)); }
+    bold(contents, attributes) { this.add(new Bold(contents, attributes)); }
 
     /**
      * quote blocks of content from another source
@@ -972,7 +972,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    blockquote(contents, attributes) { this.add(new blockquote(contents, attributes)); }
+    blockQuote(contents, attributes) { this.add(new BlockQuote(contents, attributes)); }
 
     /**
      * cited reference (i.e., title of a work)
@@ -980,7 +980,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    cite(contents, attributes) { this.add(new cite(contents, attributes)); }
+    cite(contents, attributes) { this.add(new Cite(contents, attributes)); }
 
     /**
      * computer code block (monospaced)
@@ -988,7 +988,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    code(contents, attributes) { this.add(new code(contents, attributes)); }
+    code(contents, attributes) { this.add(new Code(contents, attributes)); }
 
     /**
      * definition list
@@ -996,7 +996,7 @@ class bs {
      * @param {object} contents key–value pairs to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    definitionList(contents, attributes) { this.add(new definitionList(contents, attributes)); }
+    definitionList(contents, attributes) { this.add(new DefinitionList(contents, attributes)); }
 
     /**
      * deleted (strikethrough)
@@ -1004,7 +1004,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    deleted(contents, attributes) { this.add(new deleted(contents, attributes)); }
+    deleted(contents, attributes) { this.add(new Deleted(contents, attributes)); }
 
     /**
      * additional details that the user can view or hide on demand
@@ -1012,7 +1012,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    details(contents, attributes) { this.add(new details(contents, attributes)); }
+    details(contents, attributes) { this.add(new Details(contents, attributes)); }
 
     /**
      * generic container for grouping content for styling/visual purposes
@@ -1020,7 +1020,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    division(contents, attributes) { this.add(new division(contents, attributes)); }
+    division(contents, attributes) { this.add(new Division(contents, attributes)); }
 
     /**
      * emphasized text (italics)
@@ -1028,18 +1028,18 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    emphasis(contents, attributes) { this.add(new emphasis(contents, attributes)); }
+    emphasis(contents, attributes) { this.add(new Emphasis(contents, attributes)); }
 
     /**
      * self-contained content, like illustrations, diagrams, photos, code listings, etc.
      * TIP: if removed it should not affect the flow of the document
      * https://www.w3schools.com/tags/tag_figure.asp
      * @param {string} url path to the image
-     * @param {string} alt alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
+     * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {any} caption value or array of values to go inside the caption element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    figure(url, alt, caption, attributes) { this.add(new figure(url, alt, caption, attributes)); }
+    figure(url, alternateText, caption, attributes) { this.add(new Figure(url, alternateText, caption, attributes)); }
 
     /**
      * contains information about its containing element: authorship, copyright, contact, sitemap, links to related content, etc.
@@ -1048,7 +1048,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    footer(contents, attributes) { this.add(new footer(contents, attributes)); }
+    footer(contents, attributes) { this.add(new Footer(contents, attributes)); }
 
     /**
      * thematic group of introductory or navigational aids, typically with a h#, logo/icon, and/or authorship
@@ -1056,7 +1056,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    header(contents, attributes) { this.add(new header(contents, attributes)); }
+    header(contents, attributes) { this.add(new Header(contents, attributes)); }
 
     /**
      * heading 1
@@ -1064,7 +1064,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading1(contents, attributes) { this.add(new heading1(contents, attributes)); }
+    heading1(contents, attributes) { this.add(new Heading1(contents, attributes)); }
 
     /**
      * heading 2
@@ -1072,7 +1072,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading2(contents, attributes) { this.add(new heading2(contents, attributes)); }
+    heading2(contents, attributes) { this.add(new Heading2(contents, attributes)); }
 
     /**
      * heading 3
@@ -1080,7 +1080,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading3(contents, attributes) { this.add(new heading3(contents, attributes)); }
+    heading3(contents, attributes) { this.add(new Heading3(contents, attributes)); }
 
     /**
      * heading 4
@@ -1088,7 +1088,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading4(contents, attributes) { this.add(new heading4(contents, attributes)); }
+    heading4(contents, attributes) { this.add(new Heading4(contents, attributes)); }
 
     /**
      * heading 5
@@ -1096,7 +1096,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading5(contents, attributes) { this.add(new heading5(contents, attributes)); }
+    heading5(contents, attributes) { this.add(new Heading5(contents, attributes)); }
 
     /**
      * heading 6
@@ -1104,7 +1104,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    heading6(contents, attributes) { this.add(new heading6(contents, attributes)); }
+    heading6(contents, attributes) { this.add(new Heading6(contents, attributes)); }
 
     /**
      * marked text (highlight)
@@ -1112,7 +1112,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    highlight(contents, attributes) { this.add(new highlight(contents, attributes)); }
+    highlight(contents, attributes) { this.add(new Highlight(contents, attributes)); }
 
     /**
      * FontAwesome icon
@@ -1121,7 +1121,7 @@ class bs {
      * @param {any} ariaLabel accessibility string value that labels the current element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    icon(name, ariaLabel, attributes) { this.add(new icon(name, ariaLabel, attributes)); }
+    icon(name, ariaLabel, attributes) { this.add(new Icon(name, ariaLabel, attributes)); }
 
     /**
      * inline frame for embedding another document
@@ -1129,16 +1129,16 @@ class bs {
      * @param {string} url address of the document to embed
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    iframe(url, attributes) { this.add(new iframe(url, attributes)); }
+    inlineFrame(url, attributes) { this.add(new InlineFrame(url, attributes)); }
 
     /**
      * image
      * https://www.w3schools.com/tags/tag_img.asp
      * @param {string} url URL path of an image file
-     * @param {string} alt alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
+     * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    image(url, alt, attributes) { this.add(new image(url, alt, attributes)); }
+    image(url, alternateText, attributes) { this.add(new Image(url, alternateText, attributes)); }
 
     /**
      * insertion (underlined)
@@ -1146,7 +1146,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    insert(contents, attributes) { this.add(new insert(contents, attributes)); }
+    insert(contents, attributes) { this.add(new Insert(contents, attributes)); }
 
     /**
      * alternate voice or mood, used to indicate a technical term, foreign phrase, thought, name (italics)
@@ -1155,21 +1155,21 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    italics(contents, attributes) { this.add(new italics(contents, attributes)); }
+    italics(contents, attributes) { this.add(new Italics(contents, attributes)); }
 
     /**
      * horizontal ruler for a thematic break (e.g. a shift of topic)
      * https://www.w3schools.com/tags/tag_hr.asp
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    line(attributes) { this.add(new line(attributes)); }
+    line(attributes) { this.add(new Line(attributes)); }
 
     /**
      * line break
      * https://www.w3schools.com/tags/tag_br.asp
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    lineBreak(attributes) { this.add(new lineBreak(attributes)); }
+    lineBreak(attributes) { this.add(new LineBreak(attributes)); }
 
     /**
      * hyperlink (anchor)
@@ -1178,7 +1178,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    link(url, contents, attributes) { this.add(new link(url, contents, attributes)); }
+    link(url, contents, attributes) { this.add(new Link(url, contents, attributes)); }
 
     /**
      * monospaced and preserves whitespace (pre-formatted)
@@ -1186,7 +1186,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    monospace(contents, attributes) { this.add(new monospace(contents, attributes)); }
+    monospace(contents, attributes) { this.add(new Monospace(contents, attributes)); }
 
     /**
      * major navigation information (i.e., not just a group of links) and other constructs (e.g., search form)
@@ -1194,7 +1194,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    navigation(contents, attributes) { this.add(new navigation(contents, attributes)); }
+    navigation(contents, attributes) { this.add(new Navigation(contents, attributes)); }
 
     /**
      * list of items
@@ -1205,7 +1205,7 @@ class bs {
      * @param {object} attributes key–value pairs of HTML attributes and other properties for the list
      * @param {any} itemAttributes key–value pairs of HTML attributes and other properties for the list items
      */
-    list(items, ordered, attributes, itemAttributes) { this.add(new list(items, ordered, attributes, itemAttributes)); }
+    list(items, ordered, attributes, itemAttributes) { this.add(new List(items, ordered, attributes, itemAttributes)); }
 
     /**
      * represents the result of a calculation (like one performed by a script)
@@ -1213,7 +1213,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    output(contents, attributes) { this.add(new output(contents, attributes)); }
+    output(contents, attributes) { this.add(new Output(contents, attributes)); }
 
     /**
      * paragraph
@@ -1221,16 +1221,16 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    paragraph(contents, attributes) { this.add(new paragraph(contents, attributes)); }
+    paragraph(contents, attributes) { this.add(new Paragraph(contents, attributes)); }
 
     /**
      * short quote (inline, with quotation marks)
-     * TIP: use <blockquote> for longer quotations
+     * TIP: use BlockQuote for longer quotations
      * https://www.w3schools.com/tags/tag_q.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    quote(contents, attributes) { this.add(new quote(contents, attributes)); }
+    quote(contents, attributes) { this.add(new Quote(contents, attributes)); }
 
     /**
      * strikethrough (no longer accurate)
@@ -1238,7 +1238,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    strike(contents, attributes) { this.add(new strike(contents, attributes)); }
+    strike(contents, attributes) { this.add(new Strike(contents, attributes)); }
 
     /**
      * used to either group different articles into different purposes or subjects, or to define the different sections of a single article
@@ -1246,7 +1246,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    section(contents, attributes) { this.add(new section(contents, attributes)); }
+    section(contents, attributes) { this.add(new Section(contents, attributes)); }
 
     /**
      * smaller text (e.g., fine print)
@@ -1254,7 +1254,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    small(contents, attributes) { this.add(new small(contents, attributes)); }
+    small(contents, attributes) { this.add(new Small(contents, attributes)); }
 
     /**
      * span for grouping inline elements
@@ -1262,7 +1262,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    span(contents, attributes) { this.add(new span(contents, attributes)); }
+    span(contents, attributes) { this.add(new Span(contents, attributes)); }
 
     /**
      * important text (bold)
@@ -1270,7 +1270,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    strong(contents, attributes) { this.add(new strong(contents, attributes)); }
+    strong(contents, attributes) { this.add(new Strong(contents, attributes)); }
 
     /**
      * subscript
@@ -1278,7 +1278,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    subscript(contents, attributes) { this.add(new subscript(contents, attributes)); }
+    subscript(contents, attributes) { this.add(new Subscript(contents, attributes)); }
 
     /**
      * superscript
@@ -1286,7 +1286,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    superscript(contents, attributes) { this.add(new superscript(contents, attributes)); }
+    superscript(contents, attributes) { this.add(new Superscript(contents, attributes)); }
 
     /**
      * Scalable Vector Graphics (text-based image)
@@ -1296,7 +1296,7 @@ class bs {
      * @param {int} height height in pixels
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    svg(contents, width, height, attributes) { this.add(new svg(contents, width, height, attributes)); }
+    svg(contents, width, height, attributes) { this.add(new SVG(contents, width, height, attributes)); }
 
     /**
      * defining instance of a term (i.e., the parent container of this tag must also contain the definition/explanation for this term)
@@ -1305,7 +1305,20 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    term(contents, attributes) { this.add(new term(contents, attributes)); }
+    term(contents, attributes) { this.add(new Term(contents, attributes)); }
+
+    /**
+     * tabular data (rows and columns)
+     * https://www.w3schools.com/tags/tag_table.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} caption value or array of values to go inside the HTML caption element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} captionAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} headerAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} bodyAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the table caption
+     */
+    table(contents, caption, attributes, captionAttributes, headerAttributes, bodyAttributes, footerAttributes) { this.add(new Table(contents, caption, attributes, captionAttributes, headerAttributes, bodyAttributes, footerAttributes)); }
 
     /**
      * human-readable date/time, optionally with a SQL-like timestamp
@@ -1313,7 +1326,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    time(contents, attributes) { this.add(new time(contents, attributes)); }
+    time(contents, attributes) { this.add(new Time(contents, attributes)); }
 
     /**
      * underline
@@ -1321,7 +1334,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    underline(contents, attributes) { this.add(new underline(contents, attributes)); }
+    underline(contents, attributes) { this.add(new Underline(contents, attributes)); }
 
 
     /************************
@@ -1331,10 +1344,11 @@ class bs {
     /**
      * clickable button
      * https://www.w3schools.com/tags/tag_button.asp
+     * https://getbootstrap.com/docs/4.5/components/buttons/
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    button(contents, attributes) { this.add(new button(contents, attributes)); }
+    button(contents, attributes) { this.add(new Button(contents, attributes)); }
 
     /**
      * checkbox (on/off, yes/no, etc.)
@@ -1344,7 +1358,7 @@ class bs {
      * @param {boolean} checked element should be pre-selected when the page loads
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    checkbox(value, name, checked, attributes) { this.add(new checkbox(value, name, checked, attributes)); }
+    checkbox(value, name, checked, attributes) { this.add(new Checkbox(value, name, checked, attributes)); }
 
     /**
      * dropdown container of options
@@ -1353,7 +1367,7 @@ class bs {
      * @param {string} name field name to submit
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    dropdown(contents, name, attributes) { this.add(new dropdown(contents, name, attributes)); }
+    dropdown(contents, name, attributes) { this.add(new Dropdown(contents, name, attributes)); }
 
     /**
      * form element container
@@ -1361,7 +1375,7 @@ class bs {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    form(contents, attributes) { this.add(new form(contents, attributes)); }
+    form(contents, attributes) { this.add(new Form(contents, attributes)); }
 
     /**
      * input/textarea combined
@@ -1371,7 +1385,7 @@ class bs {
      * @param {string} name field name to submit
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    input(value, name, attributes) { this.add(new input(value, name, attributes)); }
+    input(value, name, attributes) { this.add(new Input(value, name, attributes)); }
 
     /**
      * label for a form element
@@ -1380,7 +1394,7 @@ class bs {
      * @param {any} forID ID for the form element the label is for
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    label(contents, forID, attributes) { this.add(new label(contents, forID, attributes)); }
+    label(contents, forID, attributes) { this.add(new Label(contents, forID, attributes)); }
 
     /**
      * radio button (selecting one in the set de-selects the others)
@@ -1390,14 +1404,27 @@ class bs {
      * @param {boolean} checked element should be pre-selected when the page loads
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    radioButton(value, name, checked, attributes) { this.add(new radioButton(value, name, checked, attributes)); }
+    radioButton(value, name, checked, attributes) { this.add(new RadioButton(value, name, checked, attributes)); }
+
+
+    /***************************************
+     ***** Bootstrap Component Methods *****
+     **************************************/
+
+    /**
+     * provides contextual feedback messages for typical user actions
+     * https://getbootstrap.com/docs/4.5/components/alerts/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    alert(contents, attributes) { this.add(new Alert(contents, attributes)); }
 }
 
 /**
  * cross-site linked resources (abstract)
  * https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
  */
-class crossOrigin extends bs {
+class CrossOriginTag extends BootstrapTag {
     /**********************
      ***** Properties *****
      *********************/
@@ -1432,7 +1459,7 @@ class crossOrigin extends bs {
 }
 
 /** theme support (abstract) */
-class themeable extends bs {
+class ThemeableTag extends BootstrapTag {
     /**********************
      ***** Properties *****
      *********************/
@@ -1523,7 +1550,7 @@ class themeable extends bs {
  * contains all the contents of an HTML document, such as text, hyperlinks, images, tables, lists, etc.
  * https://www.w3schools.com/tags/tag_body.asp
  */
-class body extends themeable {
+class Body extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1586,11 +1613,11 @@ class body extends themeable {
             // loop through contents
             for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
                 // is already a script tag, just add it
-                if (contents[contentIndex] instanceof script)
+                if (contents[contentIndex] instanceof Script)
                     this._scripts.push(contents[contentIndex]);
                 // is something else, convert to script tag
                 else
-                    this._scripts.push(new script(contents[contentIndex], null, attributes));
+                    this._scripts.push(new Script(contents[contentIndex], null, attributes));
             }
         }
         else if (url) {
@@ -1600,7 +1627,7 @@ class body extends themeable {
 
             // loop through urls
             for (let urlIndex = 0; urlIndex < url.length; urlIndex++) {
-                this._scripts.push(new script(null, url[urlIndex], attributes));
+                this._scripts.push(new Script(null, url[urlIndex], attributes));
             }
         }
     }
@@ -1609,23 +1636,23 @@ class body extends themeable {
     stop() {
         let output = '';
 
-        // JavaScript
+        // add JavaScript tags
         if (this._scripts.length)
             output += this._scripts.join('');
 
-        // resolve output
+        // close the HTML tag
         output += super.stop();
 
         return output;
     }
 }
-exports.body = body;
+exports.Body = Body;
 
 /**
  * insert comments in the source code and are not displayed
  * https://www.w3schools.com/tags/tag_comment.asp
  */
-class comment {
+class Comment {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the comment
@@ -1702,10 +1729,10 @@ class comment {
     /** convert the object to a string */
     toString() { return this.start() + this.contents.join('') + this.stop(); }
 }
-exports.comment = comment;
+exports.Comment = Comment;
 
 /** container for all the head elements, including the title for the document, scripts, styles, meta information, and more */
-class head extends bs {
+class Head extends BootstrapTag {
     /**
      * container for all the head elements, including the title for the document, scripts, styles, meta information, and more
      * https://www.w3schools.com/tags/tag_head.asp
@@ -1780,11 +1807,11 @@ class head extends bs {
     get title() { return this._title; }
     set title(value) {
         // already a title object
-        if (value instanceof title)
+        if (value instanceof Title)
             this._title = value;
         // something else, embed in title tag
         else
-            this._title = new title(value);
+            this._title = new Title(value);
     }
 
 
@@ -1812,11 +1839,11 @@ class head extends bs {
      */
     metadata(name, content, attributes) {
         // is already a meta object, just add it
-        if (name && typeof name == 'object' && name instanceof metadata)
+        if (name && typeof name == 'object' && name instanceof Metadata)
             this._metadatas.push(name);
         // convert to meta object and add it
         else
-            this._metadatas.push(new metadata(name, content, attributes));
+            this._metadatas.push(new Metadata(name, content, attributes));
     }
 
     /**
@@ -1827,11 +1854,11 @@ class head extends bs {
      */
     resourceLink(url, attributes) {
         // is already a resourceLink object, just add it
-        if (url instanceof resourceLink)
+        if (url instanceof ResourceLink)
             this._resourceLinks.push(url);
         // convert to resourceLink object and add it
         else
-            this._resourceLinks.push(new resourceLink(url, attributes));
+            this._resourceLinks.push(new ResourceLink(url, attributes));
     }
 
     /** open the HTML tag */
@@ -1845,7 +1872,7 @@ class head extends bs {
         if (this.title.contents.length)
             output += this.title;
         if (this.charset) {
-            let meta = new metadata();
+            let meta = new Metadata();
             meta.charset = this.charset;
             output += meta;
         }
@@ -1863,20 +1890,20 @@ class head extends bs {
      */
     style(content, attributes) {
         // is already a style object, just add it
-        if (content instanceof style)
+        if (content instanceof Style)
             this._styles.push(content);
         // convert to meta object and add it
         else
-            this._styles.push(new style(content, attributes));
+            this._styles.push(new Style(content, attributes));
     }
 }
-exports.head = head;
+exports.Head = Head;
 
 /**
  * link between a document and an external resource
  * https://www.w3schools.com/tags/tag_link.asp
  */
-class resourceLink extends crossOrigin {
+class ResourceLink extends CrossOriginTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1964,13 +1991,13 @@ class resourceLink extends crossOrigin {
         this._setStandardValue('href', value);
     }
 }
-exports.resourceLink = resourceLink;
+exports.ResourceLink = ResourceLink;
 
 /**
  * document type and the container for all other HTML elements
  * https://www.w3schools.com/tags/tag_html.asp
  */
-class html extends bs {
+class HTML extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} titleContents contents for the title element
@@ -1982,8 +2009,8 @@ class html extends bs {
         super('html', contents, attributes);
 
         // initialize elements
-        this.head = new head(titleContents);
-        this.body = new body();
+        this.head = new Head(titleContents);
+        this.body = new Body();
 
         // initialize attributes
         this.attributes = attributes;
@@ -2051,7 +2078,7 @@ class html extends bs {
     innerHTML() {
         let output = '';
 
-        if (this.body.contents)
+        if (this.body.contents.length)
             output += this.body.innerHTML();
         output += super.innerHTML();
 
@@ -2093,8 +2120,11 @@ class html extends bs {
     stop() {
         let output = '';
 
+        // add body
         if (this.body.contents)
             output += this.body.stop();
+
+        // close the HTML tag
         output += super.stop();
 
         return output;
@@ -2108,13 +2138,13 @@ class html extends bs {
      */
     style(contents, attributes) { this.head.style(contents, attributes); }
 }
-exports.html = html;
+exports.HTML = HTML;
 
 /**
  * provides metadata about the HTML document
  * https://www.w3schools.com/tags/tag_meta.asp
  */
-class metadata extends bs {
+class Metadata extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} name name for the metadata element
@@ -2213,13 +2243,13 @@ class metadata extends bs {
         this.content = value;
     }
 }
-exports.metadata = metadata;
+exports.Metadata = Metadata;
 
 /**
  * contains JavaScript statements or points to an external script file
  * https://www.w3schools.com/tags/tag_script.asp
  */
-class script extends crossOrigin {
+class Script extends CrossOriginTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2289,13 +2319,13 @@ class script extends crossOrigin {
         this._setStandardValue('src', value);
     }
 }
-exports.script = script;
+exports.Script = Script;
 
 /**
  * contains embedded styling information
  * https://www.w3schools.com/tags/tag_style.asp
  */
-class style extends bs {
+class Style extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2324,13 +2354,13 @@ class style extends bs {
         this._setStandardValue('media', value);
     }
 }
-exports.style = style;
+exports.Style = Style;
 
 /**
  * defines the title of the document, shows in browser toolbar, favorites, and search engine results
  * https://www.w3schools.com/tags/tag_title.asp
  */
-class title extends bs {
+class Title extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2338,7 +2368,7 @@ class title extends bs {
      */
     constructor(contents, attributes) { super('title', contents, attributes); }
 }
-exports.title = title;
+exports.Title = Title;
 
 
 /*************************************************************************************************************
@@ -2349,7 +2379,7 @@ exports.title = title;
  * abbreviation or acronym
  * https://www.w3schools.com/tags/tag_abbr.asp
  */
-class abbreviation extends themeable {
+class Abbreviation extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2364,13 +2394,13 @@ class abbreviation extends themeable {
         this.title = title;
     }
 }
-exports.abbreviation = abbreviation;
+exports.Abbreviation = Abbreviation;
 
 /**
  * contact information for the author/owner of a document (within <body>) or an article (within <article>)
  * https://www.w3schools.com/tags/tag_address.asp
  */
-class address extends themeable {
+class Address extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2378,13 +2408,13 @@ class address extends themeable {
      */
     constructor(contents, attributes) { super('address', contents, attributes); }
 }
-exports.address = address;
+exports.Address = Address;
 
 /**
  * standalone piece of content that would make sense if syndicated as a news item
  * https://www.w3schools.com/tags/tag_article.asp
  */
-class article extends themeable {
+class Article extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2392,13 +2422,13 @@ class article extends themeable {
      */
     constructor(contents, attributes) { super('article', contents, attributes); }
 }
-exports.article = article;
+exports.Article = Article;
 
 /**
  * block of content that is related to the main content around it, but can be removed without reducing the main content meaning
  * https://www.w3schools.com/tags/tag_aside.asp
  */
-class aside extends themeable {
+class Aside extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2406,13 +2436,13 @@ class aside extends themeable {
      */
     constructor(contents, attributes) { super('aside', contents, attributes); }
 }
-exports.aside = aside;
+exports.Aside = Aside;
 
 /**
  * highlight without emphasis (bold)
  * https://www.w3schools.com/tags/tag_b.asp
  */
-class bold extends themeable {
+class Bold extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2420,14 +2450,14 @@ class bold extends themeable {
      */
     constructor(contents, attributes) { super('b', contents, attributes); }
 }
-exports.bold = bold;
+exports.Bold = Bold;
 
 /**
  * quote blocks of content from another source
  * TIP: use <q> for inline (short) quotations
  * https://www.w3schools.com/tags/tag_blockquote.asp
  */
-class blockquote extends themeable {
+class BlockQuote extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2453,13 +2483,13 @@ class blockquote extends themeable {
         this._setStandardValue('cite', value);
     }
 }
-exports.blockquote = blockquote;
+exports.BlockQuote = BlockQuote;
 
 /**
  * cited reference (i.e., title of a work)
  * https://www.w3schools.com/tags/tag_cite.asp
  */
-class cite extends themeable {
+class Cite extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2467,13 +2497,13 @@ class cite extends themeable {
      */
     constructor(contents, attributes) { super('cite', contents, attributes); }
 }
-exports.cite = cite;
+exports.Cite = Cite;
 
 /**
  * computer code block (monospaced)
  * https://www.w3schools.com/tags/tag_code.asp
  */
-class code extends themeable {
+class Code extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2481,13 +2511,13 @@ class code extends themeable {
      */
     constructor(contents, attributes) { super('code', contents, attributes); }
 }
-exports.code = code;
+exports.Code = Code;
 
 /**
  * deleted content (strikethrough)
  * https://www.w3schools.com/tags/tag_del.asp
  */
-class deleted extends themeable {
+class Deleted extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2495,13 +2525,13 @@ class deleted extends themeable {
      */
     constructor(contents, attributes) { super('del', contents, attributes); }
 }
-exports.deleted = deleted;
+exports.Deleted = Deleted;
 
 /**
  * definition description
  * https://www.w3schools.com/tags/tag_dd.asp
  */
-class definitionDescription extends themeable {
+class DefinitionDescription extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2509,13 +2539,13 @@ class definitionDescription extends themeable {
      */
     constructor(contents, attributes) { super('dd', contents, attributes); }
 }
-exports.definitionDescription = definitionDescription;
+exports.DefinitionDescription = DefinitionDescription;
 
 /**
  * definition list
  * https://www.w3schools.com/tags/tag_dl.asp
  */
-class definitionList extends themeable {
+class DefinitionList extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {object} contents key–value pairs to go inside the HTML element
@@ -2538,30 +2568,30 @@ class definitionList extends themeable {
      * add a new term/description pair
      * @param {any} term either a definitionTerm or content for a new one
      * @param {any} description either a definitionDescription or content for a new one
-     * @param {any} termAttributes attributes for when creating a new definitionTerm
-     * @param {any} descriptionAttributes attributes for when creating a new definitionDescription
+     * @param {any} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {any} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
     add(term, description, termAttributes, descriptionAttributes) {
         // convert term to a definitionTerm object
-        if (!(term instanceof definitionTerm))
-            term = new definitionTerm(term, termAttributes);
+        if (!(term instanceof DefinitionTerm))
+            term = new DefinitionTerm(term, termAttributes);
 
-        // convert description to a new definitionDescription object
-        if (!(description instanceof definitionDescription))
-            description = new definitionDescription(description, descriptionAttributes);
+        // convert description to a new DefinitionDescription object
+        if (!(description instanceof DefinitionDescription))
+            description = new DefinitionDescription(description, descriptionAttributes);
 
         // add components
         super.add(term);
         super.add(description);
     }
 }
-exports.definitionList = definitionList;
+exports.DefinitionList = DefinitionList;
 
 /**
  * definition term/name
  * https://www.w3schools.com/tags/tag_dt.asp
  */
-class definitionTerm extends themeable {
+class DefinitionTerm extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2569,13 +2599,13 @@ class definitionTerm extends themeable {
      */
     constructor(contents, attributes) { super('dt', contents, attributes); }
 }
-exports.definitionTerm = definitionTerm;
+exports.DefinitionTerm = DefinitionTerm;
 
 /**
  * additional details that the user can view or hide on demand
  * https://www.w3schools.com/tags/tag_details.asp
  */
-class details extends themeable {
+class Details extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2621,11 +2651,11 @@ class details extends themeable {
     get summary() { return this._summary; }
     set summary(value) {
         // already a summary object
-        if (value instanceof summary)
+        if (value instanceof Summary)
             this._summary = value;
         // something else, embed in title tag
         else
-            this._summary = new summary(value);
+            this._summary = new Summary(value);
     }
 
 
@@ -2647,13 +2677,13 @@ class details extends themeable {
         return output;
     }
 }
-exports.details = details;
+exports.Details = Details;
 
 /**
  * generic container for grouping content for styling/visual purposes
  * https://www.w3schools.com/tags/tag_div.asp
  */
-class division extends themeable {
+class Division extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2661,13 +2691,13 @@ class division extends themeable {
      */
     constructor(contents, attributes) { super('div', contents, attributes); }
 }
-exports.division = division;
+exports.Division = Division;
 
 /**
  * emphasized text (italics)
  * https://www.w3schools.com/tags/tag_em.asp
  */
-class emphasis extends themeable {
+class Emphasis extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2675,27 +2705,27 @@ class emphasis extends themeable {
      */
     constructor(contents, attributes) { super('em', contents, attributes); }
 }
-exports.emphasis = emphasis;
+exports.Emphasis = Emphasis;
 
 /**
  * self-contained content, like illustrations, diagrams, photos, code listings, etc.
  * TIP: if removed it should not affect the flow of the document
  * https://www.w3schools.com/tags/tag_figure.asp
  */
-class figure extends themeable {
+class Figure extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {string} url path to the image
-     * @param {string} alt alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
+     * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {any} contents value or array of values to go inside the caption element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(url, alt, caption, attributes) {
+    constructor(url, alternateText, caption, attributes) {
         // create baseline object
         super('figure', null, attributes);
 
         // initialize elements
-        this._image = new image(url, alt);
+        this._image = new Image(url, alternateText);
         this.caption = caption;
 
         // initialize attributes
@@ -2715,11 +2745,11 @@ class figure extends themeable {
     get caption() { return this._caption; }
     set caption(value) {
         // already a summary object
-        if (value instanceof figureCaption)
+        if (value instanceof FigureCaption)
             this._caption = value;
         // something else, embed in caption tag
         else
-            this._caption = new figureCaption(value);
+            this._caption = new FigureCaption(value);
     }
 
     /**
@@ -2728,7 +2758,7 @@ class figure extends themeable {
      */
     _image;
     get image() { return this._image; }
-    set image(value) { this._image = new image(value); }
+    set image(value) { this._image = new Image(value); }
 
 
     /**********************
@@ -2766,18 +2796,20 @@ class figure extends themeable {
         // process output
         if (!this.captionOnTop && this.caption.contents.length)
             output += this.caption;
+
+        // close the HTML tag
         output += super.stop();
 
         return output;
     }
 }
-exports.figure = figure;
+exports.Figure = Figure;
 
 /**
  * caption for a <figure> element
  * https://www.w3schools.com/tags/tag_figcaption.asp
  */
-class figureCaption extends themeable {
+class FigureCaption extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2785,14 +2817,14 @@ class figureCaption extends themeable {
      */
     constructor(contents, attributes) { super('figcaption', contents, attributes); }
 }
-exports.figureCaption = figureCaption;
+exports.FigureCaption = FigureCaption;
 
 /**
  * contains information about its containing element: authorship, copyright, contact, sitemap, links to related content, etc.
  * TIP: contact information inside a <footer> element should go inside an <address> tag
  * https://www.w3schools.com/tags/tag_footer.asp
  */
-class footer extends themeable {
+class Footer extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2800,13 +2832,13 @@ class footer extends themeable {
      */
     constructor(contents, attributes) { super('footer', contents, attributes); }
 }
-exports.footer = footer;
+exports.Footer = Footer;
 
 /**
  * thematic group of introductory or navigational aids, typically with a h#, logo/icon, and/or authorship
  * https://www.w3schools.com/tags/tag_header.asp
  */
-class header extends themeable {
+class Header extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2814,13 +2846,13 @@ class header extends themeable {
      */
     constructor(contents, attributes) { super('header', contents, attributes); }
 }
-exports.header = header;
+exports.Header = Header;
 
 /**
  * headings
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-class heading1 extends themeable {
+class Heading1 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2828,8 +2860,8 @@ class heading1 extends themeable {
      */
     constructor(contents, attributes) { super('h1', contents, attributes); }
 }
-exports.heading1 = heading1;
-class heading2 extends themeable {
+exports.Heading1 = Heading1;
+class Heading2 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2837,8 +2869,8 @@ class heading2 extends themeable {
      */
     constructor(contents, attributes) { super('h2', contents, attributes); }
 }
-exports.heading2 = heading2;
-class heading3 extends themeable {
+exports.Heading2 = Heading2;
+class Heading3 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2846,8 +2878,8 @@ class heading3 extends themeable {
      */
     constructor(contents, attributes) { super('h3', contents, attributes); }
 }
-exports.heading3 = heading3;
-class heading4 extends themeable {
+exports.Heading3 = Heading3;
+class Heading4 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2855,8 +2887,8 @@ class heading4 extends themeable {
      */
     constructor(contents, attributes) { super('h4', contents, attributes); }
 }
-exports.heading4 = heading4;
-class heading5 extends themeable {
+exports.Heading4 = Heading4;
+class Heading5 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2864,8 +2896,8 @@ class heading5 extends themeable {
      */
     constructor(contents, attributes) { super('h5', contents, attributes); }
 }
-exports.heading5 = heading5;
-class heading6 extends themeable {
+exports.Heading5 = Heading5;
+class Heading6 extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2873,13 +2905,13 @@ class heading6 extends themeable {
      */
     constructor(contents, attributes) { super('h6', contents, attributes); }
 }
-exports.heading6 = heading6;
+exports.Heading6 = Heading6;
 
 /**
  * marked text (highlighted)
  * https://www.w3schools.com/tags/tag_mark.asp
  */
-class highlight extends themeable {
+class Highlight extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2887,14 +2919,14 @@ class highlight extends themeable {
      */
     constructor(contents, attributes) { super('mark', contents, attributes); }
 }
-exports.highlight = highlight;
+exports.Highlight = Highlight;
 
 /**
  * alternate voice or mood, used to indicate a technical term, foreign phrase, thought, name (italics)
  * TIP: usually use <em>, <strong>, <mark>, <cite>, <dfn> (define) instead
  * https://www.w3schools.com/tags/tag_i.asp
  */
-class italics extends themeable {
+class Italics extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2902,13 +2934,13 @@ class italics extends themeable {
      */
     constructor(contents, attributes) { super('i', contents, attributes); }
 }
-exports.italics = italics;
+exports.Italics = Italics;
 
 /**
  * FontAwesome icon
  * https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
  */
-class icon extends themeable {
+class Icon extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
@@ -2934,13 +2966,13 @@ class icon extends themeable {
             this.ariaLabel = ariaLabel;
     }
 }
-exports.icon = icon;
+exports.Icon = Icon;
 
 /**
  * inline frame for embedding another document
  * https://www.w3schools.com/tags/tag_iframe.asp
  */
-class iframe extends themeable {
+class InlineFrame extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {string} url address of the document to embed
@@ -3011,20 +3043,20 @@ class iframe extends themeable {
         this._setStandardValue('width', value);
     }
 }
-exports.iframe = iframe;
+exports.InlineFrame = InlineFrame;
 
 /**
  * image
  * https://www.w3schools.com/tags/tag_img.asp
  */
-class image extends crossOrigin {
+class Image extends CrossOriginTag {
     /**
      * create a new instance of the object
      * @param {string} url URL path of an image file
-     * @param {string} alt alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
+     * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(url, alt, attributes) {
+    constructor(url, alternateText, attributes) {
         // create baseline object
         super('img', null, attributes);
 
@@ -3034,8 +3066,8 @@ class image extends crossOrigin {
         // convert parameters to attributes
         if (!this.url && url)
             this.url = url;
-        if (!this.alt && alt)
-            this.alt = alt;
+        if (!this.alternateText && alternateText)
+            this.alternateText = alternateText;
     }
 
 
@@ -3047,10 +3079,10 @@ class image extends crossOrigin {
      * alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references)
      * https://webaim.org/techniques/alttext/
      */
-    _alt;
-    get alt() { return this._alt; }
-    set alt(value) {
-        this._alt = value;
+    _alternateText;
+    get alternateText() { return this._alternateText; }
+    set alternateText(value) {
+        this._alternateText = value;
         this._setStandardValue('alt', value);
     }
 
@@ -3071,10 +3103,10 @@ class image extends crossOrigin {
     }
 
     /** URL to a detailed description of an image */
-    _longDesc;
-    get longDesc() { return this._longDesc; }
-    set longDesc(value) {
-        this._longDesc = value;
+    _longDescription;
+    get longDescription() { return this._longDescription; }
+    set longDescription(value) {
+        this._longDescription = value;
         this._setStandardValue('longdesc', value);
     }
 
@@ -3106,13 +3138,13 @@ class image extends crossOrigin {
         this._setStandardValue('width', value);
     }
 }
-exports.image = image;
+exports.Image = Image;
 
 /**
  * underline (insertion)
  * https://www.w3schools.com/tags/tag_ins.asp
  */
-class insert extends themeable {
+class Insert extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3120,13 +3152,13 @@ class insert extends themeable {
      */
     constructor(contents, attributes) { super('ins', contents, attributes); }
 }
-exports.insert = insert;
+exports.Insert = Insert;
 
 /**
  * horizontal ruler for a thematic break (e.g. a shift of topic)
  * https://www.w3schools.com/tags/tag_hr.asp
  */
-class line extends themeable {
+class Line extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3134,26 +3166,26 @@ class line extends themeable {
      */
     constructor(attributes) { super('hr', null, attributes); }
 }
-exports.line = line;
+exports.Line = Line;
 
 /**
  * line break
  * https://www.w3schools.com/tags/tag_br.asp
  */
-class lineBreak extends themeable {
+class LineBreak extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(attributes) { super('br', null, attributes); }
 }
-exports.lineBreak = lineBreak;
+exports.LineBreak = LineBreak;
 
 /**
  * hyperlink (anchor)
  * https://www.w3schools.com/tags/tag_a.asp
  */
-class link extends themeable {
+class Link extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {string} url URL of the page the link goes to
@@ -3269,14 +3301,14 @@ class link extends themeable {
         this._setStandardValue('href', value);
     }
 }
-exports.link = link;
+exports.Link = Link;
 
 /**
  * list of items
  * https://www.w3schools.com/tags/tag_ol.asp
  * https://www.w3schools.com/tags/tag_ul.asp
  */
-class list extends themeable {
+class List extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} items items to add to the list
@@ -3345,19 +3377,19 @@ class list extends themeable {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     add(contents, attributes) {
-        if (!(contents instanceof listItem))
-            contents = new listItem(contents, attributes);
+        if (!(contents instanceof ListItem))
+            contents = new ListItem(contents, attributes);
 
         super.add(contents);
     }
 }
-exports.list = list;
+exports.List = List;
 
 /**
  * list item for ordered/unordered lists
  * https://www.w3schools.com/tags/tag_li.asp
  */
-class listItem extends themeable {
+class ListItem extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3384,13 +3416,13 @@ class listItem extends themeable {
         this._setStandardValue('value', value);
     }
 }
-exports.listItem = listItem;
+exports.ListItem = ListItem;
 
 /**
  * monospaced and preserves whitespace (pre-formatted)
  * https://www.w3schools.com/tags/tag_pre.asp
  */
-class monospace extends themeable {
+class Monospace extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3398,13 +3430,13 @@ class monospace extends themeable {
      */
     constructor(contents, attributes) { super('pre', contents, attributes); }
 }
-exports.monospace = monospace;
+exports.Monospace = Monospace;
 
 /**
  * major navigation information (i.e., not just a group of links) and other constructs (e.g., search form)
  * https://www.w3schools.com/tags/tag_nav.asp
  */
-class navigation extends themeable {
+class Navigation extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3412,13 +3444,13 @@ class navigation extends themeable {
      */
     constructor(contents, attributes) { super('nav', contents, attributes); }
 }
-exports.navigation = navigation;
+exports.Navigation = Navigation;
 
 /**
  * represents the result of a calculation (like one performed by a script)
  * https://www.w3schools.com/tags/tag_output.asp
  */
-class output extends themeable {
+class Output extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3461,13 +3493,13 @@ class output extends themeable {
         this._setStandardValue('name', value);
     }
 }
-exports.output = output;
+exports.Output = Output;
 
 /**
  * paragraph
  * https://www.w3schools.com/tags/tag_p.asp
  */
-class paragraph extends themeable {
+class Paragraph extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3475,14 +3507,14 @@ class paragraph extends themeable {
      */
     constructor(contents, attributes) { super('p', contents, attributes); }
 }
-exports.paragraph = paragraph;
+exports.Paragraph = Paragraph;
 
 /**
  * short quote (inline, with quotation marks)
- * TIP: use <blockquote> for longer quotations
+ * TIP: use BlockQuote for longer quotations
  * https://www.w3schools.com/tags/tag_q.asp
  */
-class quote extends themeable {
+class Quote extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3490,13 +3522,13 @@ class quote extends themeable {
      */
     constructor(contents, attributes) { super('q', contents, attributes); }
 }
-exports.quote = quote;
+exports.Quote = Quote;
 
 /**
  * strikethrough (no longer accurate)
  * https://www.w3schools.com/tags/tag_s.asp
  */
-class strike extends themeable {
+class Strike extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3504,13 +3536,13 @@ class strike extends themeable {
      */
     constructor(contents, attributes) { super('s', contents, attributes); }
 }
-exports.strike = strike;
+exports.Strike = Strike;
 
 /**
  * used to either group different articles into different purposes or subjects, or to define the different sections of a single article
  * https://www.w3schools.com/tags/tag_section.asp
  */
-class section extends themeable {
+class Section extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3518,13 +3550,13 @@ class section extends themeable {
      */
     constructor(contents, attributes) { super('section', contents, attributes); }
 }
-exports.section = section;
+exports.Section = Section;
 
 /**
  * smaller text (e.g., fine print)
  * https://www.w3schools.com/tags/tag_small.asp
  */
-class small extends themeable {
+class Small extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3532,13 +3564,13 @@ class small extends themeable {
      */
     constructor(contents, attributes) { super('small', contents, attributes); }
 }
-exports.small = small;
+exports.Small = Small;
 
 /**
  * span for grouping inline elements
  * https://www.w3schools.com/tags/tag_span.asp
  */
-class span extends themeable {
+class Span extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3546,13 +3578,13 @@ class span extends themeable {
      */
     constructor(contents, attributes) { super('span', contents, attributes); }
 }
-exports.span = span;
+exports.Span = Span;
 
 /**
  * important text (bold)
  * https://www.w3schools.com/tags/tag_strong.asp
  */
-class strong extends themeable {
+class Strong extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3560,13 +3592,13 @@ class strong extends themeable {
      */
     constructor(contents, attributes) { super('strong', contents, attributes); }
 }
-exports.strong = strong;
+exports.Strong = Strong;
 
 /**
  * subscript
  * https://www.w3schools.com/tags/tag_sub.asp
  */
-class subscript extends themeable {
+class Subscript extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3574,13 +3606,13 @@ class subscript extends themeable {
      */
     constructor(contents, attributes) { super('sub', contents, attributes); }
 }
-exports.subscript = subscript;
+exports.Subscript = Subscript;
 
 /**
  * superscript
  * https://www.w3schools.com/tags/tag_sup.asp
  */
-class superscript extends themeable {
+class Superscript extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3588,13 +3620,13 @@ class superscript extends themeable {
      */
     constructor(contents, attributes) { super('sup', contents, attributes); }
 }
-exports.superscript = superscript;
+exports.Superscript = Superscript;
 
 /**
  * visible heading for the <details> element, which can be clicked to view/hide the details
  * https://www.w3schools.com/tags/tag_summary.asp
  */
-class summary extends themeable {
+class Summary extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3602,7 +3634,7 @@ class summary extends themeable {
      */
     constructor(contents, attributes) { super('summary', contents, attributes); }
 }
-exports.summary = summary;
+exports.Summary = Summary;
 
 /**
  * Scalable Vector Graphics (text-based image)
@@ -3610,7 +3642,7 @@ exports.summary = summary;
  * TODO: test themeable
  * TODO: add various methods for SVG elements: https://www.w3schools.com/graphics/svg_intro.asp
  */
-class svg extends themeable {
+class SVG extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3653,14 +3685,14 @@ class svg extends themeable {
         this._setStandardValue('width', value);
     }
 }
-exports.svg = svg;
+exports.SVG = SVG;
 
 /**
  * defining instance of a term (i.e., the parent container of this tag must also contain the definition/explanation for this term)
  * TIP: use the ID so it's easily linked to via "#id")
  * https://www.w3schools.com/tags/tag_dfn.asp
  */
-class term extends themeable {
+class Term extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3668,13 +3700,13 @@ class term extends themeable {
      */
     constructor(contents, attributes) { super('dfn', contents, attributes); }
 }
-exports.term = term;
+exports.Term = Term;
 
 /**
  * human-readable date/time, optionally with a SQL-like timestamp
  * https://www.w3schools.com/tags/tag_time.asp
  */
-class time extends themeable {
+class Time extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3701,13 +3733,13 @@ class time extends themeable {
         this._setStandardValue('datetime', value);
     }
 }
-exports.time = time;
+exports.Time = Time;
 
 /**
  * underline
  * https://www.w3schools.com/tags/tag_u.asp
  */
-class underline extends themeable {
+class Underline extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3715,7 +3747,342 @@ class underline extends themeable {
      */
     constructor(contents, attributes) { super('u', contents, attributes); }
 }
-exports.underline = underline;
+exports.Underline = Underline;
+
+
+/*****************
+ ***** Table *****
+ ****************/
+
+/** shared features of table cells (abstract) */
+class TableCellTag extends ThemeableTag {
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** number of columns a cell should span */
+    _colSpan;
+
+    /** specifies one or more header cells a cell is related to; valid value(s): <th> ID(s) */
+    _headers;
+
+    /** number of rows a header cell should span */
+    _rowSpan;
+}
+
+/** shared features of table sections (abstract) */
+class TableSectionTag extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {string} tag HTML element name
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(tag, contents, attributes) {
+        // create baseline object
+        super(tag, null, attributes);
+
+        // add contents
+        if (contents != null)
+            this.add(contents);
+    }
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * add content
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    add(contents, attributes) {
+        // normalize contents to an array
+        if (!Array.isArray(contents))
+            contents = [contents];
+
+        // add each item
+        contents.forEach(content => {
+            // already a row, add it
+            if (content instanceof TableRow)
+                this.contents.push(content);
+            // not a row, wrap in a row and add it
+            else {
+                let row;
+
+                // content is an object, add keys
+                if (typeof content == 'object') {
+                    // create a table row
+                    row = new TableRow(null, attributes);
+
+                    // loop through object entries and create heading/data cells
+                    for (const [key, value] of Object.entries(content)) {
+                        let cell;
+
+                        // table header
+                        if (this.tag == 'thead') {
+                            cell = new TableHeading(key);
+                            cell.scope = 'col';
+                        }
+                        // table data cell
+                        // TODO: format value before adding (e.g., date)
+                        else
+                            cell = new TableCell(value);
+
+                        // add cell to the row
+                        row.add(cell);
+                    }
+                }
+                // content isn't an object, add it to a new row's contents
+                else
+                    row = new TableRow(content, attributes);
+
+                // add the table row
+                super.add(row);
+            }
+        });
+    }
+}
+
+/**
+ * tabular data (rows and columns)
+ * https://www.w3schools.com/tags/tag_table.asp
+ */
+class Table extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} caption value or array of values to go inside the HTML caption element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} captionAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} headerAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} bodyAttributes key–value pairs of HTML attributes and other properties for the table caption
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the table caption
+     */
+    constructor(contents, caption, attributes, captionAttributes, headerAttributes, bodyAttributes, footerAttributes) {
+        // create baseline object
+        super('table', null, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // initialize elements
+        this.caption = new TableCaption(caption, captionAttributes);
+        this.header = new TableHeader(null, headerAttributes);
+        this.body = new TableBody(null, bodyAttributes);
+        this.footer = new TableFooter(null, footerAttributes);
+
+        // add contents
+        if (contents != null) {
+            // if contents are an array of objects, add headings from the first element's keys
+            if (Array.isArray(contents) && typeof contents[0] == 'object')
+                this.header.add(contents[0]);
+
+            // add rows
+            this.body.add(contents);
+        }
+    }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    /** table body */
+    body;
+
+    /** table caption */
+    caption;
+
+    /** table footer */
+    footer;
+
+    /** table header */
+    header;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /** contents of the tag */
+    innerHTML() {
+        let output = '';
+
+        // display table parts
+        if (this.body.contents.length)
+            output += this.body;
+        output += super.innerHTML();
+
+        return output;
+    }
+
+    /** open the HTML tag */
+    start() {
+        let output = '';
+
+        // start table
+        output += super.start();
+
+        // display table parts
+        if (this.caption.contents.length)
+            output += this.caption;
+        if (this.header.contents.length)
+            output += this.header;
+
+        return output;
+    }
+
+    /** open the HTML tag */
+    stop() {
+        let output = '';
+
+        // display table parts
+        if (this.footer.contents.length)
+            output += this.footer;
+
+        // close the HTML tag
+        output += super.stop();
+
+        return output;
+    }
+}
+exports.Table = Table;
+
+/**
+ * table body
+ * https://www.w3schools.com/tags/tag_tbody.asp
+ */
+class TableBody extends TableSectionTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('tbody', contents, attributes); }
+}
+exports.TableBody = TableBody;
+
+/**
+ * table caption
+ * https://www.w3schools.com/tags/tag_caption.asp
+ */
+class TableCaption extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('caption', contents, attributes); }
+}
+exports.TableCaption = TableCaption;
+
+/**
+ * table data cell
+ * https://www.w3schools.com/tags/tag_td.asp
+ */
+class TableCell extends TableCellTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        // create baseline object
+        super('td', contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+}
+exports.TableCell = TableCell;
+
+/**
+ * table footer
+ * https://www.w3schools.com/tags/tag_tfoot.asp
+ */
+class TableFooter extends TableSectionTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('tfoot', contents, attributes); }
+}
+exports.TableFooter = TableFooter;
+
+/**
+ * table header
+ * https://www.w3schools.com/tags/tag_thead.asp
+ */
+class TableHeader extends TableSectionTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('thead', contents, attributes); }
+}
+exports.TableHeader = TableHeader;
+
+/**
+ * table heading for a column or row
+ * https://www.w3schools.com/tags/tag_th.asp
+ */
+class TableHeading extends TableCellTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        // create baseline object
+        super('th', contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** abbreviated version of the content in a header cell; it has no visual effect in ordinary web browsers, but can be used by screen readers */
+    _abbreviation;
+    get abbreviation() { return this._abbreviation; }
+    set abbreviation(value) {
+        this._abbreviation = value;
+        this._setStandardValue('abbr', value);
+    }
+
+    /**
+     * specifies what the header cell is a header for
+     * valid values: col, colgroup, row, rowgroup
+     */
+    _scope;
+    get scope() { return this._scope; }
+    set scope(value) {
+        this._scope = value;
+        this._setStandardValue('scope', value);
+    }
+}
+exports.TableHeading = TableHeading;
+
+/**
+ * table row
+ * https://www.w3schools.com/tags/tag_tr.asp
+ */
+class TableRow extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('tr', contents, attributes); }
+}
+exports.TableCaption = TableCaption;
 
 
 /**********************************************************************************************************
@@ -3723,7 +4090,7 @@ exports.underline = underline;
  *********************************************************************************************************/
 
 /** form input element (abstract) */
-class formElement extends themeable {
+class FormTag extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -3787,7 +4154,7 @@ class formElement extends themeable {
 }
 
 /** form submit element (abstract) */
-class formSubmitElement extends formElement {
+class FormSubmitTag extends FormTag {
     /**********************
      ***** Attributes *****
      *********************/
@@ -3839,79 +4206,12 @@ class formSubmitElement extends formElement {
     }
 }
 
-/** container for dropdown options (abstract) */
-class optionContainerElement extends formElement {
-    /*******************
-     ***** Methods *****
-     ******************/
-
-    /**
-     * add an option to the dropdown
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} value field value to submit when selected
-     * @param {boolean} selected element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    add(contents, value, selected, attributes) {
-        // is an array, add each item
-        if (Array.isArray(contents)) {
-            for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
-                // already an option/group, just add it
-                if (contents[contentIndex] instanceof option || contents[contentIndex] instanceof optionGroup)
-                    this._contents.push(contents[contentIndex])
-                // wrap in an option object and add it
-                else
-                    this._contents.push(new option(contents[contentIndex], null, null, attributes));
-            }
-        }
-        // is a single item, add it
-        else {
-            // already an option/group, just add it
-            if (contents instanceof option || contents instanceof optionGroup)
-                this._contents.push(contents)
-            // is a generic object, add key–value pairs
-            else if (typeof contents == 'object') {
-                for (const [key, display] of Object.entries(contents))
-                    this._contents.push(new option(display, key, null, attributes));
-            }
-            // wrap in an option object and add it
-            else
-                this._contents.push(new option(contents, value, selected, attributes));
-        }
-    }
-
-    /**
-     * search the dropdown contents for the specified value, select it, and de-select other options
-     * @param {any} value
-     */
-    select(value) {
-        // loop through contents
-        for (let contentIndex = 0; contentIndex < this._contents.length; contentIndex++) {
-            // single option
-            if (this._contents[contentIndex] instanceof option) {
-                if (
-                    // value matches
-                    this._contents[contentIndex].value == value
-
-                    // value not set, but contents match
-                    || (this._contents[contentIndex].value == null && this._contents[contentIndex].contents == value)
-                )
-                    this._contents[contentIndex].selected = true;
-                else
-                    this._contents[contentIndex].selected = false;
-            }
-            // option group
-            else if (this._contents[contentIndex] instanceof optionGroup)
-                this._contents[contentIndex].select(value);
-        }
-    }
-}
-
 /**
  * clickable button
  * https://www.w3schools.com/tags/tag_button.asp
+ * https://getbootstrap.com/docs/4.5/components/buttons/
  */
-class button extends formSubmitElement {
+class Button extends FormSubmitTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3929,12 +4229,65 @@ class button extends formSubmitElement {
 
         // initialize attributes
         this.attributes = attributes;
+
+        // not flagged as plain
+        if (!attributes.plain) {
+            // add Bootstrap classes
+            this.class('btn');
+
+            // set default theme
+            if (!this.theme)
+                this.theme = 'primary';
+        }
     }
 
 
     /**********************
      ***** Attributes *****
      *********************/
+
+    /** active state [boolean] */
+    _active;
+    get active() { return this._active; }
+    set active(value) {
+        this._active = value;
+        this._setTogglableValue('active', value);
+    }
+
+    /** block-level (full-width) [boolean] */
+    _block;
+    get block() { return this._block; }
+    set block(value) {
+		// remove dynamic Bootstrap classes
+        if (this._block)
+            this.removeClass('btn-block');
+
+        // update properties
+        this._block = value;
+
+        // add dynamic Bootstrap classes
+        if (this._block)
+            this.class('btn-block');
+    }
+
+    /**
+     * button size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    _scale;
+    get scale() { return this._scale; }
+    set scale(value) {
+		// remove dynamic Bootstrap classes
+        if (this._scale)
+            this.removeClass('btn-' + this._scale);
+
+        // update properties
+        this._scale = value;
+
+        // add dynamic Bootstrap classes
+        if (this._scale)
+            this.class('btn-' + this._scale);
+    }
 
     /**
      * type of button
@@ -3960,64 +4313,42 @@ class button extends formSubmitElement {
      */
     setIcon(name, ariaLabel, attributes) {
         if (name != null)
-            this.contents = new icon(name, ariaLabel, attributes);
+            this.contents = new Icon(name, ariaLabel, attributes);
         else
             this.contents = null;
     }
-}
-exports.button = button;
 
-/**
- * dropdown container of options
- * https://www.w3schools.com/tags/tag_select.asp
- */
-class dropdown extends optionContainerElement {
+
+    /*****************************
+     ***** Protected Methods *****
+     ****************************/
+
     /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} name field name to submit
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * background/outline theme are mutually exclusive
+     * @param {boolean} outline border theme (true) or background (false)
+     * @param {string} theme theme color
      */
-    constructor(contents, name, attributes) {
-        // create baseline object
-        super('select', null, name, null, attributes);
+    _setOutlineTheme(outline, theme) {
+        // remove dynamic Bootstrap classes
+        if (this._theme)
+            this.removeClass('btn-' + (this._outline && this._theme != 'link' ? 'outline-' : '') + this._theme);
 
-        // initialize attributes
-        this.attributes = attributes;
+        // update properties
+        this._outline = outline ? true : false;
+        this._theme = theme;
 
-        // add contents
-        if (contents != null)
-            this.add(contents);
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** specifies that multiple options can be selected at once [boolean] */
-    _multiple;
-    get multiple() { return this._multiple; }
-    set multiple(value) {
-        this._multiple = value;
-        this._setTogglableValue('multiple', value);
-    }
-
-    /** number of visible options in a drop-down list [number] */
-    _size;
-    get size() { return this._size; }
-    set size(value) {
-        this._size = value;
-        this._setStandardValue('size', value);
+        // add dynamic Bootstrap classes
+        if (this._theme)
+            this.class('btn-' + (this._outline && this._theme != 'link' ? 'outline-' : '') + this._theme);
     }
 }
-exports.dropdown = dropdown;
+exports.Button = Button;
 
 /**
  * form element container
  * https://www.w3schools.com/tags/tag_form.asp
  */
-class form extends themeable {
+class Form extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -4123,14 +4454,286 @@ class form extends themeable {
         this._setStandardValue('onsubmit', value);
     }
 }
-exports.form = form;
+exports.Form = Form;
+
+/**
+ * label for a form element
+ * https://www.w3schools.com/tags/tag_label.asp
+ */
+class Label extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} forID ID of the form element the label is for
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, forID, attributes) {
+        // set defaults
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (!attributes.for)
+            attributes.for = forID;
+
+        // create baseline object
+        super('label', contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** specifies the form element a label is bound to; valid value: element ID */
+    _for;
+    get for() { return this._for; }
+    set for(value) {
+        this._for = value;
+        this._setStandardValue('for', value);
+    }
+
+    /** one or more forms the label belongs to; valid value: form ID(s) (space-separated) */
+    _form;
+    get form() { return this._form; }
+    set form(value) {
+        this._form = value;
+        this._setStandardValue('form', value);
+    }
+}
+exports.Label = Label;
+
+
+/********************
+ ***** Dropdown *****
+ *******************/
+
+/** container for dropdown options (abstract) */
+class OptionContainerTag extends FormTag {
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * add an option to the dropdown
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} value field value to submit when selected
+     * @param {boolean} selected element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    add(contents, value, selected, attributes) {
+        // is an array, add each item
+        if (Array.isArray(contents)) {
+            for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
+                // already an option/group, just add it
+                if (contents[contentIndex] instanceof Option || contents[contentIndex] instanceof OptionGroup)
+                    this._contents.push(contents[contentIndex])
+                // wrap in an option object and add it
+                else
+                    this._contents.push(new Option(contents[contentIndex], null, null, attributes));
+            }
+        }
+        // is a single item, add it
+        else {
+            // already an option/group, just add it
+            if (contents instanceof Option || contents instanceof OptionGroup)
+                this._contents.push(contents)
+            // is a generic object, add key–value pairs
+            else if (typeof contents == 'object') {
+                for (const [key, display] of Object.entries(contents))
+                    this._contents.push(new Option(display, key, null, attributes));
+            }
+            // wrap in an option object and add it
+            else
+                this._contents.push(new Option(contents, value, selected, attributes));
+        }
+    }
+
+    /**
+     * search the dropdown contents for the specified value, select it, and de-select other options
+     * @param {any} value
+     */
+    select(value) {
+        // loop through contents
+        for (let contentIndex = 0; contentIndex < this._contents.length; contentIndex++) {
+            // single option
+            if (this._contents[contentIndex] instanceof Option) {
+                if (
+                    // value matches
+                    this._contents[contentIndex].value == value
+
+                    // value not set, but contents match
+                    || (this._contents[contentIndex].value == null && this._contents[contentIndex].contents == value)
+                )
+                    this._contents[contentIndex].selected = true;
+                else
+                    this._contents[contentIndex].selected = false;
+            }
+            // option group
+            else if (this._contents[contentIndex] instanceof OptionGroup)
+                this._contents[contentIndex].select(value);
+        }
+    }
+}
+
+/**
+ * dropdown container of options
+ * https://www.w3schools.com/tags/tag_select.asp
+ */
+class Dropdown extends OptionContainerTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} name field name to submit
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, name, attributes) {
+        // convert parameters to attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
+        // create baseline object
+        super('select', null, name, null, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // add contents
+        if (contents != null)
+            this.add(contents);
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** specifies that multiple options can be selected at once [boolean] */
+    _multiple;
+    get multiple() { return this._multiple; }
+    set multiple(value) {
+        this._multiple = value;
+        this._setTogglableValue('multiple', value);
+    }
+
+    /** number of visible options in a drop-down list [number] */
+    _size;
+    get size() { return this._size; }
+    set size(value) {
+        this._size = value;
+        this._setStandardValue('size', value);
+    }
+}
+exports.Dropdown = Dropdown;
+
+/**
+ * dropdown item
+ * https://www.w3schools.com/tags/tag_option.asp
+ */
+class Option extends BootstrapTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} value field value to submit when selected
+     * @param {boolean} selected element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, value, selected, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (value != null)
+            attributes.value = value;
+        if (selected != null)
+            attributes.selected = selected;
+
+        // create baseline object
+        super('option', contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** shorter label to display */
+    _label;
+    get label() { return this._label; }
+    set label(value) {
+        this._label = value;
+        this._setStandardValue('label', value);
+    }
+
+    /** pre-select item when the page loads [boolean] */
+    _selected;
+    set selected(value) {
+        this._selected = value;
+        this._setTogglableValue('selected', value);
+    }
+
+    /** field value to submit when selected */
+    _value;
+    get value() { return this._value; }
+    set value(value) {
+        this._value = value;
+        this._setStandardValue('value', value);
+    }
+}
+exports.Option = Option;
+
+/**
+ * collection of sub-options within a dropdown
+ * https://www.w3schools.com/tags/tag_optgroup.asp
+ */
+class OptionGroup extends OptionContainerTag {
+    constructor(contents, label, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (label != null)
+            attributes.label = label;
+
+        // create baseline object
+        super('optgroup', null, null, null, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // add contents
+        if (contents != null)
+            this.add(contents);
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** label to display */
+    _label;
+    get label() { return this._label; }
+    set label(value) {
+        this._label = value;
+        this._setStandardValue('label', value);
+    }
+}
+exports.OptionGroup = OptionGroup;
+
+
+/*****************
+ ***** Input *****
+ ****************/
 
 /**
  * input/textarea combined
  * https://www.w3schools.com/tags/tag_input.asp
  * https://www.w3schools.com/tags/tag_textarea.asp
  */
-class input extends formSubmitElement {
+class Input extends FormSubmitTag {
     /**
      * create a new instance of the object
      * @param {string} value field value to submit
@@ -4345,10 +4948,10 @@ class input extends formSubmitElement {
      * for "image" type; alternate text (for accessibility and broken links)
      * https://webaim.org/techniques/alttext/
      */
-    _alt;
-    get alt() { return this._alt; }
-    set alt(value) {
-        this._alt = value;
+    _alternateText;
+    get alternateText() { return this._alternateText; }
+    set alternateText(value) {
+        this._alternateText = value;
         this._setStandardValue('alt', value);
     }
 
@@ -4376,13 +4979,13 @@ class input extends formSubmitElement {
         this._setStandardValue('width', value);
     }
 }
-exports.input = input;
+exports.Input = Input;
 
 /**
  * checkbox (on/off, yes/no, etc.)
  * https://www.w3schools.com/tags/tag_input.asp
  */
-class checkbox extends input {
+class Checkbox extends Input {
     /**
      * create a new instance of the object
      * @param {string} value field value to submit when checked
@@ -4402,13 +5005,13 @@ class checkbox extends input {
         super(value, name, attributes);
     }
 }
-exports.checkbox = checkbox;
+exports.Checkbox = Checkbox;
 
 /**
  * radio button (selecting one in the set de-selects the others)
  * https://www.w3schools.com/tags/tag_input.asp
  */
-class radioButton extends input {
+class RadioButton extends Input {
     /**
      * create a new instance of the object
      * @param {string} value field value to submit when checked
@@ -4428,175 +5031,23 @@ class radioButton extends input {
         super(value, name, attributes);
     }
 }
-exports.radioButton = radioButton;
-
-/**
- * label for a form element
- * https://www.w3schools.com/tags/tag_label.asp
- */
-class label extends themeable {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} forID ID of the form element the label is for
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents, forID, attributes) {
-        // set defaults
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        if (!attributes.for)
-            attributes.for = forID;
-
-        // create baseline object
-        super('label', contents, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** specifies the form element a label is bound to; valid value: element ID */
-    _for;
-    get for() { return this._for; }
-    set for(value) {
-        this._for = value;
-        this._setStandardValue('for', value);
-    }
-
-    /** one or more forms the label belongs to; valid value: form ID(s) (space-separated) */
-    _form;
-    get form() { return this._form; }
-    set form(value) {
-        this._form = value;
-        this._setStandardValue('form', value);
-    }
-}
-exports.label = label;
-
-/**
- * dropdown item
- * https://www.w3schools.com/tags/tag_option.asp
- */
-class option extends bs {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} value field value to submit when selected
-     * @param {boolean} selected element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents, value, selected, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        if (value != null)
-            attributes.value = value;
-        if (selected != null)
-            attributes.selected = selected;
-
-        // create baseline object
-        super('option', contents, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** shorter label to display */
-    _label;
-    get label() { return this._label; }
-    set label(value) {
-        this._label = value;
-        this._setStandardValue('label', value);
-    }
-
-    /** pre-select item when the page loads [boolean] */
-    _selected;
-    set selected(value) {
-        this._selected = value;
-        this._setTogglableValue('selected', value);
-    }
-
-    /** field value to submit when selected */
-    _value;
-    get value() { return this._value; }
-    set value(value) {
-        this._value = value;
-        this._setStandardValue('value', value);
-    }
-}
-exports.option = option;
-
-/**
- * collection of sub-options within a dropdown
- * https://www.w3schools.com/tags/tag_optgroup.asp
- */
-class optionGroup extends bs {
-    constructor(contents, label, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        if (label != null)
-            attributes.label = label;
-
-        // create baseline object
-        super('optgroup', contents, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** label to display */
-    _label;
-    get label() { return this._label; }
-    set label(value) {
-        this._label = value;
-        this._setStandardValue('label', value);
-    }
-}
-exports.optionGroup = optionGroup;
+exports.RadioButton = RadioButton;
 
 
 /****************************************************************************************************************
  ************************************************** Components **************************************************
  ***************************************************************************************************************/
 
-// provides contextual feedback messages for typical user actions
-class alert extends division {
-    /*****************************
-     ***** Public Properties *****
-     ****************************/
-
-    // elements
-    dismissButton;  // button to dismiss alert
-
-
-    /********************************
-     ***** Protected Properties *****
-     *******************************/
-
-    // attributes
-    _dismissible;  // alert can be closed out (boolean)
-
-
-    /*************************
-     ***** Magic Methods *****
-     ************************/
-
+/**
+ * provides contextual feedback messages for typical user actions
+ * https://getbootstrap.com/docs/4.5/components/alerts/
+ */
+class Alert extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
     constructor(contents, attributes) {
         // set defaults
         if (!attributes || typeof attributes != 'object')
@@ -4605,19 +5056,51 @@ class alert extends division {
             attributes.theme = 'info';
 
         // create baseline object
-        super(contents, attributes);
+        super(contents);
+
+        // initialize attributes
+        this.attributes = attributes;
 
         // add Bootstrap classes
         this.class('alert');
         this.role = 'alert';
 
-        // TODO: create dismiss button (requires button and icon)
+        // create dismiss button
+        this.dismissButton = new Button(new Icon('fas fa-times', 'close', { ariaHidden: true }), { plain: true });
+        this.dismissButton.class('close');
+        this.dismissButton.data('dismiss', 'alert');
+        this.dismissButton.ariaLabel = 'close';
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** alert can be closed out (boolean) */
+    _dismissible;
+    get dismissible() { return this._dismissible; }
+    set dismissible(value) {
+        // remove dynamic Bootstrap classes
+        if (this._dismissible) {
+            this.removeClass('alert-dismissible');
+            this.removeClass('fade');
+            this.removeClass('show');
+        }
+
+        // update properties
+        this._dismissible = value;
+
+        // add dynamic Bootstrap classes
+        if (this._dismissible) {
+            this.class('alert-dismissible');
+            this.class('fade');
+            this.class('show');
+        }
     }
 
     // outline theme is not supported
-    set outline(value) {
-        this._outline = false;
-    }
+    set outline(value) { this._outline = false; }
 
     // alerts have custom theme classes
     set theme(value) {
@@ -4632,13 +5115,160 @@ class alert extends division {
         if (this._theme)
             this.class('alert-' + this._theme);
     }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    /** button to dismiss alert */
+    dismissButton;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * heading 1
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading1(contents, attributes) {
+        // create baseline object
+        let heading = new Heading1(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * heading 2
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading2(contents, attributes) {
+        // create baseline object
+        let heading = new Heading2(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * heading 3
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading3(contents, attributes) {
+        // create baseline object
+        let heading = new Heading3(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * heading 4
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading4(contents, attributes) {
+        // create baseline object
+        let heading = new Heading4(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * heading 5
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading5(contents, attributes) {
+        // create baseline object
+        let heading = new Heading5(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * heading 6
+     * https://www.w3schools.com/tags/tag_hn.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    heading6(contents, attributes) {
+        // create baseline object
+        let heading = new Heading6(contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatHeading(heading));
+    }
+
+    /**
+     * hyperlink (anchor)
+     * https://www.w3schools.com/tags/tag_a.asp
+     * @param {string} url URL of the page the link goes to
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    link(url, contents, attributes) {
+        // create baseline object
+        let link = new Link(url, contents, attributes);
+
+        // format and add the object to the contents
+        this.add(Alert.formatLink(link));
+    }
+
+    /** close the Bootstrap component */
+    stop() {
+        let output = '';
+
+        // add dismiss button
+        if (this.dismissible)
+            output += this.dismissButton;
+
+        // close the HTML tag
+        output += super.stop();
+
+        return output;
+    }
+
+
+    /**************************
+     ***** Static Methods *****
+     *************************/
+
+	// add Bootstrap classes for headings
+    static formatHeading(heading) {
+        // add Bootstrap classes
+        heading.class('alert-heading');
+
+        return heading;
+    }
+
+	// add Bootstrap classes for links
+    static formatLink(link) {
+        // add Bootstrap classes
+        link.class('alert-link');
+
+        return link;
+    }
 }
-exports.alert = alert;
+exports.Alert = Alert;
 
 
-/****************************************************************************************************************
- ************************************************** Components **************************************************
- ***************************************************************************************************************/
+/**********************************************************************************************************
+ ************************************************** Demo **************************************************
+ *********************************************************************************************************/
 
 /**
  * demonstrate all supported Bootstrap features
@@ -4647,7 +5277,7 @@ exports.alert = alert;
 function demo() {
     // TODO: make this use the classes instead of just being text
     let output =
-`<!--nav -->
+        `<!--nav -->
 <nav aria-label="nav" class="mt-3">
 <ul class="nav nav-tabs">
 <li class="nav-item"><a href="#alert" class="nav-link">Alert</a></li>

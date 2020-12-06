@@ -23,21 +23,21 @@ console.log('********************');
 console.log();
 
 // body
-test = new bs.body();
+test = new bs.Body();
 test.paragraph(stringValue);
 test.script(jsValue); // add text
-test.script(new bs.script(jsValue));  // add object
+test.script(new bs.Script(jsValue));  // add object
 test.script(null, urlJS);  // add URL
 console.log(test.toString());
 
-test = new bs.body(stringValue, { scripts: jsValue });
+test = new bs.Body(stringValue, { scripts: jsValue });
 console.log(test.toString());
 
 // comment
-console.log(new bs.comment().toString());
-console.log(new bs.comment(stringValue).toString());
-console.log(new bs.comment(arrayValue).toString());
-test = new bs.comment(stringValue);
+console.log(new bs.Comment().toString());
+console.log(new bs.Comment(stringValue).toString());
+console.log(new bs.Comment(arrayValue).toString());
+test = new bs.Comment(stringValue);
 test.add(stringValue);
 test.add(arrayValue);
 test.inline = false;
@@ -45,34 +45,34 @@ test.blockClose = true;
 console.log(test.toString());
 
 // division
-console.log(new bs.division().toString());
-console.log(new bs.division(stringValue).toString());
-console.log(new bs.division(arrayValue).toString());
+console.log(new bs.Division().toString());
+console.log(new bs.Division(stringValue).toString());
+console.log(new bs.Division(arrayValue).toString());
 
 // head
-test = new bs.head(stringValue, null, { charset: 'ISO-8859-1' });
+test = new bs.Head(stringValue, null, { charset: 'ISO-8859-1' });
 test.link(urlCSS);
-test.link(new bs.resourceLink(urlCSS));
+test.link(new bs.ResourceLink(urlCSS));
 test.metadata('author', 'Legendary Media TV');
 console.log(test.toString());
 
 // head link
-test = new bs.resourceLink();
+test = new bs.ResourceLink();
 test.language = 'en';
 test.media = 'print';
 test.sizes = 'any';
 test.type = 'text/css';
 test.url = urlCSS;
 console.log(test.toString());
-console.log(new bs.resourceLink(urlCSS, { language: 'en' }).toString());
+console.log(new bs.ResourceLink(urlCSS, { language: 'en' }).toString());
 
 // html
-console.log(new bs.html(stringValue).toString());
+console.log(new bs.HTML(stringValue).toString());
 console.log();
 
 // script
-console.log(new bs.script(jsValue).toString());
-test = new bs.script(
+console.log(new bs.Script(jsValue).toString());
+test = new bs.Script(
     null,
     {
         integrity: 'sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC',
@@ -84,9 +84,11 @@ test = new bs.script(
 );
 console.log(test.toString());
 
-// span
-console.log(new bs.span(stringValue).toString());
-console.log();
+// dropdown
+test = new bs.Dropdown(objectValue, 'test');
+test.add('more content', 'content', true);
+test.select('key1');
+console.log(test.toString());
 
 // element kitchen sink
 console.log();
@@ -94,7 +96,7 @@ console.log('************************');
 console.log('***** Kitchen Sink *****');
 console.log('************************');
 console.log();
-test = new bs.division();
+test = new bs.Division();
 test.class('m-5');
 test.class('p-3 fake');
 test.removeClass('fake');
@@ -103,7 +105,7 @@ test.add(arrayValue);
 test.style(cssValue);
 test.removeStyle(' color:  green ');
 test.data('target', `#${id}`);
-console.log(new bs.comment(`data-target: ${test.data('target')}`).toString());
+console.log(new bs.Comment(`data-target: ${test.data('target')}`).toString());
 test.ariaControls = id;
 test.ariaCurrent = 'page';
 test.ariaDescribedBy = id;
@@ -167,7 +169,7 @@ console.log('*********************');
 console.log('***** Themeable *****');
 console.log('*********************');
 console.log();
-test = new bs.division(stringValue);
+test = new bs.Division(stringValue);
 test.textTheme = 'primary';
 test.theme = 'primary';
 console.log(test.toString());
@@ -180,7 +182,7 @@ console.log('****************');
 console.log('***** HTML *****');
 console.log('****************');
 console.log();
-test = new bs.html();
+test = new bs.HTML();
 test.title = stringValue;
 test.abbreviation('HW', stringValue);
 test.add('\n');
@@ -190,7 +192,7 @@ test.article(stringValue);
 test.aside(stringValue);
 test.bold(stringValue);
 test.add('\n');
-test.blockquote(stringValue, { cite: url });
+test.blockQuote(stringValue, { cite: url });
 test.lineBreak();
 test.add('\n');
 test.button(stringValue);
@@ -208,7 +210,7 @@ test.add('\n');
 test.details(stringValue, { open: true, onToggle: jsValue, summary: stringValue });
 test.add('\n');
 test.division(stringValue);
-test.dropdown(objectValue);
+test.dropdown(objectValue, 'test');
 test.add('\n');
 test.emphasis(stringValue);
 test.add('\n');
@@ -231,7 +233,7 @@ test.italics(stringValue);
 test.add('\n');
 test.icon('fas fa-camera');
 test.add('\n');
-test.iframe(url);
+test.inlineFrame(url);
 test.add('\n');
 test.image(urlImage, stringValue);
 test.add('\n');
@@ -275,18 +277,27 @@ test.superscript(stringValue);
 test.add('\n');
 test.svg(`<rect x="50" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />`, 400, 180);
 test.add('\n');
-test.paragraph([new bs.term('HTML', { title: 'HyperText Markup Language', id: 'html-definition' }), ' is the standard markup language for creating web pages.']);
+test.paragraph([new bs.Term('HTML', { title: 'HyperText Markup Language', id: 'html-definition' }), ' is the standard markup language for creating web pages.']);
+test.table([objectValue, objectValue], stringValue);
 test.time('11/22 @ 2:56 PM', { timestamp: '2020-11-22 14:56' });
 test.add('\n');
 test.underline(stringValue);
 test.add('\n');
-test.add(new bs.alert(stringValue));
-test.add(new bs.alert(stringValue, { theme: 'primary' }));
-console.log(test.toString());
+test.alert(stringValue);
 
-test = new bs.dropdown(objectValue);
-test.add('more content', 'content', true);
-test.select('key1');
+let alert = new bs.Alert(null, { theme: 'primary' });
+alert.dismissible = true;
+alert.heading1(stringValue);
+alert.heading2(stringValue);
+alert.heading3(stringValue);
+alert.heading4(stringValue);
+alert.heading5(stringValue);
+alert.heading6(stringValue);
+alert.link(url, stringValue);
+alert.add('\n');
+alert.paragraph('Link: ' + bs.Alert.formatLink(new bs.Link(url, stringValue)));
+test.add(alert);
+
 console.log(test.toString());
 
 // demonstrate all supported Bootstrap features

@@ -2,7 +2,7 @@
 
 This is a Node.js framework for working with HTML and [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
 
-At this point it is mostly HTML classes and still needs HTML classes for tables, but I wanted to get this package out there for testing purposes.
+At this point it is mostly just HTML classes, but I wanted to get this package out there for testing purposes.
 
 ## Getting started
 
@@ -15,7 +15,7 @@ Here's a sample of how to work with the Bootstrap framework. This sample feature
 const bs = require('@legendarymediatv/bootstrap');
 
 // create an HTML object
-const html = new bs.html('Bootstrap Demo');
+const html = new bs.HTML('Bootstrap Demo');
 
 // add Bootstrap and its dependencies
 html.metadata('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');

@@ -1,6 +1,6 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Bootstrap framework of classes",
   "keywords": [ "Bootstrap", "HTML", "framework" ],
   "main": "app",

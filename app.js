@@ -658,9 +658,9 @@ class BootstrapTag {
     }
 
 
-    /**************************
-     ***** Public Methods *****
-     *************************/
+    /*******************
+     ***** Methods *****
+     ******************/
 
     /**
      * add content
@@ -2056,15 +2056,100 @@ class HTML extends BootstrapTag {
     set charset(value) { this.head.charset = value; }
 
 
-    /**************************
-     ***** Public Methods *****
-     *************************/
+    /*******************
+     ***** Methods *****
+     ******************/
 
     /**
      * add content
      * @param {any} value value or array of values to go inside the body element
      */
     add(value) { this.body.add(value); }
+
+    /**
+     * add Bootstrap and its dependencies
+     * @param {string} bootstrapCSS URL for Bootstrap CSS, null means latest from JSDelivr CDN
+     * @param {string} bootstrapJS URL for Bootstrap JavaScript, null means latest from JSDelivr CDN
+     * @param {boolean} bootstrapAdditionalJS include additional Bootstrap JavaScript for initializing smart modals, popovers, and tooltips
+     * @param {string} jqueryJS URL for jQuery JavaScript, null means latest for Bootstrap from jQuery Code CDN (full functionality)
+     * @param {string} popperJS URL for jQuery JavaScript, null means latest for Bootstrap from JSDelivr CDN
+     * @param {string} fontawesomeCSS URL for FontAwesome CSS, null means latest from FontAwesome (all icons), false means do not include
+     */
+    bootstrap(bootstrapCSS, bootstrapJS, bootstrapAdditionalJS, jqueryJS, popperJS, fontawesomeCSS) {
+        // add Bootstrap viewport dependency
+        this.metadata('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
+
+        // add CSS
+        this.resourceLink(bootstrapCSS ? bootstrapCSS : 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css');
+        if (fontawesomeCSS !== false)
+            this.resourceLink(fontawesomeCSS ? fontawesomeCSS : 'https://use.fontawesome.com/releases/v5.15.1/css/all.css');  // FontAwesome icons
+
+        // add JavaScript
+        this.script(null, jqueryJS ? jqueryJS : 'https://code.jquery.com/jquery-3.5.1.min.js');
+        this.script(null, popperJS ? popperJS : 'https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js');
+        this.script(null, bootstrapJS ? bootstrapJS : 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js');
+
+        // add additional Bootstrap JavaScript
+        if (bootstrapAdditionalJS !== false) {
+            this.script(
+`
+$(document).ready(
+  function ()
+  {
+    /****************************
+     ***** Bootstrap Modals *****
+     ***************************/
+
+    // smart modal data loading functionality
+    $("#bs_modal").on(
+      "show.bs.modal",
+      function (event) {
+        // pull data-* attributes from toggler
+        var source = $(event.relatedTarget);
+
+        // set modal’s scale
+        if (source) {
+          $(this).find(".modal-dialog").removeClass("modal-sm").removeClass("modal-lg");  // remove existing scaling classes
+          if (source.data("scale") == "sm" || source.data("scale") == "lg") { $(this).find(".modal-dialog").addClass("modal-" + source.data("scale")); }
+
+          // update the modal’s content
+          $(this).find(".modal-title").html(source.data("title"));
+          $(this).find(".modal-body").html(source.data("body"));
+          $(this).find(".modal-footer").html(source.data("footer"));
+        }
+      }
+    );
+
+    // trigger any autofocus elements
+    $("#bs_modal").on(
+      "shown.bs.modal",
+      function () { $(this).find("[autofocus]:first").focus(); }
+    );
+
+
+    /******************************
+     ***** Bootstrap Popovers *****
+     *****************************/
+
+    // enable popover functionality
+    $("[data-toggle='popover']").popover();
+
+    // dismiss on next click
+    $(".popover-dismiss").popover({ trigger: "focus" });
+
+
+    /******************************
+     ***** Bootstrap Tooltips *****
+     *****************************/
+
+    // enable tooltip functionality
+    $("[data-toggle='tooltip']").tooltip();
+  }
+);
+`
+            );
+        }
+    }
 
     /**
      * link between a document and an external resource

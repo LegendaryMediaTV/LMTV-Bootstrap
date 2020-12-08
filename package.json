@@ -1,14 +1,15 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "1.1.0",
-  "description": "Bootstrap framework of classes",
-  "keywords": [ "Bootstrap", "HTML", "framework" ],
+  "version": "1.2.0",
+  "description": "Framework for working with HTML and Bootstrap",
+  "keywords": [ "Bootstrap", "HTML", "framework", "ADA", "accessibility" ],
   "main": "app",
   "author": {
     "name": "LegendaryMediaTV",
     "email": "webmaster@legendarymediatv.com",
     "url": "https://www.legendarymediatv.com/"
   },
-  "license": "MIT",
-  "repository": "github:LegendaryMediaTV/LMTV-Bootstrap"
+  "homepage": "https://github.com/owner/project#readme",
+  "repository": "github:LegendaryMediaTV/LMTV-Bootstrap",
+  "license": "MIT"
 }

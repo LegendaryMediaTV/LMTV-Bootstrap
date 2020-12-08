@@ -675,6 +675,15 @@ class BootstrapTag {
             this._contents.push(value);
     }
 
+    /** assign a unique ID */
+    uniqueID() {
+        // define static variables
+        if (typeof this.uniqueID.nextID == 'undefined')
+            this.uniqueID.nextID = 1;
+
+        this.id = 'bootstrap-tag-' + (this.uniqueID.nextID++);
+    }
+
     /**
      * add a class
      * @param {any} value string or array of strings of CSS classes
@@ -897,7 +906,7 @@ class BootstrapTag {
             this._setTogglableValue.enabled = ['true', 'on'];
 
         // true
-        if (this._setTogglableValue.enabled.indexOf(value.toString().trim().toLowerCase()) != -1)
+        if (value != null && this._setTogglableValue.enabled.indexOf(value.toString().trim().toLowerCase()) != -1)
             this._attributes[key] = null;
         // remove
         else
@@ -1353,12 +1362,15 @@ class BootstrapTag {
     /**
      * checkbox (on/off, yes/no, etc.)
      * https://www.w3schools.com/tags/tag_input.asp
+     * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios
+     * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1
+     * @param {any} label value or array of values to go inside the label
      * @param {string} value field value to submit when checked
      * @param {string} name field name to submit when checked
      * @param {boolean} checked element should be pre-selected when the page loads
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    checkbox(value, name, checked, attributes) { this.add(new Checkbox(value, name, checked, attributes)); }
+    checkbox(label, value, name, checked, attributes) { this.add(new Checkbox(label, value, name, checked, attributes)); }
 
     /**
      * dropdown container of options
@@ -1399,12 +1411,15 @@ class BootstrapTag {
     /**
      * radio button (selecting one in the set de-selects the others)
      * https://www.w3schools.com/tags/tag_input.asp
+     * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios
+     * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1
+     * @param {any} label value or array of values to go inside the label
      * @param {string} value field value to submit
      * @param {string} name field name to submit
      * @param {boolean} checked element should be pre-selected when the page loads
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    radioButton(value, name, checked, attributes) { this.add(new RadioButton(value, name, checked, attributes)); }
+    radioButton(label, value, name, checked, attributes) { this.add(new RadioButton(label, value, name, checked, attributes)); }
 
 
     /***************************************
@@ -4291,6 +4306,189 @@ class FormSubmitTag extends FormTag {
     }
 }
 
+/** form toggle element (abstract) */
+class FormToggleElement extends FormTag {
+    /**
+     * create a new instance of the object
+     * @param {string} type valid values: checkbox, radio
+     * @param {any} label value or array of values to go inside the label
+     * @param {string} value field value to submit when checked
+     * @param {string} name field name to submit when checked
+     * @param {boolean} checked element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(type, label, value, name, checked, attributes) {
+        // convert parameters to attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        attributes.type = type;
+        attributes.checked = checked;
+        if (!attributes.plain && attributes.custom !== false)
+            attributes.custom = true;  // fancy by default (and kick off initialization)
+
+        // create baseline object
+        super('input', null, name, value, attributes);
+
+        // initialize elements
+        this.label = new Label(label);
+        if (!attributes.plain)
+            this.wrapper = new Division();
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // assign a unique ID for non-plain inputs
+        if (this.id == null && !attributes.plain)
+            this.uniqueID();
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** element should be pre-selected when the page loads [boolean] */
+    _checked;
+    get checked() { return this._checked; }
+    set checked(value) {
+        this._checked = value;
+        this._setTogglableValue('checked', value);
+    }
+
+    /** unique identifier [alphanumeric, underscore, hyphen] */
+    set id(value) {
+        this._id = value;
+        this._setStandardValue('id', value);
+        this.label.for = value;
+    }
+
+    /** input field is read-only (boolean) */
+    _readOnly;
+    get readOnly() { return this._readOnly; }
+    set readOnly(value) {
+        this._readOnly = value;
+        this._setTogglableValue('readonly', value);
+    }
+
+    /** valid values: checkbox, radio */
+    _type;
+    get type() { return this._type; }
+    set type(value) {
+        this._type = value;
+        this._setStandardValue('type', value);
+    }
+
+    /** field value to submit */
+    _value;
+    get value() { return this._value; }
+    set value(value) {
+        this._value = value;
+        this._setStandardValue('value', value);
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+    /** fancy and modern [boolean] */
+    _custom;
+    get custom() { return this._custom; }
+    set custom(value) { this._setCustomInlineSwitch(value, this._inline, this._switch); }
+
+    /** stack horizontally instead of vertically [boolean] */
+    _inline;
+    get inline() { return this._inline; }
+    set inline(value) { this._setCustomInlineSwitch(this._custom, value, this._switch); }
+
+    /** stack horizontally instead of vertically [boolean] */
+    _switch;
+    get switch() { return this._switch; }
+    set switch(value) { this._setCustomInlineSwitch(this._custom, this._inline, value); }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    // form label
+    label;
+
+    // container holding input and label
+    wrapper;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+      * custom/inline/switch are interdependent
+      * @param {boolean} custom new value for custom
+      * @param {boolean} inline new value for inline
+      * @param {boolean} switcher new value for switch
+      */ 
+    _setCustomInlineSwitch(custom, inline, switcher) {
+        // remove dynamic Bootstrap classes
+        if (this.wrapper) {
+            if (this._custom) {
+                this.wrapper.removeClass('custom-control');
+                this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.tag);
+            }
+            else
+                this.wrapper.removeClass('form-check');
+            if (this._inline)
+                this.wrapper.removeClass(this._custom ? 'custom-control-inline' : 'form-check-inline');
+            this.removeClass(this._custom ? 'custom-control-input' : 'form-check-input');
+            this.label.removeClass(this._custom ? 'custom-control-label' : 'form-check-label');
+        }
+
+        // update properties
+        this._custom = custom;
+        this._inline = inline;
+        this._switch = switcher;
+
+        // add dynamic Bootstrap classes
+        if (this.wrapper) {
+            if (this._custom) {
+                this.wrapper.class('custom-control');
+                this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.tag);
+            }
+            else
+                this.wrapper.class('form-check');
+            if (this._inline)
+                this.wrapper.class(this._custom ? 'custom-control-inline' : 'form-check-inline');
+            this.class(this._custom ? 'custom-control-input' : 'form-check-input');
+            this.label.class(this._custom ? 'custom-control-label' : 'form-check-label');
+        }
+    }
+
+    /** open the HTML tag */
+    start() {
+        let output = '';
+
+        if (this.wrapper)
+            output += this.wrapper.start();
+        output += super.start();
+
+        return output;
+
+    }
+
+    /** close the HTML tag */
+    stop() {
+        let output = '';
+
+        output += super.stop();
+        if (this.label.contents.length)
+            output += this.label;
+        if (this.wrapper)
+            output += this.wrapper.stop();
+
+        return output;
+    }
+}
+
 /**
  * clickable button
  * https://www.w3schools.com/tags/tag_button.asp
@@ -4386,24 +4584,6 @@ class Button extends FormSubmitTag {
     }
 
 
-    /*******************
-     ***** Methods *****
-     ******************/
-
-    /**
-     * set/unset contents as icon
-     * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
-     * @param {any} ariaLabel accessibility string value that labels the current element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    setIcon(name, ariaLabel, attributes) {
-        if (name != null)
-            this.contents = new Icon(name, ariaLabel, attributes);
-        else
-            this.contents = null;
-    }
-
-
     /*****************************
      ***** Protected Methods *****
      ****************************/
@@ -4428,6 +4608,25 @@ class Button extends FormSubmitTag {
     }
 }
 exports.Button = Button;
+
+/**
+ * checkbox (on/off, yes/no, etc.)
+ * https://www.w3schools.com/tags/tag_input.asp
+ * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios
+ * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1
+ */
+class Checkbox extends FormToggleElement {
+    /**
+     * create a new instance of the object
+     * @param {any} label value or array of values to go inside the label
+     * @param {string} value field value to submit when checked
+     * @param {string} name field name to submit when checked
+     * @param {boolean} checked element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(label, value, name, checked, attributes) { super('checkbox', label, value, name, checked, attributes); }
+}
+exports.Checkbox = Checkbox;
 
 /**
  * form element container
@@ -4542,6 +4741,257 @@ class Form extends ThemeableTag {
 exports.Form = Form;
 
 /**
+ * input/textarea combined
+ * https://www.w3schools.com/tags/tag_input.asp
+ * https://www.w3schools.com/tags/tag_textarea.asp
+ */
+class Input extends FormSubmitTag {
+    /**
+     * create a new instance of the object
+     * @param {string} value field value to submit
+     * @param {string} name field name to submit
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(value, name, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
+        // text area requested
+        if (attributes.type == 'textarea') {
+            // remove type
+            delete attributes.type;
+
+            // create baseline object
+            super('textarea', value, name, null, attributes);
+        }
+        // input box requested
+        else {
+            // set defaults
+            if (!attributes.type)
+                attributes.type = 'text'
+
+            // create baseline object
+            super('input', null, name, value, attributes);
+        }
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** allow auto-complete [boolean] */
+    _autoComplete;
+    get autoComplete() { return this._autoComplete; }
+    set autoComplete(value) {
+        this._autoComplete = value;
+        this._setBooleanValue('autocomplete', value, true);
+    }
+
+    /** <datalist> element containing pre-defined options */
+    _list;
+    get list() { return this._list; }
+    set list(value) {
+        this._list = value;
+        this._setStandardValue('list', value);
+    }
+
+    /** maximum value (number/date) */
+    _max;
+    get max() { return this._max; }
+    set max(value) {
+        this._max = value;
+        this._setStandardValue('max', value);
+    }
+
+    /** maximum number of characters */
+    _maxLength;
+    get maxLength() { return this._maxLength; }
+    set maxLength(value) {
+        this._maxLength = value;
+        this._setStandardValue('maxlength', value);
+    }
+
+    /** minimum value (number/date) */
+    _min;
+    get min() { return this._min; }
+    set min(value) {
+        this._min = value;
+        this._setStandardValue('min', value);
+    }
+
+    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) [boolean] */
+    _multiple;
+    get multiple() { return this._multiple; }
+    set multiple(value) {
+        this._multiple = value;
+        this._setTogglableValue('multiple', value);
+    }
+
+    /** regular expression for validation */
+    _pattern;
+    get pattern() { return this._pattern; }
+    set pattern(value) {
+        this._pattern = value;
+        this._setStandardValue('pattern', value);
+    }
+
+    /** short hint that describes the expected value */
+    _placeholder;
+    get placeholder() { return this._placeholder; }
+    set placeholder(value) {
+        this._placeholder = value;
+        this._setStandardValue('placeholder', value);
+    }
+
+    /** input field is read-only (boolean) */
+    _readOnly;
+    get readOnly() { return this._readOnly; }
+    set readOnly(value) {
+        this._readOnly = value;
+        this._setTogglableValue('readonly', value);
+    }
+
+    /** width in characters */
+    _size;
+    get size() { return this._size; }
+    set size(value) {
+        this._size = value;
+        this._setStandardValue('size', value);
+    }
+
+    /** interval between legal numbers */
+    _step;
+    get step() { return this._step; }
+    set step(value) {
+        this._step = value;
+        this._setStandardValue('step', value);
+    }
+
+    /** valid values: button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week */
+    _type;
+    get type() { return this._type; }
+    set type(value) {
+        this._type = value;
+        this._setStandardValue('type', value);
+    }
+
+    /** field value to submit */
+    _value;
+    get value() { return this._value; }
+    set value(value) {
+        this._value = value;
+        this._setStandardValue('value', value);
+    }
+
+
+    /********************************
+     ***** Attributes: TextArea *****
+     *******************************/
+
+    /** visible width */
+    _columns;
+    get columns() { return this._columns; }
+    set columns(value) {
+        this._columns = value;
+        this._setStandardValue('cols', value);
+    }
+
+    /** visible number of lines */
+    _rows;
+    get rows() { return this._rows; }
+    set rows(value) {
+        this._rows = value;
+        this._setStandardValue('rows', value);
+    }
+
+    /**
+     * how the text in a text area is to be wrapped when submitted in a form
+     * valid values: hard (adds newlines, must have cols defined), soft (not wrapped, default)
+     */
+    _wrap;
+    get wrap() { return this._wrap; }
+    set wrap(value) {
+        this._wrap = value;
+        this._setStandardValue('wrap', value);
+    }
+
+
+    /**************************************
+     ***** Attributes: Checkbox/Radio *****
+     *************************************/
+
+    /** for "checkbox"/"radio" types; element should be pre-selected when the page loads [boolean] */
+    _checked;
+    get checked() { return this._checked; }
+    set checked(value) {
+        this._checked = value;
+        this._setTogglableValue('checked', value);
+    }
+
+
+    /****************************
+     ***** Attributes: File *****
+     ***************************/
+
+    /**
+     * for "file" type
+     * valid values: «extension», audio/*, video/*, image/*, «media_type» – http://www.iana.org/assignments/media-types/
+     */
+    _accept;
+    get accept() { return this._accept; }
+    set accept(value) {
+        this._accept = value;
+        this._setStandardValue('accept', value);
+    }
+
+
+    /*****************************
+     ***** Attributes: Image *****
+     ****************************/
+
+    /**
+     * for "image" type; alternate text (for accessibility and broken links)
+     * https://webaim.org/techniques/alttext/
+     */
+    _alternateText;
+    get alternateText() { return this._alternateText; }
+    set alternateText(value) {
+        this._alternateText = value;
+        this._setStandardValue('alt', value);
+    }
+
+    /** for "image" type; height in pixels */
+    _height;
+    get height() { return this._height; }
+    set height(value) {
+        this._height = value;
+        this._setStandardValue('height', value);
+    }
+
+    /** for "image" type; URL of an image */
+    _url;
+    get url() { return this._url; }
+    set url(value) {
+        this._url = value;
+        this._setStandardValue('src', value);
+    }
+
+    /** for "image" type; width in pixels */
+    _width;
+    get width() { return this._width; }
+    set width(value) {
+        this._width = value;
+        this._setStandardValue('width', value);
+    }
+}
+exports.Input = Input;
+
+/**
  * label for a form element
  * https://www.w3schools.com/tags/tag_label.asp
  */
@@ -4588,6 +5038,25 @@ class Label extends ThemeableTag {
     }
 }
 exports.Label = Label;
+
+/**
+ * radio button (selecting one in the set de-selects the others)
+ * https://www.w3schools.com/tags/tag_input.asp
+ * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios
+ * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1
+ */
+class RadioButton extends FormToggleElement {
+    /**
+     * create a new instance of the object
+     * @param {any} label value or array of values to go inside the label
+     * @param {string} value field value to submit when checked
+     * @param {string} name field name to submit when checked
+     * @param {boolean} checked element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(label, value, name, checked, attributes) { super('radio', label, value, name, checked, attributes); }
+}
+exports.RadioButton = RadioButton;
 
 
 /********************
@@ -4807,316 +5276,6 @@ class OptionGroup extends OptionContainerTag {
     }
 }
 exports.OptionGroup = OptionGroup;
-
-
-/*****************
- ***** Input *****
- ****************/
-
-/**
- * input/textarea combined
- * https://www.w3schools.com/tags/tag_input.asp
- * https://www.w3schools.com/tags/tag_textarea.asp
- */
-class Input extends FormSubmitTag {
-    /**
-     * create a new instance of the object
-     * @param {string} value field value to submit
-     * @param {string} name field name to submit
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(value, name, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-
-        // text area requested
-        if (attributes.type == 'textarea') {
-            // remove type
-            delete attributes.type;
-
-            // create baseline object
-            super('textarea', value, name, null, attributes);
-        }
-        // input box requested
-        else {
-            // set defaults
-            if (!attributes.type)
-                attributes.type = 'text'
-
-            // create baseline object
-            super('input', null, name, value, attributes);
-        }
-
-        // initialize attributes
-        this.attributes = attributes;
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** allow auto-complete [boolean] */
-    _autoComplete;
-    get autoComplete() { return this._autoComplete; }
-    set autoComplete(value) {
-        this._autoComplete = value;
-        this._setBooleanValue('autocomplete', value, true);
-    }
-
-    /** <datalist> element containing pre-defined options */
-    _list;
-    get list() { return this._list; }
-    set list(value) {
-        this._list = value;
-        this._setStandardValue('list', value);
-    }
-
-    /** maximum value (number/date) */
-    _max;
-    get max() { return this._max; }
-    set max(value) {
-        this._max = value;
-        this._setStandardValue('max', value);
-    }
-
-    /** maximum number of characters */
-    _maxLength;
-    get maxLength() { return this._maxLength; }
-    set maxLength(value) {
-        this._maxLength = value;
-        this._setStandardValue('maxlength', value);
-    }
-
-    /** minimum value (number/date) */
-    _min;
-    get min() { return this._min; }
-    set min(value) {
-        this._min = value;
-        this._setStandardValue('min', value);
-    }
-
-    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) [boolean] */
-    _multiple;
-    get multiple() { return this._multiple; }
-    set multiple(value) {
-        this._multiple = value;
-        this._setTogglableValue('multiple', value);
-    }
-
-    /** regular expression for validation */
-    _pattern;
-    get pattern() { return this._pattern; }
-    set pattern(value) {
-        this._pattern = value;
-        this._setStandardValue('pattern', value);
-    }
-
-    /** short hint that describes the expected value */
-    _placeholder;
-    get placeholder() { return this._placeholder; }
-    set placeholder(value) {
-        this._placeholder = value;
-        this._setStandardValue('placeholder', value);
-    }
-
-    /** input field is read-only (boolean) */
-    _readOnly;
-    get readOnly() { return this._readOnly; }
-    set readOnly(value) {
-        this._readOnly = value;
-        this._setTogglableValue('readonly', value);
-    }
-
-    /** width in characters */
-    _size;
-    get size() { return this._size; }
-    set size(value) {
-        this._size = value;
-        this._setStandardValue('size', value);
-    }
-
-    /** interval between legal numbers */
-    _step;
-    get step() { return this._step; }
-    set step(value) {
-        this._step = value;
-        this._setStandardValue('step', value);
-    }
-
-    /** valid values: button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week */
-    _type;
-    get type() { return this._type; }
-    set type(value) {
-        this._type = value;
-        this._setStandardValue('type', value);
-    }
-
-    /** field value to submit */
-    _value;
-    get value() { return this._value; }
-    set value(value) {
-        this._value = value;
-        this._setStandardValue('value', value);
-    }
-
-
-    /********************************
-     ***** Attributes: TextArea *****
-     *******************************/
-
-    /** visible width */
-    _columns;
-    get columns() { return this._columns; }
-    set columns(value) {
-        this._columns = value;
-        this._setStandardValue('cols', value);
-    }
-
-    /** visible number of lines */
-    _rows;
-    get rows() { return this._rows; }
-    set rows(value) {
-        this._rows = value;
-        this._setStandardValue('rows', value);
-    }
-
-    /**
-     * how the text in a text area is to be wrapped when submitted in a form
-     * valid values: hard (adds newlines, must have cols defined), soft (not wrapped, default)
-     */
-    _wrap;
-    get wrap() { return this._wrap; }
-    set wrap(value) {
-        this._wrap = value;
-        this._setStandardValue('wrap', value);
-    }
-
-
-    /**************************************
-     ***** Attributes: Checkbox/Radio *****
-     *************************************/
-
-    /**
-     * for "checkbox"/"radio" types; element should be pre-selected when the page loads [boolean]
-     */
-    _checked;
-    get checked() { return this._checked; }
-    set checked(value) {
-        this._checked = value;
-        this._setTogglableValue('checked', value);
-    }
-
-
-    /****************************
-     ***** Attributes: File *****
-     ***************************/
-
-    /**
-     * for "file" type
-     * valid values: «extension», audio/*, video/*, image/*, «media_type» – http://www.iana.org/assignments/media-types/
-     */
-    _accept;
-    get accept() { return this._accept; }
-    set accept(value) {
-        this._accept = value;
-        this._setStandardValue('accept', value);
-    }
-
-
-    /*****************************
-     ***** Attributes: Image *****
-     ****************************/
-
-    /**
-     * for "image" type; alternate text (for accessibility and broken links)
-     * https://webaim.org/techniques/alttext/
-     */
-    _alternateText;
-    get alternateText() { return this._alternateText; }
-    set alternateText(value) {
-        this._alternateText = value;
-        this._setStandardValue('alt', value);
-    }
-
-    /** for "image" type; height in pixels */
-    _height;
-    get height() { return this._height; }
-    set height(value) {
-        this._height = value;
-        this._setStandardValue('height', value);
-    }
-
-    /** for "image" type; URL of an image */
-    _url;
-    get url() { return this._url; }
-    set url(value) {
-        this._url = value;
-        this._setStandardValue('src', value);
-    }
-
-    /** for "image" type; width in pixels */
-    _width;
-    get width() { return this._width; }
-    set width(value) {
-        this._width = value;
-        this._setStandardValue('width', value);
-    }
-}
-exports.Input = Input;
-
-/**
- * checkbox (on/off, yes/no, etc.)
- * https://www.w3schools.com/tags/tag_input.asp
- */
-class Checkbox extends Input {
-    /**
-     * create a new instance of the object
-     * @param {string} value field value to submit when checked
-     * @param {string} name field name to submit when checked
-     * @param {boolean} checked element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(value, name, checked, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        attributes.type = 'checkbox';
-        if (checked != null)
-            attributes.checked = checked;
-
-        // create baseline object
-        super(value, name, attributes);
-    }
-}
-exports.Checkbox = Checkbox;
-
-/**
- * radio button (selecting one in the set de-selects the others)
- * https://www.w3schools.com/tags/tag_input.asp
- */
-class RadioButton extends Input {
-    /**
-     * create a new instance of the object
-     * @param {string} value field value to submit when checked
-     * @param {string} name field name to submit when checked
-     * @param {boolean} checked element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(value, name, checked, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        attributes.type = 'radio';
-        if (checked != null)
-            attributes.checked = checked;
-
-        // create baseline object
-        super(value, name, attributes);
-    }
-}
-exports.RadioButton = RadioButton;
 
 
 /****************************************************************************************************************

@@ -1,6 +1,6 @@
 # LegendaryMediaTV Bootstrap
 
-This is a Node.js framework for working with HTML and [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
+This is a Node.js framework for working with [HTML 5](https://www.w3schools.com/html/) and [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
 
 At this point it is mostly just HTML classes, but I wanted to get this package out there for testing purposes.
 

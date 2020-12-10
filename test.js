@@ -132,6 +132,10 @@ http.createServer((req, res) => {
     form.radioButton('selected radio button', 'selected', 'demo-radio-button', true);
     form.textbox('single-line textbox', 'demo-textbox-single');
     form.textbox('multi-line textbox', 'demo-textbox-multiple', { multiline: true });
+    form.formGroup(
+        new bs.Textbox(null, 'demo-formgroup-textbox', { id: 'form-group-textbox' }),
+        'Form Group Textbox'
+    );
     form.button('Submit', { type: 'submit' });
     html.add(form);
     html.add('\n');

@@ -1407,6 +1407,7 @@ class BootstrapTag {
     /**
      * dropdown container of options
      * https://www.w3schools.com/tags/tag_select.asp
+     * https://getbootstrap.com/docs/4.5/components/forms/#select-menu
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {string} name field name to submit
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1420,6 +1421,16 @@ class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     form(contents, attributes) { this.add(new Form(contents, attributes)); }
+
+    /**
+     * form group element–label combo
+     * https://getbootstrap.com/docs/4.5/components/forms/#form-groups
+     * @param {any} contents value or array of values to go inside the Form Group element
+     * @param {any} label  value or array of values to go inside the Label element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Form Group element
+     * @param {object} labelAttributes key–value pairs of HTML attributes and other properties for the Label element
+     */
+    formGroup(contents, label, attributes, labelAttributes) { this.add(new FormGroup(contents, label, attributes, labelAttributes)); }
 
     /**
      * generic input tag
@@ -4354,6 +4365,74 @@ class FormTag extends ThemeableTag {
     }
 }
 
+/** container for dropdown options (abstract) */
+class DropdownContainerTag extends FormTag {
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * add an option to the dropdown
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} value field value to submit when selected
+     * @param {boolean} selected element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    add(contents, value, selected, attributes) {
+        // is an array, add each item
+        if (Array.isArray(contents)) {
+            for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
+                // already an option/group, just add it
+                if (contents[contentIndex] instanceof DropdownOption || contents[contentIndex] instanceof DropdownGroup)
+                    this._contents.push(contents[contentIndex])
+                // wrap in an option object and add it
+                else
+                    this._contents.push(new DropdownOption(contents[contentIndex], null, null, attributes));
+            }
+        }
+        // is a single item, add it
+        else {
+            // already an option/group, just add it
+            if (contents instanceof DropdownOption || contents instanceof DropdownGroup)
+                this._contents.push(contents)
+            // is a generic object, add key–value pairs
+            else if (typeof contents == 'object') {
+                for (const [key, display] of Object.entries(contents))
+                    this._contents.push(new DropdownOption(display, key, null, attributes));
+            }
+            // wrap in an option object and add it
+            else
+                this._contents.push(new DropdownOption(contents, value, selected, attributes));
+        }
+    }
+
+    /**
+     * search the dropdown contents for the specified value, select it, and de-select other options
+     * @param {any} value
+     */
+    select(value) {
+        // loop through contents
+        for (let contentIndex = 0; contentIndex < this._contents.length; contentIndex++) {
+            // single option
+            if (this._contents[contentIndex] instanceof DropdownOption) {
+                if (
+                    // value matches
+                    this._contents[contentIndex].value == value
+
+                    // value not set, but contents match
+                    || (this._contents[contentIndex].value == null && this._contents[contentIndex].contents == value)
+                )
+                    this._contents[contentIndex].selected = true;
+                else
+                    this._contents[contentIndex].selected = false;
+            }
+            // option group
+            else if (this._contents[contentIndex] instanceof DropdownGroup)
+                this._contents[contentIndex].select(value);
+        }
+    }
+}
+
 /** form submit element (abstract) */
 class FormSubmitTag extends FormTag {
     /**********************
@@ -4734,6 +4813,176 @@ class Checkbox extends FormToggleElement {
     constructor(label, value, name, checked, attributes) { super('checkbox', label, value, name, checked, attributes); }
 }
 exports.Checkbox = Checkbox;
+
+/**
+ * dropdown container of options
+ * https://www.w3schools.com/tags/tag_select.asp
+ * https://getbootstrap.com/docs/4.5/components/forms/#select-menu
+ */
+class Dropdown extends DropdownContainerTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} name field name to submit
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, name, attributes) {
+        // convert parameters to attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
+        // create baseline object
+        super('select', null, name, null, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // add Bootstrap classes
+        if (!attributes.plain)
+            this.class('custom-select');
+
+        // add contents
+        if (contents != null)
+            this.add(contents);
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** specifies that multiple options can be selected at once [boolean] */
+    _multiple;
+    get multiple() { return this._multiple; }
+    set multiple(value) {
+        this._multiple = value;
+        this._setTogglableValue('multiple', value);
+    }
+
+    /**
+     * dropdown size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    _scale;
+    get scale() { return this._scale; }
+    set scale(value) {
+        // remove dynamic Bootstrap classes
+        if (this._scale)
+            this.removeClass(`custom-select-${this._scale}`);
+
+        // update properties
+        this._scale = value;
+
+        // add dynamic Bootstrap classes
+        if (this._scale)
+            this.class(`custom-select-${this._scale}`);
+    }
+
+    /** number of visible options in a drop-down list [number] */
+    _size;
+    get size() { return this._size; }
+    set size(value) {
+        this._size = value;
+        this._setStandardValue('size', value);
+    }
+}
+exports.Dropdown = Dropdown;
+
+/**
+ * collection of sub-options within a dropdown
+ * https://www.w3schools.com/tags/tag_optgroup.asp
+ */
+class DropdownGroup extends DropdownContainerTag {
+    constructor(contents, label, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (label != null)
+            attributes.label = label;
+
+        // create baseline object
+        super('optgroup', null, null, null, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // add contents
+        if (contents != null)
+            this.add(contents);
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** label to display */
+    _label;
+    get label() { return this._label; }
+    set label(value) {
+        this._label = value;
+        this._setStandardValue('label', value);
+    }
+}
+exports.DropdownGroup = DropdownGroup;
+
+/**
+ * dropdown item
+ * https://www.w3schools.com/tags/tag_option.asp
+ */
+class DropdownOption extends BootstrapTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} value field value to submit when selected
+     * @param {boolean} selected element should be pre-selected when the page loads
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, value, selected, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (value != null)
+            attributes.value = value;
+        if (selected != null)
+            attributes.selected = selected;
+
+        // create baseline object
+        super('option', contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /** shorter label to display */
+    _label;
+    get label() { return this._label; }
+    set label(value) {
+        this._label = value;
+        this._setStandardValue('label', value);
+    }
+
+    /** pre-select item when the page loads [boolean] */
+    _selected;
+    set selected(value) {
+        this._selected = value;
+        this._setTogglableValue('selected', value);
+    }
+
+    /** field value to submit when selected */
+    _value;
+    get value() { return this._value; }
+    set value(value) {
+        this._value = value;
+        this._setStandardValue('value', value);
+    }
+}
+exports.DropdownOption = DropdownOption;
 
 /**
  * form element container
@@ -5212,246 +5461,57 @@ class Textbox extends Input {
 exports.Textbox = Textbox;
 
 
-/********************
- ***** Dropdown *****
- *******************/
+/*********************
+ ***** Bootstrap *****
+ ********************/
 
-/** container for dropdown options (abstract) */
-class OptionContainerTag extends FormTag {
+/**
+ * form group element–label combo
+ * https://getbootstrap.com/docs/4.5/components/forms/#form-groups
+ */
+class FormGroup extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the Form Group element
+     * @param {any} label  value or array of values to go inside the Label element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Form Group element
+     * @param {object} labelAttributes key–value pairs of HTML attributes and other properties for the Label element
+     */
+    constructor(contents, label, attributes, labelAttributes) {
+        // create baseline object
+        super(contents, attributes);
+
+        // add Bootstrap classes
+        this.class('form-group');
+
+        // initialize elements
+        this.label = new Label(label, null, labelAttributes);
+    }
+
+
     /*******************
      ***** Methods *****
      ******************/
 
-    /**
-     * add an option to the dropdown
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} value field value to submit when selected
-     * @param {boolean} selected element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    add(contents, value, selected, attributes) {
-        // is an array, add each item
-        if (Array.isArray(contents)) {
-            for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
-                // already an option/group, just add it
-                if (contents[contentIndex] instanceof Option || contents[contentIndex] instanceof OptionGroup)
-                    this._contents.push(contents[contentIndex])
-                // wrap in an option object and add it
-                else
-                    this._contents.push(new Option(contents[contentIndex], null, null, attributes));
+    /** open the HTML tag */
+    start() {
+        let output = '';
+
+        // assign first non-hidden element to the label
+        if (this.label.for == null && this._contents.length) {
+            for (let contentIndex = 0; contentIndex < this._contents.length; contentIndex++) {
+                if (this._contents[contentIndex].id != null && this._contents[contentIndex].type != 'hidden')
+                    this.label.for = this._contents[contentIndex].id;
             }
         }
-        // is a single item, add it
-        else {
-            // already an option/group, just add it
-            if (contents instanceof Option || contents instanceof OptionGroup)
-                this._contents.push(contents)
-            // is a generic object, add key–value pairs
-            else if (typeof contents == 'object') {
-                for (const [key, display] of Object.entries(contents))
-                    this._contents.push(new Option(display, key, null, attributes));
-            }
-            // wrap in an option object and add it
-            else
-                this._contents.push(new Option(contents, value, selected, attributes));
-        }
-    }
 
-    /**
-     * search the dropdown contents for the specified value, select it, and de-select other options
-     * @param {any} value
-     */
-    select(value) {
-        // loop through contents
-        for (let contentIndex = 0; contentIndex < this._contents.length; contentIndex++) {
-            // single option
-            if (this._contents[contentIndex] instanceof Option) {
-                if (
-                    // value matches
-                    this._contents[contentIndex].value == value
+        // process output
+        output += super.start();
+        output += this.label;
 
-                    // value not set, but contents match
-                    || (this._contents[contentIndex].value == null && this._contents[contentIndex].contents == value)
-                )
-                    this._contents[contentIndex].selected = true;
-                else
-                    this._contents[contentIndex].selected = false;
-            }
-            // option group
-            else if (this._contents[contentIndex] instanceof OptionGroup)
-                this._contents[contentIndex].select(value);
-        }
+        return output;
     }
 }
-
-/**
- * dropdown container of options
- * https://www.w3schools.com/tags/tag_select.asp
- */
-class Dropdown extends OptionContainerTag {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} name field name to submit
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents, name, attributes) {
-        // convert parameters to attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-
-        // create baseline object
-        super('select', null, name, null, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-
-        // add Bootstrap classes
-        if (!attributes.plain)
-            this.class('custom-select');
-
-        // add contents
-        if (contents != null)
-            this.add(contents);
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** specifies that multiple options can be selected at once [boolean] */
-    _multiple;
-    get multiple() { return this._multiple; }
-    set multiple(value) {
-        this._multiple = value;
-        this._setTogglableValue('multiple', value);
-    }
-
-    /**
-     * dropdown size
-     * valid values: null (default), sm (small), lg (large)
-     */
-    _scale;
-    get scale() { return this._scale; }
-    set scale(value) {
-        // remove dynamic Bootstrap classes
-        if (this._scale)
-            this.removeClass(`custom-select-${this._scale}`);
-
-        // update properties
-        this._scale = value;
-
-        // add dynamic Bootstrap classes
-        if (this._scale)
-            this.class(`custom-select-${this._scale}`);
-    }
-
-    /** number of visible options in a drop-down list [number] */
-    _size;
-    get size() { return this._size; }
-    set size(value) {
-        this._size = value;
-        this._setStandardValue('size', value);
-    }
-}
-exports.Dropdown = Dropdown;
-
-/**
- * dropdown item
- * https://www.w3schools.com/tags/tag_option.asp
- */
-class Option extends BootstrapTag {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {string} value field value to submit when selected
-     * @param {boolean} selected element should be pre-selected when the page loads
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents, value, selected, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        if (value != null)
-            attributes.value = value;
-        if (selected != null)
-            attributes.selected = selected;
-
-        // create baseline object
-        super('option', contents, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** shorter label to display */
-    _label;
-    get label() { return this._label; }
-    set label(value) {
-        this._label = value;
-        this._setStandardValue('label', value);
-    }
-
-    /** pre-select item when the page loads [boolean] */
-    _selected;
-    set selected(value) {
-        this._selected = value;
-        this._setTogglableValue('selected', value);
-    }
-
-    /** field value to submit when selected */
-    _value;
-    get value() { return this._value; }
-    set value(value) {
-        this._value = value;
-        this._setStandardValue('value', value);
-    }
-}
-exports.Option = Option;
-
-/**
- * collection of sub-options within a dropdown
- * https://www.w3schools.com/tags/tag_optgroup.asp
- */
-class OptionGroup extends OptionContainerTag {
-    constructor(contents, label, attributes) {
-        // normalize attributes
-        if (!attributes || typeof attributes != 'object')
-            attributes = {};
-        if (label != null)
-            attributes.label = label;
-
-        // create baseline object
-        super('optgroup', null, null, null, attributes);
-
-        // initialize attributes
-        this.attributes = attributes;
-
-        // add contents
-        if (contents != null)
-            this.add(contents);
-    }
-
-
-    /**********************
-     ***** Attributes *****
-     *********************/
-
-    /** label to display */
-    _label;
-    get label() { return this._label; }
-    set label(value) {
-        this._label = value;
-        this._setStandardValue('label', value);
-    }
-}
-exports.OptionGroup = OptionGroup;
 
 
 /***********************************************************************************************************************

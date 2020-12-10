@@ -1024,6 +1024,38 @@ class BootstrapTag {
     details(contents, attributes) { this.add(new Details(contents, attributes)); }
 
     /**
+     * primary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display1(contents, attributes) { this.add(new Display1(contents, attributes)); }
+
+    /**
+     * secondary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display2(contents, attributes) { this.add(new Display2(contents, attributes)); }
+
+    /**
+     * tertiary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display3(contents, attributes) { this.add(new Display3(contents, attributes)); }
+
+    /**
+     * quaternary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display4(contents, attributes) { this.add(new Display4(contents, attributes)); }
+
+    /**
      * generic container for grouping content for styling/visual purposes
      * https://www.w3schools.com/tags/tag_div.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1068,7 +1100,7 @@ class BootstrapTag {
     header(contents, attributes) { this.add(new Header(contents, attributes)); }
 
     /**
-     * heading 1
+     * primary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1076,7 +1108,7 @@ class BootstrapTag {
     heading1(contents, attributes) { this.add(new Heading1(contents, attributes)); }
 
     /**
-     * heading 2
+     * secondary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1084,7 +1116,7 @@ class BootstrapTag {
     heading2(contents, attributes) { this.add(new Heading2(contents, attributes)); }
 
     /**
-     * heading 3
+     * tertiary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1092,7 +1124,7 @@ class BootstrapTag {
     heading3(contents, attributes) { this.add(new Heading3(contents, attributes)); }
 
     /**
-     * heading 4
+     * quaternary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1100,7 +1132,7 @@ class BootstrapTag {
     heading4(contents, attributes) { this.add(new Heading4(contents, attributes)); }
 
     /**
-     * heading 5
+     * quinary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1108,7 +1140,7 @@ class BootstrapTag {
     heading5(contents, attributes) { this.add(new Heading5(contents, attributes)); }
 
     /**
-     * heading 6
+     * senary heading
      * https://www.w3schools.com/tags/tag_hn.asp
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1390,7 +1422,7 @@ class BootstrapTag {
     form(contents, attributes) { this.add(new Form(contents, attributes)); }
 
     /**
-     * input/textarea combined
+     * generic input tag
      * https://www.w3schools.com/tags/tag_input.asp
      * https://www.w3schools.com/tags/tag_textarea.asp
      * @param {string} value field value to submit
@@ -1420,6 +1452,16 @@ class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     radioButton(label, value, name, checked, attributes) { this.add(new RadioButton(label, value, name, checked, attributes)); }
+
+    /**
+     * single-line or multi-line textbox
+     * https://www.w3schools.com/tags/tag_input.asp
+     * https://www.w3schools.com/tags/tag_textarea.asp
+     * @param {string} value field value to submit
+     * @param {string} name field name to submit
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    textbox(value, name, attributes) { this.add(new Textbox(value, name, attributes)); }
 
 
     /***************************************
@@ -2020,6 +2062,12 @@ class HTML extends BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(titleContents, contents, attributes) {
+        // set defaults
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (!attributes.language)
+            attributes.language = 'en';
+
         // create baseline object
         super('html', contents, attributes);
 
@@ -2029,6 +2077,22 @@ class HTML extends BootstrapTag {
 
         // initialize attributes
         this.attributes = attributes;
+    }
+
+
+    /**********************
+     ***** Attributes *****
+     *********************/
+
+    /**
+     * language code of the text in the linked document
+     * https://www.w3schools.com/tags/att_global_lang.asp
+     */
+    _language;
+    get language() { return this._language; }
+    set language(value) {
+        this._language = value;
+        this._setStandardValue('lang', value);
     }
 
 
@@ -2167,12 +2231,10 @@ $(document).ready(
     }
 
     /**
-     * link between a document and an external resource
-     * https://www.w3schools.com/tags/tag_link.asp
-     * @param {string} url path to the linked file
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * add a class
+     * @param {any} value string or array of strings of CSS classes
      */
-    resourceLink(url, attributes) { this.head.resourceLink(url, attributes); }
+    class(value) { this.body.class(value); }
 
     /** contents of the tag */
     innerHTML() {
@@ -2193,6 +2255,20 @@ $(document).ready(
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     metadata(name, content, attributes) { this.head.metadata(name, content, attributes); }
+
+    /**
+     * remove class(es) from class attribute array
+     * @param {any} value string or array of strings of CSS classes
+     */
+    removeClass(value) { this.body.removeClass(value); }
+
+    /**
+     * link between a document and an external resource
+     * https://www.w3schools.com/tags/tag_link.asp
+     * @param {string} url path to the linked file
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    resourceLink(url, attributes) { this.head.resourceLink(url, attributes); }
 
     /**
      * contains JavaScript statements or points to an external script file
@@ -2471,9 +2547,9 @@ class Title extends BootstrapTag {
 exports.Title = Title;
 
 
-/*************************************************************************************************************
- ************************************************** Content **************************************************
- ************************************************************************************************************/
+/******************************************************************************************************************
+ ************************************************** HTML Content **************************************************
+ *****************************************************************************************************************/
 
 /**
  * abbreviation or acronym
@@ -2949,7 +3025,7 @@ class Header extends ThemeableTag {
 exports.Header = Header;
 
 /**
- * headings
+ * primary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
 class Heading1 extends ThemeableTag {
@@ -2961,6 +3037,11 @@ class Heading1 extends ThemeableTag {
     constructor(contents, attributes) { super('h1', contents, attributes); }
 }
 exports.Heading1 = Heading1;
+
+/**
+ * secondary heading
+ * https://www.w3schools.com/tags/tag_hn.asp
+ */
 class Heading2 extends ThemeableTag {
     /**
      * create a new instance of the object
@@ -2970,6 +3051,11 @@ class Heading2 extends ThemeableTag {
     constructor(contents, attributes) { super('h2', contents, attributes); }
 }
 exports.Heading2 = Heading2;
+
+/**
+ * tertiary heading
+ * https://www.w3schools.com/tags/tag_hn.asp
+ */
 class Heading3 extends ThemeableTag {
     /**
      * create a new instance of the object
@@ -2979,6 +3065,11 @@ class Heading3 extends ThemeableTag {
     constructor(contents, attributes) { super('h3', contents, attributes); }
 }
 exports.Heading3 = Heading3;
+
+/**
+ * quaternary heading
+ * https://www.w3schools.com/tags/tag_hn.asp
+ */
 class Heading4 extends ThemeableTag {
     /**
      * create a new instance of the object
@@ -2988,6 +3079,11 @@ class Heading4 extends ThemeableTag {
     constructor(contents, attributes) { super('h4', contents, attributes); }
 }
 exports.Heading4 = Heading4;
+
+/**
+ * quinary heading
+ * https://www.w3schools.com/tags/tag_hn.asp
+ */
 class Heading5 extends ThemeableTag {
     /**
      * create a new instance of the object
@@ -2997,6 +3093,11 @@ class Heading5 extends ThemeableTag {
     constructor(contents, attributes) { super('h5', contents, attributes); }
 }
 exports.Heading5 = Heading5;
+
+/**
+ * senary heading
+ * https://www.w3schools.com/tags/tag_hn.asp
+ */
 class Heading6 extends ThemeableTag {
     /**
      * create a new instance of the object
@@ -4323,8 +4424,6 @@ class FormToggleElement extends FormTag {
             attributes = {};
         attributes.type = type;
         attributes.checked = checked;
-        if (!attributes.plain && attributes.custom !== false)
-            attributes.custom = true;  // fancy by default (and kick off initialization)
 
         // create baseline object
         super('input', null, name, value, attributes);
@@ -4336,6 +4435,13 @@ class FormToggleElement extends FormTag {
 
         // initialize attributes
         this.attributes = attributes;
+
+        // add Bootstrap classes
+        if (!attributes.plain) {
+            this.wrapper.class(`custom-control custom-${this.type}`);
+            this.class('custom-control-input');
+            this.label.class('custom-control-label');
+        }
 
         // assign a unique ID for non-plain inputs
         if (this.id == null && !attributes.plain)
@@ -4391,20 +4497,37 @@ class FormToggleElement extends FormTag {
      ***** Properties *****
      *********************/
 
-    /** fancy and modern [boolean] */
-    _custom;
-    get custom() { return this._custom; }
-    set custom(value) { this._setCustomInlineSwitch(value, this._inline, this._switch); }
-
     /** stack horizontally instead of vertically [boolean] */
     _inline;
     get inline() { return this._inline; }
-    set inline(value) { this._setCustomInlineSwitch(this._custom, value, this._switch); }
+    set inline(value) {
+        // remove dynamic Bootstrap classes
+        if (this.wrapper && this._inline)
+            this.wrapper.removeClass('custom-control-inline');
+
+        // update properties
+        this._inline = value;
+
+        // add dynamic Bootstrap classes
+        if (this.wrapper && this._inline)
+            this.wrapper.class('custom-control-inline');
+    }
 
     /** stack horizontally instead of vertically [boolean] */
     _switch;
     get switch() { return this._switch; }
-    set switch(value) { this._setCustomInlineSwitch(this._custom, this._inline, value); }
+    set switch(value) {
+        // remove dynamic Bootstrap classes
+        if (this.wrapper)
+            this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.type);
+
+        // update properties
+        this._switch = value;
+
+        // add dynamic Bootstrap classes
+        if (this.wrapper)
+            this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.type);
+    }
 
 
     /********************
@@ -4423,43 +4546,27 @@ class FormToggleElement extends FormTag {
      ******************/
 
     /**
-      * custom/inline/switch are interdependent
-      * @param {boolean} custom new value for custom
+      * inline/switch are interdependent
       * @param {boolean} inline new value for inline
       * @param {boolean} switcher new value for switch
       */ 
-    _setCustomInlineSwitch(custom, inline, switcher) {
+    _setInlineSwitch(inline, switcher) {
         // remove dynamic Bootstrap classes
         if (this.wrapper) {
-            if (this._custom) {
-                this.wrapper.removeClass('custom-control');
-                this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.tag);
-            }
-            else
-                this.wrapper.removeClass('form-check');
+            this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.tag);
             if (this._inline)
-                this.wrapper.removeClass(this._custom ? 'custom-control-inline' : 'form-check-inline');
-            this.removeClass(this._custom ? 'custom-control-input' : 'form-check-input');
-            this.label.removeClass(this._custom ? 'custom-control-label' : 'form-check-label');
+                this.wrapper.removeClass('custom-control-inline');
         }
 
         // update properties
-        this._custom = custom;
         this._inline = inline;
         this._switch = switcher;
 
         // add dynamic Bootstrap classes
         if (this.wrapper) {
-            if (this._custom) {
-                this.wrapper.class('custom-control');
-                this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.tag);
-            }
-            else
-                this.wrapper.class('form-check');
+            this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.tag);
             if (this._inline)
-                this.wrapper.class(this._custom ? 'custom-control-inline' : 'form-check-inline');
-            this.class(this._custom ? 'custom-control-input' : 'form-check-input');
-            this.label.class(this._custom ? 'custom-control-label' : 'form-check-label');
+                this.wrapper.class('custom-control-inline');
         }
     }
 
@@ -4631,6 +4738,7 @@ exports.Checkbox = Checkbox;
 /**
  * form element container
  * https://www.w3schools.com/tags/tag_form.asp
+ * https://getbootstrap.com/docs/4.5/components/forms/
  */
 class Form extends ThemeableTag {
     /**
@@ -4682,6 +4790,22 @@ class Form extends ThemeableTag {
     set fileUpload(value) {
         this._fileUpload = value;
         this._setStandardValue('enctype', value ? 'multipart/form-data' : null);
+    }
+
+    /** display a series of labels, form controls, and buttons on a single horizontal row [boolean] */
+    _inline;
+    get inline() { return this._inline; }
+    set inline(value) {
+        // remove dynamic Bootstrap classes
+        if (this._inline)
+            this.removeClass('form-inline');
+
+        // update properties
+        this._inline = value;
+
+        // add dynamic Bootstrap classes
+        if (this._inline)
+            this.class('form-inline');
     }
 
     /**
@@ -4741,7 +4865,7 @@ class Form extends ThemeableTag {
 exports.Form = Form;
 
 /**
- * input/textarea combined
+ * generic input tag
  * https://www.w3schools.com/tags/tag_input.asp
  * https://www.w3schools.com/tags/tag_textarea.asp
  */
@@ -5058,6 +5182,35 @@ class RadioButton extends FormToggleElement {
 }
 exports.RadioButton = RadioButton;
 
+/**
+ * single-line or multi-line textbox
+ * https://www.w3schools.com/tags/tag_input.asp
+ * https://www.w3schools.com/tags/tag_textarea.asp
+ */
+class Textbox extends Input {
+    /**
+     * create a new instance of the object
+     * @param {string} value field value to submit
+     * @param {string} name field name to submit
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(value, name, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (attributes.multiline)
+            attributes.type = 'textarea';
+
+        // create baseline object
+        super(value, name, attributes);
+
+        // add Bootstrap classes
+        if (!attributes.plain)
+            this.class('form-control');
+    }
+}
+exports.Textbox = Textbox;
+
 
 /********************
  ***** Dropdown *****
@@ -5153,6 +5306,10 @@ class Dropdown extends OptionContainerTag {
         // initialize attributes
         this.attributes = attributes;
 
+        // add Bootstrap classes
+        if (!attributes.plain)
+            this.class('custom-select');
+
         // add contents
         if (contents != null)
             this.add(contents);
@@ -5169,6 +5326,25 @@ class Dropdown extends OptionContainerTag {
     set multiple(value) {
         this._multiple = value;
         this._setTogglableValue('multiple', value);
+    }
+
+    /**
+     * dropdown size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    _scale;
+    get scale() { return this._scale; }
+    set scale(value) {
+        // remove dynamic Bootstrap classes
+        if (this._scale)
+            this.removeClass(`custom-select-${this._scale}`);
+
+        // update properties
+        this._scale = value;
+
+        // add dynamic Bootstrap classes
+        if (this._scale)
+            this.class(`custom-select-${this._scale}`);
     }
 
     /** number of visible options in a drop-down list [number] */
@@ -5278,9 +5454,82 @@ class OptionGroup extends OptionContainerTag {
 exports.OptionGroup = OptionGroup;
 
 
-/****************************************************************************************************************
- ************************************************** Components **************************************************
- ***************************************************************************************************************/
+/***********************************************************************************************************************
+ ************************************************** Bootstrap Content **************************************************
+ **********************************************************************************************************************/
+
+/**
+ * primary opinionated heading
+ * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+ */
+class Display1 extends Heading1 {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.class('display-1');
+    }
+}
+exports.Display1 = Display1;
+
+/**
+ * secondary opinionated heading
+ * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+ */
+class Display2 extends Heading2 {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.class('display-2');
+    }
+}
+exports.Display2 = Display2;
+
+/**
+ * tertiary opinionated heading
+ * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+ */
+class Display3 extends Heading3 {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.class('display-3');
+    }
+}
+exports.Display3 = Display3;
+
+/**
+ * quaternary opinionated heading
+ * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+ */
+class Display4 extends Heading4 {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.class('display-4');
+    }
+}
+exports.Display4 = Display4;
+
+
+/**************************************************************************************************************************
+ ************************************************** Bootstrap Components **************************************************
+ *************************************************************************************************************************/
 
 /**
  * provides contextual feedback messages for typical user actions

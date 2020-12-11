@@ -127,28 +127,28 @@ http.createServer((req, res) => {
     form.checkbox('unchecked checkbox', 'on', 'demo-checkbox-unchecked');
     form.checkbox('checked checkbox', 'yes', 'demo-checkbox-checked', true);
     form.dropdown(objectValue, 'demo-dropdown');
-    form.radioButton('plain radio button', 'plain', 'demo-radio-button', null, { plain: true });
-    form.radioButton('unselected radio button', 'unselected', 'demo-radio-button');
-    form.radioButton('selected radio button', 'selected', 'demo-radio-button', true);
+    form.radio('plain radio button', 'plain', 'demo-radio', null, { plain: true });
+    form.radio('unselected radio', 'unselected', 'demo-radio');
+    form.radio('selected radio', 'selected', 'demo-radio', true);
     form.textbox('plain-text textbox', 'demo-textbox-plaintext', { plainText: true });
     form.textbox('single-line textbox', 'demo-textbox-single');
     form.textbox('multi-line textbox', 'demo-textbox-multiple', { multiline: true });
     form.formGroup(
-        new bs.Textbox(null, 'demo-formgroup-textbox', { id: 'form-group-textbox' }),
-        'Form Group Textbox'
+        'Form Group Textbox',
+        new bs.Textbox(null, 'demo-formgroup-textbox', { id: 'form-group-textbox' })
     );
     const formRow = new bs.FormRow();
     for (let columnIndex = 1; columnIndex <= 4; columnIndex++) {
         formRow.column(
             new bs.FormGroup(
-                new bs.Textbox(null, `demo-formrow-textbox${columnIndex}`, { id: `form-group-textbox${columnIndex}` }),
-                `Form Row Textbox ${columnIndex}`
+                `Form Row Textbox ${columnIndex}`,
+                new bs.Textbox(null, `demo-formrow-textbox${columnIndex}`, { id: `form-group-textbox${columnIndex}` })
             ),
             null, 6, true
         );
     }
     form.add(formRow);
-    form.button('Submit', { type: 'submit' });
+    form.button('Submit');
     html.add(form);
     html.add('\n');
 

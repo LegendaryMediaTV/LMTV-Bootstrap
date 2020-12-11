@@ -1527,12 +1527,12 @@ class BootstrapTag {
     /**
      * form group element–label combo
      * https://getbootstrap.com/docs/4.5/components/forms/#form-groups
-     * @param {any} contents value or array of values to go inside the Form Group element
      * @param {any} label  value or array of values to go inside the Label element
+     * @param {any} contents value or array of values to go inside the Form Group element
      * @param {object} attributes key–value pairs of HTML attributes and other properties for the Form Group element
      * @param {object} labelAttributes key–value pairs of HTML attributes and other properties for the Label element
      */
-    formGroup(contents, label, attributes, labelAttributes) { this.add(new FormGroup(contents, label, attributes, labelAttributes)); }
+    formGroup(label, contents, attributes, labelAttributes) { this.add(new FormGroup(label, contents, attributes, labelAttributes)); }
 
     /**
      * generic input tag
@@ -1564,7 +1564,7 @@ class BootstrapTag {
      * @param {boolean} checked element should be pre-selected when the page loads
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    radioButton(label, value, name, checked, attributes) { this.add(new RadioButton(label, value, name, checked, attributes)); }
+    radio(label, value, name, checked, attributes) { this.add(new Radio(label, value, name, checked, attributes)); }
 
     /**
      * single-line or multi-line textbox
@@ -4836,7 +4836,7 @@ class Button extends FormSubmitTag {
         if (!attributes || typeof attributes != 'object')
             attributes = {};
         if (!attributes.type)
-            attributes.type = 'button';
+            attributes.type = 'submit';
 
         // create baseline object
         super('button', contents, null, null, attributes);
@@ -5602,7 +5602,7 @@ exports.Label = Label;
  * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios
  * https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1
  */
-class RadioButton extends FormToggleElement {
+class Radio extends FormToggleElement {
     /**
      * create a new instance of the object
      * @param {any} label value or array of values to go inside the label
@@ -5613,7 +5613,7 @@ class RadioButton extends FormToggleElement {
      */
     constructor(label, value, name, checked, attributes) { super('radio', label, value, name, checked, attributes); }
 }
-exports.RadioButton = RadioButton;
+exports.Radio = Radio;
 
 /**
  * single-line or multi-line textbox
@@ -5656,12 +5656,12 @@ exports.Textbox = Textbox;
 class FormGroup extends Division {
     /**
      * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the Form Group element
      * @param {any} label  value or array of values to go inside the Label element
+     * @param {any} contents value or array of values to go inside the Form Group element
      * @param {object} attributes key–value pairs of HTML attributes and other properties for the Form Group element
      * @param {object} labelAttributes key–value pairs of HTML attributes and other properties for the Label element
      */
-    constructor(contents, label, attributes, labelAttributes) {
+    constructor(label, contents, attributes, labelAttributes) {
         // create baseline object
         super(contents, attributes);
 

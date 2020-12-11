@@ -130,12 +130,24 @@ http.createServer((req, res) => {
     form.radioButton('plain radio button', 'plain', 'demo-radio-button', null, { plain: true });
     form.radioButton('unselected radio button', 'unselected', 'demo-radio-button');
     form.radioButton('selected radio button', 'selected', 'demo-radio-button', true);
+    form.textbox('plain-text textbox', 'demo-textbox-plaintext', { plainText: true });
     form.textbox('single-line textbox', 'demo-textbox-single');
     form.textbox('multi-line textbox', 'demo-textbox-multiple', { multiline: true });
     form.formGroup(
         new bs.Textbox(null, 'demo-formgroup-textbox', { id: 'form-group-textbox' }),
         'Form Group Textbox'
     );
+    const formRow = new bs.FormRow();
+    for (let columnIndex = 1; columnIndex <= 4; columnIndex++) {
+        formRow.column(
+            new bs.FormGroup(
+                new bs.Textbox(null, `demo-formrow-textbox${columnIndex}`, { id: `form-group-textbox${columnIndex}` }),
+                `Form Row Textbox ${columnIndex}`
+            ),
+            null, 6, true
+        );
+    }
+    form.add(formRow);
     form.button('Submit', { type: 'submit' });
     html.add(form);
     html.add('\n');
@@ -159,6 +171,16 @@ http.createServer((req, res) => {
     alert.add('\n');
     alert.paragraph('Link: ' + bs.Alert.formatLink(new bs.Link(url, stringValue)));
     html.add(alert);
+
+    html.comment('Grid System');
+    html.display1('Grid System');
+
+    const row = new bs.Row();
+    row.column(stringValue, null, 6, true);
+    row.column(stringValue, null, 6, true);
+    row.column(stringValue, null, 6, true);
+    row.column(stringValue, null, 6, true);
+    html.container(row);
 
     // demonstrate all supported Bootstrap features
     //html.add(bs.demo());

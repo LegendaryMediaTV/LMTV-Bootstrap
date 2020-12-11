@@ -658,6 +658,108 @@ class BootstrapTag {
     }
 
 
+    /****************************
+     ***** Properties: Grid *****
+     ***************************/
+
+    /** 
+     * column width
+     * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     */
+    _gridColumn;
+    get gridColumn() { return this._gridColumn; }
+    set gridColumn(value) {
+        if (this._gridColumn)
+            this.removeClass('col' + (this._gridColumn !== true ? `-${this._gridColumn}` : ''));
+        this._gridColumn = value;
+        if (this._gridColumn)
+            this.class('col' + (this._gridColumn !== true ? `-${this._gridColumn}` : ''));
+    }
+
+    /** 
+     * small breakpoint column width
+     * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     */
+    _gridColumnSmall;
+    get gridColumnSmall() { return this._gridColumnSmall; }
+    set gridColumnSmall(value) {
+        if (this._gridColumnSmall)
+            this.removeClass('col-sm' + (this._gridColumnSmall !== true ? `-${this._gridColumnSmall}` : ''));
+        this._gridColumnSmall = value;
+        if (this._gridColumnSmall)
+            this.class('col-sm' + (this._gridColumnSmall !== true ? `-${this._gridColumnSmall}` : ''));
+    }
+
+    /** 
+     * medium breakpoint column width
+     * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     */
+    _gridColumnMedium;
+    get gridColumnMedium() { return this._gridColumnMedium; }
+    set gridColumnMedium(value) {
+        if (this._gridColumnMedium)
+            this.removeClass('col-md' + (this._gridColumnMedium !== true ? `-${this._gridColumnMedium}` : ''));
+        this._gridColumnMedium = value;
+        if (this._gridColumnMedium)
+            this.class('col-md' + (this._gridColumnMedium !== true ? `-${this._gridColumnMedium}` : ''));
+    }
+
+    /** 
+     * large breakpoint column width
+     * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     */
+    _gridColumnLarge;
+    get gridColumnLarge() { return this._gridColumnLarge; }
+    set gridColumnLarge(value) {
+        if (this._gridColumnLarge)
+            this.removeClass('col-lg' + (this._gridColumnLarge !== true ? `-${this._gridColumnLarge}` : ''));
+        this._gridColumnLarge = value;
+        if (this._gridColumnLarge)
+            this.class('col-lg' + (this._gridColumnLarge !== true ? `-${this._gridColumnLarge}` : ''));
+    }
+
+    /** 
+     * extra-large breakpoint column width
+     * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     */
+    _gridColumnXL;
+    get gridColumnXL() { return this._gridColumnXL; }
+    set gridColumnXL(value) {
+        if (this._gridColumnXL)
+            this.removeClass('col-xl' + (this._gridColumnXL !== true ? `-${this._gridColumnXL}` : ''));
+        this._gridColumnXL = value;
+        if (this._gridColumnXL)
+            this.class('col-xl' + (this._gridColumnXL !== true ? `-${this._gridColumnXL}` : ''));
+    }
+
+    /**
+     * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts [boolean]
+     * https://getbootstrap.com/docs/4.5/components/forms/#form-row
+     */
+    _gridFormRow;
+    get gridFormRow() { return this._gridFormRow; }
+    set gridFormRow(value) {
+        if (this._gridFormRow)
+            this.removeClass('form-row');
+        this._gridFormRow = value;
+        if (this._gridFormRow)
+            this.class('form-row');
+    }
+
+    /**
+     * wrapper for grid columns [boolean]
+     * https://getbootstrap.com/docs/4.5/layout/grid/
+     */
+    _gridRow;
+    get gridRow() { return this._gridRow; }
+    set gridRow(value) {
+        if (this._gridRow)
+            this.removeClass('row');
+        this._gridRow = value;
+        if (this._gridRow)
+            this.class('row');
+    }
+
     /*******************
      ***** Methods *****
      ******************/
@@ -1486,6 +1588,49 @@ class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     alert(contents, attributes) { this.add(new Alert(contents, attributes)); }
+
+
+    /**********************************
+     ***** Bootstrap Grid Methods *****
+     *********************************/
+
+    /**
+     * twelve column grid system by breakpoint
+     * https://getbootstrap.com/docs/4.5/layout/grid/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} column column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnSmall small breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnMedium medium breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnLarge large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnXL extra-large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) { this.add(new Column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes)); }
+
+    /**
+     * provide a means to center and horizontally pad your site’s contents
+     * https://getbootstrap.com/docs/4.5/layout/grid/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {boolean} fluid provide a means to center and horizontally pad your site’s contents
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    container(contents, fluid, attributes) { this.add(new Container(contents, fluid, attributes)); }
+
+    /**
+     * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts
+     * https://getbootstrap.com/docs/4.5/components/forms/#form-row
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    formRow(contents, attributes) { this.add(new FormRow(contents, attributes)); }
+
+    /**
+     * wrapper for grid columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    row(contents, attributes) { this.add(new Row(contents, attributes)); }
 }
 
 /**
@@ -5221,7 +5366,27 @@ class Input extends FormSubmitTag {
         this._setStandardValue('placeholder', value);
     }
 
-    /** input field is read-only (boolean) */
+    /** remove the default form field styling and preserve the correct margin and padding [boolean] */
+    _plainText;
+    get plainText() { return this._plainText; }
+    set plainText(value) {
+        // remove dynamic Bootstrap classes
+        if (this._plainText)
+            this.removeClass(`form-control-plaintext`);
+        else
+            this.removeClass('form-control');
+
+        // update properties
+        this._plainText = value;
+
+        // add dynamic Bootstrap classes
+        if (this._plainText)
+            this.class(`form-control-plaintext`);
+        else
+            this.class('form-control');
+    }
+
+    /** input field is read-only [boolean] */
     _readOnly;
     get readOnly() { return this._readOnly; }
     set readOnly(value) {
@@ -5235,6 +5400,25 @@ class Input extends FormSubmitTag {
     set size(value) {
         this._size = value;
         this._setStandardValue('size', value);
+    }
+
+    /**
+     * input size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    _scale;
+    get scale() { return this._scale; }
+    set scale(value) {
+        // remove dynamic Bootstrap classes
+        if (this._scale)
+            this.removeClass(`form-control-${this._scale}`);
+
+        // update properties
+        this._scale = value;
+
+        // add dynamic Bootstrap classes
+        if (this._scale)
+            this.class(`form-control-${this._scale}`);
     }
 
     /** interval between legal numbers */
@@ -5512,6 +5696,7 @@ class FormGroup extends Division {
         return output;
     }
 }
+exports.FormGroup = FormGroup;
 
 
 /***********************************************************************************************************************
@@ -5817,6 +6002,111 @@ class Alert extends Division {
     }
 }
 exports.Alert = Alert;
+
+
+/*****************************************************************************************************************
+ ************************************************** Grid System **************************************************
+ ****************************************************************************************************************/
+
+/**
+ * twelve column grid system by breakpoint
+ * https://getbootstrap.com/docs/4.5/layout/grid/
+ */
+class Column extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} column column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnSmall small breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnMedium medium breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnLarge large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnXL extra-large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) {
+        // create baseline object
+        super(contents, attributes);
+
+        // if nothing else is set, just make it a default column
+        if (!column && !columnSmall && !columnMedium && !columnLarge && !columnXL)
+            this.gridColumn = true;
+        // setup column widths
+        else {
+            this.gridColumn = column;
+            this.gridColumnSmall = columnSmall;
+            this.gridColumnMedium = columnMedium;
+            this.gridColumnLarge = columnLarge;
+            this.gridColumnXL = columnXL;
+        }
+    }
+}
+exports.Column = Column;
+
+/**
+ * provide a means to center and horizontally pad your site’s contents
+ * https://getbootstrap.com/docs/4.5/layout/grid/
+ */
+class Container extends Section {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {boolean} fluid provide a means to center and horizontally pad your site’s contents
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, fluid, attributes) {
+        super(contents, attributes);
+        this.fluid = fluid;
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+    /** 100% width across all viewport and device sizes (true) or responsive pixel width (false) */
+    _fluid;
+    get fluid() { return this._fluid; }
+    set fluid(value) {
+        this.removeClass('container' + (this.fluid ? '-fluid' : ''));
+        this._fluid = value;
+        this.class('container' + (this.fluid ? '-fluid' : ''));
+    }
+}
+exports.Container = Container;
+
+/**
+ * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts
+ * https://getbootstrap.com/docs/4.5/components/forms/#form-row
+ */
+class FormRow extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.gridFormRow = true;
+    }
+}
+exports.FormRow = FormRow;
+
+/**
+ * wrapper for grid columns
+ * https://getbootstrap.com/docs/4.5/layout/grid/
+ */
+class Row extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.gridRow = true;
+    }
+}
+exports.Row = Row;
 
 
 /**********************************************************************************************************

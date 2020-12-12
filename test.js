@@ -127,6 +127,8 @@ http.createServer((req, res) => {
     form.checkbox('unchecked checkbox', 'on', 'demo-checkbox-unchecked');
     form.checkbox('checked checkbox', 'yes', 'demo-checkbox-checked', true);
     form.dropdown(objectValue, 'demo-dropdown');
+    form.fileUpload = true;
+    form.fileUploader(null, 'demo-file-upload');
     form.radio('plain radio button', 'plain', 'demo-radio', null, { plain: true });
     form.radio('unselected radio', 'unselected', 'demo-radio');
     form.radio('selected radio', 'selected', 'demo-radio', true);
@@ -175,11 +177,31 @@ http.createServer((req, res) => {
     html.comment('Grid System');
     html.display1('Grid System');
 
-    const row = new bs.Row();
-    row.column(stringValue, null, 6, true);
-    row.column(stringValue, null, 6, true);
-    row.column(stringValue, null, 6, true);
-    row.column(stringValue, null, 6, true);
+    let row;
+
+    html.heading2('Standard Grid');
+    row = new bs.Row();
+    for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
+        row.column(`${stringValue} ${columnIndex}`, null, 6, true);
+    html.container(row);
+
+    html.heading2('Reordered');
+    row = new bs.Row();
+    for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
+        row.column(`${stringValue} ${columnIndex}`, null, 6, true, null, null, { gridOrder: Math.abs(columnIndex - 5) });
+    html.container(row);
+
+    html.heading2('Offset');
+    row = new bs.Row();
+    for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
+        row.column(`${stringValue} ${columnIndex}`, null, 4, null, null, null, { gridOffsetSmall: 2 });
+    html.container(row);
+
+    html.heading2('No Gutters');
+    row = new bs.Row();
+    row.gridRowNoGutters = true;
+    for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
+        row.column(`${stringValue} ${columnIndex}`, null, 6, true);
     html.container(row);
 
     // demonstrate all supported Bootstrap features

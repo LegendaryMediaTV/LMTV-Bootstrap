@@ -663,8 +663,9 @@ class BootstrapTag {
      ***************************/
 
     /** 
-     * column width
+     * grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/
      */
     _gridColumn;
     get gridColumn() { return this._gridColumn; }
@@ -677,8 +678,9 @@ class BootstrapTag {
     }
 
     /** 
-     * small breakpoint column width
+     * small breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/
      */
     _gridColumnSmall;
     get gridColumnSmall() { return this._gridColumnSmall; }
@@ -691,8 +693,9 @@ class BootstrapTag {
     }
 
     /** 
-     * medium breakpoint column width
+     * medium breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/
      */
     _gridColumnMedium;
     get gridColumnMedium() { return this._gridColumnMedium; }
@@ -705,8 +708,9 @@ class BootstrapTag {
     }
 
     /** 
-     * large breakpoint column width
+     * large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/
      */
     _gridColumnLarge;
     get gridColumnLarge() { return this._gridColumnLarge; }
@@ -719,8 +723,9 @@ class BootstrapTag {
     }
 
     /** 
-     * extra-large breakpoint column width
+     * extra-large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/
      */
     _gridColumnXL;
     get gridColumnXL() { return this._gridColumnXL; }
@@ -747,6 +752,156 @@ class BootstrapTag {
     }
 
     /**
+     * move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
+    _gridOffset;
+    get gridOffset() { return this._gridOffset; }
+    set gridOffset(value) {
+        if (this._gridOffset)
+            this.removeClass('offset' + (this._gridOffset !== true ? `-${this._gridOffset}` : ''));
+        this._gridOffset = value;
+        if (this._gridOffset)
+            this.class('offset' + (this._gridOffset !== true ? `-${this._gridOffset}` : ''));
+    }
+
+    /** 
+     * small breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
+    _gridOffsetSmall;
+    get gridOffsetSmall() { return this._gridOffsetSmall; }
+    set gridOffsetSmall(value) {
+        if (this._gridOffsetSmall)
+            this.removeClass('offset-sm' + (this._gridOffsetSmall !== true ? `-${this._gridOffsetSmall}` : ''));
+        this._gridOffsetSmall = value;
+        if (this._gridOffsetSmall)
+            this.class('offset-sm' + (this._gridOffsetSmall !== true ? `-${this._gridOffsetSmall}` : ''));
+    }
+
+    /** 
+     * medium breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
+    _gridOffsetMedium;
+    get gridOffsetMedium() { return this._gridOffsetMedium; }
+    set gridOffsetMedium(value) {
+        if (this._gridOffsetMedium)
+            this.removeClass('offset-md' + (this._gridOffsetMedium !== true ? `-${this._gridOffsetMedium}` : ''));
+        this._gridOffsetMedium = value;
+        if (this._gridOffsetMedium)
+            this.class('offset-md' + (this._gridOffsetMedium !== true ? `-${this._gridOffsetMedium}` : ''));
+    }
+
+    /** 
+     * large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
+    _gridOffsetLarge;
+    get gridOffsetLarge() { return this._gridOffsetLarge; }
+    set gridOffsetLarge(value) {
+        if (this._gridOffsetLarge)
+            this.removeClass('offset-lg' + (this._gridOffsetLarge !== true ? `-${this._gridOffsetLarge}` : ''));
+        this._gridOffsetLarge = value;
+        if (this._gridOffsetLarge)
+            this.class('offset-lg' + (this._gridOffsetLarge !== true ? `-${this._gridOffsetLarge}` : ''));
+    }
+
+    /** 
+     * extra-large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
+    _gridOffsetXL;
+    get gridOffsetXL() { return this._gridOffsetXL; }
+    set gridOffsetXL(value) {
+        if (this._gridOffsetXL)
+            this.removeClass('offset-xl' + (this._gridOffsetXL !== true ? `-${this._gridOffsetXL}` : ''));
+        this._gridOffsetXL = value;
+        if (this._gridOffsetXL)
+            this.class('offset-xl' + (this._gridOffsetXL !== true ? `-${this._gridOffsetXL}` : ''));
+    }
+
+    /** 
+     * grid column order
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
+    _gridOrder;
+    get gridOrder() { return this._gridOrder; }
+    set gridOrder(value) {
+        if (this._gridOrder)
+            this.removeClass('order' + (this._gridOrder !== true ? `-${this._gridOrder}` : ''));
+        this._gridOrder = value;
+        if (this._gridOrder)
+            this.class('order' + (this._gridOrder !== true ? `-${this._gridOrder}` : ''));
+    }
+
+    /** 
+     * small breakpoint grid column order
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
+    _gridOrderSmall;
+    get gridOrderSmall() { return this._gridOrderSmall; }
+    set gridOrderSmall(value) {
+        if (this._gridOrderSmall)
+            this.removeClass('order-sm' + (this._gridOrderSmall !== true ? `-${this._gridOrderSmall}` : ''));
+        this._gridOrderSmall = value;
+        if (this._gridOrderSmall)
+            this.class('order-sm' + (this._gridOrderSmall !== true ? `-${this._gridOrderSmall}` : ''));
+    }
+
+    /** 
+     * medium breakpoint grid column order
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
+    _gridOrderMedium;
+    get gridOrderMedium() { return this._gridOrderMedium; }
+    set gridOrderMedium(value) {
+        if (this._gridOrderMedium)
+            this.removeClass('order-md' + (this._gridOrderMedium !== true ? `-${this._gridOrderMedium}` : ''));
+        this._gridOrderMedium = value;
+        if (this._gridOrderMedium)
+            this.class('order-md' + (this._gridOrderMedium !== true ? `-${this._gridOrderMedium}` : ''));
+    }
+
+    /** 
+     * large breakpoint grid column order
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
+    _gridOrderLarge;
+    get gridOrderLarge() { return this._gridOrderLarge; }
+    set gridOrderLarge(value) {
+        if (this._gridOrderLarge)
+            this.removeClass('order-lg' + (this._gridOrderLarge !== true ? `-${this._gridOrderLarge}` : ''));
+        this._gridOrderLarge = value;
+        if (this._gridOrderLarge)
+            this.class('order-lg' + (this._gridOrderLarge !== true ? `-${this._gridOrderLarge}` : ''));
+    }
+
+    /** 
+     * extra-large breakpoint grid column order
+     * valid values: 1–12 (number of columns)
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
+    _gridOrderXL;
+    get gridOrderXL() { return this._gridOrderXL; }
+    set gridOrderXL(value) {
+        if (this._gridOrderXL)
+            this.removeClass('order-xl' + (this._gridOrderXL !== true ? `-${this._gridOrderXL}` : ''));
+        this._gridOrderXL = value;
+        if (this._gridOrderXL)
+            this.class('order-xl' + (this._gridOrderXL !== true ? `-${this._gridOrderXL}` : ''));
+    }
+
+    /**
      * wrapper for grid columns [boolean]
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
@@ -758,6 +913,21 @@ class BootstrapTag {
         this._gridRow = value;
         if (this._gridRow)
             this.class('row');
+    }
+
+    /**
+     * keep margins/padding (true); remove margins/padding from the row and all immediate children columns (false) [boolean]
+     * https://getbootstrap.com/docs/4.5/layout/grid/#gutters
+     * https://getbootstrap.com/docs/4.5/layout/grid/#no-gutters
+     */
+    _gridRowNoGutters;
+    get gridRowNoGutters() { return this._gridRowNoGutters; }
+    set gridRowNoGutters(value) {
+        if (this._gridRowNoGutters)
+            this.removeClass('no-gutters');
+        this._gridRowNoGutters = value;
+        if (this._gridRowNoGutters)
+            this.class('no-gutters');
     }
 
     /*******************
@@ -794,7 +964,7 @@ class BootstrapTag {
         // normalize input to array
         if (Array.isArray(value))
             value = value.join(' ');
-        value = value.trim().replace(/\s+/, ' ').split(' ');
+        value = value.trim().replace(/\s+/g, ' ').split(' ');
 
         // only add if missing
         for (let valueIndex = 0; valueIndex < value.length; valueIndex++) {
@@ -838,7 +1008,7 @@ class BootstrapTag {
         // normalize input to array
         if (Array.isArray(value))
             value = value.join(' ');
-        value = value.trim().replace(/\s+/, ' ').split(' ');
+        value = value.trim().replace(/\s+/g, ' ').split(' ');
 
         // loop through individual values
         for (let valueIndex = 0; valueIndex < value.length; valueIndex++) {
@@ -861,7 +1031,7 @@ class BootstrapTag {
         // normalize input to array
         if (Array.isArray(value))
             value = value.join('; ');
-        value = value.trim().replace(/\s+/, ' ').split(';');
+        value = value.trim().replace(/\s+/g, ' ').split(';');
 
         // loop through individual values
         for (let valueIndex = 0; valueIndex < value.length; valueIndex++) {
@@ -898,13 +1068,16 @@ class BootstrapTag {
                     if (Array.isArray(escaped))
                         escaped = escaped.join(' ');
 
-                    // TODO: determine whether the replacement should be here (already in _set* functions) or in the array escaping lines above
-                    output += `="${escaped.replace('"', '&quot;')}"`;
+                    // escape the quotes and apostrophes
+                    escaped = escaped.toString().replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+
+                    // add the attribute value
+                    output += `="${escaped}"`;
                 }
             }
         }
 
-        output += '>'
+        output += '>';
 
         // add newline for tags flagged with block-level opening
         if (this._blockOpen)
@@ -936,7 +1109,7 @@ class BootstrapTag {
         // normalize input to array
         if (Array.isArray(value))
             value = value.join('; ');
-        value = value.trim().replace(/\s+/, ' ').split(';');
+        value = value.trim().replace(/\s+/g, ' ').split(';');
 
         // loop through individual values
         for (let valueIndex = 0; valueIndex < value.length; valueIndex++) {
@@ -991,7 +1164,7 @@ class BootstrapTag {
     _setStandardValue(key, value) {
         // value
         if (value != null)
-            this._attributes[key] = value.toString().replace('\'', '&apos;').replace('"', '&quot;');
+            this._attributes[key] = value;
         // remove
         else
             delete this._attributes[key];
@@ -1517,6 +1690,17 @@ class BootstrapTag {
     dropdown(contents, name, attributes) { this.add(new Dropdown(contents, name, attributes)); }
 
     /**
+     * file browser for uploading files
+     * NOTE: don't forget to flag the Form with fileUpload = true
+     * https://www.w3schools.com/tags/tag_input.asp
+     * https://getbootstrap.com/docs/4.5/components/forms/#file-browser
+     * @param {any} label value or array of values to go inside the label
+     * @param {string} name field name to submit when checked
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    fileUploader(label, name, attributes) { this.add(new FileUploader(label, name, attributes)); }
+
+    /**
      * form element container
      * https://www.w3schools.com/tags/tag_asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1598,11 +1782,11 @@ class BootstrapTag {
      * twelve column grid system by breakpoint
      * https://getbootstrap.com/docs/4.5/layout/grid/
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) { this.add(new Column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes)); }
@@ -3316,7 +3500,7 @@ class Icon extends ThemeableTag {
 
         // get accessibility label from icon name
         if (!ariaLabel && ariaLabel !== 0)
-            ariaLabel = name.replace('-alt', '').replace(/^(fa[a-z]? )?fa-/, '').replace('-', ' ');
+            ariaLabel = name.replace('-alt', '').replace(/^(fa[a-z]? )?fa-/, '').replace(/-/g, ' ');
 
         // add accessibility label te'xt
         if (!this.ariaLabel && this.ariaLabel !== 0)
@@ -5130,6 +5314,94 @@ class DropdownOption extends BootstrapTag {
 exports.DropdownOption = DropdownOption;
 
 /**
+ * file browser for uploading files
+ * NOTE: don't forget to flag the Form with fileUpload = true
+ * https://www.w3schools.com/tags/tag_input.asp
+ * https://getbootstrap.com/docs/4.5/components/forms/#file-browser
+ */
+class FileUploader extends FormTag {
+    /**
+     * create a new instance of the object
+     * @param {any} label value or array of values to go inside the label
+     * @param {string} name field name to submit when checked
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(label, name, attributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
+        // create baseline object
+        super('input', null, name, null, attributes);
+
+        // flag as file uploader
+        this._attributes['type'] = 'file';
+
+        // not plain, add Bootstrap components
+        if (!attributes.plain) {
+            // make label text change to uploading filename
+            this.onChange = `$(this).siblings(".custom-file-label").addClass("selected").html($(this).val().split("\\\\").pop());`;
+
+            // set defaults
+            if (label == null)
+                label = 'choose a file';
+
+            // initialize wrapper
+            this.wrapper = new Division();
+            this.wrapper.class('custom-file');
+
+            // initialize label
+            this.label = new Label(label, this.id);
+            this.label.class('custom-file-label');
+
+            // add Bootstrap classes
+            this.class('custom-file-input');
+        }
+    }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    /** label to display */
+    label;
+
+    /** wrapper for holding all the components */
+    wrapper;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /** start the HTML element */
+    start() {
+        let output = '';
+
+        if (this.wrapper)
+            output += this.wrapper.start();
+        output += super.start();
+
+        return output;
+    }
+
+    /** stop the HTML element */
+    stop() {
+        let output = '';
+
+        output += super.stop();
+        if (this.wrapper) {
+            output += this.label;
+            output += this.wrapper.stop();
+        }
+
+        return output;
+    }
+}
+exports.FileUploader = FileUploader;
+
+/**
  * form element container
  * https://www.w3schools.com/tags/tag_form.asp
  * https://getbootstrap.com/docs/4.5/components/forms/
@@ -6016,11 +6288,11 @@ class Column extends Division {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) {
@@ -6030,7 +6302,7 @@ class Column extends Division {
         // if nothing else is set, just make it a default column
         if (!column && !columnSmall && !columnMedium && !columnLarge && !columnXL)
             this.gridColumn = true;
-        // setup column widths
+        // setup grid column widths
         else {
             this.gridColumn = column;
             this.gridColumnSmall = columnSmall;

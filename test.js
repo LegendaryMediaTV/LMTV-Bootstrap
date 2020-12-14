@@ -20,7 +20,7 @@ const urlImage = '/images/sample.jpg';
 const urlJS = '/dist/main.js';
 const objectValue = { key1: 'value 1', key2: 123 };
 
-// create a server object on port 1337
+// create a basic web server that listens on port 1337
 http.createServer((req, res) => {
     // start HTML
     const html = new bs.HTML();
@@ -207,7 +207,7 @@ http.createServer((req, res) => {
     // demonstrate all supported Bootstrap features
     //html.add(bs.demo());
 
-    // write a response to the client
+    // send the response to the client
     res.write(html.toString());
     res.end();
 }).listen(1337);

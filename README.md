@@ -2,7 +2,7 @@
 
 This is a Node.js framework for working with [HTML 5](https://www.w3schools.com/html/) and [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
 
-At this point it is mostly just HTML classes, but I wanted to get this package out there for testing purposes.
+Besides HTML classes, it has support for Bootstrap themes, grid system, alerts, and forms.
 
 ## Getting started
 
@@ -14,18 +14,27 @@ Here's a sample of how to work with the Bootstrap framework. This sample feature
 // add the Bootstrap framework
 const bs = require('@legendarymediatv/bootstrap');
 
-// create an HTML object (with a page title) and enable Bootstrap
-const html = new bs.HTML('Bootstrap Demo');
-html.bootstrap();
+// enable web server functionality
+const http = require('http');
 
-// add demo
-html.add(bs.demo());
+// create a basic web server that listens on port 1337
+http.createServer((req, res) => {
+    // create an HTML object (with a page title)
+    const html = new bs.HTML('Bootstrap Demo');
 
-// display demo
-console.log(html);
+    // enable Bootstrap (uses CDNs by default)
+    html.bootstrap();
+
+    // add demo
+    html.add(bs.demo());
+
+    // send the response to the client
+    res.write(html.toString());
+    res.end();
+}).listen(1337);
 ```
 
-> *NOTE: rather than just logging to the console, you will probably want to run [Express](https://expressjs.com/) web server, [add a route](https://expressjs.com/en/starter/basic-routing.html) for the demo, and use `res.send(html.toString());` instead*
+> *NOTE: the sample above isn't intended to be a real web server configuration; you will probably want to run [Express](https://expressjs.com/) web server instead, with proper port detection, etc.*
 
 ## Diving deeper
 

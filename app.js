@@ -1,5 +1,8 @@
 'use strict';
 
+// NOTE: increment version
+// NOTE: tsc app.js --allowJs --declaration --emitDeclarationOnly
+
 
 /***************************************************************************************************************
  ************************************************** HTML Core **************************************************
@@ -2074,18 +2077,25 @@ class Comment {
      ***** Properties *****
      *********************/
 
-    /** all on one line [boolean] */
-    _inline;
+    /** all on one line */
     get inline() { return this._inline; }
     set inline(value) { this._inline = value ? true : false; }
+    /**
+     * @type {boolean}
+     * @private
+     */
+    _inline;
 
-    /** insert new line after comment close [boolean] */
-    _blockClose;
+    /** insert new line after comment close */
     get blockClose() { return this._blockClose; }
     set blockClose(value) { this._blockClose = value ? true : false; }
+    /**
+     * @type {boolean}
+     * @private
+     */
+    _blockClose;
 
-    /** contents [array] */
-    _contents;
+    /** contents */
     get contents() { return this._contents; }
     set contents(value) {
         // is empty, create blank array
@@ -2098,6 +2108,11 @@ class Comment {
         else
             this._contents = value;
     }
+    /**
+     * @type any
+     * @private
+     */
+    _contents;
 
 
     /*******************
@@ -2107,6 +2122,7 @@ class Comment {
     /**
      * add content
      * @param {any} value value or array of values to go inside the HTML comment element
+     * @returns {void}
      */
     add(value) {
         // is array, merge it in
@@ -2117,13 +2133,22 @@ class Comment {
             this._contents.push(value);
     }
 
-    /** open the HTML comment */
+    /**
+     * open the HTML comment
+     * @returns {string}
+     */
     start() { return '<!--' + (this.inline ? ' ' : '\n'); }
 
-    /** close the HTML comment */
+    /**
+     * close the HTML comment
+     * @returns {string}
+     */
     stop() { return (this.inline ? ' ' : '\n') + '-->' + (this.blockClose ? '\n' : ''); }
 
-    /** convert the object to a string */
+    /**
+     * convert the object to a string
+     * @returns {string}
+     */
     toString() { return this.start() + this.contents.join('') + this.stop(); }
 }
 exports.Comment = Comment;
@@ -3502,7 +3527,7 @@ class Icon extends ThemeableTag {
         if (!ariaLabel && ariaLabel !== 0)
             ariaLabel = name.replace('-alt', '').replace(/^(fa[a-z]? )?fa-/, '').replace(/-/g, ' ');
 
-        // add accessibility label te'xt
+        // add accessibility label text
         if (!this.ariaLabel && this.ariaLabel !== 0)
             this.ariaLabel = ariaLabel;
     }

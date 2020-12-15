@@ -51,7 +51,7 @@ http.createServer((req, res) => {
     html.definitionList({ 'term 1': 'definition 1', 'term 2': 'definition 2', 'term 3': 'definition 3' });
     html.deleted(stringValue);
     html.add('\n');
-    html.details(stringValue, { open: true, onToggle: jsValue, summary: stringValue });
+    html.details(stringValue, `${stringValue} ${stringValue} ${stringValue}`, { open: true, onToggle: jsValue });
     html.add('\n');
     html.division(stringValue);
     html.display1(stringValue);

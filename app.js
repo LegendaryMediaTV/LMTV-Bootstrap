@@ -30,8 +30,12 @@ class BootstrapTag {
      ***** Properties: Essentials *****
      *********************************/
 
-    /** attributes: HTML attributes (object) */
+    /**
+     * @type {object}
+     * @protected
+     */
     _attributes;
+    /** attributes: HTML attributes */
     get attributes() { return this._attributes; }
     set attributes(value) {
         // is empty or object
@@ -52,17 +56,28 @@ class BootstrapTag {
             throw 'HTML attributes must be an object of key–value pairs: ' + (typeof value);
     }
 
-    /** blockClose: add newline after close tag (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _blockClose;
+    /** blockClose: add newline after close tag */
     get blockClose() { return this._blockClose; }
     set blockClose(value) { this._blockClose = value ? true : false; }
 
-    /** blockOpen: add newline after open tag (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _blockOpen;
+    /** blockOpen: add newline after open tag */
     get blockOpen() { return this._blockOpen; }
     set blockOpen(value) { this._blockOpen = value ? true : false; }
 
-    /** classes: CSS classes defined in a style sheet (numeric array) */
+    /**
+     * classes: CSS classes defined in a style sheet
+     * @type {string[]}
+     */
     get classes() { return this._attributes.class; }
     set classes(value) {
         // is empty, create blank array
@@ -76,8 +91,12 @@ class BootstrapTag {
             this._attributes.class = value;
     }
 
-    /** contents for innerHTML (array) */
+    /**
+     * @type {any}
+     * @protected
+     */
     _contents;
+    /** contents for innerHTML */
     get contents() { return this._contents; }
     set contents(value) {
         // is empty, create blank array
@@ -91,12 +110,19 @@ class BootstrapTag {
             this._contents = value;
     }
 
-    /** selfClosing: self-closing tag (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _selfClosing;
+    /** selfClosing: self-closing tag */
     get selfClosing() { return this._selfClosing; }
     set selfClosing(value) { this._selfClosing = value ? true : false; }
 
-    /** styles: inline CSS style(s) (numeric array) */
+    /**
+     * inline CSS style(s)
+     * @type {string[]}
+     */
     get styles() { return this._attributes.style; }
     set styles(value) {
         // is empty, create blank array
@@ -110,8 +136,12 @@ class BootstrapTag {
             this._attributes.style = value;
     }
 
-    /** tag: HTML tag element (string) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _tag;
+    /** tag: HTML tag element */
     get tag() { return this._tag; }
     set tag(value) {
         if (value.match(/^[a-z1-6]+$/i)) {
@@ -150,96 +180,147 @@ class BootstrapTag {
 
     // Accessible Rich Internet Applications (ARIA) attributes – https://www.w3.org/TR/wai-aria-1.1/
 
-    /** identifies the element (or elements) whose contents or presence are controlled by the current element (ID) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ariaControls;
+    /** ID(s) for element(s) whose contents or presence are controlled by the current element */
     get ariaControls() { return this._ariaControls; }
     set ariaControls(value) {
         this._ariaControls = value;
         this._setStandardValue('aria-controls', value);
     }
 
-    /* element that represents the current item within a container or set of related elements; valid values: page, step, location, date, time */
+    /**
+     * @type {'date' | 'location' | 'page' | 'step' | 'time'}
+     * @protected
+     */
     _ariaCurrent;
+    /*
+     * element that represents the current item within a container or set of related elements
+     * valid values: page, step, location, date, time
+     */
     get ariaCurrent() { return this._ariaCurrent; }
     set ariaCurrent(value) {
         this._ariaCurrent = value;
         this._setStandardValue('aria-current', value);
     }
 
-    /** identifies the element (or elements) that describes the object (ID) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ariaDescribedBy;
+    /** ID(s) for element(s) that describes the object */
     get ariaDescribedBy() { return this._ariaDescribedBy; }
     set ariaDescribedBy(value) {
         this._ariaDescribedBy = value;
         this._setStandardValue('aria-describedby', value);
     }
 
-    /** identifies the element that provides a detailed, extended description for the object (ID) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ariaDetails;
+    /** ID for the element that provides a detailed, extended description for the object */
     get ariaDetails() { return this._ariaDetails; }
     set ariaDetails(value) {
         this._ariaDetails = value;
         this._setStandardValue('aria-details', value);
     }
 
-    /** the element is perceivable but disabled, so it is not editable or otherwise operable (boolean)' */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _ariaDisabled;
+    /** the element is perceivable but disabled, so it is not editable or otherwise operable */
     get ariaDisabled() { return this._ariaDisabled; }
     set ariaDisabled(value) {
         this._ariaDisabled = value;
         this._setBooleanValue('aria-disabled', value);
     }
 
-    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _ariaExpanded;
+    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed */
     get ariaExpanded() { return this._ariaExpanded; }
     set ariaExpanded(value) {
         this._ariaExpanded = value;
         this._setBooleanValue('aria-expanded', value);
     }
 
-    /** indicates whether the element is exposed to an accessibility API (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _ariaHidden;
+    /** indicates whether the element is exposed to an accessibility API */
     get ariaHidden() { return this._ariaHidden; }
     set ariaHidden(value) {
         this._ariaHidden = value;
         this._setBooleanValue('aria-hidden', value);
     }
 
-    /** string value that labels the current element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ariaLabel;
+    /** string value that labels the current element */
     get ariaLabel() { return this._ariaLabel; }
     set ariaLabel(value) {
         this._ariaLabel = value;
         this._setStandardValue('aria-label', value);
     }
 
-    /** identifies the element (or elements) that labels the current element (ID) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ariaLabelledBy;
+    /** ID(s) for the element(s) that label the current element */
     get ariaLabelledBy() { return this._ariaLabelledBy; }
     set ariaLabelledBy(value) {
         this._ariaLabelledBy = value;
         this._setStandardValue('aria-labelledby', value);
     }
 
-    /** maximum allowed value for a range widget */
+    /**
+     * @type {number}
+     * @protected
+     */
     _ariaValueMax;
+    /** maximum allowed value for a range widget */
     get ariaValueMax() { return this._ariaValueMax; }
     set ariaValueMax(value) {
         this._ariaValueMax = value;
         this._setStandardValue('aria-valuemax', value);
     }
 
-    /** minimum allowed value for a range widget */
+    /**
+     * @type {number}
+     * @protected
+     */
     _ariaValueMin;
+    /** minimum allowed value for a range widget */
     get ariaValueMin() { return this._ariaValueMin; }
     set ariaValueMin(value) {
         this._ariaValueMin = value;
         this._setStandardValue('aria-valuemin', value);
     }
 
-    /** current value for a range widget */
+    /**
+     * @type {number}
+     * @protected
+     */
     _ariaValueNow;
+    /** current value for a range widget */
     get ariaValueNow() { return this._ariaValueNow; }
     set ariaValueNow(value) {
         this._ariaValueNow = value;
@@ -247,10 +328,14 @@ class BootstrapTag {
     }
 
     /**
-     * role type of user interface elementttttttt
-     * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+     * @type {string}
+     * @protected
      */
     _role;
+    /**
+     * role type of user interface element
+     * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+     */
     get role() { return this._role; }
     set role(value) {
         this._role = value;
@@ -264,16 +349,24 @@ class BootstrapTag {
 
     // standard attributes – https://www.w3schools.com/tags/ref_attributes.asp and https://www.w3schools.com/tags/ref_standardattributes.asp
 
-    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
+    /**
+     * @type {string}
+     * @protected
+     */
     _accessKey;
+    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
     get accessKey() { return this._accessKey; }
     set accessKey(value) {
         this._accessKey = value;
         this._setStandardValue('accesskey', value);
     }
 
-    /** not available for all elements [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _disabled;
+    /** not available for all elements */
     get disabled() { return this._disabled; }
     set disabled(value) {
         this._disabled = value;
@@ -293,8 +386,12 @@ class BootstrapTag {
         }
     }
 
-    /** text direction for the content [auto, ltr, rtl] */
+    /**
+     * @type {'auto' | 'ltr' | 'rtl'}
+     * @protected
+     */
     _direction;
+    /** text direction for the content [auto, ltr, rtl] */
     get direction() { return this._direction; }
     set direction(value) {
         this._direction = value;
@@ -302,10 +399,14 @@ class BootstrapTag {
     }
 
     /**
-     * element can be dragged (requires JavaScript) [true, false, auto]
-     * https://www.w3schools.com/html/html5_draganddrop.asp
+     * @type {true | false | 'auto'}
+     * @protected
      */
     _draggable;
+    /**
+     * element can be dragged (requires JavaScript)
+     * https://www.w3schools.com/html/html5_draganddrop.asp
+     */
     get draggable() { return this._draggable; }
     set draggable(value) {
         this._draggable = value;
@@ -315,24 +416,36 @@ class BootstrapTag {
             this._setBooleanValue('draggable', value);
     }
 
-    /** content is editable [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _editable;
+    /** content is editable [boolean] */
     get editable() { return this._editable; }
     set editable(value) {
         this._editable = value;
         this._setBooleanValue('contenteditable', value);
     }
 
-    /** hide element because it is not yet (or no longer) relevant [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _hidden;
+    /** hide element because it is not yet (or no longer) relevant */
     get hidden() { return this._hidden; }
     set hidden(value) {
         this._hidden = value;
         this._setTogglableValue('hidden', value);
     }
 
-    /** unique identifier [alphanumeric, underscore, hyphen] */
+    /**
+     * @type {string}
+     * @protected
+     */
     _id;
+    /** unique identifier [alphanumeric, underscore, hyphen] */
     get id() { return this._id; }
     set id(value) {
         this._id = value;
@@ -340,34 +453,50 @@ class BootstrapTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _language;
+    /**
      * language of the element's content [2-character code]
      * https://www.w3schools.com/tags/ref_language_codes.asp
      */
-    _language;
     get language() { return this._language; }
     set language(value) {
         this._language = value;
         this._setStandardValue('language', value);
     }
 
-    /** content should be spellchecked [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _spellcheck;
+    /** content should be spellchecked */
     get spellcheck() { return this._spellcheck; }
     set spellcheck(value) {
         this._spellcheck = value;
         this._setBooleanValue('spellcheck', value);
     }
 
-    /** tabbing order [numeric] */
+    /**
+     * @type {number}
+     * @protected
+     */
     _tabIndex;
+    /** tabbing order */
     get tabIndex() { return this._tabIndex; }
     set tabIndex(value) {
         this._tabIndex = value;
         this._setStandardValue('tabindex', value);
     }
 
-    /** extra information about an element [text] */
+    /**
+     * @type {string}
+     * @protected
+     */
     _title;
+    /** extra information about an element */
     get title() { return this._title; }
     set title(value) {
         this._title = value;
@@ -384,72 +513,108 @@ class BootstrapTag {
      * https://www.w3schools.com/tags/ref_eventattributes.asp
      */
 
-    /** loses focus */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onBlur;
+    /** loses focus */
     get onBlur() { return this._onBlur; }
     set onBlur(value) {
         this._onBlur = value;
         this._setStandardValue('onblur', value);
     }
 
-    /** value of the element is changed */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onChange;
+    /** value of the element is changed */
     get onChange() { return this._onChange; }
     set onChange(value) {
         this._onChange = value;
         this._setStandardValue('onchange', value);
     }
 
-    /** context menu is triggered */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onContextMenu;
+    /** context menu is triggered */
     get onContextMenu() { return this._onContextMenu; }
     set onContextMenu(value) {
         this._onContextMenu = value;
         this._setStandardValue('oncontextmenu', value);
     }
 
-    /** gets focus */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onFocus;
+    /** gets focus */
     get onFocus() { return this._onFocus; }
     set onFocus(value) {
         this._onFocus = value;
         this._setStandardValue('onfocus', value);
     }
 
-    /** gets user input */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onInput;
+    /** gets user input */
     get onInput() { return this._onInput; }
     set onInput(value) {
         this._onInput = value;
         this._setStandardValue('oninput', value);
     }
 
-    /** element is invalid */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onInvalid;
+    /** element is invalid */
     get onInvalid() { return this._onInvalid; }
     set onInvalid(value) {
         this._onInvalid = value;
         this._setStandardValue('oninvalid', value);
     }
 
-    /** reset button in a form is clicked */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onReset;
+    /** reset button in a form is clicked */
     get onReset() { return this._onReset; }
     set onReset(value) {
         this._onReset = value;
         this._setStandardValue('onreset', value);
     }
 
-    /** user writes something in a search field (for <input type="search">) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onSearch;
+    /** user writes something in a search field (for <input type="search">) */
     get onSearch() { return this._onSearch; }
     set onSearch(value) {
         this._onSearch = value;
         this._setStandardValue('onsearch', value);
     }
 
-    /** some text has been selected in an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onSelect;
+    /** some text has been selected in an element */
     get onSelect() { return this._onSelect; }
     set onSelect(value) {
         this._onSelect = value;
@@ -463,24 +628,36 @@ class BootstrapTag {
 
     // https://www.w3schools.com/tags/ref_eventattributes.asp
 
-    /** user is pressing a key */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onKeyDown;
+    /** user is pressing a key */
     get onKeyDown() { return this._onKeyDown; }
     set onKeyDown(value) {
         this._onKeyDown = value;
         this._setStandardValue('onkeydown', value);
     }
 
-    /** user presses a key */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onKeyPress;
+    /** user presses a key */
     get onKeyPress() { return this._onKeyPress; }
     set onKeyPress(value) {
         this._onKeyPress = value;
         this._setStandardValue('onkeypress', value);
     }
 
-    /** user releases a key */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onKeyUp;
+    /** user releases a key */
     get onKeyUp() { return this._onKeyUp; }
     set onKeyUp(value) {
         this._onKeyUp = value;
@@ -494,64 +671,96 @@ class BootstrapTag {
 
     // https://www.w3schools.com/tags/ref_eventattributes.asp
 
-    /** mouse click on the element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onClick;
+    /** mouse click on the element */
     get onClick() { return this._onClick; }
     set onClick(value) {
         this._onClick = value;
         this._setStandardValue('onclick', value);
     }
 
-    /** mouse double-click on the element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDoubleClick;
+    /** mouse double-click on the element */
     get onDoubleClick() { return this._onDoubleClick; }
     set onDoubleClick(value) {
         this._onDoubleClick = value;
         this._setStandardValue('ondblclick', value);
     }
 
-    /** mouse button is pressed down on an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onMouseDown;
+    /** mouse button is pressed down on an element */
     get onMouseDown() { return this._onMouseDown; }
     set onMouseDown(value) {
         this._onMouseDown = value;
         this._setStandardValue('onmousedown', value);
     }
 
-    /** mouse pointer is moving while it is over an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onMouseMove;
+    /** mouse pointer is moving while it is over an element */
     get onMouseMove() { return this._onMouseMove; }
     set onMouseMove(value) {
         this._onMouseMove = value;
         this._setStandardValue('onmousemove', value);
     }
 
-    /** mouse pointer moves off of an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onMouseOut;
+    /** mouse pointer moves off of an element */
     get onMouseOut() { return this._onMouseOut; }
     set onMouseOut(value) {
         this._onMouseOut = value;
         this._setStandardValue('onmouseout', value);
     }
 
-    /** mouse pointer moves over an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onMouseOver;
+    /** mouse pointer moves over an element */
     get onMouseOver() { return this._onMouseOver; }
     set onMouseOver(value) {
         this._onMouseOver = value;
         this._setStandardValue('onmouseover', value);
     }
 
-    /** mouse button is released over an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onMouseUp;
+    /** mouse button is released over an element */
     get onMouseUp() { return this._onMouseUp; }
     set onMouseUp(value) {
         this._onMouseUp = value;
         this._setStandardValue('onmouseup', value);
     }
 
-    /** mouse wheel rolls up or down over an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onWheel;
+    /** mouse wheel rolls up or down over an element */
     get onWheel() { return this._onWheel; }
     set onWheel(value) {
         this._onWheel = value;
@@ -565,64 +774,96 @@ class BootstrapTag {
 
     // https://www.w3schools.com/tags/ref_eventattributes.asp
 
-    /** element is dragged */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDrag;
+    /** element is dragged */
     get onDrag() { return this._onDrag; }
     set onDrag(value) {
         this._onDrag = value;
         this._setStandardValue('ondrag', value);
     }
 
-    /** end of a drag operation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDragEnd;
+    /** end of a drag operation */
     get onDragEnd() { return this._onDragEnd; }
     set onDragEnd(value) {
         this._onDragEnd = value;
         this._setStandardValue('ondragend', value);
     }
 
-    /** has been dragged to a valid drop target */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDragEnter;
+    /** has been dragged to a valid drop target */
     get onDragEnter() { return this._onDragEnter; }
     set onDragEnter(value) {
         this._onDragEnter = value;
         this._setStandardValue('ondragenter', value);
     }
 
-    /** leaves a valid drop target */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDragLeave;
+    /** leaves a valid drop target */
     get onDragLeave() { return this._onDragLeave; }
     set onDragLeave(value) {
         this._onDragLeave = value;
         this._setStandardValue('ondragleave', value);
     }
 
-    /** being dragged over a valid drop target */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDragOver;
+    /** being dragged over a valid drop target */
     get onDragOver() { return this._onDragOver; }
     set onDragOver(value) {
         this._onDragOver = value;
         this._setStandardValue('ondragover', value);
     }
 
-    /** start of a drag operation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDragStart;
+    /** start of a drag operation */
     get onDragStart() { return this._onDragStart; }
     set onDragStart(value) {
         this._onDragStart = value;
         this._setStandardValue('ondragstart', value);
     }
 
-    /** dragged element is being dropped */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onDrop;
+    /** dragged element is being dropped */
     get onDrop() { return this._onDrop; }
     set onDrop(value) {
         this._onDrop = value;
         this._setStandardValue('ondrop', value);
     }
 
-    /** element's scrollbar is being scrolled */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onScroll;
+    /** element's scrollbar is being scrolled */
     get onScroll() { return this._onScroll; }
     set onScroll(value) {
         this._onScroll = value;
@@ -636,24 +877,36 @@ class BootstrapTag {
 
     // https://www.w3schools.com/tags/ref_eventattributes.asp
 
-    /** user copies the content of an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onCopy;
+    /** user copies the content of an element */
     get onCopy() { return this._onCopy; }
     set onCopy(value) {
         this._onCopy = value;
         this._setStandardValue('oncopy', value);
     }
 
-    /** user cuts the content of an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onCut;
+    /** user cuts the content of an element */
     get onCut() { return this._onCut; }
     set onCut(value) {
         this._onCut = value;
         this._setStandardValue('oncut', value);
     }
 
-    /** user pastes some content in an element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onPaste;
+    /** user pastes some content in an element */
     get onPaste() { return this._onPaste; }
     set onPaste(value) {
         this._onPaste = value;
@@ -665,12 +918,16 @@ class BootstrapTag {
      ***** Properties: Grid *****
      ***************************/
 
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    _gridColumn;
     /** 
      * grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumn;
     get gridColumn() { return this._gridColumn; }
     set gridColumn(value) {
         if (this._gridColumn)
@@ -680,12 +937,16 @@ class BootstrapTag {
             this.class('col' + (this._gridColumn !== true ? `-${this._gridColumn}` : ''));
     }
 
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    _gridColumnSmall;
     /** 
      * small breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnSmall;
     get gridColumnSmall() { return this._gridColumnSmall; }
     set gridColumnSmall(value) {
         if (this._gridColumnSmall)
@@ -695,12 +956,16 @@ class BootstrapTag {
             this.class('col-sm' + (this._gridColumnSmall !== true ? `-${this._gridColumnSmall}` : ''));
     }
 
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    _gridColumnMedium;
     /** 
      * medium breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnMedium;
     get gridColumnMedium() { return this._gridColumnMedium; }
     set gridColumnMedium(value) {
         if (this._gridColumnMedium)
@@ -710,12 +975,16 @@ class BootstrapTag {
             this.class('col-md' + (this._gridColumnMedium !== true ? `-${this._gridColumnMedium}` : ''));
     }
 
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    _gridColumnLarge;
     /** 
      * large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnLarge;
     get gridColumnLarge() { return this._gridColumnLarge; }
     set gridColumnLarge(value) {
         if (this._gridColumnLarge)
@@ -725,12 +994,16 @@ class BootstrapTag {
             this.class('col-lg' + (this._gridColumnLarge !== true ? `-${this._gridColumnLarge}` : ''));
     }
 
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    _gridColumnXL;
     /** 
      * extra-large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnXL;
     get gridColumnXL() { return this._gridColumnXL; }
     set gridColumnXL(value) {
         if (this._gridColumnXL)
@@ -741,10 +1014,14 @@ class BootstrapTag {
     }
 
     /**
+     * @type {boolean}
+     * @protected
+     */
+    _gridFormRow;
+    /**
      * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts [boolean]
      * https://getbootstrap.com/docs/4.5/components/forms/#form-row
      */
-    _gridFormRow;
     get gridFormRow() { return this._gridFormRow; }
     set gridFormRow(value) {
         if (this._gridFormRow)
@@ -755,11 +1032,14 @@ class BootstrapTag {
     }
 
     /**
-     * move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
      */
     _gridOffset;
+    /**
+     * move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
     get gridOffset() { return this._gridOffset; }
     set gridOffset(value) {
         if (this._gridOffset)
@@ -769,12 +1049,15 @@ class BootstrapTag {
             this.class('offset' + (this._gridOffset !== true ? `-${this._gridOffset}` : ''));
     }
 
-    /** 
-     * small breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
      */
     _gridOffsetSmall;
+    /** 
+     * small breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
     get gridOffsetSmall() { return this._gridOffsetSmall; }
     set gridOffsetSmall(value) {
         if (this._gridOffsetSmall)
@@ -784,12 +1067,15 @@ class BootstrapTag {
             this.class('offset-sm' + (this._gridOffsetSmall !== true ? `-${this._gridOffsetSmall}` : ''));
     }
 
-    /** 
-     * medium breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
      */
     _gridOffsetMedium;
+    /** 
+     * medium breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
     get gridOffsetMedium() { return this._gridOffsetMedium; }
     set gridOffsetMedium(value) {
         if (this._gridOffsetMedium)
@@ -799,12 +1085,15 @@ class BootstrapTag {
             this.class('offset-md' + (this._gridOffsetMedium !== true ? `-${this._gridOffsetMedium}` : ''));
     }
 
-    /** 
-     * large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
      */
     _gridOffsetLarge;
+    /** 
+     * large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
+     */
     get gridOffsetLarge() { return this._gridOffsetLarge; }
     set gridOffsetLarge(value) {
         if (this._gridOffsetLarge)
@@ -814,12 +1103,16 @@ class BootstrapTag {
             this.class('offset-lg' + (this._gridOffsetLarge !== true ? `-${this._gridOffsetLarge}` : ''));
     }
 
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    _gridOffsetXL;
     /** 
      * extra-large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
      * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffsetXL;
     get gridOffsetXL() { return this._gridOffsetXL; }
     set gridOffsetXL(value) {
         if (this._gridOffsetXL)
@@ -829,12 +1122,15 @@ class BootstrapTag {
             this.class('offset-xl' + (this._gridOffsetXL !== true ? `-${this._gridOffsetXL}` : ''));
     }
 
-    /** 
-     * grid column order
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
      */
     _gridOrder;
+    /** 
+     * grid column order
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
     get gridOrder() { return this._gridOrder; }
     set gridOrder(value) {
         if (this._gridOrder)
@@ -844,12 +1140,15 @@ class BootstrapTag {
             this.class('order' + (this._gridOrder !== true ? `-${this._gridOrder}` : ''));
     }
 
-    /** 
-     * small breakpoint grid column order
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
      */
     _gridOrderSmall;
+    /** 
+     * small breakpoint grid column order
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
     get gridOrderSmall() { return this._gridOrderSmall; }
     set gridOrderSmall(value) {
         if (this._gridOrderSmall)
@@ -859,12 +1158,15 @@ class BootstrapTag {
             this.class('order-sm' + (this._gridOrderSmall !== true ? `-${this._gridOrderSmall}` : ''));
     }
 
-    /** 
-     * medium breakpoint grid column order
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
      */
     _gridOrderMedium;
+    /** 
+     * medium breakpoint grid column order
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
     get gridOrderMedium() { return this._gridOrderMedium; }
     set gridOrderMedium(value) {
         if (this._gridOrderMedium)
@@ -874,12 +1176,15 @@ class BootstrapTag {
             this.class('order-md' + (this._gridOrderMedium !== true ? `-${this._gridOrderMedium}` : ''));
     }
 
-    /** 
-     * large breakpoint grid column order
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
      */
     _gridOrderLarge;
+    /** 
+     * large breakpoint grid column order
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
     get gridOrderLarge() { return this._gridOrderLarge; }
     set gridOrderLarge(value) {
         if (this._gridOrderLarge)
@@ -889,12 +1194,15 @@ class BootstrapTag {
             this.class('order-lg' + (this._gridOrderLarge !== true ? `-${this._gridOrderLarge}` : ''));
     }
 
-    /** 
-     * extra-large breakpoint grid column order
-     * valid values: 1–12 (number of columns)
-     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
      */
     _gridOrderXL;
+    /** 
+     * extra-large breakpoint grid column order
+     * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
+     */
     get gridOrderXL() { return this._gridOrderXL; }
     set gridOrderXL(value) {
         if (this._gridOrderXL)
@@ -905,10 +1213,14 @@ class BootstrapTag {
     }
 
     /**
-     * wrapper for grid columns [boolean]
-     * https://getbootstrap.com/docs/4.5/layout/grid/
+     * @type {boolean}
+     * @protected
      */
     _gridRow;
+    /**
+     * wrapper for grid columns
+     * https://getbootstrap.com/docs/4.5/layout/grid/
+     */
     get gridRow() { return this._gridRow; }
     set gridRow(value) {
         if (this._gridRow)
@@ -919,11 +1231,15 @@ class BootstrapTag {
     }
 
     /**
-     * keep margins/padding (true); remove margins/padding from the row and all immediate children columns (false) [boolean]
+     * @type {boolean}
+     * @protected
+     */
+    _gridRowNoGutters;
+    /**
+     * keep margins/padding [true]; remove margins/padding from the row and all immediate children columns [false]
      * https://getbootstrap.com/docs/4.5/layout/grid/#gutters
      * https://getbootstrap.com/docs/4.5/layout/grid/#no-gutters
      */
-    _gridRowNoGutters;
     get gridRowNoGutters() { return this._gridRowNoGutters; }
     set gridRowNoGutters(value) {
         if (this._gridRowNoGutters)
@@ -961,7 +1277,7 @@ class BootstrapTag {
 
     /**
      * add a class
-     * @param {any} value string or array of strings of CSS classes
+     * @param {string | string[]} value string or array of strings of CSS classes
      */
     class(value) {
         // normalize input to array
@@ -1005,7 +1321,7 @@ class BootstrapTag {
 
     /**
      * remove class(es) from class attribute array
-     * @param {any} value string or array of strings of CSS classes
+     * @param {string | string[]} value string or array of strings of CSS classes
      */
     removeClass(value) {
         // normalize input to array
@@ -1028,7 +1344,7 @@ class BootstrapTag {
 
     /**
      * remove style(s) from style attribute array
-     * @param {any} value string or array of strings of CSS styles
+     * @param {string | string[]} value string or array of strings of CSS styles
      */
     removeStyle(value) {
         // normalize input to array
@@ -1140,6 +1456,7 @@ class BootstrapTag {
      * @param {string} key attribute key
      * @param {boolean} value attribute value (null removes attribute)
      * @param {boolean} onOff true: on/off, false (default): true/false
+     * @protected
      */
     _setBooleanValue(key, value, onOff) {
         // define static variables
@@ -1162,7 +1479,8 @@ class BootstrapTag {
     /**
      * set/unset the attribute for a standard value (i.e., attribute="value")
      * @param {string} key attribute key
-     * @param {any} value attribute value (null removes attribute)
+     * @param {string} value attribute value (null removes attribute)
+     * @protected
      */
     _setStandardValue(key, value) {
         // value
@@ -1175,8 +1493,9 @@ class BootstrapTag {
 
     /**
      * set/unset the attribute for a toggle value (i.e., true = attribute, false = no attribute)
-     * @param {any} key attribute key
-     * @param {any} value attribute value (true: attribute without a value, null/false: remove attribute)
+     * @param {string} key attribute key
+     * @param {boolean} value attribute value (true: attribute without a value, null/false: remove attribute)
+     * @protected
      */
     _setTogglableValue(key, value) {
         // define static variable
@@ -1296,10 +1615,19 @@ class BootstrapTag {
     /**
      * additional details that the user can view or hide on demand
      * https://www.w3schools.com/tags/tag_details.asp
+     * @param {any} summmary value or array of values to go inside the summary element
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    details(contents, attributes) { this.add(new Details(contents, attributes)); }
+    details(summary, contents, attributes) { this.add(new Details(summary, contents, attributes)); }
+
+    /**
+     * visible heading for Details, which can be clicked to view/hide the details
+     * https://www.w3schools.com/tags/tag_summary.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    detailSummary(contents, attributes) { this.add(new DetailSummary(contents, attributes)); }
 
     /**
      * primary opinionated heading
@@ -1436,8 +1764,8 @@ class BootstrapTag {
     /**
      * FontAwesome icon
      * https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-     * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
-     * @param {any} ariaLabel accessibility string value that labels the current element
+     * @param {string} name FontAwesome class name (e.g., "fas fa-camera")
+     * @param {string} ariaLabel accessibility string value that labels the current element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     icon(name, ariaLabel, attributes) { this.add(new Icon(name, ariaLabel, attributes)); }
@@ -1611,8 +1939,8 @@ class BootstrapTag {
      * Scalable Vector Graphics (text-based image)
      * https://www.w3schools.com/tags/tag_svg.asp
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {int} width width in pixels
-     * @param {int} height height in pixels
+     * @param {number} width width in pixels
+     * @param {number} height height in pixels
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     svg(contents, width, height, attributes) { this.add(new SVG(contents, width, height, attributes)); }
@@ -1735,7 +2063,7 @@ class BootstrapTag {
      * label for a form element
      * https://www.w3schools.com/tags/tag_label.asp
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} forID ID for the form element the label is for
+     * @param {string} forID ID for the form element the label is for
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     label(contents, forID, attributes) { this.add(new Label(contents, forID, attributes)); }
@@ -1785,11 +2113,11 @@ class BootstrapTag {
      * twelve column grid system by breakpoint
      * https://getbootstrap.com/docs/4.5/layout/grid/
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) { this.add(new Column(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes)); }
@@ -1829,13 +2157,21 @@ class CrossOriginTag extends BootstrapTag {
      ***** Properties *****
      *********************/
 
-    /** how the element handles cross-origin requests; valid values: anonymous, use-credentials */
+    /**
+     * @type {'anonymous' | 'use-credentials'}
+     * @protected
+     */
     _crossOrigin;
+    /** how the element handles cross-origin requests */
     get crossOrigin() { return this._crossOrigin; }
     set crossOrigin(value) { this._crossOriginIntegrity(value, this._integrity); }
 
-    /** base64-encoded cryptographic hash of the resource, used to verify that the fetched resource has been delivered free of unexpected manipulation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _integrity;
+    /** base64-encoded cryptographic hash of the resource, used to verify that the fetched resource has been delivered free of unexpected manipulation */
     get integrity() { return this._integrity; }
     set integrity(value) { this._crossOriginIntegrity(this._crossOrigin, value); }
 
@@ -1848,6 +2184,7 @@ class CrossOriginTag extends BootstrapTag {
      * set crossOrigin and integrity (interrelated)
      * @param {any} crossOrigin
      * @param {any} integrity
+     * @protected
      */
     _crossOriginIntegrity(crossOrigin, integrity) {
         // update properties
@@ -1865,13 +2202,15 @@ class ThemeableTag extends BootstrapTag {
      *********************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _textTheme;
+    /**
      * Bootstrap text theme
      * valid values: black-50, body, danger, dark, info, light, muted, primary, secondary, success, warning, white, white-50
      */
-    _textTheme;
-    get textTheme() {
-        return this._textTheme;
-    }
+    get textTheme() { return this._textTheme; }
     set textTheme(value) {
         // remove dynamic Bootstrap classes
         if (this._textTheme)
@@ -1886,28 +2225,28 @@ class ThemeableTag extends BootstrapTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _theme;
+    /**
      * Bootstrap background theme
      * valid values: danger, dark, info, light, primary, secondary, success, transparent, warning
      */
-    _theme;
-    get theme() {
-        return this._theme;
-    }
-    set theme(value) {
-        this._setOutlineTheme(this._outline, value);
-    }
+    get theme() { return this._theme; }
+    set theme(value) { this._setOutlineTheme(this._outline, value); }
 
     /**
-     * Bootstrap outline theme
-     * outline with theme color (via borders) instead of background color (boolean)
+     * @type {boolean}
+     * @protected
      */
     _outline;
-    get outline() {
-        return this._outline;
-    }
-    set outline(value) {
-        this._setOutlineTheme(value, this._theme);
-    }
+    /**
+     * Bootstrap outline theme
+     * outline with theme color (via borders) [true] instead of background color [false]
+     */
+    get outline() { return this._outline; }
+    set outline(value) { this._setOutlineTheme(value, this._theme); }
 
 
     /*****************************
@@ -1918,6 +2257,7 @@ class ThemeableTag extends BootstrapTag {
      * background/outline theme are mutually exclusive
      * @param {boolean} outline border theme (true) or background (false)
      * @param {string} theme theme color
+     * @protected
      */
     _setOutlineTheme(outline, theme) {
         // remove dynamic Bootstrap classes
@@ -1972,8 +2312,12 @@ class Body extends ThemeableTag {
      ***** Elements *****
      *******************/
 
-    /** script tags to show before closing the tag */
+    /**
+     * @type {Script[]}
+     * @protected
+     */
     _scripts;
+    /** script tags to show before closing the tag */
     get scripts() { this._scripts; }
     set scripts(value) {
         // create blank array
@@ -2077,24 +2421,29 @@ class Comment {
      ***** Properties *****
      *********************/
 
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _inline;
     /** all on one line */
     get inline() { return this._inline; }
     set inline(value) { this._inline = value ? true : false; }
+
     /**
      * @type {boolean}
-     * @private
+     * @protected
      */
-    _inline;
-
+    _blockClose;
     /** insert new line after comment close */
     get blockClose() { return this._blockClose; }
     set blockClose(value) { this._blockClose = value ? true : false; }
-    /**
-     * @type {boolean}
-     * @private
-     */
-    _blockClose;
 
+    /**
+     * @type any
+     * @protected
+     */
+    _contents;
     /** contents */
     get contents() { return this._contents; }
     set contents(value) {
@@ -2108,11 +2457,6 @@ class Comment {
         else
             this._contents = value;
     }
-    /**
-     * @type any
-     * @private
-     */
-    _contents;
 
 
     /*******************
@@ -2122,7 +2466,6 @@ class Comment {
     /**
      * add content
      * @param {any} value value or array of values to go inside the HTML comment element
-     * @returns {void}
      */
     add(value) {
         // is array, merge it in
@@ -2133,22 +2476,13 @@ class Comment {
             this._contents.push(value);
     }
 
-    /**
-     * open the HTML comment
-     * @returns {string}
-     */
+    /** open the HTML comment */
     start() { return '<!--' + (this.inline ? ' ' : '\n'); }
 
-    /**
-     * close the HTML comment
-     * @returns {string}
-     */
+    /** close the HTML comment */
     stop() { return (this.inline ? ' ' : '\n') + '-->' + (this.blockClose ? '\n' : ''); }
 
-    /**
-     * convert the object to a string
-     * @returns {string}
-     */
+    /** convert the object to a string */
     toString() { return this.start() + this.contents.join('') + this.stop(); }
 }
 exports.Comment = Comment;
@@ -2188,8 +2522,12 @@ class Head extends BootstrapTag {
      ***** Elements *****
      *******************/
 
-    /** metadata tags [array] */
+    /**
+     * @type {Metadata[]}
+     * @protected
+     */
     _metadatas;
+    /** metadata tags [array] */
     get metadatas() { return this._metadatas; }
     set metadatas(value) {
         // create blank array
@@ -2200,8 +2538,12 @@ class Head extends BootstrapTag {
             this.metadata(value);
     }
 
-    /** linked resource documents [array] */
+    /**
+     * @type {ResourceLink[]}
+     * @protected
+     */
     _resourceLinks;
+    /** linked resource documents */
     get resourceLinks() { return this._resourceLinks; }
     set resourceLinks(value) {
         // create blank array
@@ -2212,8 +2554,12 @@ class Head extends BootstrapTag {
             this.resourceLink(value);
     }
 
-    /** style tags [array] */
+    /**
+     * @type {Style[]}
+     * @protected
+     */
     _styles;
+    /** style tags */
     get styles() { return this._styles; }
     set styles(value) {
         // create blank array
@@ -2224,8 +2570,12 @@ class Head extends BootstrapTag {
             this.style(value);
     }
 
-    /** page title [object] */
+    /**
+     * @type {string | Title}
+     * @protected
+     */
     _title;
+    /** page title */
     get title() { return this._title; }
     set title(value) {
         // already a title object
@@ -2244,6 +2594,7 @@ class Head extends BootstrapTag {
     /**
      * character set
      * https://www.w3schools.com/tags/att_meta_charset.asp
+     * @type {string}
      */
     charset;
 
@@ -2255,8 +2606,8 @@ class Head extends BootstrapTag {
     /**
      * provides metadata about the HTML document
      * https://www.w3schools.com/tags/tag_meta.asp
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     metadata(name, content, attributes) {
@@ -2271,7 +2622,7 @@ class Head extends BootstrapTag {
     /**
      * link between a document and an external resource
      * https://www.w3schools.com/tags/tag_link.asp
-     * @param {string} url path to the linked file
+     * @param {string | ResourceLink} url path to the linked file
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     resourceLink(url, attributes) {
@@ -2307,7 +2658,7 @@ class Head extends BootstrapTag {
     /**
      * contains embedded styling information
      * https://www.w3schools.com/tags/tag_style.asp
-     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string | Style} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     style(content, attributes) {
@@ -2328,10 +2679,16 @@ exports.Head = Head;
 class ResourceLink extends CrossOriginTag {
     /**
      * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} url path to the linked file
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(url, attributes) {
+        // set defaults
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (!attributes.relationship)
+            attributes.relationship = 'stylesheet';
+
         // create baseline object
         super('link', null, attributes);
 
@@ -2341,10 +2698,6 @@ class ResourceLink extends CrossOriginTag {
         // convert parameters to attributes
         if (!this.url && url)
             this.url = url;
-
-        // set defaults
-        if (!this.rel)
-            this.rel = 'stylesheet';
     }
 
 
@@ -2362,10 +2715,14 @@ class ResourceLink extends CrossOriginTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _media;
+    /**
      * media query that specifies on what device the linked document will be displayed
      * https://www.w3schools.com/tags/att_link_media.asp
      */
-    _media;
     get media() { return this._media; }
     set media(value) {
         this._media = value;
@@ -2373,21 +2730,29 @@ class ResourceLink extends CrossOriginTag {
     }
 
     /**
+     * @type {'alternate' | 'author' | 'dns-prefetch' | 'help' | 'icon' | 'license' | 'next' | 'pingback' | 'preconnect' | 'prefetch' | 'preload' | 'prerender' | 'prev' | 'search' | 'stylesheet'}
+     * @protected
+     */
+    _relationship;
+    /**
      * relationship between the current document and the linked document
      * valid values: alternate, author, dns-prefetch, help, icon, license, next, pingback, preconnect, prefetch, preload, prerender, prev, search, stylesheet
      */
-    _rel;
-    get rel() { return this._rel; }
-    set rel(value) {
-        this._rel = value;
+    get relationship() { return this._relationship; }
+    set relationship(value) {
+        this._relationship = value;
         this._setStandardValue('rel', value);
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _sizes;
+    /**
      * size of the linked resource (for rel="icon" only)
      * valid values: «height»x«width», any
      */
-    _sizes;
     get sizes() { return this._sizes; }
     set sizes(value) {
         this._sizes = value;
@@ -2395,18 +2760,26 @@ class ResourceLink extends CrossOriginTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _type;
+    /**
      * media type of the linked document
      * http://www.iana.org/assignments/media-types/
      */
-    _type;
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
     }
 
-    /** location of the linked document */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** location of the linked document */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
@@ -2450,10 +2823,14 @@ class HTML extends BootstrapTag {
      *********************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _language;
+    /**
      * language code of the text in the linked document
      * https://www.w3schools.com/tags/att_global_lang.asp
      */
-    _language;
     get language() { return this._language; }
     set language(value) {
         this._language = value;
@@ -2471,7 +2848,7 @@ class HTML extends BootstrapTag {
     /** HTML head tag */
     head;
 
-    /** meta tags [array] */
+    /** meta tags */
     get metadatas() { return this.head.metadatas; }
     set metadatas(value) { this.head.metadatas = value; }
 
@@ -2479,11 +2856,17 @@ class HTML extends BootstrapTag {
     get resourceLinks() { return this.head.resourceLinks; }
     set resourceLinks(value) { this.head.resourceLinks = value; }
 
-    /** script tags to show before closing the tag */
+    /**
+     * script tags to show before closing the tag
+     * @type {Script[]}
+     */
     get scripts() { return this.body.scripts; }
     set scripts(value) { this.body.scripts = value; }
 
-    /** page title [object] */
+    /**
+     * page title
+     * @type {Title}
+     */
     get title() { return this.head.title; }
     set title(value) { this.head.title = value; }
 
@@ -2495,6 +2878,7 @@ class HTML extends BootstrapTag {
     /**
      * character set
      * https://www.w3schools.com/tags/att_meta_charset.asp
+     * @type {string}
      */
     get charset() { return this.head.charset; }
     set charset(value) { this.head.charset = value; }
@@ -2597,7 +2981,7 @@ $(document).ready(
 
     /**
      * add a class
-     * @param {any} value string or array of strings of CSS classes
+     * @param {string | string[]} value string or array of strings of CSS classes
      */
     class(value) { this.body.class(value); }
 
@@ -2615,8 +2999,8 @@ $(document).ready(
     /**
      * provides metadata about the HTML document
      * https://www.w3schools.com/tags/tag_meta.asp
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     metadata(name, content, attributes) { this.head.metadata(name, content, attributes); }
@@ -2688,8 +3072,8 @@ exports.HTML = HTML;
 class Metadata extends BootstrapTag {
     /**
      * create a new instance of the object
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport'} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(name, content, attributes) {
@@ -2712,18 +3096,26 @@ class Metadata extends BootstrapTag {
      *********************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _charset;
+    /**
      * character encoding for the HTML document
      * https://www.w3schools.com/tags/att_meta_charset.asp
      */
-    _charset;
     get charset() { return this._charset; }
     set charset(value) {
         this._charset = value;
         this._setStandardValue('charset', value);
     }
 
-    /** metadata value */
+    /**
+     * @type {string}
+     * @protected
+     */
     _content;
+    /** metadata value */
     get content() { return this._content; }
     set content(value) {
         this._content = value;
@@ -2731,10 +3123,11 @@ class Metadata extends BootstrapTag {
     }
 
     /**
-     * metadata name
-     * valid values: application-name, author, description, generator, keywords, viewport
+     * @type {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport'}
+     * @protected
      */
     _name;
+    /** metadata name */
     get name() { return this._name; }
     set name(value) {
         this._name = value;
@@ -2742,10 +3135,14 @@ class Metadata extends BootstrapTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _headerEquivalent;
+    /**
      * provides an HTTP header for the information/value of the content attribute and can be used to simulate an HTTP response header
      * https://www.w3schools.com/tags/att_meta_http_equiv.asp
      */
-    _headerEquivalent;
     get headerEquivalent() { return this._headerEquivalent; }
     set headerEquivalent(value) {
         this._headerEquivalent = value;
@@ -2757,8 +3154,12 @@ class Metadata extends BootstrapTag {
      ***** Properties *****
      *********************/
 
-    /** character encoding for the document */
+    /**
+     * @type {string}
+     * @protected
+     */
     _contentType;
+    /** character encoding for the document */
     get contentType() { return this._contentType; }
     set contentType(value) {
         this.headerEquivalent = 'content-type';
@@ -2766,18 +3167,26 @@ class Metadata extends BootstrapTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _defaultStyle;
+    /**
      * the preferred style sheet to use (must match the value of the title attribute on a link element in the same document, or it
      * must match the value of the title attribute on a style element in the same document)
      */
-    _defaultStyle;
     get defaultStyle() { return this._defaultStyle; }
     set defaultStyle(value) {
         this.headerEquivalent = 'default-style';
         this.content = value;
     }
 
-    /** time interval (in seconds) for the document to refresh itself, optionally append the time with "; url=http://www.example.com/" to relocate */
+    /**
+     * @type {number | string}
+     * @protected
+     */
     _refresh;
+    /** time interval (in seconds) for the document to refresh itself, optionally append the time with "; url=http://www.example.com/" to relocate */
     get refresh() { return this._refresh; }
     set refresh(value) {
         this.headerEquivalent = 'refresh';
@@ -2814,8 +3223,12 @@ class Script extends CrossOriginTag {
      ***** Attributes *****
      *********************/
 
-    /** specifies that the script is executed asynchronously (only for external scripts) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _async;
+    /** specifies that the script is executed asynchronously (only for external scripts) */
     get async() { return this._async; }
     set async(value) {
         this._async = value;
@@ -2823,18 +3236,26 @@ class Script extends CrossOriginTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _charset;
+    /**
      * character encoding used in an external script file
      * https://www.w3schools.com/charsets/default.asp
      */
-    _charset;
     get charset() { return this._charset; }
     set charset(value) {
         this._charset = value;
         this._setStandardValue('charset', value);
     }
 
-    /** specifies that the script is executed when the page has finished parsing (only for external scripts) [boolean] */
+    /**
+     * @type {string}
+     * @protected
+     */
     _defer;
+    /** specifies that the script is executed when the page has finished parsing (only for external scripts) */
     get defer() { return this._defer; }
     set defer(value) {
         this._defer = value;
@@ -2842,18 +3263,26 @@ class Script extends CrossOriginTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _type;
+    /**
      * media type
      * http://www.iana.org/assignments/media-types/media-types.xhtml
      */
-    _type;
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
     }
 
-    /** location of the external script file (not needed when code is embedded) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** location of the external script file (not needed when code is embedded) */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
@@ -2885,10 +3314,14 @@ class Style extends BootstrapTag {
      *********************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _media;
+    /**
      * specifies what media/device the media resource is optimized for
      * https://www.w3schools.com/tags/att_style_media.asp
      */
-    _media;
     get media() { return this._media; }
     set media(value) {
         this._media = value;
@@ -3149,15 +3582,16 @@ exports.DefinitionTerm = DefinitionTerm;
 class Details extends ThemeableTag {
     /**
      * create a new instance of the object
+     * @param {any} summmary value or array of values to go inside the summary element
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(contents, attributes) {
+    constructor(summary, contents, attributes) {
         // create baseline object
         super('details', contents, attributes);
 
         // initialize elements
-        this.summary = null;
+        this.summary = new DetailSummary(summary);
 
         // initialize attributes
         this.attributes = attributes;
@@ -3167,16 +3601,24 @@ class Details extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** specifies whether the details should be visible to the user [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _open;
+    /** specifies whether the details should be visible to the user */
     get open() { return this._open; }
     set open(value) {
         this._open = value;
         this._setTogglableValue('open', value);
     }
 
-    /** fires when the user opens or closes the element */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onToggle;
+    /** fires when the user opens or closes the element */
     get onToggle() { return this._onToggle; }
     set onToggle(value) {
         this._onToggle = value;
@@ -3188,16 +3630,11 @@ class Details extends ThemeableTag {
      ***** Elements *****
      *******************/
 
-    _summary;
-    get summary() { return this._summary; }
-    set summary(value) {
-        // already a summary object
-        if (value instanceof Summary)
-            this._summary = value;
-        // something else, embed in title tag
-        else
-            this._summary = new Summary(value);
-    }
+    /**
+     * detail summary
+     * @type DetailSummary
+     */
+    summary;
 
 
     /*******************
@@ -3219,6 +3656,20 @@ class Details extends ThemeableTag {
     }
 }
 exports.Details = Details;
+
+/**
+ * visible heading for Details, which can be clicked to view/hide the details
+ * https://www.w3schools.com/tags/tag_summary.asp
+ */
+class DetailSummary extends ThemeableTag {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) { super('summary', contents, attributes); }
+}
+exports.DetailSummary = DetailSummary;
 
 /**
  * generic container for grouping content for styling/visual purposes
@@ -3279,10 +3730,14 @@ class Figure extends ThemeableTag {
      *******************/
 
     /**
+     * @type {FigureCaption}
+     * @protected
+     */
+    _caption;
+    /**
      * caption for a <figure> element
      * https://www.w3schools.com/tags/tag_figcaption.asp
      */
-    _caption;
     get caption() { return this._caption; }
     set caption(value) {
         // already a summary object
@@ -3294,10 +3749,14 @@ class Figure extends ThemeableTag {
     }
 
     /**
+     * @type {Image}
+     * @protected
+     */
+    _image;
+    /**
      * image
      * https://www.w3schools.com/tags/tag_img.asp
      */
-    _image;
     get image() { return this._image; }
     set image(value) { this._image = new Image(value); }
 
@@ -3306,8 +3765,12 @@ class Figure extends ThemeableTag {
      ***** Properties *****
      *********************/
 
-    /** put the caption element above the figure (default: false) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _captionOnTop;
+    /** put the caption element above the figure (default: false) */
     get captionOnTop() { return this._captionOnTop; }
     set captionOnTop(value) { this._captionOnTop = value ? true : false; }
 
@@ -3509,8 +3972,8 @@ exports.Italics = Italics;
 class Icon extends ThemeableTag {
     /**
      * create a new instance of the object
-     * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
-     * @param {any} ariaLabel accessibility string value that labels the current element
+     * @param {string} name FontAwesome class name (e.g., "fas fa-camera")
+     * @param {string} ariaLabel accessibility string value that labels the current element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(name, ariaLabel, attributes) {
@@ -3561,48 +4024,75 @@ class InlineFrame extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** allow iframe to go into fullscreen mode (i.e., videos) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _allowFullScreen;
+    /** allow iframe to go into fullscreen mode (i.e., videos) */
     get allowFullScreen() { return this._allowFullScreen; }
     set allowFullScreen(value) {
         this._allowFullScreen = value;
         this._setTogglableValue('allowfullscreen', value);
     }
 
-    /** height in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _height;
+    /** height in pixels */
     get height() { return this._height; }
     set height(value) {
         this._height = value;
         this._setStandardValue('height', value);
     }
 
-    /** name of the iframe (can be used to reference the element in a JavaScript, or as the value of the target attribute of an <a> or <form> element, or the formtarget attribute of an <input> or <button> element) */
+    /**
+     * @type {number}
+     * @protected
+     */
     _name;
+    /** name of the iframe (can be used to reference the element in a JavaScript, or as the value of the target attribute of an <a> or <form> element, or the formtarget attribute of an <input> or <button> element) */
     get name() { return this._name; }
     set name(value) {
         this._name = value;
         this._setStandardValue('name', value);
     }
 
-    /** enables an extra set of restrictions for the content in the iframe (whitelist); valid values: true (fully restrict) allow-forms, allow-pointer-lock, allow-popups, allow-same-origin, allow-scripts, allow-top-navigation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _sandbox;
+    /**
+     * enables an extra set of restrictions for the content in the iframe (whitelist)
+     * valid values: true (fully restrict) allow-forms, allow-pointer-lock, allow-popups, allow-same-origin, allow-scripts, allow-top-navigation
+     */
     get sandbox() { return this._sandbox; }
     set sandbox(value) {
         this._sandbox = value;
         this._setTogglableValue('sandbox', value);
     }
 
-    /** address of the document to embed */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** address of the document to embed */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
         this._setStandardValue('src', value);
     }
 
-    /**  width in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _width;
+    /**  width in pixels */
     get width() { return this._width; }
     set width(value) {
         this._width = value;
@@ -3642,50 +4132,77 @@ class Image extends CrossOriginTag {
      *********************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _alternateText;
+    /**
      * alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references)
      * https://webaim.org/techniques/alttext/
      */
-    _alternateText;
     get alternateText() { return this._alternateText; }
     set alternateText(value) {
         this._alternateText = value;
         this._setStandardValue('alt', value);
     }
 
-    /** height in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _height;
+    /** height in pixels */
     get height() { return this._height; }
     set height(value) {
         this._height = value;
         this._setStandardValue('height', value);
     }
 
-    /** specifies that the image is part of a server-side image-map (an image-map is an image with clickable areas) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _isMap;
+    /** specifies that the image is part of a server-side image-map (an image-map is an image with clickable areas) */
     get isMap() { return this._isMap; }
     set isMap(value) {
         this._isMap = value;
         this._setTogglableValue('ismap', value);
     }
 
-    /** URL to a detailed description of an image */
+    /**
+     * @type {string}
+     * @protected
+     */
     _longDescription;
+    /** URL to a detailed description of an image */
     get longDescription() { return this._longDescription; }
     set longDescription(value) {
         this._longDescription = value;
         this._setStandardValue('longdesc', value);
     }
 
-    /** URL path of an image file */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** URL path of an image file */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
         this._setStandardValue('src', value);
     }
 
-    /** specifies an image as a client-side image-map (an image-map is an image with clickable areas); valid value: hash character ("#") plus the name of the <map> element to use */
+    /**
+     * @type {string}
+     * @protected
+     */
     _useMap;
+    /**
+     * specifies an image as a client-side image-map (an image-map is an image with clickable areas)
+     * valid value: hash character ("#") plus the name of the <map> element to use
+     */
     get useMap() { return this._useMap; }
     set useMap(value) {
         // prepend with hash tag
@@ -3696,8 +4213,12 @@ class Image extends CrossOriginTag {
         this._setStandardValue('usemap', value);
     }
 
-    /** width in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _width;
+    /** width in pixels */
     get width() { return this._width; }
     set width(value) {
         this._width = value;
@@ -3775,10 +4296,13 @@ class Link extends ThemeableTag {
      *********************/
 
     /**
-     * specifies that the target will be downloaded when a user clicks on the hyperlink
-     * valid values: true, URL
+     * @type {boolean}
+     * @protected
      */
     _download;
+    /**
+     * specifies that the target will be downloaded when a user clicks on the hyperlink
+     */
     get download() { return this._download; }
     set download(value) {
         this._download = value;
@@ -3786,10 +4310,14 @@ class Link extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _linkLanguage;
+    /**
      * language code of the text in the linked document
      * https://www.w3schools.com/tags/ref_language_codes.asp
      */
-    _linkLanguage;
     get linkLanguage() { return this._linkLanguage; }
     set linkLanguage(value) {
         this._linkLanguage = value;
@@ -3797,18 +4325,26 @@ class Link extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _media;
+    /**
      * media query that specifies on what device the linked document will be displayed
      * https://www.w3schools.com/tags/att_link_media.asp
      */
-    _media;
     get media() { return this._media; }
     set media(value) {
         this._media = value;
         this._setStandardValue('media', value);
     }
 
-    /** specifies a list of URLs (separated by spaces) to be notified if the user follows the hyperlink, sending a short HTTP POST request to the specified URL(s) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _ping;
+    /** specifies a list of URLs (separated by spaces) to be notified if the user follows the hyperlink, sending a short HTTP POST request to the specified URL(s) */
     get ping() { return this._ping; }
     set ping(value) {
         this._ping = value;
@@ -3816,21 +4352,23 @@ class Link extends ThemeableTag {
     }
 
     /**
-     * relationship between the current document and the linked document
-     * valid values: alternate, author, bookmark, external, help, license, next, nofollow, noreferrer, noopener, prev, search, tag
+     * @type {'alternate' | 'author' | 'bookmark' | 'external' | 'help' | 'license' | 'next' | 'nofollow' | 'noreferrer' | 'noopener' | 'prev' | 'search' | 'tag'}
+     * @protected
      */
-    _rel;
-    get rel() { return this._rel; }
-    set rel(value) {
-        this._rel = value;
+    _relationship;
+    /** relationship between the current document and the linked document */
+    get relationship() { return this._relationship; }
+    set relationship(value) {
+        this._relationship = value;
         this._setStandardValue('rel', value);
     }
 
     /**
-     * specifies which referrer to send
-     * valid values: no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, unsafe-url
+     * @type {'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'unsafe-url'}
+     * @protected
      */
     _referrerPolicy;
+    /** specifies which referrer to send */
     get referrerPolicy() { return this._referrerPolicy; }
     set referrerPolicy(value) {
         this._referrerPolicy = value;
@@ -3838,10 +4376,14 @@ class Link extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _target;
+    /**
      * specifies where to open the linked document
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target;
     get target() { return this._target; }
     set target(value) {
         this._target = value;
@@ -3849,18 +4391,26 @@ class Link extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _type;
+    /**
      * media type of the linked document
      * http://www.iana.org/assignments/media-types/
      */
-    _type;
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
     }
 
-    /** URL of the page the link goes to */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** URL of the page the link goes to */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
@@ -3905,16 +4455,24 @@ class List extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** ordered list should be descending (9, 8, 7, …) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _reversed;
+    /** ordered list should be descending (9, 8, 7, …) */
     get reversed() { return this._reversed; }
     set reversed(value) {
         this._reversed = value;
         this._setTogglableValue('reversed', value);
     }
 
-    /** starting value for ordered lists [number] */
+    /**
+     * @type {number}
+     * @protected
+     */
     _startingValue;
+    /** starting value for ordered lists */
     get startingValue() { return this.startingValue; }
     set startingValue(value) {
         this._startingValue = value;
@@ -3922,10 +4480,14 @@ class List extends ThemeableTag {
     }
 
     /**
+     * @type {'1' | 'A' | 'a' | 'I' | 'i'}
+     * @protected
+     */
+    _type;
+    /**
      * markers to use for ordered lists
      * valid values: 1, A, a, I, i
      */
-    _type;
     get type() { return this._type; }
     set type(value) {
         this._type = value;
@@ -3974,8 +4536,12 @@ class ListItem extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** value of a list item [number], where the following list items will increment from that number (only for ordered lists) */
+    /**
+     * @type {number}
+     * @protected
+     */
     _value;
+    /** value of a list item, where the following list items will increment from that number (only for ordered lists) */
     get value() { return this._value; }
     set value(value) {
         this._value = value;
@@ -4035,24 +4601,42 @@ class Output extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** specifies the relationship between the result of the calculation, and the elements used in the calculation; valid value: element ID(s) (space-separated) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _for;
+    /**
+     * specifies the relationship between the result of the calculation, and the elements used in the calculation
+     * valid value: element ID(s) (space-separated)
+     */
     get for() { return this._for; }
     set for(value) {
         this._for = value;
         this._setStandardValue('for', value);
     }
 
-    /** one or more forms the output belongs to; valid value: form ID(s) (space-separated) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _form;
+    /**
+     * one or more forms the output belongs to
+     * valid value: form ID(s) (space-separated)
+     */
     get form() { return this._form; }
     set form(value) {
         this._form = value;
         this._setStandardValue('form', value);
     }
 
-    /** element name (for use by calculation trigger code) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _name;
+    /** element name (for use by calculation trigger code) */
     get name() { return this._name; }
     set name(value) {
         this._name = value;
@@ -4189,31 +4773,16 @@ class Superscript extends ThemeableTag {
 exports.Superscript = Superscript;
 
 /**
- * visible heading for the <details> element, which can be clicked to view/hide the details
- * https://www.w3schools.com/tags/tag_summary.asp
- */
-class Summary extends ThemeableTag {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents, attributes) { super('summary', contents, attributes); }
-}
-exports.Summary = Summary;
-
-/**
  * Scalable Vector Graphics (text-based image)
  * https://www.w3schools.com/tags/tag_svg.asp
- * TODO: test themeable
  * TODO: add various methods for SVG elements: https://www.w3schools.com/graphics/svg_intro.asp
  */
 class SVG extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {int} width width in pixels
-     * @param {int} height height in pixels
+     * @param {number} width width in pixels
+     * @param {number} height height in pixels
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents, width, height, attributes) {
@@ -4235,16 +4804,24 @@ class SVG extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** height in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _height;
+    /** height in pixels */
     get height() { return this._height; }
     set height(value) {
         this._height = value;
         this._setStandardValue('height', value);
     }
 
-    /** width in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _width;
+    /** width in pixels */
     get width() { return this._width; }
     set width(value) {
         this._width = value;
@@ -4291,8 +4868,12 @@ class Time extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** SQL-like timestamp so that browsers can offer to add date reminders through the user's calendar, and search engines can produce smarter search results, etc. */
+    /**
+     * @type {string}
+     * @protected
+     */
     _timestamp;
+    /** SQL-like timestamp so that browsers can offer to add date reminders through the user's calendar, and search engines can produce smarter search results, etc. */
     get timestamp() { return this._timestamp; }
     set timestamp(value) {
         this._timestamp = value;
@@ -4326,14 +4907,41 @@ class TableCellTag extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
+    /**
+     * @type {number}
+     * @protected
+     */
+    _columnSpan;
     /** number of columns a cell should span */
-    _colSpan;
+    get columnSpan() { return this._columnSpan; }
+    set columnSpan(value) {
+        this._columnSpan = value;
+        this._setStandardValue('colspan', value);
+    }
 
-    /** specifies one or more header cells a cell is related to; valid value(s): <th> ID(s) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _headers;
+    /** specifies one or more header cells a cell is related to; valid value(s): <th> ID(s) */
+    get headers() { return this._headers; }
+    set headers(value) {
+        this._headers = value;
+        this._setStandardValue('headers', value);
+    }
 
-    /** number of rows a header cell should span */
+    /**
+     * @type {number}
+     * @protected
+     */
     _rowSpan;
+    /** number of rows a header cell should span */
+    get rowSpan() { return this._rowSpan; }
+    set rowSpan(value) {
+        this._rowSpan = value;
+        this._setStandardValue('rowspan', value);
+    }
 }
 
 /** shared features of table sections (abstract) */
@@ -4455,16 +5063,28 @@ class Table extends ThemeableTag {
      ***** Elements *****
      *******************/
 
-    /** table body */
+    /**
+     * table body
+     * @type {TableBody}
+     */
     body;
 
-    /** table caption */
+    /**
+     * table caption
+     * @type {TableCaption}
+     */
     caption;
 
-    /** table footer */
+    /**
+     * table footer
+     * @type {TableFooter}
+     */
     footer;
 
-    /** table header */
+    /**
+     * table header
+     * @type {TableHeader}
+     */
     header;
 
 
@@ -4615,8 +5235,12 @@ class TableHeading extends TableCellTag {
      ***** Attributes *****
      *********************/
 
-    /** abbreviated version of the content in a header cell; it has no visual effect in ordinary web browsers, but can be used by screen readers */
+    /**
+     * @type {string}
+     * @protected
+     */
     _abbreviation;
+    /** abbreviated version of the content in a header cell; it has no visual effect in ordinary web browsers, but can be used by screen readers */
     get abbreviation() { return this._abbreviation; }
     set abbreviation(value) {
         this._abbreviation = value;
@@ -4624,10 +5248,11 @@ class TableHeading extends TableCellTag {
     }
 
     /**
-     * specifies what the header cell is a header for
-     * valid values: col, colgroup, row, rowgroup
+     * @type {'col' | 'colgroup' | 'row' | 'rowgroup'}
+     * @protected
      */
     _scope;
+    /** specifies what the header cell is a header for */
     get scope() { return this._scope; }
     set scope(value) {
         this._scope = value;
@@ -4686,32 +5311,48 @@ class FormTag extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** element should automatically get focus when the page loads [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _autoFocus;
+    /** element should automatically get focus when the page loads */
     get autoFocus() { return this._autoFocus; }
     set autoFocus(value) {
         this._autoFocus = value;
         this._setTogglableValue('autofocus', value);
     }
 
-    /** defines one or more form (space-separated) that the element belongs to */
+    /**
+     * @type {string}
+     * @protected
+     */
     _form;
+    /** defines one or more form (space-separated) that the element belongs to */
     get form() { return this._form; }
     set form(value) {
         this._form = value;
         this._setStandardValue('form', value);
     }
 
-    /** element name */
+    /**
+     * @type {string}
+     * @protected
+     */
     _name;
+    /** element name */
     get name() { return this._name; }
     set name(value) {
         this._name = value;
         this._setStandardValue('name', value);
     }
 
-    /** required to set/select a value before submitting the form [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _required;
+    /** required to set/select a value before submitting the form */
     get required() { return this._required; }
     set required(value) {
         this._required = value;
@@ -4793,8 +5434,12 @@ class FormSubmitTag extends FormTag {
      ***** Attributes *****
      *********************/
 
-    /** form has a file upload element [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _fileUpload;
+    /** form has a file upload element */
     get fileUpload() { return this._fileUpload; }
     set fileUpload(value) {
         this._fileUpload = value;
@@ -4802,18 +5447,23 @@ class FormSubmitTag extends FormTag {
     }
 
     /**
-     * HTTP method to use when sending form data
-     * valid values: get, post
+     * @type {'get' | 'post'}
+     * @protected
      */
     _method;
+    /** HTTP method to use when sending form data */
     get method() { return this._method; }
     set method(value) {
         this._method = value;
         this._setStandardValue('formmethod', value);
     }
 
-    /** form should not be validated when submitted [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _noValidate;
+    /** form should not be validated when submitted */
     get noValidate() { return this._noValidate; }
     set noValidate(value) {
         this._noValidate = value;
@@ -4821,18 +5471,26 @@ class FormSubmitTag extends FormTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _target;
+    /**
      * specifies where to display the response that is received after submitting the form
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target;
     get target() { return this._target; }
     set target(value) {
         this._target = value;
         this._setStandardValue('formtarget', value);
     }
 
-    /** URL where to send data when the form is submitted */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** URL where to send data when the form is submitted */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
@@ -4886,8 +5544,12 @@ class FormToggleElement extends FormTag {
      ***** Attributes *****
      *********************/
 
-    /** element should be pre-selected when the page loads [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _checked;
+    /** element should be pre-selected when the page loads */
     get checked() { return this._checked; }
     set checked(value) {
         this._checked = value;
@@ -4901,24 +5563,36 @@ class FormToggleElement extends FormTag {
         this.label.for = value;
     }
 
-    /** input field is read-only (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _readOnly;
+    /** input field is read-only */
     get readOnly() { return this._readOnly; }
     set readOnly(value) {
         this._readOnly = value;
         this._setTogglableValue('readonly', value);
     }
 
-    /** valid values: checkbox, radio */
+    /**
+     * @type {'checkbox' | 'radio'}
+     * @protected
+     */
     _type;
+    /** valid values: checkbox, radio */
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
     }
 
-    /** field value to submit */
+    /**
+     * @type {string}
+     * @protected
+     */
     _value;
+    /** field value to submit */
     get value() { return this._value; }
     set value(value) {
         this._value = value;
@@ -4930,8 +5604,12 @@ class FormToggleElement extends FormTag {
      ***** Properties *****
      *********************/
 
-    /** stack horizontally instead of vertically [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _inline;
+    /** stack horizontally instead of vertically */
     get inline() { return this._inline; }
     set inline(value) {
         // remove dynamic Bootstrap classes
@@ -4946,8 +5624,12 @@ class FormToggleElement extends FormTag {
             this.wrapper.class('custom-control-inline');
     }
 
-    /** stack horizontally instead of vertically [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _switch;
+    /** stack horizontally instead of vertically */
     get switch() { return this._switch; }
     set switch(value) {
         // remove dynamic Bootstrap classes
@@ -4967,41 +5649,22 @@ class FormToggleElement extends FormTag {
      ***** Elements *****
      *******************/
 
-    // form label
+    /**
+     * form label
+     * @type Label
+     */
     label;
 
-    // container holding input and label
+    /**
+     * container holding input and label
+     * @type {Division}
+     */
     wrapper;
 
 
     /*******************
      ***** Methods *****
      ******************/
-
-    /**
-      * inline/switch are interdependent
-      * @param {boolean} inline new value for inline
-      * @param {boolean} switcher new value for switch
-      */ 
-    _setInlineSwitch(inline, switcher) {
-        // remove dynamic Bootstrap classes
-        if (this.wrapper) {
-            this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.tag);
-            if (this._inline)
-                this.wrapper.removeClass('custom-control-inline');
-        }
-
-        // update properties
-        this._inline = inline;
-        this._switch = switcher;
-
-        // add dynamic Bootstrap classes
-        if (this.wrapper) {
-            this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.tag);
-            if (this._inline)
-                this.wrapper.class('custom-control-inline');
-        }
-    }
 
     /** open the HTML tag */
     start() {
@@ -5026,6 +5689,37 @@ class FormToggleElement extends FormTag {
             output += this.wrapper.stop();
 
         return output;
+    }
+
+
+    /*****************************
+     ***** Protected Methods *****
+     ****************************/
+
+    /**
+      * inline/switch are interdependent
+      * @param {boolean} inline new value for inline
+      * @param {boolean} switcher new value for switch
+      * @protected
+      */
+    _setInlineSwitch(inline, switcher) {
+        // remove dynamic Bootstrap classes
+        if (this.wrapper) {
+            this.wrapper.removeClass(this._switch ? 'custom-switch' : 'custom-' + this.tag);
+            if (this._inline)
+                this.wrapper.removeClass('custom-control-inline');
+        }
+
+        // update properties
+        this._inline = inline;
+        this._switch = switcher;
+
+        // add dynamic Bootstrap classes
+        if (this.wrapper) {
+            this.wrapper.class(this._switch ? 'custom-switch' : 'custom-' + this.tag);
+            if (this._inline)
+                this.wrapper.class('custom-control-inline');
+        }
     }
 }
 
@@ -5069,16 +5763,24 @@ class Button extends FormSubmitTag {
      ***** Attributes *****
      *********************/
 
-    /** active state [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _active;
+    /** active state */
     get active() { return this._active; }
     set active(value) {
         this._active = value;
         this._setTogglableValue('active', value);
     }
 
-    /** block-level (full-width) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _block;
+    /** block-level (full-width) */
     get block() { return this._block; }
     set block(value) {
 		// remove dynamic Bootstrap classes
@@ -5094,10 +5796,14 @@ class Button extends FormSubmitTag {
     }
 
     /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    _scale;
+    /**
      * button size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale;
     get scale() { return this._scale; }
     set scale(value) {
 		// remove dynamic Bootstrap classes
@@ -5113,10 +5819,14 @@ class Button extends FormSubmitTag {
     }
 
     /**
+     * @type {'button' | 'reset' | 'submit'}
+     * @protected
+     */
+    _type;
+    /**
      * type of button
      * valid values: button, reset, submit
      */
-    _type;
     get type() { return this._type; }
     set type(value) {
         this._type = value;
@@ -5132,6 +5842,7 @@ class Button extends FormSubmitTag {
      * background/outline theme are mutually exclusive
      * @param {boolean} outline border theme (true) or background (false)
      * @param {string} theme theme color
+     * @protected
      */
     _setOutlineTheme(outline, theme) {
         // remove dynamic Bootstrap classes
@@ -5205,8 +5916,12 @@ class Dropdown extends DropdownContainerTag {
      ***** Attributes *****
      *********************/
 
-    /** specifies that multiple options can be selected at once [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _multiple;
+    /** specifies that multiple options can be selected at once */
     get multiple() { return this._multiple; }
     set multiple(value) {
         this._multiple = value;
@@ -5214,10 +5929,14 @@ class Dropdown extends DropdownContainerTag {
     }
 
     /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    _scale;
+    /**
      * dropdown size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale;
     get scale() { return this._scale; }
     set scale(value) {
         // remove dynamic Bootstrap classes
@@ -5232,8 +5951,12 @@ class Dropdown extends DropdownContainerTag {
             this.class(`custom-select-${this._scale}`);
     }
 
-    /** number of visible options in a drop-down list [number] */
+    /**
+     * @type {number}
+     * @protected
+     */
     _size;
+    /** number of visible options in a drop-down list */
     get size() { return this._size; }
     set size(value) {
         this._size = value;
@@ -5270,8 +5993,12 @@ class DropdownGroup extends DropdownContainerTag {
      ***** Attributes *****
      *********************/
 
-    /** label to display */
+    /**
+     * @type {string}
+     * @protected
+     */
     _label;
+    /** label to display */
     get label() { return this._label; }
     set label(value) {
         this._label = value;
@@ -5313,23 +6040,35 @@ class DropdownOption extends BootstrapTag {
      ***** Attributes *****
      *********************/
 
-    /** shorter label to display */
+    /**
+     * @type {string}
+     * @protected
+     */
     _label;
+    /** shorter label to display */
     get label() { return this._label; }
     set label(value) {
         this._label = value;
         this._setStandardValue('label', value);
     }
 
-    /** pre-select item when the page loads [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _selected;
+    /** pre-select item when the page loads [boolean] */
     set selected(value) {
         this._selected = value;
         this._setTogglableValue('selected', value);
     }
 
-    /** field value to submit when selected */
+    /**
+     * @type {string}
+     * @protected
+     */
     _value;
+    /** field value to submit when selected */
     get value() { return this._value; }
     set value(value) {
         this._value = value;
@@ -5389,10 +6128,16 @@ class FileUploader extends FormTag {
      ***** Elements *****
      *******************/
 
-    /** label to display */
+    /**
+     * label to display
+     * @type Label
+     */
     label;
 
-    /** wrapper for holding all the components */
+    /**
+     * wrapper for holding all the components
+     * @type Division
+     */
     wrapper;
 
 
@@ -5456,8 +6201,12 @@ class Form extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** allow auto-complete [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _autoComplete;
+    /** allow auto-complete */
     get autoComplete() { return this._autoComplete; }
     set autoComplete(value) {
         this._autoComplete = value;
@@ -5465,26 +6214,38 @@ class Form extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _charset;
+    /**
      * character encoding for the form submission (default is the document's encoding)
      * https://www.w3schools.com/tags/att_meta_charset.asp
      */
-    _charset;
     get charset() { return this._charset; }
     set charset(value) {
         this._charset = value;
         this._setStandardValue('accept-charset', value);
     }
 
-    /** form has a file upload element [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _fileUpload;
+    /** form has a file upload element */
     get fileUpload() { return this._fileUpload; }
     set fileUpload(value) {
         this._fileUpload = value;
         this._setStandardValue('enctype', value ? 'multipart/form-data' : null);
     }
 
-    /** display a series of labels, form controls, and buttons on a single horizontal row [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _inline;
+    /** display a series of labels, form controls, and buttons on a single horizontal row */
     get inline() { return this._inline; }
     set inline(value) {
         // remove dynamic Bootstrap classes
@@ -5500,26 +6261,35 @@ class Form extends ThemeableTag {
     }
 
     /**
-     * HTTP method to use when sending form data
-     * valid values: get, post
+     * @type {'get' | 'post'}
+     * @protected
      */
     _method;
+    /** HTTP method to use when sending form data */
     get method() { return this._method; }
     set method(value) {
         this._method = value;
         this._setStandardValue('method', value);
     }
 
-    /** name for the form; used to reference elements in a JavaScript, or to reference form data after a form is submitted (for $_POST array) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _name;
+    /** name for the form; used to reference elements in a JavaScript, or to reference form data after a form is submitted */
     get name() { return this._name; }
     set name(value) {
         this._name = value;
         this._setStandardValue('name', value);
     }
 
-    /** form should not be validated when submitted [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _noValidate;
+    /** form should not be validated when submitted */
     get noValidate() { return this._noValidate; }
     set noValidate(value) {
         this._noValidate = value;
@@ -5527,26 +6297,38 @@ class Form extends ThemeableTag {
     }
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _target;
+    /**
      * specifies where to display the response that is received after submitting the form
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target;
     get target() { return this._target; }
     set target(value) {
         this._target = value;
         this._setStandardValue('target', value);
     }
 
-    /** URL where to send data when the form is submitted */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** URL where to send data when the form is submitted */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
         this._setStandardValue('action', value);
     }
 
-    /** fires when a form is submitted */
+    /**
+     * @type {string}
+     * @protected
+     */
     _onSubmit;
+    /** fires when a form is submitted */
     get onSubmit() { return this._onSubmit; }
     set onSubmit(value) {
         this._onSubmit = value;
@@ -5599,72 +6381,108 @@ class Input extends FormSubmitTag {
      ***** Attributes *****
      *********************/
 
-    /** allow auto-complete [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _autoComplete;
+    /** allow auto-complete */
     get autoComplete() { return this._autoComplete; }
     set autoComplete(value) {
         this._autoComplete = value;
         this._setBooleanValue('autocomplete', value, true);
     }
 
-    /** <datalist> element containing pre-defined options */
+    /**
+     * @type {string}
+     * @protected
+     */
     _list;
+    /** <datalist> element containing pre-defined options */
     get list() { return this._list; }
     set list(value) {
         this._list = value;
         this._setStandardValue('list', value);
     }
 
-    /** maximum value (number/date) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _max;
+    /** maximum value (number/date) */
     get max() { return this._max; }
     set max(value) {
         this._max = value;
         this._setStandardValue('max', value);
     }
 
-    /** maximum number of characters */
+    /**
+     * @type {number}
+     * @protected
+     */
     _maxLength;
+    /** maximum number of characters */
     get maxLength() { return this._maxLength; }
     set maxLength(value) {
         this._maxLength = value;
         this._setStandardValue('maxlength', value);
     }
 
-    /** minimum value (number/date) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _min;
+    /** minimum value (number/date) */
     get min() { return this._min; }
     set min(value) {
         this._min = value;
         this._setStandardValue('min', value);
     }
 
-    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _multiple;
+    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) */
     get multiple() { return this._multiple; }
     set multiple(value) {
         this._multiple = value;
         this._setTogglableValue('multiple', value);
     }
 
-    /** regular expression for validation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _pattern;
+    /** regular expression for validation */
     get pattern() { return this._pattern; }
     set pattern(value) {
         this._pattern = value;
         this._setStandardValue('pattern', value);
     }
 
-    /** short hint that describes the expected value */
+    /**
+     * @type {string}
+     * @protected
+     */
     _placeholder;
+    /** short hint that describes the expected value */
     get placeholder() { return this._placeholder; }
     set placeholder(value) {
         this._placeholder = value;
         this._setStandardValue('placeholder', value);
     }
 
-    /** remove the default form field styling and preserve the correct margin and padding [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _plainText;
+    /** remove the default form field styling and preserve the correct margin and padding */
     get plainText() { return this._plainText; }
     set plainText(value) {
         // remove dynamic Bootstrap classes
@@ -5683,16 +6501,24 @@ class Input extends FormSubmitTag {
             this.class('form-control');
     }
 
-    /** input field is read-only [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _readOnly;
+    /** input field is read-only */
     get readOnly() { return this._readOnly; }
     set readOnly(value) {
         this._readOnly = value;
         this._setTogglableValue('readonly', value);
     }
 
-    /** width in characters */
+    /**
+     * @type {number}
+     * @protected
+     */
     _size;
+    /** width in characters */
     get size() { return this._size; }
     set size(value) {
         this._size = value;
@@ -5700,10 +6526,14 @@ class Input extends FormSubmitTag {
     }
 
     /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    _scale;
+    /**
      * input size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale;
     get scale() { return this._scale; }
     set scale(value) {
         // remove dynamic Bootstrap classes
@@ -5718,24 +6548,36 @@ class Input extends FormSubmitTag {
             this.class(`form-control-${this._scale}`);
     }
 
-    /** interval between legal numbers */
+    /**
+     * @type {number}
+     * @protected
+     */
     _step;
+    /** interval between legal numbers */
     get step() { return this._step; }
     set step(value) {
         this._step = value;
         this._setStandardValue('step', value);
     }
 
-    /** valid values: button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week */
+    /**
+     * @type {'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week'}
+     * @protected
+     */
     _type;
+    /** type of input */
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
     }
 
-    /** field value to submit */
+    /**
+     * @type {string}
+     * @protected
+     */
     _value;
+    /** field value to submit */
     get value() { return this._value; }
     set value(value) {
         this._value = value;
@@ -5747,16 +6589,24 @@ class Input extends FormSubmitTag {
      ***** Attributes: TextArea *****
      *******************************/
 
-    /** visible width */
+    /**
+     * @type {number}
+     * @protected
+     */
     _columns;
+    /** visible width */
     get columns() { return this._columns; }
     set columns(value) {
         this._columns = value;
         this._setStandardValue('cols', value);
     }
 
-    /** visible number of lines */
+    /**
+     * @type {number}
+     * @protected
+     */
     _rows;
+    /** visible number of lines */
     get rows() { return this._rows; }
     set rows(value) {
         this._rows = value;
@@ -5764,10 +6614,14 @@ class Input extends FormSubmitTag {
     }
 
     /**
+     * @type {'hard' | 'soft'}
+     * @protected
+     */
+    _wrap;
+    /**
      * how the text in a text area is to be wrapped when submitted in a form
      * valid values: hard (adds newlines, must have cols defined), soft (not wrapped, default)
      */
-    _wrap;
     get wrap() { return this._wrap; }
     set wrap(value) {
         this._wrap = value;
@@ -5779,8 +6633,12 @@ class Input extends FormSubmitTag {
      ***** Attributes: Checkbox/Radio *****
      *************************************/
 
-    /** for "checkbox"/"radio" types; element should be pre-selected when the page loads [boolean] */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _checked;
+    /** for "checkbox"/"radio" types; element should be pre-selected when the page loads */
     get checked() { return this._checked; }
     set checked(value) {
         this._checked = value;
@@ -5793,10 +6651,14 @@ class Input extends FormSubmitTag {
      ***************************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _accept;
+    /**
      * for "file" type
      * valid values: «extension», audio/*, video/*, image/*, «media_type» – http://www.iana.org/assignments/media-types/
      */
-    _accept;
     get accept() { return this._accept; }
     set accept(value) {
         this._accept = value;
@@ -5809,34 +6671,50 @@ class Input extends FormSubmitTag {
      ****************************/
 
     /**
+     * @type {string}
+     * @protected
+     */
+    _alternateText;
+    /**
      * for "image" type; alternate text (for accessibility and broken links)
      * https://webaim.org/techniques/alttext/
      */
-    _alternateText;
     get alternateText() { return this._alternateText; }
     set alternateText(value) {
         this._alternateText = value;
         this._setStandardValue('alt', value);
     }
 
-    /** for "image" type; height in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _height;
+    /** for "image" type; height in pixels */
     get height() { return this._height; }
     set height(value) {
         this._height = value;
         this._setStandardValue('height', value);
     }
 
-    /** for "image" type; URL of an image */
+    /**
+     * @type {string}
+     * @protected
+     */
     _url;
+    /** for "image" type; URL of an image */
     get url() { return this._url; }
     set url(value) {
         this._url = value;
         this._setStandardValue('src', value);
     }
 
-    /** for "image" type; width in pixels */
+    /**
+     * @type {number}
+     * @protected
+     */
     _width;
+    /** for "image" type; width in pixels */
     get width() { return this._width; }
     set width(value) {
         this._width = value;
@@ -5875,16 +6753,24 @@ class Label extends ThemeableTag {
      ***** Attributes *****
      *********************/
 
-    /** specifies the form element a label is bound to; valid value: element ID */
+    /**
+     * @type {string}
+     * @protected
+     */
     _for;
+    /** ID for the form element the label is bound to */
     get for() { return this._for; }
     set for(value) {
         this._for = value;
         this._setStandardValue('for', value);
     }
 
-    /** one or more forms the label belongs to; valid value: form ID(s) (space-separated) */
+    /**
+     * @type {string}
+     * @protected
+     */
     _form;
+    /** ID(s) for form(s) the label belongs to (space-separated) */
     get form() { return this._form; }
     set form(value) {
         this._form = value;
@@ -6112,8 +6998,12 @@ class Alert extends Division {
      ***** Attributes *****
      *********************/
 
-    /** alert can be closed out (boolean) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _dismissible;
+    /** alert can be closed out */
     get dismissible() { return this._dismissible; }
     set dismissible(value) {
         // remove dynamic Bootstrap classes
@@ -6156,7 +7046,10 @@ class Alert extends Division {
      ***** Elements *****
      *******************/
 
-    /** button to dismiss alert */
+    /**
+     * button to dismiss alert
+     * @type {Button}
+     */
     dismissButton;
 
 
@@ -6282,7 +7175,10 @@ class Alert extends Division {
      ***** Static Methods *****
      *************************/
 
-	// add Bootstrap classes for headings
+    /**
+     * add Bootstrap classes for headings
+     * @param {Heading1 | Heading2 | Heading3 | Heading4 | Heading5 | Heading6} heading
+     */
     static formatHeading(heading) {
         // add Bootstrap classes
         heading.class('alert-heading');
@@ -6290,7 +7186,10 @@ class Alert extends Division {
         return heading;
     }
 
-	// add Bootstrap classes for links
+    /**
+     * add Bootstrap classes for links
+     * @param {Link} link
+     */
     static formatLink(link) {
         // add Bootstrap classes
         link.class('alert-link');
@@ -6313,11 +7212,11 @@ class Column extends Division {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents, column, columnSmall, columnMedium, columnLarge, columnXL, attributes) {
@@ -6360,8 +7259,12 @@ class Container extends Section {
      ***** Properties *****
      *********************/
 
-    /** 100% width across all viewport and device sizes (true) or responsive pixel width (false) */
+    /**
+     * @type {boolean}
+     * @protected
+     */
     _fluid;
+    /** 100% width across all viewport and device sizes (true) or responsive pixel width (false) */
     get fluid() { return this._fluid; }
     set fluid(value) {
         this.removeClass('container' + (this.fluid ? '-fluid' : ''));

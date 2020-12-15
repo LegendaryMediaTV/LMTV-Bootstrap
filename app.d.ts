@@ -10,12 +10,16 @@ export class Body extends ThemeableTag {
      */
     constructor(contents: any, attributes: object);
     set scripts(arg: void);
+    /** script tags to show before closing the tag */
     get scripts(): void;
     /********************
      ***** Elements *****
      *******************/
-    /** script tags to show before closing the tag */
-    _scripts: any;
+    /**
+     * @type {Script[]}
+     * @protected
+     */
+    protected _scripts: Script[];
     /*******************
      ***** Methods *****
      ******************/
@@ -41,55 +45,45 @@ export class Comment {
      */
     constructor(contents: any, blockClose: boolean, inline: boolean);
     set contents(arg: any);
-    /** contents [array] */
+    /** contents */
     get contents(): any;
     set blockClose(arg: boolean);
-    /** insert new line after comment close [boolean] */
+    /** insert new line after comment close */
     get blockClose(): boolean;
     set inline(arg: boolean);
+    /** all on one line */
+    get inline(): boolean;
     /**********************
      ***** Properties *****
      *********************/
-    /** all on one line */
-    get inline(): boolean;
     /**
      * @type {boolean}
-     * @private
+     * @protected
      */
-    private _inline;
+    protected _inline: boolean;
     /**
      * @type {boolean}
-     * @private
+     * @protected
      */
-    private _blockClose;
+    protected _blockClose: boolean;
     /**
      * @type any
-     * @private
+     * @protected
      */
-    private _contents;
+    protected _contents: any;
     /*******************
      ***** Methods *****
      ******************/
     /**
      * add content
      * @param {any} value value or array of values to go inside the HTML comment element
-     * @returns {void}
      */
     add(value: any): void;
-    /**
-     * open the HTML comment
-     * @returns {string}
-     */
+    /** open the HTML comment */
     start(): string;
-    /**
-     * close the HTML comment
-     * @returns {string}
-     */
+    /** close the HTML comment */
     stop(): string;
-    /**
-     * convert the object to a string
-     * @returns {string}
-     */
+    /** convert the object to a string */
     toString(): string;
 }
 /** container for all the head elements, including the title for the document, scripts, styles, meta information, and more */
@@ -103,45 +97,57 @@ export class Head extends BootstrapTag {
      * @param {object} attributes attributes for the head element
      */
     constructor(titleContents: any, contents: any, attributes: object);
-    set metadatas(arg: any);
-    get metadatas(): any;
-    set resourceLinks(arg: any);
-    get resourceLinks(): any;
+    set metadatas(arg: Metadata[]);
+    /** metadata tags [array] */
+    get metadatas(): Metadata[];
+    set resourceLinks(arg: ResourceLink[]);
+    /** linked resource documents */
+    get resourceLinks(): ResourceLink[];
     /********************
      ***** Elements *****
      *******************/
-    /** metadata tags [array] */
-    _metadatas: any;
-    /** linked resource documents [array] */
-    _resourceLinks: any;
-    /** style tags [array] */
-    _styles: any;
+    /**
+     * @type {Metadata[]}
+     * @protected
+     */
+    protected _metadatas: Metadata[];
+    /**
+     * @type {ResourceLink[]}
+     * @protected
+     */
+    protected _resourceLinks: ResourceLink[];
+    /**
+     * @type {Style[]}
+     * @protected
+     */
+    protected _styles: Style[];
     /**********************
      ***** Properties *****
      *********************/
     /**
      * character set
      * https://www.w3schools.com/tags/att_meta_charset.asp
+     * @type {string}
      */
-    charset: any;
+    charset: string;
     /*******************
      ***** Methods *****
      ******************/
     /**
      * provides metadata about the HTML document
      * https://www.w3schools.com/tags/tag_meta.asp
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    metadata(name: any, content: any, attributes: object): void;
+    metadata(name: 'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata, content: string, attributes: object): void;
     /**
      * link between a document and an external resource
      * https://www.w3schools.com/tags/tag_link.asp
-     * @param {string} url path to the linked file
+     * @param {string | ResourceLink} url path to the linked file
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    resourceLink(url: string, attributes: object): void;
+    resourceLink(url: string | ResourceLink, attributes: object): void;
 }
 /**
  * link between a document and an external resource
@@ -150,42 +156,62 @@ export class Head extends BootstrapTag {
 export class ResourceLink extends CrossOriginTag {
     /**
      * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {string} url path to the linked file
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(url: any, attributes: object);
-    set url(arg: any);
-    get url(): any;
-    set rel(arg: any);
-    get rel(): any;
+    constructor(url: string, attributes: object);
+    set url(arg: string);
+    /** location of the linked document */
+    get url(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _media: string;
+    set media(arg: string);
     /**
      * media query that specifies on what device the linked document will be displayed
      * https://www.w3schools.com/tags/att_link_media.asp
      */
-    _media: any;
-    set media(arg: any);
-    get media(): any;
+    get media(): string;
+    /**
+     * @type {'alternate' | 'author' | 'dns-prefetch' | 'help' | 'icon' | 'license' | 'next' | 'pingback' | 'preconnect' | 'prefetch' | 'preload' | 'prerender' | 'prev' | 'search' | 'stylesheet'}
+     * @protected
+     */
+    protected _relationship: 'alternate' | 'author' | 'dns-prefetch' | 'help' | 'icon' | 'license' | 'next' | 'pingback' | 'preconnect' | 'prefetch' | 'preload' | 'prerender' | 'prev' | 'search' | 'stylesheet';
+    set relationship(arg: "search" | "alternate" | "next" | "prev" | "prerender" | "icon" | "author" | "stylesheet" | "dns-prefetch" | "help" | "license" | "pingback" | "preconnect" | "prefetch" | "preload");
     /**
      * relationship between the current document and the linked document
      * valid values: alternate, author, dns-prefetch, help, icon, license, next, pingback, preconnect, prefetch, preload, prerender, prev, search, stylesheet
      */
-    _rel: any;
+    get relationship(): "search" | "alternate" | "next" | "prev" | "prerender" | "icon" | "author" | "stylesheet" | "dns-prefetch" | "help" | "license" | "pingback" | "preconnect" | "prefetch" | "preload";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _sizes: string;
+    set sizes(arg: string);
     /**
      * size of the linked resource (for rel="icon" only)
      * valid values: «height»x«width», any
      */
-    _sizes: any;
-    set sizes(arg: any);
-    get sizes(): any;
+    get sizes(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _type: string;
+    set type(arg: string);
     /**
      * media type of the linked document
      * http://www.iana.org/assignments/media-types/
      */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
-    /** location of the linked document */
-    _url: any;
+    get type(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
 }
 /**
  * document type and the container for all other HTML elements
@@ -206,24 +232,28 @@ export class HTML extends BootstrapTag {
      *******************/
     /** HTML body tag */
     body: Body;
-    set metadatas(arg: any);
-    /** meta tags [array] */
-    get metadatas(): any;
-    set resourceLinks(arg: any);
+    set metadatas(arg: Metadata[]);
+    /** meta tags */
+    get metadatas(): Metadata[];
+    set resourceLinks(arg: ResourceLink[]);
     /** linked resource documents [array] */
-    get resourceLinks(): any;
-    set scripts(arg: void);
-    /** script tags to show before closing the tag */
-    get scripts(): void;
-    set charset(arg: any);
+    get resourceLinks(): ResourceLink[];
+    set scripts(arg: Script[]);
+    /**
+     * script tags to show before closing the tag
+     * @type {Script[]}
+     */
+    get scripts(): Script[];
+    set charset(arg: string);
     /**********************
      ***** Properties *****
      *********************/
     /**
      * character set
      * https://www.w3schools.com/tags/att_meta_charset.asp
+     * @type {string}
      */
-    get charset(): any;
+    get charset(): string;
     /**
      * add Bootstrap and its dependencies
      * @param {string} bootstrapCSS URL for Bootstrap CSS, null means latest from JSDelivr CDN
@@ -237,11 +267,11 @@ export class HTML extends BootstrapTag {
     /**
      * provides metadata about the HTML document
      * https://www.w3schools.com/tags/tag_meta.asp
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    metadata(name: any, content: any, attributes: object): void;
+    metadata(name: 'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport' | Metadata, content: string, attributes: object): void;
     /**
      * link between a document and an external resource
      * https://www.w3schools.com/tags/tag_link.asp
@@ -265,57 +295,82 @@ export class HTML extends BootstrapTag {
 export class Metadata extends BootstrapTag {
     /**
      * create a new instance of the object
-     * @param {any} name name for the metadata element
-     * @param {any} content value for the metadata element
+     * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport'} name name for the metadata element
+     * @param {string} content value for the metadata element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(name: any, content: any, attributes: object);
-    set name(arg: any);
-    get name(): any;
-    set content(arg: any);
-    get content(): any;
+    constructor(name: 'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport', content: string, attributes: object);
+    set name(arg: "application-name" | "author" | "description" | "generator" | "keywords" | "viewport");
+    /** metadata name */
+    get name(): "application-name" | "author" | "description" | "generator" | "keywords" | "viewport";
+    set content(arg: string);
+    /** metadata value */
+    get content(): string;
     /**********************
      ***** Attributes *****
      *********************/
     /**
+     * @type {string}
+     * @protected
+     */
+    protected _charset: string;
+    set charset(arg: string);
+    /**
      * character encoding for the HTML document
      * https://www.w3schools.com/tags/att_meta_charset.asp
      */
-    _charset: any;
-    set charset(arg: any);
-    get charset(): any;
-    /** metadata value */
-    _content: any;
+    get charset(): string;
     /**
-     * metadata name
-     * valid values: application-name, author, description, generator, keywords, viewport
+     * @type {string}
+     * @protected
      */
-    _name: any;
+    protected _content: string;
+    /**
+     * @type {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport'}
+     * @protected
+     */
+    protected _name: 'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport';
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _headerEquivalent: string;
+    set headerEquivalent(arg: string);
     /**
      * provides an HTTP header for the information/value of the content attribute and can be used to simulate an HTTP response header
      * https://www.w3schools.com/tags/att_meta_http_equiv.asp
      */
-    _headerEquivalent: any;
-    set headerEquivalent(arg: any);
-    get headerEquivalent(): any;
+    get headerEquivalent(): string;
     /**********************
      ***** Properties *****
      *********************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _contentType: string;
+    set contentType(arg: string);
     /** character encoding for the document */
-    _contentType: any;
-    set contentType(arg: any);
-    get contentType(): any;
+    get contentType(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _defaultStyle: string;
+    set defaultStyle(arg: string);
     /**
      * the preferred style sheet to use (must match the value of the title attribute on a link element in the same document, or it
      * must match the value of the title attribute on a style element in the same document)
      */
-    _defaultStyle: any;
-    set defaultStyle(arg: any);
-    get defaultStyle(): any;
+    get defaultStyle(): string;
+    /**
+     * @type {number | string}
+     * @protected
+     */
+    protected _refresh: number | string;
+    set refresh(arg: string | number);
     /** time interval (in seconds) for the document to refresh itself, optionally append the time with "; url=http://www.example.com/" to relocate */
-    _refresh: any;
-    set refresh(arg: any);
-    get refresh(): any;
+    get refresh(): string | number;
 }
 /**
  * contains JavaScript statements or points to an external script file
@@ -329,35 +384,55 @@ export class Script extends CrossOriginTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents: any, url: string, attributes: object);
-    set url(arg: any);
-    get url(): any;
+    set url(arg: string);
+    /** location of the external script file (not needed when code is embedded) */
+    get url(): string;
     /**********************
      ***** Attributes *****
      *********************/
-    /** specifies that the script is executed asynchronously (only for external scripts) [boolean] */
-    _async: any;
-    set async(arg: any);
-    get async(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _async: boolean;
+    set async(arg: boolean);
+    /** specifies that the script is executed asynchronously (only for external scripts) */
+    get async(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _charset: string;
+    set charset(arg: string);
     /**
      * character encoding used in an external script file
      * https://www.w3schools.com/charsets/default.asp
      */
-    _charset: any;
-    set charset(arg: any);
-    get charset(): any;
-    /** specifies that the script is executed when the page has finished parsing (only for external scripts) [boolean] */
-    _defer: any;
-    set defer(arg: any);
-    get defer(): any;
+    get charset(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _defer: string;
+    set defer(arg: string);
+    /** specifies that the script is executed when the page has finished parsing (only for external scripts) */
+    get defer(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _type: string;
+    set type(arg: string);
     /**
      * media type
      * http://www.iana.org/assignments/media-types/media-types.xhtml
      */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
-    /** location of the external script file (not needed when code is embedded) */
-    _url: any;
+    get type(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
 }
 /**
  * contains embedded styling information
@@ -374,12 +449,16 @@ export class Style extends BootstrapTag {
      ***** Attributes *****
      *********************/
     /**
+     * @type {string}
+     * @protected
+     */
+    protected _media: string;
+    set media(arg: string);
+    /**
      * specifies what media/device the media resource is optimized for
      * https://www.w3schools.com/tags/att_style_media.asp
      */
-    _media: any;
-    set media(arg: any);
-    get media(): any;
+    get media(): string;
 }
 /**
  * defines the title of the document, shows in browser toolbar, favorites, and search engine results
@@ -554,27 +633,50 @@ export class DefinitionTerm extends ThemeableTag {
 export class Details extends ThemeableTag {
     /**
      * create a new instance of the object
+     * @param {any} summmary value or array of values to go inside the summary element
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(summary: any, contents: any, attributes: object);
+    /********************
+     ***** Elements *****
+     *******************/
+    /**
+     * detail summary
+     * @type DetailSummary
+     */
+    summary: DetailSummary;
+    /**********************
+     ***** Attributes *****
+     *********************/
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _open: boolean;
+    set open(arg: boolean);
+    /** specifies whether the details should be visible to the user */
+    get open(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onToggle: string;
+    set onToggle(arg: string);
+    /** fires when the user opens or closes the element */
+    get onToggle(): string;
+}
+/**
+ * visible heading for Details, which can be clicked to view/hide the details
+ * https://www.w3schools.com/tags/tag_summary.asp
+ */
+export class DetailSummary extends ThemeableTag {
+    /**
+     * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents: any, attributes: object);
-    set summary(arg: any);
-    get summary(): any;
-    /**********************
-     ***** Attributes *****
-     *********************/
-    /** specifies whether the details should be visible to the user [boolean] */
-    _open: any;
-    set open(arg: any);
-    get open(): any;
-    /** fires when the user opens or closes the element */
-    _onToggle: any;
-    set onToggle(arg: any);
-    get onToggle(): any;
-    /********************
-     ***** Elements *****
-     *******************/
-    _summary: any;
 }
 /**
  * generic container for grouping content for styling/visual purposes
@@ -615,27 +717,35 @@ export class Figure extends ThemeableTag {
      */
     constructor(url: string, alternateText: string, caption: any, attributes: object);
     /**
-     * image
-     * https://www.w3schools.com/tags/tag_img.asp
+     * @type {Image}
+     * @protected
      */
-    _image: Image;
-    set caption(arg: any);
-    get caption(): any;
-    /********************
-     ***** Elements *****
-     *******************/
+    protected _image: Image;
+    set caption(arg: FigureCaption);
     /**
      * caption for a <figure> element
      * https://www.w3schools.com/tags/tag_figcaption.asp
      */
-    _caption: any;
+    get caption(): FigureCaption;
+    /********************
+     ***** Elements *****
+     *******************/
+    /**
+     * @type {FigureCaption}
+     * @protected
+     */
+    protected _caption: FigureCaption;
     /**********************
      ***** Properties *****
      *********************/
-    /** put the caption element above the figure (default: false) [boolean] */
-    _captionOnTop: any;
-    set captionOnTop(arg: any);
-    get captionOnTop(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _captionOnTop: boolean;
+    set captionOnTop(arg: boolean);
+    /** put the caption element above the figure (default: false) */
+    get captionOnTop(): boolean;
 }
 /**
  * caption for a <figure> element
@@ -778,11 +888,11 @@ export class Italics extends ThemeableTag {
 export class Icon extends ThemeableTag {
     /**
      * create a new instance of the object
-     * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
-     * @param {any} ariaLabel accessibility string value that labels the current element
+     * @param {string} name FontAwesome class name (e.g., "fas fa-camera")
+     * @param {string} ariaLabel accessibility string value that labels the current element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(name: any, ariaLabel: any, attributes: object);
+    constructor(name: string, ariaLabel: string, attributes: object);
 }
 /**
  * inline frame for embedding another document
@@ -795,33 +905,60 @@ export class InlineFrame extends ThemeableTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(url: string, attributes: object);
-    set url(arg: any);
-    get url(): any;
+    set url(arg: string);
+    /** address of the document to embed */
+    get url(): string;
     /**********************
      ***** Attributes *****
      *********************/
-    /** allow iframe to go into fullscreen mode (i.e., videos) [boolean] */
-    _allowFullScreen: any;
-    set allowFullScreen(arg: any);
-    get allowFullScreen(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _allowFullScreen: boolean;
+    set allowFullScreen(arg: boolean);
+    /** allow iframe to go into fullscreen mode (i.e., videos) */
+    get allowFullScreen(): boolean;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _height: number;
+    set height(arg: number);
     /** height in pixels */
-    _height: any;
-    set height(arg: any);
-    get height(): any;
+    get height(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _name: number;
+    set name(arg: number);
     /** name of the iframe (can be used to reference the element in a JavaScript, or as the value of the target attribute of an <a> or <form> element, or the formtarget attribute of an <input> or <button> element) */
-    _name: any;
-    set name(arg: any);
-    get name(): any;
-    /** enables an extra set of restrictions for the content in the iframe (whitelist); valid values: true (fully restrict) allow-forms, allow-pointer-lock, allow-popups, allow-same-origin, allow-scripts, allow-top-navigation */
-    _sandbox: any;
-    set sandbox(arg: any);
-    get sandbox(): any;
-    /** address of the document to embed */
-    _url: any;
+    get name(): number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _sandbox: string;
+    set sandbox(arg: string);
+    /**
+     * enables an extra set of restrictions for the content in the iframe (whitelist)
+     * valid values: true (fully restrict) allow-forms, allow-pointer-lock, allow-popups, allow-same-origin, allow-scripts, allow-top-navigation
+     */
+    get sandbox(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _width: number;
+    set width(arg: number);
     /**  width in pixels */
-    _width: any;
-    set width(arg: any);
-    get width(): any;
+    get width(): number;
 }
 /**
  * image
@@ -835,40 +972,71 @@ export class Image extends CrossOriginTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(url: string, alternateText: string, attributes: object);
-    set url(arg: any);
-    get url(): any;
-    set alternateText(arg: any);
-    get alternateText(): any;
-    /**********************
-     ***** Attributes *****
-     *********************/
+    set url(arg: string);
+    /** URL path of an image file */
+    get url(): string;
+    set alternateText(arg: string);
     /**
      * alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references)
      * https://webaim.org/techniques/alttext/
      */
-    _alternateText: any;
+    get alternateText(): string;
+    /**********************
+     ***** Attributes *****
+     *********************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _alternateText: string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _height: number;
+    set height(arg: number);
     /** height in pixels */
-    _height: any;
-    set height(arg: any);
-    get height(): any;
-    /** specifies that the image is part of a server-side image-map (an image-map is an image with clickable areas) [boolean] */
-    _isMap: any;
-    set isMap(arg: any);
-    get isMap(): any;
+    get height(): number;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _isMap: boolean;
+    set isMap(arg: boolean);
+    /** specifies that the image is part of a server-side image-map (an image-map is an image with clickable areas) */
+    get isMap(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _longDescription: string;
+    set longDescription(arg: string);
     /** URL to a detailed description of an image */
-    _longDescription: any;
-    set longDescription(arg: any);
-    get longDescription(): any;
-    /** URL path of an image file */
-    _url: any;
-    /** specifies an image as a client-side image-map (an image-map is an image with clickable areas); valid value: hash character ("#") plus the name of the <map> element to use */
-    _useMap: any;
-    set useMap(arg: any);
-    get useMap(): any;
+    get longDescription(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _useMap: string;
+    set useMap(arg: string);
+    /**
+     * specifies an image as a client-side image-map (an image-map is an image with clickable areas)
+     * valid value: hash character ("#") plus the name of the <map> element to use
+     */
+    get useMap(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _width: number;
+    set width(arg: number);
     /** width in pixels */
-    _width: any;
-    set width(arg: any);
-    get width(): any;
+    get width(): number;
 }
 /**
  * underline (insertion)
@@ -917,66 +1085,95 @@ export class Link extends ThemeableTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(url: string, contents: any, attributes: object);
-    set url(arg: any);
-    get url(): any;
+    set url(arg: string);
+    /** URL of the page the link goes to */
+    get url(): string;
     /**********************
      ***** Attributes *****
      *********************/
     /**
-     * specifies that the target will be downloaded when a user clicks on the hyperlink
-     * valid values: true, URL
+     * @type {boolean}
+     * @protected
      */
-    _download: any;
-    set download(arg: any);
-    get download(): any;
+    protected _download: boolean;
+    set download(arg: boolean);
+    /**
+     * specifies that the target will be downloaded when a user clicks on the hyperlink
+     */
+    get download(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _linkLanguage: string;
+    set linkLanguage(arg: string);
     /**
      * language code of the text in the linked document
      * https://www.w3schools.com/tags/ref_language_codes.asp
      */
-    _linkLanguage: any;
-    set linkLanguage(arg: any);
-    get linkLanguage(): any;
+    get linkLanguage(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _media: string;
+    set media(arg: string);
     /**
      * media query that specifies on what device the linked document will be displayed
      * https://www.w3schools.com/tags/att_link_media.asp
      */
-    _media: any;
-    set media(arg: any);
-    get media(): any;
+    get media(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ping: string;
+    set ping(arg: string);
     /** specifies a list of URLs (separated by spaces) to be notified if the user follows the hyperlink, sending a short HTTP POST request to the specified URL(s) */
-    _ping: any;
-    set ping(arg: any);
-    get ping(): any;
+    get ping(): string;
     /**
-     * relationship between the current document and the linked document
-     * valid values: alternate, author, bookmark, external, help, license, next, nofollow, noreferrer, noopener, prev, search, tag
+     * @type {'alternate' | 'author' | 'bookmark' | 'external' | 'help' | 'license' | 'next' | 'nofollow' | 'noreferrer' | 'noopener' | 'prev' | 'search' | 'tag'}
+     * @protected
      */
-    _rel: any;
-    set rel(arg: any);
-    get rel(): any;
+    protected _relationship: 'alternate' | 'author' | 'bookmark' | 'external' | 'help' | 'license' | 'next' | 'nofollow' | 'noreferrer' | 'noopener' | 'prev' | 'search' | 'tag';
+    set relationship(arg: "search" | "alternate" | "next" | "prev" | "tag" | "author" | "help" | "license" | "bookmark" | "external" | "nofollow" | "noreferrer" | "noopener");
+    /** relationship between the current document and the linked document */
+    get relationship(): "search" | "alternate" | "next" | "prev" | "tag" | "author" | "help" | "license" | "bookmark" | "external" | "nofollow" | "noreferrer" | "noopener";
     /**
-     * specifies which referrer to send
-     * valid values: no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, unsafe-url
+     * @type {'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'unsafe-url'}
+     * @protected
      */
-    _referrerPolicy: any;
-    set referrerPolicy(arg: any);
-    get referrerPolicy(): any;
+    protected _referrerPolicy: 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'unsafe-url';
+    set referrerPolicy(arg: "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "unsafe-url");
+    /** specifies which referrer to send */
+    get referrerPolicy(): "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "unsafe-url";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _target: string;
+    set target(arg: string);
     /**
      * specifies where to open the linked document
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target: any;
-    set target(arg: any);
-    get target(): any;
+    get target(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _type: string;
+    set type(arg: string);
     /**
      * media type of the linked document
      * http://www.iana.org/assignments/media-types/
      */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
-    /** URL of the page the link goes to */
-    _url: any;
+    get type(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
 }
 /**
  * list of items
@@ -995,21 +1192,33 @@ export class List extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** ordered list should be descending (9, 8, 7, …) [boolean] */
-    _reversed: any;
-    set reversed(arg: any);
-    get reversed(): any;
-    /** starting value for ordered lists [number] */
-    _startingValue: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _reversed: boolean;
+    set reversed(arg: boolean);
+    /** ordered list should be descending (9, 8, 7, …) */
+    get reversed(): boolean;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _startingValue: number;
     set startingValue(arg: any);
+    /** starting value for ordered lists */
     get startingValue(): any;
+    /**
+     * @type {'1' | 'A' | 'a' | 'I' | 'i'}
+     * @protected
+     */
+    protected _type: '1' | 'A' | 'a' | 'I' | 'i';
+    set type(arg: "a" | "i" | "1" | "A" | "I");
     /**
      * markers to use for ordered lists
      * valid values: 1, A, a, I, i
      */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
+    get type(): "a" | "i" | "1" | "A" | "I";
 }
 /**
  * list item for ordered/unordered lists
@@ -1025,10 +1234,14 @@ export class ListItem extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** value of a list item [number], where the following list items will increment from that number (only for ordered lists) */
-    _value: any;
-    set value(arg: any);
-    get value(): any;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _value: number;
+    set value(arg: number);
+    /** value of a list item, where the following list items will increment from that number (only for ordered lists) */
+    get value(): number;
 }
 /**
  * monospaced and preserves whitespace (pre-formatted)
@@ -1068,16 +1281,30 @@ export class Output extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** specifies the relationship between the result of the calculation, and the elements used in the calculation; valid value: element ID(s) (space-separated) */
-    _for: any;
-    set for(arg: any);
-    get for(): any;
-    /** one or more forms the output belongs to; valid value: form ID(s) (space-separated) */
-    _form: any;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _for: string;
+    set for(arg: string);
+    /**
+     * specifies the relationship between the result of the calculation, and the elements used in the calculation
+     * valid value: element ID(s) (space-separated)
+     */
+    get for(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _form: string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _name: string;
+    set name(arg: string);
     /** element name (for use by calculation trigger code) */
-    _name: any;
-    set name(arg: any);
-    get name(): any;
+    get name(): string;
 }
 /**
  * paragraph
@@ -1189,43 +1416,38 @@ export class Superscript extends ThemeableTag {
     constructor(contents: any, attributes: object);
 }
 /**
- * visible heading for the <details> element, which can be clicked to view/hide the details
- * https://www.w3schools.com/tags/tag_summary.asp
- */
-export class Summary extends ThemeableTag {
-    /**
-     * create a new instance of the object
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(contents: any, attributes: object);
-}
-/**
  * Scalable Vector Graphics (text-based image)
  * https://www.w3schools.com/tags/tag_svg.asp
- * TODO: test themeable
  * TODO: add various methods for SVG elements: https://www.w3schools.com/graphics/svg_intro.asp
  */
 export class SVG extends ThemeableTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {int} width width in pixels
-     * @param {int} height height in pixels
+     * @param {number} width width in pixels
+     * @param {number} height height in pixels
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(contents: any, width: any, height: any, attributes: object);
-    set width(arg: any);
-    get width(): any;
-    set height(arg: any);
-    get height(): any;
+    constructor(contents: any, width: number, height: number, attributes: object);
+    set width(arg: number);
+    /** width in pixels */
+    get width(): number;
+    set height(arg: number);
+    /** height in pixels */
+    get height(): number;
     /**********************
      ***** Attributes *****
      *********************/
-    /** height in pixels */
-    _height: any;
-    /** width in pixels */
-    _width: any;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _height: number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _width: number;
 }
 /**
  * defining instance of a term (i.e., the parent container of this tag must also contain the definition/explanation for this term)
@@ -1254,10 +1476,14 @@ export class Time extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _timestamp: string;
+    set timestamp(arg: string);
     /** SQL-like timestamp so that browsers can offer to add date reminders through the user's calendar, and search engines can produce smarter search results, etc. */
-    _timestamp: any;
-    set timestamp(arg: any);
-    get timestamp(): any;
+    get timestamp(): string;
 }
 /**
  * underline
@@ -1287,12 +1513,18 @@ export class Table extends ThemeableTag {
      * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the table caption
      */
     constructor(contents: any, caption: any, attributes: object, captionAttributes: object, headerAttributes: object, bodyAttributes: object, footerAttributes: object);
-    /** table caption */
+    /**
+     * table caption
+     * @type {TableCaption}
+     */
     caption: TableCaption;
     /********************
      ***** Elements *****
      *******************/
-    /** table body */
+    /**
+     * table body
+     * @type {TableBody}
+     */
     body: TableBody;
 }
 /**
@@ -1369,15 +1601,19 @@ export class TableHeading extends TableCellTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** abbreviated version of the content in a header cell; it has no visual effect in ordinary web browsers, but can be used by screen readers */
-    _abbreviation: any;
     /**
-     * specifies what the header cell is a header for
-     * valid values: col, colgroup, row, rowgroup
+     * @type {string}
+     * @protected
      */
-    _scope: any;
-    set scope(arg: any);
-    get scope(): any;
+    protected _abbreviation: string;
+    /**
+     * @type {'col' | 'colgroup' | 'row' | 'rowgroup'}
+     * @protected
+     */
+    protected _scope: 'col' | 'colgroup' | 'row' | 'rowgroup';
+    set scope(arg: "col" | "colgroup" | "row" | "rowgroup");
+    /** specifies what the header cell is a header for */
+    get scope(): "col" | "colgroup" | "row" | "rowgroup";
 }
 /**
  * clickable button
@@ -1394,28 +1630,44 @@ export class Button extends FormSubmitTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** active state [boolean] */
-    _active: any;
-    set active(arg: any);
-    get active(): any;
-    /** block-level (full-width) [boolean] */
-    _block: any;
-    set block(arg: any);
-    get block(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _active: boolean;
+    set active(arg: boolean);
+    /** active state */
+    get active(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _block: boolean;
+    set block(arg: boolean);
+    /** block-level (full-width) */
+    get block(): boolean;
+    /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    protected _scale: 'sm' | 'lg';
+    set scale(arg: "sm" | "lg");
     /**
      * button size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale: any;
-    set scale(arg: any);
-    get scale(): any;
+    get scale(): "sm" | "lg";
+    /**
+     * @type {'button' | 'reset' | 'submit'}
+     * @protected
+     */
+    protected _type: 'button' | 'reset' | 'submit';
+    set type(arg: "button" | "reset" | "submit");
     /**
      * type of button
      * valid values: button, reset, submit
      */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
+    get type(): "button" | "reset" | "submit";
 }
 /**
  * checkbox (on/off, yes/no, etc.)
@@ -1450,21 +1702,33 @@ export class Dropdown extends DropdownContainerTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** specifies that multiple options can be selected at once [boolean] */
-    _multiple: any;
-    set multiple(arg: any);
-    get multiple(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _multiple: boolean;
+    set multiple(arg: boolean);
+    /** specifies that multiple options can be selected at once */
+    get multiple(): boolean;
+    /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    protected _scale: 'sm' | 'lg';
+    set scale(arg: "sm" | "lg");
     /**
      * dropdown size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale: any;
-    set scale(arg: any);
-    get scale(): any;
-    /** number of visible options in a drop-down list [number] */
-    _size: any;
-    set size(arg: any);
-    get size(): any;
+    get scale(): "sm" | "lg";
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _size: number;
+    set size(arg: number);
+    /** number of visible options in a drop-down list */
+    get size(): number;
 }
 /**
  * collection of sub-options within a dropdown
@@ -1475,8 +1739,11 @@ export class DropdownGroup extends DropdownContainerTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** label to display */
-    _label: any;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _label: string;
 }
 /**
  * dropdown item
@@ -1494,15 +1761,26 @@ export class DropdownOption extends BootstrapTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** shorter label to display */
-    _label: any;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _label: string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _selected: boolean;
     /** pre-select item when the page loads [boolean] */
-    _selected: any;
     set selected(arg: any);
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _value: string;
+    set value(arg: string);
     /** field value to submit when selected */
-    _value: any;
-    set value(arg: any);
-    get value(): any;
+    get value(): string;
 }
 /**
  * file browser for uploading files
@@ -1518,7 +1796,10 @@ export class FileUploader extends FormTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(label: any, name: string, attributes: object);
-    /** wrapper for holding all the components */
+    /**
+     * wrapper for holding all the components
+     * @type Division
+     */
     wrapper: Division;
 }
 /**
@@ -1536,55 +1817,92 @@ export class Form extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** allow auto-complete [boolean] */
-    _autoComplete: any;
-    set autoComplete(arg: any);
-    get autoComplete(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _autoComplete: boolean;
+    set autoComplete(arg: boolean);
+    /** allow auto-complete */
+    get autoComplete(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _charset: string;
+    set charset(arg: string);
     /**
      * character encoding for the form submission (default is the document's encoding)
      * https://www.w3schools.com/tags/att_meta_charset.asp
      */
-    _charset: any;
-    set charset(arg: any);
-    get charset(): any;
-    /** form has a file upload element [boolean] */
-    _fileUpload: any;
-    set fileUpload(arg: any);
-    get fileUpload(): any;
-    /** display a series of labels, form controls, and buttons on a single horizontal row [boolean] */
-    _inline: any;
-    set inline(arg: any);
-    get inline(): any;
+    get charset(): string;
     /**
-     * HTTP method to use when sending form data
-     * valid values: get, post
+     * @type {boolean}
+     * @protected
      */
-    _method: any;
-    set method(arg: any);
-    get method(): any;
-    /** name for the form; used to reference elements in a JavaScript, or to reference form data after a form is submitted (for $_POST array) */
-    _name: any;
-    set name(arg: any);
-    get name(): any;
-    /** form should not be validated when submitted [boolean] */
-    _noValidate: any;
-    set noValidate(arg: any);
-    get noValidate(): any;
+    protected _fileUpload: boolean;
+    set fileUpload(arg: boolean);
+    /** form has a file upload element */
+    get fileUpload(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _inline: boolean;
+    set inline(arg: boolean);
+    /** display a series of labels, form controls, and buttons on a single horizontal row */
+    get inline(): boolean;
+    /**
+     * @type {'get' | 'post'}
+     * @protected
+     */
+    protected _method: 'get' | 'post';
+    set method(arg: "get" | "post");
+    /** HTTP method to use when sending form data */
+    get method(): "get" | "post";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _name: string;
+    set name(arg: string);
+    /** name for the form; used to reference elements in a JavaScript, or to reference form data after a form is submitted */
+    get name(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _noValidate: boolean;
+    set noValidate(arg: boolean);
+    /** form should not be validated when submitted */
+    get noValidate(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _target: string;
+    set target(arg: string);
     /**
      * specifies where to display the response that is received after submitting the form
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target: any;
-    set target(arg: any);
-    get target(): any;
+    get target(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
+    set url(arg: string);
     /** URL where to send data when the form is submitted */
-    _url: any;
-    set url(arg: any);
-    get url(): any;
+    get url(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onSubmit: string;
+    set onSubmit(arg: string);
     /** fires when a form is submitted */
-    _onSubmit: any;
-    set onSubmit(arg: any);
-    get onSubmit(): any;
+    get onSubmit(): string;
 }
 /**
  * generic input tag
@@ -1602,120 +1920,211 @@ export class Input extends FormSubmitTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** allow auto-complete [boolean] */
-    _autoComplete: any;
-    set autoComplete(arg: any);
-    get autoComplete(): any;
-    /** <datalist> element containing pre-defined options */
-    _list: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _autoComplete: boolean;
+    set autoComplete(arg: boolean);
+    /** allow auto-complete */
+    get autoComplete(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _list: string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _max: string;
+    set max(arg: string);
     /** maximum value (number/date) */
-    _max: any;
-    set max(arg: any);
-    get max(): any;
+    get max(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _maxLength: number;
+    set maxLength(arg: number);
     /** maximum number of characters */
-    _maxLength: any;
-    set maxLength(arg: any);
-    get maxLength(): any;
+    get maxLength(): number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _min: string;
+    set min(arg: string);
     /** minimum value (number/date) */
-    _min: any;
-    set min(arg: any);
-    get min(): any;
-    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) [boolean] */
-    _multiple: any;
-    set multiple(arg: any);
-    get multiple(): any;
+    get min(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _multiple: boolean;
+    set multiple(arg: boolean);
+    /** user can enter more than one value for file (Ctrl/Shift + Select) or email (comma-separated) */
+    get multiple(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _pattern: string;
+    set pattern(arg: string);
     /** regular expression for validation */
-    _pattern: any;
-    set pattern(arg: any);
-    get pattern(): any;
+    get pattern(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _placeholder: string;
+    set placeholder(arg: string);
     /** short hint that describes the expected value */
-    _placeholder: any;
-    set placeholder(arg: any);
-    get placeholder(): any;
-    /** remove the default form field styling and preserve the correct margin and padding [boolean] */
-    _plainText: any;
-    set plainText(arg: any);
-    get plainText(): any;
-    /** input field is read-only [boolean] */
-    _readOnly: any;
-    set readOnly(arg: any);
-    get readOnly(): any;
+    get placeholder(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _plainText: boolean;
+    set plainText(arg: boolean);
+    /** remove the default form field styling and preserve the correct margin and padding */
+    get plainText(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _readOnly: boolean;
+    set readOnly(arg: boolean);
+    /** input field is read-only */
+    get readOnly(): boolean;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _size: number;
+    set size(arg: number);
     /** width in characters */
-    _size: any;
-    set size(arg: any);
-    get size(): any;
+    get size(): number;
+    /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    protected _scale: 'sm' | 'lg';
+    set scale(arg: "sm" | "lg");
     /**
      * input size
      * valid values: null (default), sm (small), lg (large)
      */
-    _scale: any;
-    set scale(arg: any);
-    get scale(): any;
+    get scale(): "sm" | "lg";
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _step: number;
+    set step(arg: number);
     /** interval between legal numbers */
-    _step: any;
-    set step(arg: any);
-    get step(): any;
-    /** valid values: button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
+    get step(): number;
+    /**
+     * @type {'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week'}
+     * @protected
+     */
+    protected _type: 'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week';
+    set type(arg: "number" | "search" | "password" | "hidden" | "button" | "time" | "image" | "text" | "reset" | "submit" | "date" | "url" | "checkbox" | "radio" | "file" | "color" | "datetime-local" | "email" | "month" | "range" | "tel" | "week");
+    /** type of input */
+    get type(): "number" | "search" | "password" | "hidden" | "button" | "time" | "image" | "text" | "reset" | "submit" | "date" | "url" | "checkbox" | "radio" | "file" | "color" | "datetime-local" | "email" | "month" | "range" | "tel" | "week";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _value: string;
+    set value(arg: string);
     /** field value to submit */
-    _value: any;
-    set value(arg: any);
-    get value(): any;
+    get value(): string;
     /********************************
      ***** Attributes: TextArea *****
      *******************************/
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _columns: number;
+    set columns(arg: number);
     /** visible width */
-    _columns: any;
-    set columns(arg: any);
-    get columns(): any;
+    get columns(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _rows: number;
+    set rows(arg: number);
     /** visible number of lines */
-    _rows: any;
-    set rows(arg: any);
-    get rows(): any;
+    get rows(): number;
+    /**
+     * @type {'hard' | 'soft'}
+     * @protected
+     */
+    protected _wrap: 'hard' | 'soft';
+    set wrap(arg: "hard" | "soft");
     /**
      * how the text in a text area is to be wrapped when submitted in a form
      * valid values: hard (adds newlines, must have cols defined), soft (not wrapped, default)
      */
-    _wrap: any;
-    set wrap(arg: any);
-    get wrap(): any;
+    get wrap(): "hard" | "soft";
     /**************************************
      ***** Attributes: Checkbox/Radio *****
      *************************************/
-    /** for "checkbox"/"radio" types; element should be pre-selected when the page loads [boolean] */
-    _checked: any;
-    set checked(arg: any);
-    get checked(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _checked: boolean;
+    set checked(arg: boolean);
+    /** for "checkbox"/"radio" types; element should be pre-selected when the page loads */
+    get checked(): boolean;
     /****************************
      ***** Attributes: File *****
      ***************************/
     /**
+     * @type {string}
+     * @protected
+     */
+    protected _accept: string;
+    set accept(arg: string);
+    /**
      * for "file" type
      * valid values: «extension», audio/*, video/*, image/*, «media_type» – http://www.iana.org/assignments/media-types/
      */
-    _accept: any;
-    set accept(arg: any);
-    get accept(): any;
+    get accept(): string;
     /*****************************
      ***** Attributes: Image *****
      ****************************/
     /**
+     * @type {string}
+     * @protected
+     */
+    protected _alternateText: string;
+    set alternateText(arg: string);
+    /**
      * for "image" type; alternate text (for accessibility and broken links)
      * https://webaim.org/techniques/alttext/
      */
-    _alternateText: any;
-    set alternateText(arg: any);
-    get alternateText(): any;
+    get alternateText(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _height: number;
+    set height(arg: number);
     /** for "image" type; height in pixels */
-    _height: any;
-    set height(arg: any);
-    get height(): any;
+    get height(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _width: number;
+    set width(arg: number);
     /** for "image" type; width in pixels */
-    _width: any;
-    set width(arg: any);
-    get width(): any;
+    get width(): number;
 }
 /**
  * label for a form element
@@ -1732,12 +2141,19 @@ export class Label extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** specifies the form element a label is bound to; valid value: element ID */
-    _for: any;
-    set for(arg: any);
-    get for(): any;
-    /** one or more forms the label belongs to; valid value: form ID(s) (space-separated) */
-    _form: any;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _for: string;
+    set for(arg: string);
+    /** ID for the form element the label is bound to */
+    get for(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _form: string;
 }
 /**
  * radio button (selecting one in the set de-selects the others)
@@ -1849,8 +2265,16 @@ export class Alert extends Division {
     /**************************
      ***** Static Methods *****
      *************************/
-    static formatHeading(heading: any): any;
-    static formatLink(link: any): any;
+    /**
+     * add Bootstrap classes for headings
+     * @param {Heading1 | Heading2 | Heading3 | Heading4 | Heading5 | Heading6} heading
+     */
+    static formatHeading(heading: Heading1 | Heading2 | Heading3 | Heading4 | Heading5 | Heading6): Heading1 | Heading2 | Heading3 | Heading4 | Heading5 | Heading6;
+    /**
+     * add Bootstrap classes for links
+     * @param {Link} link
+     */
+    static formatLink(link: Link): Link;
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1860,15 +2284,22 @@ export class Alert extends Division {
     /********************
      ***** Elements *****
      *******************/
-    /** button to dismiss alert */
+    /**
+     * button to dismiss alert
+     * @type {Button}
+     */
     dismissButton: Button;
     /**********************
      ***** Attributes *****
      *********************/
-    /** alert can be closed out (boolean) */
-    _dismissible: any;
-    set dismissible(arg: any);
-    get dismissible(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _dismissible: boolean;
+    set dismissible(arg: boolean);
+    /** alert can be closed out */
+    get dismissible(): boolean;
 }
 /*****************************************************************************************************************
  ************************************************** Grid System **************************************************
@@ -1881,14 +2312,14 @@ export class Column extends Division {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    constructor(contents: any, column: any, columnSmall: any, columnMedium: any, columnLarge: any, columnXL: any, attributes: object);
+    constructor(contents: any, column: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnSmall: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnMedium: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnLarge: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnXL: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, attributes: object);
 }
 /**
  * provide a means to center and horizontally pad your site’s contents
@@ -1902,13 +2333,17 @@ export class Container extends Section {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(contents: any, fluid: boolean, attributes: object);
-    set fluid(arg: any);
-    get fluid(): any;
+    set fluid(arg: boolean);
+    /** 100% width across all viewport and device sizes (true) or responsive pixel width (false) */
+    get fluid(): boolean;
     /**********************
      ***** Properties *****
      *********************/
-    /** 100% width across all viewport and device sizes (true) or responsive pixel width (false) */
-    _fluid: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _fluid: boolean;
 }
 /**
  * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts
@@ -1955,26 +2390,38 @@ declare class ThemeableTag extends BootstrapTag {
      ***** Properties *****
      *********************/
     /**
+     * @type {string}
+     * @protected
+     */
+    protected _textTheme: string;
+    set textTheme(arg: string);
+    /**
      * Bootstrap text theme
      * valid values: black-50, body, danger, dark, info, light, muted, primary, secondary, success, warning, white, white-50
      */
-    _textTheme: any;
-    set textTheme(arg: any);
-    get textTheme(): any;
+    get textTheme(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _theme: string;
+    set theme(arg: string);
     /**
      * Bootstrap background theme
      * valid values: danger, dark, info, light, primary, secondary, success, transparent, warning
      */
-    _theme: any;
-    set theme(arg: any);
-    get theme(): any;
+    get theme(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _outline: boolean;
+    set outline(arg: boolean);
     /**
      * Bootstrap outline theme
-     * outline with theme color (via borders) instead of background color (boolean)
+     * outline with theme color (via borders) [true] instead of background color [false]
      */
-    _outline: any;
-    set outline(arg: any);
-    get outline(): any;
+    get outline(): boolean;
     /*****************************
      ***** Protected Methods *****
      ****************************/
@@ -1982,8 +2429,9 @@ declare class ThemeableTag extends BootstrapTag {
      * background/outline theme are mutually exclusive
      * @param {boolean} outline border theme (true) or background (false)
      * @param {string} theme theme color
+     * @protected
      */
-    _setOutlineTheme(outline: boolean, theme: string): void;
+    protected _setOutlineTheme(outline: boolean, theme: string): void;
 }
 /***************************************************************************************************************
  ************************************************** HTML Core **************************************************
@@ -1997,149 +2445,275 @@ declare class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(tag: string, contents: any, attributes: object);
-    set tag(arg: any);
-    get tag(): any;
+    set tag(arg: string);
+    /** tag: HTML tag element */
+    get tag(): string;
     set contents(arg: any);
+    /** contents for innerHTML */
     get contents(): any;
     set attributes(arg: any);
+    /** attributes: HTML attributes */
     get attributes(): any;
     /**********************************
      ***** Properties: Essentials *****
      *********************************/
-    /** attributes: HTML attributes (object) */
-    _attributes: any;
-    set classes(arg: any);
-    /** classes: CSS classes defined in a style sheet (numeric array) */
-    get classes(): any;
-    set styles(arg: any);
-    /** styles: inline CSS style(s) (numeric array) */
-    get styles(): any;
-    /** blockClose: add newline after close tag (boolean) */
-    _blockClose: any;
-    set blockClose(arg: any);
-    get blockClose(): any;
-    /** blockOpen: add newline after open tag (boolean) */
-    _blockOpen: any;
-    set blockOpen(arg: any);
-    get blockOpen(): any;
-    /** contents for innerHTML (array) */
-    _contents: any;
-    /** selfClosing: self-closing tag (boolean) */
-    _selfClosing: any;
-    set selfClosing(arg: any);
-    get selfClosing(): any;
-    /** tag: HTML tag element (string) */
-    _tag: any;
+    /**
+     * @type {object}
+     * @protected
+     */
+    protected _attributes: object;
+    set classes(arg: string[]);
+    /**
+     * classes: CSS classes defined in a style sheet
+     * @type {string[]}
+     */
+    get classes(): string[];
+    set styles(arg: string[]);
+    /**
+     * inline CSS style(s)
+     * @type {string[]}
+     */
+    get styles(): string[];
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _blockClose: boolean;
+    set blockClose(arg: boolean);
+    /** blockClose: add newline after close tag */
+    get blockClose(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _blockOpen: boolean;
+    set blockOpen(arg: boolean);
+    /** blockOpen: add newline after open tag */
+    get blockOpen(): boolean;
+    /**
+     * @type {any}
+     * @protected
+     */
+    protected _contents: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _selfClosing: boolean;
+    set selfClosing(arg: boolean);
+    /** selfClosing: self-closing tag */
+    get selfClosing(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _tag: string;
     /****************************
      ***** Properties: ARIA *****
      ***************************/
-    /** identifies the element (or elements) whose contents or presence are controlled by the current element (ID) */
-    _ariaControls: any;
-    set ariaControls(arg: any);
-    get ariaControls(): any;
-    _ariaCurrent: any;
-    set ariaCurrent(arg: any);
-    get ariaCurrent(): any;
-    /** identifies the element (or elements) that describes the object (ID) */
-    _ariaDescribedBy: any;
-    set ariaDescribedBy(arg: any);
-    get ariaDescribedBy(): any;
-    /** identifies the element that provides a detailed, extended description for the object (ID) */
-    _ariaDetails: any;
-    set ariaDetails(arg: any);
-    get ariaDetails(): any;
-    /** the element is perceivable but disabled, so it is not editable or otherwise operable (boolean)' */
-    _ariaDisabled: any;
-    set ariaDisabled(arg: any);
-    get ariaDisabled(): any;
-    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed (boolean) */
-    _ariaExpanded: any;
-    set ariaExpanded(arg: any);
-    get ariaExpanded(): any;
-    /** indicates whether the element is exposed to an accessibility API (boolean) */
-    _ariaHidden: any;
-    set ariaHidden(arg: any);
-    get ariaHidden(): any;
-    /** string value that labels the current element */
-    _ariaLabel: any;
-    set ariaLabel(arg: any);
-    get ariaLabel(): any;
-    /** identifies the element (or elements) that labels the current element (ID) */
-    _ariaLabelledBy: any;
-    set ariaLabelledBy(arg: any);
-    get ariaLabelledBy(): any;
-    /** maximum allowed value for a range widget */
-    _ariaValueMax: any;
-    set ariaValueMax(arg: any);
-    get ariaValueMax(): any;
-    /** minimum allowed value for a range widget */
-    _ariaValueMin: any;
-    set ariaValueMin(arg: any);
-    get ariaValueMin(): any;
-    /** current value for a range widget */
-    _ariaValueNow: any;
-    set ariaValueNow(arg: any);
-    get ariaValueNow(): any;
     /**
-     * role type of user interface elementttttttt
+     * @type {string}
+     * @protected
+     */
+    protected _ariaControls: string;
+    set ariaControls(arg: string);
+    /** ID(s) for element(s) whose contents or presence are controlled by the current element */
+    get ariaControls(): string;
+    /**
+     * @type {'date' | 'location' | 'page' | 'step' | 'time'}
+     * @protected
+     */
+    protected _ariaCurrent: 'date' | 'location' | 'page' | 'step' | 'time';
+    set ariaCurrent(arg: "time" | "date" | "location" | "page" | "step");
+    get ariaCurrent(): "time" | "date" | "location" | "page" | "step";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaDescribedBy: string;
+    set ariaDescribedBy(arg: string);
+    /** ID(s) for element(s) that describes the object */
+    get ariaDescribedBy(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaDetails: string;
+    set ariaDetails(arg: string);
+    /** ID for the element that provides a detailed, extended description for the object */
+    get ariaDetails(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaDisabled: boolean;
+    set ariaDisabled(arg: boolean);
+    /** the element is perceivable but disabled, so it is not editable or otherwise operable */
+    get ariaDisabled(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaExpanded: boolean;
+    set ariaExpanded(arg: boolean);
+    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed */
+    get ariaExpanded(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaHidden: boolean;
+    set ariaHidden(arg: boolean);
+    /** indicates whether the element is exposed to an accessibility API */
+    get ariaHidden(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaLabel: string;
+    set ariaLabel(arg: string);
+    /** string value that labels the current element */
+    get ariaLabel(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaLabelledBy: string;
+    set ariaLabelledBy(arg: string);
+    /** ID(s) for the element(s) that label the current element */
+    get ariaLabelledBy(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueMax: number;
+    set ariaValueMax(arg: number);
+    /** maximum allowed value for a range widget */
+    get ariaValueMax(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueMin: number;
+    set ariaValueMin(arg: number);
+    /** minimum allowed value for a range widget */
+    get ariaValueMin(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueNow: number;
+    set ariaValueNow(arg: number);
+    /** current value for a range widget */
+    get ariaValueNow(): number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _role: string;
+    set role(arg: string);
+    /**
+     * role type of user interface element
      * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
      */
-    _role: any;
-    set role(arg: any);
-    get role(): any;
+    get role(): string;
     /********************************
      ***** Properties: Standard *****
      *******************************/
-    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
-    _accessKey: any;
-    set accessKey(arg: any);
-    get accessKey(): any;
-    /** not available for all elements [boolean] */
-    _disabled: any;
-    set disabled(arg: any);
-    get disabled(): any;
-    set tabIndex(arg: any);
-    get tabIndex(): any;
-    /** text direction for the content [auto, ltr, rtl] */
-    _direction: any;
-    set direction(arg: any);
-    get direction(): any;
     /**
-     * element can be dragged (requires JavaScript) [true, false, auto]
+     * @type {string}
+     * @protected
+     */
+    protected _accessKey: string;
+    set accessKey(arg: string);
+    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
+    get accessKey(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _disabled: boolean;
+    set disabled(arg: boolean);
+    /** not available for all elements */
+    get disabled(): boolean;
+    set tabIndex(arg: number);
+    /** tabbing order */
+    get tabIndex(): number;
+    /**
+     * @type {'auto' | 'ltr' | 'rtl'}
+     * @protected
+     */
+    protected _direction: 'auto' | 'ltr' | 'rtl';
+    set direction(arg: NotificationDirection);
+    /** text direction for the content [auto, ltr, rtl] */
+    get direction(): NotificationDirection;
+    /**
+     * @type {true | false | 'auto'}
+     * @protected
+     */
+    protected _draggable: true | false | 'auto';
+    set draggable(arg: boolean | "auto");
+    /**
+     * element can be dragged (requires JavaScript)
      * https://www.w3schools.com/html/html5_draganddrop.asp
      */
-    _draggable: any;
-    set draggable(arg: any);
-    get draggable(): any;
+    get draggable(): boolean | "auto";
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _editable: boolean;
+    set editable(arg: boolean);
     /** content is editable [boolean] */
-    _editable: any;
-    set editable(arg: any);
-    get editable(): any;
-    /** hide element because it is not yet (or no longer) relevant [boolean] */
-    _hidden: any;
-    set hidden(arg: any);
-    get hidden(): any;
+    get editable(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _hidden: boolean;
+    set hidden(arg: boolean);
+    /** hide element because it is not yet (or no longer) relevant */
+    get hidden(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _id: string;
+    set id(arg: string);
     /** unique identifier [alphanumeric, underscore, hyphen] */
-    _id: any;
-    set id(arg: any);
-    get id(): any;
+    get id(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _language: string;
+    set language(arg: string);
     /**
      * language of the element's content [2-character code]
      * https://www.w3schools.com/tags/ref_language_codes.asp
      */
-    _language: any;
-    set language(arg: any);
-    get language(): any;
-    /** content should be spellchecked [boolean] */
-    _spellcheck: any;
-    set spellcheck(arg: any);
-    get spellcheck(): any;
-    /** tabbing order [numeric] */
-    _tabIndex: any;
-    /** extra information about an element [text] */
-    _title: any;
-    set title(arg: any);
-    get title(): any;
+    get language(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _spellcheck: boolean;
+    set spellcheck(arg: boolean);
+    /** content should be spellchecked */
+    get spellcheck(): boolean;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _tabIndex: number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _title: string;
+    set title(arg: string);
+    /** extra information about an element */
+    get title(): string;
     /***********************************
      ***** Properties: Form Events *****
      **********************************/
@@ -2147,287 +2721,474 @@ declare class BootstrapTag {
      * form events – applies to almost all HTML elements, but is most used in form elements
      * https://www.w3schools.com/tags/ref_eventattributes.asp
      */
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onBlur: string;
+    set onBlur(arg: string);
     /** loses focus */
-    _onBlur: any;
-    set onBlur(arg: any);
-    get onBlur(): any;
+    get onBlur(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onChange: string;
+    set onChange(arg: string);
     /** value of the element is changed */
-    _onChange: any;
-    set onChange(arg: any);
-    get onChange(): any;
+    get onChange(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onContextMenu: string;
+    set onContextMenu(arg: string);
     /** context menu is triggered */
-    _onContextMenu: any;
-    set onContextMenu(arg: any);
-    get onContextMenu(): any;
+    get onContextMenu(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onFocus: string;
+    set onFocus(arg: string);
     /** gets focus */
-    _onFocus: any;
-    set onFocus(arg: any);
-    get onFocus(): any;
+    get onFocus(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onInput: string;
+    set onInput(arg: string);
     /** gets user input */
-    _onInput: any;
-    set onInput(arg: any);
-    get onInput(): any;
+    get onInput(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onInvalid: string;
+    set onInvalid(arg: string);
     /** element is invalid */
-    _onInvalid: any;
-    set onInvalid(arg: any);
-    get onInvalid(): any;
+    get onInvalid(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onReset: string;
+    set onReset(arg: string);
     /** reset button in a form is clicked */
-    _onReset: any;
-    set onReset(arg: any);
-    get onReset(): any;
+    get onReset(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onSearch: string;
+    set onSearch(arg: string);
     /** user writes something in a search field (for <input type="search">) */
-    _onSearch: any;
-    set onSearch(arg: any);
-    get onSearch(): any;
+    get onSearch(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onSelect: string;
+    set onSelect(arg: string);
     /** some text has been selected in an element */
-    _onSelect: any;
-    set onSelect(arg: any);
-    get onSelect(): any;
+    get onSelect(): string;
     /***************************************
      ***** Properties: Keyboard Events *****
      **************************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyDown: string;
+    set onKeyDown(arg: string);
     /** user is pressing a key */
-    _onKeyDown: any;
-    set onKeyDown(arg: any);
-    get onKeyDown(): any;
+    get onKeyDown(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyPress: string;
+    set onKeyPress(arg: string);
     /** user presses a key */
-    _onKeyPress: any;
-    set onKeyPress(arg: any);
-    get onKeyPress(): any;
+    get onKeyPress(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyUp: string;
+    set onKeyUp(arg: string);
     /** user releases a key */
-    _onKeyUp: any;
-    set onKeyUp(arg: any);
-    get onKeyUp(): any;
+    get onKeyUp(): string;
     /************************************
      ***** Properties: Mouse Events *****
      ***********************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onClick: string;
+    set onClick(arg: string);
     /** mouse click on the element */
-    _onClick: any;
-    set onClick(arg: any);
-    get onClick(): any;
+    get onClick(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDoubleClick: string;
+    set onDoubleClick(arg: string);
     /** mouse double-click on the element */
-    _onDoubleClick: any;
-    set onDoubleClick(arg: any);
-    get onDoubleClick(): any;
+    get onDoubleClick(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseDown: string;
+    set onMouseDown(arg: string);
     /** mouse button is pressed down on an element */
-    _onMouseDown: any;
-    set onMouseDown(arg: any);
-    get onMouseDown(): any;
+    get onMouseDown(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseMove: string;
+    set onMouseMove(arg: string);
     /** mouse pointer is moving while it is over an element */
-    _onMouseMove: any;
-    set onMouseMove(arg: any);
-    get onMouseMove(): any;
+    get onMouseMove(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseOut: string;
+    set onMouseOut(arg: string);
     /** mouse pointer moves off of an element */
-    _onMouseOut: any;
-    set onMouseOut(arg: any);
-    get onMouseOut(): any;
+    get onMouseOut(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseOver: string;
+    set onMouseOver(arg: string);
     /** mouse pointer moves over an element */
-    _onMouseOver: any;
-    set onMouseOver(arg: any);
-    get onMouseOver(): any;
+    get onMouseOver(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseUp: string;
+    set onMouseUp(arg: string);
     /** mouse button is released over an element */
-    _onMouseUp: any;
-    set onMouseUp(arg: any);
-    get onMouseUp(): any;
+    get onMouseUp(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onWheel: string;
+    set onWheel(arg: string);
     /** mouse wheel rolls up or down over an element */
-    _onWheel: any;
-    set onWheel(arg: any);
-    get onWheel(): any;
+    get onWheel(): string;
     /***********************************
      ***** Properties: Drag Events *****
      **********************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDrag: string;
+    set onDrag(arg: string);
     /** element is dragged */
-    _onDrag: any;
-    set onDrag(arg: any);
-    get onDrag(): any;
+    get onDrag(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragEnd: string;
+    set onDragEnd(arg: string);
     /** end of a drag operation */
-    _onDragEnd: any;
-    set onDragEnd(arg: any);
-    get onDragEnd(): any;
+    get onDragEnd(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragEnter: string;
+    set onDragEnter(arg: string);
     /** has been dragged to a valid drop target */
-    _onDragEnter: any;
-    set onDragEnter(arg: any);
-    get onDragEnter(): any;
+    get onDragEnter(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragLeave: string;
+    set onDragLeave(arg: string);
     /** leaves a valid drop target */
-    _onDragLeave: any;
-    set onDragLeave(arg: any);
-    get onDragLeave(): any;
+    get onDragLeave(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragOver: string;
+    set onDragOver(arg: string);
     /** being dragged over a valid drop target */
-    _onDragOver: any;
-    set onDragOver(arg: any);
-    get onDragOver(): any;
+    get onDragOver(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragStart: string;
+    set onDragStart(arg: string);
     /** start of a drag operation */
-    _onDragStart: any;
-    set onDragStart(arg: any);
-    get onDragStart(): any;
+    get onDragStart(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDrop: string;
+    set onDrop(arg: string);
     /** dragged element is being dropped */
-    _onDrop: any;
-    set onDrop(arg: any);
-    get onDrop(): any;
+    get onDrop(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onScroll: string;
+    set onScroll(arg: string);
     /** element's scrollbar is being scrolled */
-    _onScroll: any;
-    set onScroll(arg: any);
-    get onScroll(): any;
+    get onScroll(): string;
     /****************************************
      ***** Properties: Clipboard Events *****
      ***************************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onCopy: string;
+    set onCopy(arg: string);
     /** user copies the content of an element */
-    _onCopy: any;
-    set onCopy(arg: any);
-    get onCopy(): any;
+    get onCopy(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onCut: string;
+    set onCut(arg: string);
     /** user cuts the content of an element */
-    _onCut: any;
-    set onCut(arg: any);
-    get onCut(): any;
+    get onCut(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onPaste: string;
+    set onPaste(arg: string);
     /** user pastes some content in an element */
-    _onPaste: any;
-    set onPaste(arg: any);
-    get onPaste(): any;
+    get onPaste(): string;
     /****************************
      ***** Properties: Grid *****
      ***************************/
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridColumn: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridColumn(arg: true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumn: any;
-    set gridColumn(arg: any);
-    get gridColumn(): any;
+    get gridColumn(): true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridColumnSmall: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridColumnSmall(arg: true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * small breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnSmall: any;
-    set gridColumnSmall(arg: any);
-    get gridColumnSmall(): any;
+    get gridColumnSmall(): true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridColumnMedium: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridColumnMedium(arg: true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * medium breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnMedium: any;
-    set gridColumnMedium(arg: any);
-    get gridColumnMedium(): any;
+    get gridColumnMedium(): true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridColumnLarge: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridColumnLarge(arg: true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnLarge: any;
-    set gridColumnLarge(arg: any);
-    get gridColumnLarge(): any;
+    get gridColumnLarge(): true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridColumnXL: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridColumnXL(arg: true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * extra-large breakpoint grid column width
      * valid values are: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridColumnXL: any;
-    set gridColumnXL(arg: any);
-    get gridColumnXL(): any;
+    get gridColumnXL(): true | "auto" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _gridFormRow: boolean;
+    set gridFormRow(arg: boolean);
     /**
      * variation of the standard grid row that overrides the default column gutters for tighter and more compact layouts [boolean]
      * https://getbootstrap.com/docs/4.5/components/forms/#form-row
      */
-    _gridFormRow: any;
-    set gridFormRow(arg: any);
-    get gridFormRow(): any;
+    get gridFormRow(): boolean;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    protected _gridOffset: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    set gridOffset(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11);
     /**
      * move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffset: any;
-    set gridOffset(arg: any);
-    get gridOffset(): any;
+    get gridOffset(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    protected _gridOffsetSmall: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    set gridOffsetSmall(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11);
     /**
      * small breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffsetSmall: any;
-    set gridOffsetSmall(arg: any);
-    get gridOffsetSmall(): any;
+    get gridOffsetSmall(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    protected _gridOffsetMedium: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    set gridOffsetMedium(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11);
     /**
      * medium breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffsetMedium: any;
-    set gridOffsetMedium(arg: any);
-    get gridOffsetMedium(): any;
+    get gridOffsetMedium(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    protected _gridOffsetLarge: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    set gridOffsetLarge(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11);
     /**
      * large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffsetLarge: any;
-    set gridOffsetLarge(arg: any);
-    get gridOffsetLarge(): any;
+    get gridOffsetLarge(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11}
+     * @protected
+     */
+    protected _gridOffsetXL: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    set gridOffsetXL(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11);
     /**
      * extra-large breakpoint move the grid column to the right (i.e., increase the left margin) by given number of columns
      * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#offsetting-columns
      */
-    _gridOffsetXL: any;
-    set gridOffsetXL(arg: any);
-    get gridOffsetXL(): any;
+    get gridOffsetXL(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridOrder: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridOrder(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * grid column order
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
      */
-    _gridOrder: any;
-    set gridOrder(arg: any);
-    get gridOrder(): any;
+    get gridOrder(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridOrderSmall: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridOrderSmall(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * small breakpoint grid column order
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
      */
-    _gridOrderSmall: any;
-    set gridOrderSmall(arg: any);
-    get gridOrderSmall(): any;
+    get gridOrderSmall(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridOrderMedium: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridOrderMedium(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * medium breakpoint grid column order
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
      */
-    _gridOrderMedium: any;
-    set gridOrderMedium(arg: any);
-    get gridOrderMedium(): any;
+    get gridOrderMedium(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridOrderLarge: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridOrderLarge(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * large breakpoint grid column order
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
      */
-    _gridOrderLarge: any;
-    set gridOrderLarge(arg: any);
-    get gridOrderLarge(): any;
+    get gridOrderLarge(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    /**
+     * @type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
+     * @protected
+     */
+    protected _gridOrderXL: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+    set gridOrderXL(arg: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12);
     /**
      * extra-large breakpoint grid column order
-     * valid values: 1–12 (number of columns)
      * https://getbootstrap.com/docs/4.5/layout/grid/#reordering
      */
-    _gridOrderXL: any;
-    set gridOrderXL(arg: any);
-    get gridOrderXL(): any;
+    get gridOrderXL(): 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     /**
-     * wrapper for grid columns [boolean]
+     * @type {boolean}
+     * @protected
+     */
+    protected _gridRow: boolean;
+    set gridRow(arg: boolean);
+    /**
+     * wrapper for grid columns
      * https://getbootstrap.com/docs/4.5/layout/grid/
      */
-    _gridRow: any;
-    set gridRow(arg: any);
-    get gridRow(): any;
+    get gridRow(): boolean;
     /**
-     * keep margins/padding (true); remove margins/padding from the row and all immediate children columns (false) [boolean]
+     * @type {boolean}
+     * @protected
+     */
+    protected _gridRowNoGutters: boolean;
+    set gridRowNoGutters(arg: boolean);
+    /**
+     * keep margins/padding [true]; remove margins/padding from the row and all immediate children columns [false]
      * https://getbootstrap.com/docs/4.5/layout/grid/#gutters
      * https://getbootstrap.com/docs/4.5/layout/grid/#no-gutters
      */
-    _gridRowNoGutters: any;
-    set gridRowNoGutters(arg: any);
-    get gridRowNoGutters(): any;
+    get gridRowNoGutters(): boolean;
     /*******************
      ***** Methods *****
      ******************/
@@ -2440,9 +3201,9 @@ declare class BootstrapTag {
     uniqueID(): void;
     /**
      * add a class
-     * @param {any} value string or array of strings of CSS classes
+     * @param {string | string[]} value string or array of strings of CSS classes
      */
-    class(value: any): void;
+    class(value: string | string[]): void;
     /**
      * get/set "data-*" attributes
      * @param {string} key attribute key
@@ -2453,14 +3214,14 @@ declare class BootstrapTag {
     innerHTML(): string;
     /**
      * remove class(es) from class attribute array
-     * @param {any} value string or array of strings of CSS classes
+     * @param {string | string[]} value string or array of strings of CSS classes
      */
-    removeClass(value: any): void;
+    removeClass(value: string | string[]): void;
     /**
      * remove style(s) from style attribute array
-     * @param {any} value string or array of strings of CSS styles
+     * @param {string | string[]} value string or array of strings of CSS styles
      */
-    removeStyle(value: any): void;
+    removeStyle(value: string | string[]): void;
     /** open the HTML tag */
     start(): string;
     /** close the HTML tag */
@@ -2480,20 +3241,23 @@ declare class BootstrapTag {
      * @param {string} key attribute key
      * @param {boolean} value attribute value (null removes attribute)
      * @param {boolean} onOff true: on/off, false (default): true/false
+     * @protected
      */
-    _setBooleanValue(key: string, value: boolean, onOff: boolean): void;
+    protected _setBooleanValue(key: string, value: boolean, onOff: boolean): void;
     /**
      * set/unset the attribute for a standard value (i.e., attribute="value")
      * @param {string} key attribute key
-     * @param {any} value attribute value (null removes attribute)
+     * @param {string} value attribute value (null removes attribute)
+     * @protected
      */
-    _setStandardValue(key: string, value: any): void;
+    protected _setStandardValue(key: string, value: string): void;
     /**
      * set/unset the attribute for a toggle value (i.e., true = attribute, false = no attribute)
-     * @param {any} key attribute key
-     * @param {any} value attribute value (true: attribute without a value, null/false: remove attribute)
+     * @param {string} key attribute key
+     * @param {boolean} value attribute value (true: attribute without a value, null/false: remove attribute)
+     * @protected
      */
-    _setTogglableValue(key: any, value: any): void;
+    protected _setTogglableValue(key: string, value: boolean): void;
     /*****************************
      ***** HTML Core Methods *****
      ****************************/
@@ -2583,10 +3347,18 @@ declare class BootstrapTag {
     /**
      * additional details that the user can view or hide on demand
      * https://www.w3schools.com/tags/tag_details.asp
+     * @param {any} summmary value or array of values to go inside the summary element
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    details(contents: any, attributes: object): void;
+    details(summary: any, contents: any, attributes: object): void;
+    /**
+     * visible heading for Details, which can be clicked to view/hide the details
+     * https://www.w3schools.com/tags/tag_summary.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    detailSummary(contents: any, attributes: object): void;
     /**
      * primary opinionated heading
      * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
@@ -2706,11 +3478,11 @@ declare class BootstrapTag {
     /**
      * FontAwesome icon
      * https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-     * @param {any} name FontAwesome class name (e.g., "fas fa-camera")
-     * @param {any} ariaLabel accessibility string value that labels the current element
+     * @param {string} name FontAwesome class name (e.g., "fas fa-camera")
+     * @param {string} ariaLabel accessibility string value that labels the current element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    icon(name: any, ariaLabel: any, attributes: object): void;
+    icon(name: string, ariaLabel: string, attributes: object): void;
     /**
      * inline frame for embedding another document
      * https://www.w3schools.com/tags/tag_iframe.asp
@@ -2860,11 +3632,11 @@ declare class BootstrapTag {
      * Scalable Vector Graphics (text-based image)
      * https://www.w3schools.com/tags/tag_svg.asp
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {int} width width in pixels
-     * @param {int} height height in pixels
+     * @param {number} width width in pixels
+     * @param {number} height height in pixels
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    svg(contents: any, width: any, height: any, attributes: object): void;
+    svg(contents: any, width: number, height: number, attributes: object): void;
     /**
      * defining instance of a term (i.e., the parent container of this tag must also contain the definition/explanation for this term)
      * TIP: use the ID so it's easily linked to via "#id")
@@ -2970,10 +3742,10 @@ declare class BootstrapTag {
      * label for a form element
      * https://www.w3schools.com/tags/tag_label.asp
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} forID ID for the form element the label is for
+     * @param {string} forID ID for the form element the label is for
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    label(contents: any, forID: any, attributes: object): void;
+    label(contents: any, forID: string, attributes: object): void;
     /**
      * radio button (selecting one in the set de-selects the others)
      * https://www.w3schools.com/tags/tag_input.asp
@@ -3012,14 +3784,14 @@ declare class BootstrapTag {
      * twelve column grid system by breakpoint
      * https://getbootstrap.com/docs/4.5/layout/grid/
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {any} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
-     * @param {any} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} column grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnSmall small breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnMedium medium breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnLarge large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
+     * @param {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12} columnXL extra-large breakpoint grid column width; valid values: true (equal-width), auto (natural width of their content), or 1–12 (number of columns)
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    column(contents: any, column: any, columnSmall: any, columnMedium: any, columnLarge: any, columnXL: any, attributes: object): void;
+    column(contents: any, column: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnSmall: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnMedium: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnLarge: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, columnXL: true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12, attributes: object): void;
     /**
      * provide a means to center and horizontally pad your site’s contents
      * https://getbootstrap.com/docs/4.5/layout/grid/
@@ -3058,14 +3830,22 @@ declare class CrossOriginTag extends BootstrapTag {
     /**********************
      ***** Properties *****
      *********************/
-    /** how the element handles cross-origin requests; valid values: anonymous, use-credentials */
-    _crossOrigin: any;
-    set crossOrigin(arg: any);
-    get crossOrigin(): any;
+    /**
+     * @type {'anonymous' | 'use-credentials'}
+     * @protected
+     */
+    protected _crossOrigin: 'anonymous' | 'use-credentials';
+    set crossOrigin(arg: "anonymous" | "use-credentials");
+    /** how the element handles cross-origin requests */
+    get crossOrigin(): "anonymous" | "use-credentials";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _integrity: string;
+    set integrity(arg: string);
     /** base64-encoded cryptographic hash of the resource, used to verify that the fetched resource has been delivered free of unexpected manipulation */
-    _integrity: any;
-    set integrity(arg: any);
-    get integrity(): any;
+    get integrity(): string;
     /*****************************
      ***** Protected Methods *****
      ****************************/
@@ -3073,8 +3853,9 @@ declare class CrossOriginTag extends BootstrapTag {
      * set crossOrigin and integrity (interrelated)
      * @param {any} crossOrigin
      * @param {any} integrity
+     * @protected
      */
-    _crossOriginIntegrity(crossOrigin: any, integrity: any): void;
+    protected _crossOriginIntegrity(crossOrigin: any, integrity: any): void;
 }
 /** shared features of table sections (abstract) */
 declare class TableSectionTag extends ThemeableTag {
@@ -3101,12 +3882,30 @@ declare class TableCellTag extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _columnSpan: number;
+    set columnSpan(arg: number);
     /** number of columns a cell should span */
-    _colSpan: any;
+    get columnSpan(): number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _headers: string;
+    set headers(arg: string);
     /** specifies one or more header cells a cell is related to; valid value(s): <th> ID(s) */
-    _headers: any;
+    get headers(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _rowSpan: number;
+    set rowSpan(arg: number);
     /** number of rows a header cell should span */
-    _rowSpan: any;
+    get rowSpan(): number;
 }
 /** form submit element (abstract) */
 declare class FormSubmitTag extends FormTag {
@@ -3122,32 +3921,49 @@ declare class FormSubmitTag extends FormTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** form has a file upload element [boolean] */
-    _fileUpload: any;
-    set fileUpload(arg: any);
-    get fileUpload(): any;
     /**
-     * HTTP method to use when sending form data
-     * valid values: get, post
+     * @type {boolean}
+     * @protected
      */
-    _method: any;
-    set method(arg: any);
-    get method(): any;
-    /** form should not be validated when submitted [boolean] */
-    _noValidate: any;
-    set noValidate(arg: any);
-    get noValidate(): any;
+    protected _fileUpload: boolean;
+    set fileUpload(arg: boolean);
+    /** form has a file upload element */
+    get fileUpload(): boolean;
+    /**
+     * @type {'get' | 'post'}
+     * @protected
+     */
+    protected _method: 'get' | 'post';
+    set method(arg: "get" | "post");
+    /** HTTP method to use when sending form data */
+    get method(): "get" | "post";
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _noValidate: boolean;
+    set noValidate(arg: boolean);
+    /** form should not be validated when submitted */
+    get noValidate(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _target: string;
+    set target(arg: string);
     /**
      * specifies where to display the response that is received after submitting the form
      * valid values: _blank, _parent, _self, _top, «frame»
      */
-    _target: any;
-    set target(arg: any);
-    get target(): any;
+    get target(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _url: string;
+    set url(arg: string);
     /** URL where to send data when the form is submitted */
-    _url: any;
-    set url(arg: any);
-    get url(): any;
+    get url(): string;
 }
 /** form toggle element (abstract) */
 declare class FormToggleElement extends FormTag {
@@ -3161,46 +3977,75 @@ declare class FormToggleElement extends FormTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(type: string, label: any, value: string, name: string, checked: boolean, attributes: object);
+    /**
+     * container holding input and label
+     * @type {Division}
+     */
     wrapper: Division;
     /**********************
      ***** Attributes *****
      *********************/
-    /** element should be pre-selected when the page loads [boolean] */
-    _checked: any;
-    set checked(arg: any);
-    get checked(): any;
-    /** input field is read-only (boolean) */
-    _readOnly: any;
-    set readOnly(arg: any);
-    get readOnly(): any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _checked: boolean;
+    set checked(arg: boolean);
+    /** element should be pre-selected when the page loads */
+    get checked(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _readOnly: boolean;
+    set readOnly(arg: boolean);
+    /** input field is read-only */
+    get readOnly(): boolean;
+    /**
+     * @type {'checkbox' | 'radio'}
+     * @protected
+     */
+    protected _type: 'checkbox' | 'radio';
+    set type(arg: "checkbox" | "radio");
     /** valid values: checkbox, radio */
-    _type: any;
-    set type(arg: any);
-    get type(): any;
+    get type(): "checkbox" | "radio";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _value: string;
+    set value(arg: string);
     /** field value to submit */
-    _value: any;
-    set value(arg: any);
-    get value(): any;
+    get value(): string;
     /**********************
      ***** Properties *****
      *********************/
-    /** stack horizontally instead of vertically [boolean] */
-    _inline: any;
-    set inline(arg: any);
-    get inline(): any;
-    /** stack horizontally instead of vertically [boolean] */
-    _switch: any;
-    set switch(arg: any);
-    get switch(): any;
-    /*******************
-     ***** Methods *****
-     ******************/
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _inline: boolean;
+    set inline(arg: boolean);
+    /** stack horizontally instead of vertically */
+    get inline(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _switch: boolean;
+    set switch(arg: boolean);
+    /** stack horizontally instead of vertically */
+    get switch(): boolean;
+    /*****************************
+     ***** Protected Methods *****
+     ****************************/
     /**
       * inline/switch are interdependent
       * @param {boolean} inline new value for inline
       * @param {boolean} switcher new value for switch
+      * @protected
       */
-    _setInlineSwitch(inline: boolean, switcher: boolean): void;
+    protected _setInlineSwitch(inline: boolean, switcher: boolean): void;
 }
 /** container for dropdown options (abstract) */
 declare class DropdownContainerTag extends FormTag {
@@ -3236,19 +4081,34 @@ declare class FormTag extends ThemeableTag {
     /**********************
      ***** Attributes *****
      *********************/
-    /** element should automatically get focus when the page loads [boolean] */
-    _autoFocus: any;
-    set autoFocus(arg: any);
-    get autoFocus(): any;
-    /** defines one or more form (space-separated) that the element belongs to */
-    _form: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _autoFocus: boolean;
+    set autoFocus(arg: boolean);
+    /** element should automatically get focus when the page loads */
+    get autoFocus(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _form: string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _name: string;
+    set name(arg: string);
     /** element name */
-    _name: any;
-    set name(arg: any);
-    get name(): any;
-    /** required to set/select a value before submitting the form [boolean] */
-    _required: any;
-    set required(arg: any);
-    get required(): any;
+    get name(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _required: boolean;
+    set required(arg: boolean);
+    /** required to set/select a value before submitting the form */
+    get required(): boolean;
 }
 export {};

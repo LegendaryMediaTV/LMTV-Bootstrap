@@ -102,6 +102,7 @@ http.createServer((req, res) => {
     html.section(stringValue);
     html.small(stringValue);
     html.add('\n');
+    html.spinner(stringValue, { theme: 'danger' });
     html.span(stringValue);
     html.add('\n');
     html.strong(stringValue);
@@ -129,6 +130,11 @@ http.createServer((req, res) => {
     form.dropdown(objectValue, 'demo-dropdown');
     form.fileUpload = true;
     form.fileUploader(null, 'demo-file-upload');
+    form.inputGroup(
+        'Prepend',
+        new bs.Textbox('', 'demo-textbox-inputGroup'),
+        'Append'
+    );
     form.radio('plain radio button', 'plain', 'demo-radio', null, { plain: true });
     form.radio('unselected radio', 'unselected', 'demo-radio');
     form.radio('selected radio', 'selected', 'demo-radio', true);

@@ -1630,38 +1630,6 @@ class BootstrapTag {
     detailSummary(contents, attributes) { this.add(new DetailSummary(contents, attributes)); }
 
     /**
-     * primary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display1(contents, attributes) { this.add(new Display1(contents, attributes)); }
-
-    /**
-     * secondary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display2(contents, attributes) { this.add(new Display2(contents, attributes)); }
-
-    /**
-     * tertiary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display3(contents, attributes) { this.add(new Display3(contents, attributes)); }
-
-    /**
-     * quaternary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display4(contents, attributes) { this.add(new Display4(contents, attributes)); }
-
-    /**
      * generic container for grouping content for styling/visual purposes
      * https://www.w3schools.com/tags/tag_div.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1880,14 +1848,6 @@ class BootstrapTag {
     quote(contents, attributes) { this.add(new Quote(contents, attributes)); }
 
     /**
-     * strikethrough (no longer accurate)
-     * https://www.w3schools.com/tags/tag_s.asp
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    strike(contents, attributes) { this.add(new Strike(contents, attributes)); }
-
-    /**
      * used to either group different articles into different purposes or subjects, or to define the different sections of a single article
      * https://www.w3schools.com/tags/tag_section.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1910,6 +1870,14 @@ class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     span(contents, attributes) { this.add(new Span(contents, attributes)); }
+
+    /**
+     * strikethrough (no longer accurate)
+     * https://www.w3schools.com/tags/tag_s.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    strike(contents, attributes) { this.add(new Strike(contents, attributes)); }
 
     /**
      * important text (bold)
@@ -2060,6 +2028,16 @@ class BootstrapTag {
     input(value, name, attributes) { this.add(new Input(value, name, attributes)); }
 
     /**
+     * extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs
+     * https://getbootstrap.com/docs/4.5/components/input-group/
+     * @param {any} prepend value or array of values to go inside the prepended element
+     * @param {any} contents value or array of values to go inside the Input Group element
+     * @param {any} append value or array of values to go inside the appended element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Input Group element
+     */
+    inputGroup(prepend, contents, append, attributes) { this.add(new InputGroup(prepend, contents, append, attributes)); }
+
+    /**
      * label for a form element
      * https://www.w3schools.com/tags/tag_label.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2092,6 +2070,51 @@ class BootstrapTag {
     textbox(value, name, attributes) { this.add(new Textbox(value, name, attributes)); }
 
 
+    /*************************************
+     ***** Bootstrap Content Methods *****
+     ************************************/
+
+    /**
+     * primary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display1(contents, attributes) { this.add(new Display1(contents, attributes)); }
+
+    /**
+     * secondary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display2(contents, attributes) { this.add(new Display2(contents, attributes)); }
+
+    /**
+     * tertiary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display3(contents, attributes) { this.add(new Display3(contents, attributes)); }
+
+    /**
+     * quaternary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display4(contents, attributes) { this.add(new Display4(contents, attributes)); }
+
+    /**
+     * hide elements on all devices except screen readers
+     * https://getbootstrap.com/docs/4.5/utilities/screen-readers/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    screenReader(contents, attributes) { this.add(new ScreenReader(contents, attributes)); }
+
+
     /***************************************
      ***** Bootstrap Component Methods *****
      **************************************/
@@ -2103,6 +2126,14 @@ class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     alert(contents, attributes) { this.add(new Alert(contents, attributes)); }
+
+    /**
+     * indicate the loading state of a component or page
+     * https://getbootstrap.com/docs/4.5/components/spinners/
+     * @param {any} contents value or array of values to go inside the screen reader
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    spinner(contents, attributes) { this.add(new Spinner(contents, attributes)); }
 
 
     /**********************************
@@ -5783,7 +5814,7 @@ class Button extends FormSubmitTag {
     /** block-level (full-width) */
     get block() { return this._block; }
     set block(value) {
-		// remove dynamic Bootstrap classes
+        // remove dynamic Bootstrap classes
         if (this._block)
             this.removeClass('btn-block');
 
@@ -5806,7 +5837,7 @@ class Button extends FormSubmitTag {
      */
     get scale() { return this._scale; }
     set scale(value) {
-		// remove dynamic Bootstrap classes
+        // remove dynamic Bootstrap classes
         if (this._scale)
             this.removeClass('btn-' + this._scale);
 
@@ -6881,6 +6912,158 @@ class FormGroup extends Division {
 }
 exports.FormGroup = FormGroup;
 
+/**
+ * extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs
+ * https://getbootstrap.com/docs/4.5/components/input-group/
+ */
+class InputGroup extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} prepend value or array of values to go inside the prepended element
+     * @param {any} contents value or array of values to go inside the Input Group element
+     * @param {any} append value or array of values to go inside the appended element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Input Group element
+     */
+    constructor(prepend, contents, append, attributes) {
+        // create baseline object
+        super(contents, attributes);
+
+        // initialize attributes
+        this.attributes = attributes;
+
+        // add Bootstrap classes
+        this.class('input-group');
+
+        // initialize prepend element
+        this.prepend = new Division();
+        this.prepend.class('input-group-prepend');
+        if (prepend != null)
+            this.addPrepend(prepend);
+
+        // initialize append element
+        this.append = new Division();
+        this.append.class('input-group-append');
+        if (append != null)
+            this.addAppend(append);
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+
+    /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    _scale;
+    /**
+     * input group size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    get scale() { return this._scale; }
+    set scale(value) {
+        // remove dynamic Bootstrap classes
+        if (this._scale)
+            this.removeClass('input-group-' + this._scale);
+
+        // update properties
+        this._scale = value;
+
+        // add dynamic Bootstrap classes
+        if (this._scale)
+            this.class('input-group-' + this._scale);
+    }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    /**
+     * element that goes after the main content
+     * @type {Division}
+     */
+    append;
+
+    /**
+     * element that goes before the main content
+     * @type {Division}
+     */
+    prepend;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * add append contents
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    addAppend(contents, attributes) {
+        // convert to an array
+        if (!Array.isArray(contents))
+            contents = [contents];
+
+        // add contents to append
+        for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
+            const content = new Division(contents[contentIndex], attributes);
+            content.class('input-group-text');
+            this.append.add(content);
+        }
+    }
+
+    /**
+     * add prepend contents
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    addPrepend(contents, attributes) {
+        // convert to an array
+        if (!Array.isArray(contents))
+            contents = [contents];
+
+        // add contents to prepend
+        for (let contentIndex = 0; contentIndex < contents.length; contentIndex++) {
+            const content = new Division(contents[contentIndex], attributes);
+            content.class('input-group-text');
+            this.prepend.add(content);
+        }
+    }
+
+    /* start HTML element */
+    start() {
+        let output = '';
+
+        // start container
+        output += super.start();
+
+        // add prepend
+        if (this.prepend.contents.length)
+            output += this.prepend;
+
+        return output;
+    }
+
+    /* stop HTML element */
+    stop() {
+        let output = '';
+
+        // add append
+        if (this.append.contents.length)
+            output += this.append;
+
+        // stop container
+        output += super.stop();
+
+        return output;
+    }
+}
+exports.InputGroup = InputGroup;
+
 
 /***********************************************************************************************************************
  ************************************************** Bootstrap Content **************************************************
@@ -6954,10 +7137,52 @@ class Display4 extends Heading4 {
 }
 exports.Display4 = Display4;
 
+/**
+ * hide elements on all devices except screen readers
+ * https://getbootstrap.com/docs/4.5/utilities/screen-readers/
+ */
+class ScreenReader extends Span {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.class('sr-only');
+    }
 
-/**************************************************************************************************************************
- ************************************************** Bootstrap Components **************************************************
- *************************************************************************************************************************/
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _focusable;
+    /** how the element again when it’s focused (e.g. by a keyboard-only user) */
+    get focusable() { return this.focusable; }
+    set focusable(value) {
+        // remove dynamic Bootstrap classes
+        if (this._focusable)
+            this.removeClass('sr-only-focusable');
+
+        // update properties
+        this._focusable = value;
+
+        // add dynamic Bootstrap classes
+        if (this._focusable)
+            this.class('sr-only-focusable');
+    }
+}
+exports.ScreenReader = ScreenReader;
+
+
+/***************************************************************************************************************************
+ ************************************************** Bootstrap: Components **************************************************
+ **************************************************************************************************************************/
 
 /**
  * provides contextual feedback messages for typical user actions
@@ -6995,7 +7220,7 @@ class Alert extends Division {
 
 
     /**********************
-     ***** Attributes *****
+     ***** Properties *****
      *********************/
 
     /**
@@ -7199,10 +7424,133 @@ class Alert extends Division {
 }
 exports.Alert = Alert;
 
+/**
+ * indicate the loading state of a component or page
+ * https://getbootstrap.com/docs/4.5/components/spinners/
+ */
+class Spinner extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the screen reader
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        // set defaults
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+        if (attributes.type == null)
+            attributes.type = 'border';
+        if (contents == null)
+            contents = 'Loading …';
 
-/*****************************************************************************************************************
- ************************************************** Grid System **************************************************
- ****************************************************************************************************************/
+        // initialize object
+        super(null, attributes);
+
+        // initialize elements
+        this.screenReader = new ScreenReader(contents);
+
+        // add Bootstrap classes/attributes
+        this.role = 'status';
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+    /**
+     * @type {'sm' | string}
+     * @protected
+     */
+    _scale;
+    /**
+     * size of spinner
+     * valid values: null, sm, styling units (e.g., "3rem")
+     */
+    get scale() { return this._scale; }
+    set scale(value) { this._setTypeScale(this._type, scale); }
+
+    // theme is applied to text
+    set theme(value) { this.textTheme = value; }
+
+    /**
+     * @type {'border' | 'grow'}
+     * @protected
+     */
+    _type;
+    /**
+     * type of spinner
+     * valid values: border (horseshoe), grow (pulsing dot)
+     */
+    get type() { return this._type; }
+    set type(value) { this._setTypeScale(value, this._scale); }
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /**
+     * add content to the screen reader
+     * @param {any} value value or array of values to go inside the HTML element
+     */
+    add(value) { this.screenReader.add(value); }
+
+    /** contents of the tag */
+    innerHTML() {
+        let output = '';
+
+        output += super.innerHTML();
+        output += this.screenReader;
+
+        return output;
+    }
+
+
+    /*****************************
+     ***** Protected Methods *****
+     ****************************/
+
+    /**
+     * type and scale are interdependent
+     * @param {any} type
+     * @param {any} scale
+     * @protected
+     */
+    _setTypeScale(type, scale) {
+        // remove dynamic Bootstrap classes
+        this.removeClass(`spinner-${this._type}`);
+        if (this._scale) {
+            if (this._scale == 'sm')
+                this.removeClass(`spinner-${this._type}-${this._scale}`)
+            else {
+                this.removeStyle(`height: ${this._scale}`);
+                this.removeStyle(`width: ${this._scale}`);
+            }
+        }
+
+        // update properties
+        this._type = type;
+        this._scale = scale;
+
+        // add dynamic Bootstrap classes
+        this.class(`spinner-${this._type}`);
+        if (this._scale) {
+            if (this._scale == 'sm')
+                this.class(`spinner-${this._type}-${this._scale}`)
+            else {
+                this.style(`height: ${this._scale}`);
+                this.style(`width: ${this._scale}`);
+            }
+        }
+    }
+}
+exports.Spinner = Spinner;
+
+
+/****************************************************************************************************************************
+ ************************************************** Bootstrap: Grid System **************************************************
+ ***************************************************************************************************************************/
 
 /**
  * twelve column grid system by breakpoint

@@ -2203,6 +2203,62 @@ export class FormGroup extends Division {
      */
     constructor(label: any, contents: any, attributes: object, labelAttributes: object);
 }
+/**
+ * extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs
+ * https://getbootstrap.com/docs/4.5/components/input-group/
+ */
+export class InputGroup extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} prepend value or array of values to go inside the prepended element
+     * @param {any} contents value or array of values to go inside the Input Group element
+     * @param {any} append value or array of values to go inside the appended element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Input Group element
+     */
+    constructor(prepend: any, contents: any, append: any, attributes: object);
+    /**
+     * element that goes before the main content
+     * @type {Division}
+     */
+    prepend: Division;
+    /********************
+     ***** Elements *****
+     *******************/
+    /**
+     * element that goes after the main content
+     * @type {Division}
+     */
+    append: Division;
+    /**********************
+     ***** Properties *****
+     *********************/
+    /**
+     * @type {'sm' | 'lg'}
+     * @protected
+     */
+    protected _scale: 'sm' | 'lg';
+    set scale(arg: "sm" | "lg");
+    /**
+     * input group size
+     * valid values: null (default), sm (small), lg (large)
+     */
+    get scale(): "sm" | "lg";
+    /*******************
+     ***** Methods *****
+     ******************/
+    /**
+     * add append contents
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    addAppend(contents: any, attributes: object): void;
+    /**
+     * add prepend contents
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    addPrepend(contents: any, attributes: object): void;
+}
 /***********************************************************************************************************************
  ************************************************** Bootstrap Content **************************************************
  **********************************************************************************************************************/
@@ -2254,9 +2310,32 @@ export class Display4 extends Heading4 {
      */
     constructor(contents: any, attributes: object);
 }
-/**************************************************************************************************************************
- ************************************************** Bootstrap Components **************************************************
- *************************************************************************************************************************/
+/**
+ * hide elements on all devices except screen readers
+ * https://getbootstrap.com/docs/4.5/utilities/screen-readers/
+ */
+export class ScreenReader extends Span {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents: any, attributes: object);
+    /**********************
+     ***** Properties *****
+     *********************/
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _focusable: boolean;
+    set focusable(arg: any);
+    /** how the element again when it’s focused (e.g. by a keyboard-only user) */
+    get focusable(): any;
+}
+/***************************************************************************************************************************
+ ************************************************** Bootstrap: Components **************************************************
+ **************************************************************************************************************************/
 /**
  * provides contextual feedback messages for typical user actions
  * https://getbootstrap.com/docs/4.5/components/alerts/
@@ -2290,7 +2369,7 @@ export class Alert extends Division {
      */
     dismissButton: Button;
     /**********************
-     ***** Attributes *****
+     ***** Properties *****
      *********************/
     /**
      * @type {boolean}
@@ -2301,9 +2380,56 @@ export class Alert extends Division {
     /** alert can be closed out */
     get dismissible(): boolean;
 }
-/*****************************************************************************************************************
- ************************************************** Grid System **************************************************
- ****************************************************************************************************************/
+/**
+ * indicate the loading state of a component or page
+ * https://getbootstrap.com/docs/4.5/components/spinners/
+ */
+export class Spinner extends Division {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the screen reader
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents: any, attributes: object);
+    /**********************
+     ***** Properties *****
+     *********************/
+    /**
+     * @type {'sm' | string}
+     * @protected
+     */
+    protected _scale: 'sm' | string;
+    set scale(arg: string);
+    /**
+     * size of spinner
+     * valid values: null, sm, styling units (e.g., "3rem")
+     */
+    get scale(): string;
+    /**
+     * @type {'border' | 'grow'}
+     * @protected
+     */
+    protected _type: 'border' | 'grow';
+    set type(arg: "border" | "grow");
+    /**
+     * type of spinner
+     * valid values: border (horseshoe), grow (pulsing dot)
+     */
+    get type(): "border" | "grow";
+    /*****************************
+     ***** Protected Methods *****
+     ****************************/
+    /**
+     * type and scale are interdependent
+     * @param {any} type
+     * @param {any} scale
+     * @protected
+     */
+    protected _setTypeScale(type: any, scale: any): void;
+}
+/****************************************************************************************************************************
+ ************************************************** Bootstrap: Grid System **************************************************
+ ***************************************************************************************************************************/
 /**
  * twelve column grid system by breakpoint
  * https://getbootstrap.com/docs/4.5/layout/grid/
@@ -3360,34 +3486,6 @@ declare class BootstrapTag {
      */
     detailSummary(contents: any, attributes: object): void;
     /**
-     * primary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display1(contents: any, attributes: object): void;
-    /**
-     * secondary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display2(contents: any, attributes: object): void;
-    /**
-     * tertiary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display3(contents: any, attributes: object): void;
-    /**
-     * quaternary opinionated heading
-     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    display4(contents: any, attributes: object): void;
-    /**
      * generic container for grouping content for styling/visual purposes
      * https://www.w3schools.com/tags/tag_div.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3580,13 +3678,6 @@ declare class BootstrapTag {
      */
     quote(contents: any, attributes: object): void;
     /**
-     * strikethrough (no longer accurate)
-     * https://www.w3schools.com/tags/tag_s.asp
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    strike(contents: any, attributes: object): void;
-    /**
      * used to either group different articles into different purposes or subjects, or to define the different sections of a single article
      * https://www.w3schools.com/tags/tag_section.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3607,6 +3698,13 @@ declare class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     span(contents: any, attributes: object): void;
+    /**
+     * strikethrough (no longer accurate)
+     * https://www.w3schools.com/tags/tag_s.asp
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    strike(contents: any, attributes: object): void;
     /**
      * important text (bold)
      * https://www.w3schools.com/tags/tag_strong.asp
@@ -3739,6 +3837,15 @@ declare class BootstrapTag {
      */
     input(value: string, name: string, attributes: object): void;
     /**
+     * extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs
+     * https://getbootstrap.com/docs/4.5/components/input-group/
+     * @param {any} prepend value or array of values to go inside the prepended element
+     * @param {any} contents value or array of values to go inside the Input Group element
+     * @param {any} append value or array of values to go inside the appended element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the Input Group element
+     */
+    inputGroup(prepend: any, contents: any, append: any, attributes: object): void;
+    /**
      * label for a form element
      * https://www.w3schools.com/tags/tag_label.asp
      * @param {any} contents value or array of values to go inside the HTML element
@@ -3767,6 +3874,44 @@ declare class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     textbox(value: string, name: string, attributes: object): void;
+    /*************************************
+     ***** Bootstrap Content Methods *****
+     ************************************/
+    /**
+     * primary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display1(contents: any, attributes: object): void;
+    /**
+     * secondary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display2(contents: any, attributes: object): void;
+    /**
+     * tertiary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display3(contents: any, attributes: object): void;
+    /**
+     * quaternary opinionated heading
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    display4(contents: any, attributes: object): void;
+    /**
+     * hide elements on all devices except screen readers
+     * https://getbootstrap.com/docs/4.5/utilities/screen-readers/
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    screenReader(contents: any, attributes: object): void;
     /***************************************
      ***** Bootstrap Component Methods *****
      **************************************/
@@ -3777,6 +3922,13 @@ declare class BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     alert(contents: any, attributes: object): void;
+    /**
+     * indicate the loading state of a component or page
+     * https://getbootstrap.com/docs/4.5/components/spinners/
+     * @param {any} contents value or array of values to go inside the screen reader
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    spinner(contents: any, attributes: object): void;
     /**********************************
      ***** Bootstrap Grid Methods *****
      *********************************/

@@ -3315,6 +3315,779 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/layout/grid/#no-gutters
      */
     get gridRowNoGutters(): boolean;
+    /******************************
+     ***** Properties: Layout *****
+     *****************************/
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginBottom: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginBottom(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottom(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginBottomSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginBottomSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginBottomMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginBottomMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginBottomLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginBottomLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginBottomXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginBottomXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginLeft: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginLeft(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeft(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginLeftSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginLeftSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginLeftMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginLeftMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginLeftLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginLeftLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginLeftXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginLeftXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginRight: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginRight(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRight(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginRightSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginRightSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginRightMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginRightMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginRightLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginRightLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginRightXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginRightXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _margins: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set margins(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * margins for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get margins(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginsSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginsSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint margins for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginsSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginsMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginsMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint margins for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginsMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginsLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginsLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint margins for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginsLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginsXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginsXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint margins for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginsXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginTop: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginTop(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * top margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginTop(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginTopSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginTopSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint top margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginTopSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginTopMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginTopMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint top margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginTopMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginTopLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginTopLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint top margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginTopLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginTopXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginTopXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint top margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginTopXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginX: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginX(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * left/right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginX(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginXSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginXSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint left/right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginXSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginXMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginXMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint left/right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginXMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginXLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginXLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint left/right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginXLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginXXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginXXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint left/right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginXXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginY: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginY(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * top/bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginY(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginYSmall: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginYSmall(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint top/bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginYSmall(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginYMedium: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginYMedium(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * medium breakpoint top/bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginYMedium(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginYLarge: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginYLarge(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * large breakpoint top/bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginYLarge(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _marginYXL: null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set marginYXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
+    /**
+     * small breakpoint top/bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginYXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingBottom: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingBottom(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottom(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingBottomSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingBottomSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingBottomMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingBottomMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingBottomLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingBottomLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingBottomXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingBottomXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLeft: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLeft(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeft(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLeftSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLeftSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLeftMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLeftMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLeftLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLeftLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLeftXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLeftXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingRight: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingRight(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRight(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingRightSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingRightSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingRightMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingRightMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingRightLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingRightLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingRightXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingRightXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _padding: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set padding(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * padding for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get padding(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint padding for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint padding for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint padding for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint padding for all sides
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingTop: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingTop(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * top padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingTop(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingTopSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingTopSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint top padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingTopSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingTopMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingTopMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint top padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingTopMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingTopLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingTopLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint top padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingTopLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingTopXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingTopXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint top padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingTopXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingX: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingX(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * left/right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingX(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingXSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingXSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint left/right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingXSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingXMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingXMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint left/right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingXMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingXLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingXLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint left/right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingXLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingXXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingXXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint left/right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingXXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingY: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingY(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * top/bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingY(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingYSmall: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingYSmall(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint top/bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingYSmall(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingYMedium: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingYMedium(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * medium breakpoint top/bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingYMedium(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingYLarge: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingYLarge(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * large breakpoint top/bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingYLarge(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /**
+     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    protected _paddingYXL: null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+    set paddingYXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
+    /**
+     * small breakpoint top/bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingYXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
     /*******************
      ***** Methods *****
      ******************/

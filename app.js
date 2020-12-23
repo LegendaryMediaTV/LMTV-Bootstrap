@@ -914,6 +914,139 @@ class BootstrapTag {
     }
 
 
+    /*******************************
+     ***** Properties: Borders *****
+     ******************************/
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _borders;
+    /**
+     * border on all sides (true); subtractive (false)
+     * https://getbootstrap.com/docs/4.5/utilities/borders/
+     */
+    get borders() { return this._borders; }
+    set borders(value) {
+        if (this._borders != null)
+            this.removeClass('border' + (this._borders === false ? '-0' : ''));
+        this._borders = value;
+        if (this._borders != null)
+            this.class('border' + (this._borders === false ? '-0' : ''));
+    }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _borderBottom;
+    /**
+     * bottom border (true); subtractive (false)
+     * https://getbootstrap.com/docs/4.5/utilities/borders/
+     */
+    get borderBottom() { return this._borderBottom; }
+    set borderBottom(value) {
+        if (this._borderBottom != null)
+            this.removeClass('border-bottom' + (this._borderBottom === false ? '-0' : ''));
+        this._borderBottom = value;
+        if (this._borderBottom != null)
+            this.class('border-bottom' + (this._borderBottom === false ? '-0' : ''));
+    }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _borderLeft;
+    /**
+     * left border (true); subtractive (false)
+     * https://getbootstrap.com/docs/4.5/utilities/borders/
+     */
+    get borderLeft() { return this._borderLeft; }
+    set borderLeft(value) {
+        if (this._borderLeft != null)
+            this.removeClass('border-left' + (this._borderLeft === false ? '-0' : ''));
+        this._borderLeft = value;
+        if (this._borderLeft != null)
+            this.class('border-left' + (this._borderLeft === false ? '-0' : ''));
+    }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _borderRight;
+    /**
+     * right border (true); subtractive (false)
+     * https://getbootstrap.com/docs/4.5/utilities/borders/
+     */
+    get borderRight() { return this._borderRight; }
+    set borderRight(value) {
+        if (this._borderRight != null)
+            this.removeClass('border-right' + (this._borderRight === false ? '-0' : ''));
+        this._borderRight = value;
+        if (this._borderRight != null)
+            this.class('border-right' + (this._borderRight === false ? '-0' : ''));
+    }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _borderTop;
+    /**
+     * top border (true); subtractive (false)
+     * https://getbootstrap.com/docs/4.5/utilities/borders/
+     */
+    get borderTop() { return this._borderTop; }
+    set borderTop(value) {
+        if (this._borderTop != null)
+            this.removeClass('border-top' + (this._borderTop === false ? '-0' : ''));
+        this._borderTop = value;
+        if (this._borderTop != null)
+            this.class('border-top' + (this._borderTop === false ? '-0' : ''));
+    }
+
+    /**
+     * @type {true | false | 'bottom' | 'circle' | 'left' | 'pill' | 'right' | 'rounded' | 'top'}
+     * @protected
+     */
+    _borderRadius;
+    /**
+     * Bootstrap border theme
+     * valid values: danger, dark, info, light, primary, secondary, success, warning, white
+     * https://getbootstrap.com/docs/4.5/utilities/borders/#border-color
+     */
+    get borderRadius() { return this._borderRadius; }
+    set borderRadius(value) {
+        if (this._borderRadius != null)
+            this.removeClass('rounded' + (this._borderRadius !== true ? '-' + (this._borderRadius ? this._borderRadius : '0') : ''));
+        this._borderRadius = value;
+        if (this._borderRadius != null)
+            this.class('rounded' + (this._borderRadius !== true ? '-' + (this._borderRadius ? this._borderRadius : '0') : ''));
+    }
+
+    /**
+     * @type {string}
+     * @protected
+     */
+    _borderTheme;
+    /**
+     * Bootstrap border theme
+     * valid values: danger, dark, info, light, primary, secondary, success, warning, white
+     * https://getbootstrap.com/docs/4.5/utilities/borders/#border-color
+     */
+    get borderTheme() { return this._borderTheme; }
+    set borderTheme(value) {
+        if (this._borderTheme != null)
+            this.removeClass(`border-${this._borderTheme}`);
+        this._borderTheme = value;
+        if (this._borderTheme != null)
+            this.class(`border-${this._borderTheme}`);
+    }
+
+
     /****************************
      ***** Properties: Grid *****
      ***************************/
@@ -1255,277 +1388,7 @@ class BootstrapTag {
      *****************************/
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginBottom;
-    /**
-     * bottom margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginBottom() { return this._marginBottom; }
-    set marginBottom(value) {
-        if (this._marginBottom != null)
-            this.removeClass(`mb-${+this._marginBottom < 0 ? 'n' : ''}${this._marginBottom}`);
-        this._marginBottom = value;
-        if (this._marginBottom != null)
-            this.class(`mb-${+this._marginBottom < 0 ? 'n' : ''}${this._marginBottom}`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginBottomSmall;
-    /**
-     * small breakpoint bottom margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginBottomSmall() { return this._marginBottomSmall; }
-    set marginBottomSmall(value) {
-        if (this._marginBottomSmall != null)
-            this.removeClass(`mb-${+this._marginBottomSmall < 0 ? 'n' : ''}${this._marginBottomSmall}-sm`);
-        this._marginBottomSmall = value;
-        if (this._marginBottomSmall != null)
-            this.class(`mb-${+this._marginBottomSmall < 0 ? 'n' : ''}${this._marginBottomSmall}-sm`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginBottomMedium;
-    /**
-     * medium breakpoint bottom margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginBottomMedium() { return this._marginBottomMedium; }
-    set marginBottomMedium(value) {
-        if (this._marginBottomMedium != null)
-            this.removeClass(`mb-${+this._marginBottomMedium < 0 ? 'n' : ''}${this._marginBottomMedium}-md`);
-        this._marginBottomMedium = value;
-        if (this._marginBottomMedium != null)
-            this.class(`mb-${+this._marginBottomMedium < 0 ? 'n' : ''}${this._marginBottomMedium}-md`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginBottomLarge;
-    /**
-     * large breakpoint bottom margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginBottomLarge() { return this._marginBottomLarge; }
-    set marginBottomLarge(value) {
-        if (this._marginBottomLarge != null)
-            this.removeClass(`mb-${+this._marginBottomLarge < 0 ? 'n' : ''}${this._marginBottomLarge}-lg`);
-        this._marginBottomLarge = value;
-        if (this._marginBottomLarge != null)
-            this.class(`mb-${+this._marginBottomLarge < 0 ? 'n' : ''}${this._marginBottomLarge}-lg`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginBottomXL;
-    /**
-     * small breakpoint bottom margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginBottomXL() { return this._marginBottomXL; }
-    set marginBottomXL(value) {
-        if (this._marginBottomXL != null)
-            this.removeClass(`mb-${+this._marginBottomXL < 0 ? 'n' : ''}${this._marginBottomXL}-xl`);
-        this._marginBottomXL = value;
-        if (this._marginBottomXL != null)
-            this.class(`mb-${+this._marginBottomXL < 0 ? 'n' : ''}${this._marginBottomXL}-xl`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginLeft;
-    /**
-     * left margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginLeft() { return this._marginLeft; }
-    set marginLeft(value) {
-        if (this._marginLeft != null)
-            this.removeClass(`ml-${+this._marginLeft < 0 ? 'n' : ''}${this._marginLeft}`);
-        this._marginLeft = value;
-        if (this._marginLeft != null)
-            this.class(`ml-${+this._marginLeft < 0 ? 'n' : ''}${this._marginLeft}`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginLeftSmall;
-    /**
-     * small breakpoint left margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginLeftSmall() { return this._marginLeftSmall; }
-    set marginLeftSmall(value) {
-        if (this._marginLeftSmall != null)
-            this.removeClass(`ml-${+this._marginLeftSmall < 0 ? 'n' : ''}${this._marginLeftSmall}-sm`);
-        this._marginLeftSmall = value;
-        if (this._marginLeftSmall != null)
-            this.class(`ml-${+this._marginLeftSmall < 0 ? 'n' : ''}${this._marginLeftSmall}-sm`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginLeftMedium;
-    /**
-     * medium breakpoint left margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginLeftMedium() { return this._marginLeftMedium; }
-    set marginLeftMedium(value) {
-        if (this._marginLeftMedium != null)
-            this.removeClass(`ml-${+this._marginLeftMedium < 0 ? 'n' : ''}${this._marginLeftMedium}-md`);
-        this._marginLeftMedium = value;
-        if (this._marginLeftMedium != null)
-            this.class(`ml-${+this._marginLeftMedium < 0 ? 'n' : ''}${this._marginLeftMedium}-md`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginLeftLarge;
-    /**
-     * large breakpoint left margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginLeftLarge() { return this._marginLeftLarge; }
-    set marginLeftLarge(value) {
-        if (this._marginLeftLarge != null)
-            this.removeClass(`ml-${+this._marginLeftLarge < 0 ? 'n' : ''}${this._marginLeftLarge}-lg`);
-        this._marginLeftLarge = value;
-        if (this._marginLeftLarge != null)
-            this.class(`ml-${+this._marginLeftLarge < 0 ? 'n' : ''}${this._marginLeftLarge}-lg`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginLeftXL;
-    /**
-     * small breakpoint left margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginLeftXL() { return this._marginLeftXL; }
-    set marginLeftXL(value) {
-        if (this._marginLeftXL != null)
-            this.removeClass(`ml-${+this._marginLeftXL < 0 ? 'n' : ''}${this._marginLeftXL}-xl`);
-        this._marginLeftXL = value;
-        if (this._marginLeftXL != null)
-            this.class(`ml-${+this._marginLeftXL < 0 ? 'n' : ''}${this._marginLeftXL}-xl`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginRight;
-    /**
-     * right margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginRight() { return this._marginRight; }
-    set marginRight(value) {
-        if (this._marginRight != null)
-            this.removeClass(`mr-${+this._marginRight < 0 ? 'n' : ''}${this._marginRight}`);
-        this._marginRight = value;
-        if (this._marginRight != null)
-            this.class(`mr-${+this._marginRight < 0 ? 'n' : ''}${this._marginRight}`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginRightSmall;
-    /**
-     * small breakpoint right margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginRightSmall() { return this._marginRightSmall; }
-    set marginRightSmall(value) {
-        if (this._marginRightSmall != null)
-            this.removeClass(`mr-${+this._marginRightSmall < 0 ? 'n' : ''}${this._marginRightSmall}-sm`);
-        this._marginRightSmall = value;
-        if (this._marginRightSmall != null)
-            this.class(`mr-${+this._marginRightSmall < 0 ? 'n' : ''}${this._marginRightSmall}-sm`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginRightMedium;
-    /**
-     * medium breakpoint right margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginRightMedium() { return this._marginRightMedium; }
-    set marginRightMedium(value) {
-        if (this._marginRightMedium != null)
-            this.removeClass(`mr-${+this._marginRightMedium < 0 ? 'n' : ''}${this._marginRightMedium}-md`);
-        this._marginRightMedium = value;
-        if (this._marginRightMedium != null)
-            this.class(`mr-${+this._marginRightMedium < 0 ? 'n' : ''}${this._marginRightMedium}-md`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginRightLarge;
-    /**
-     * large breakpoint right margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginRightLarge() { return this._marginRightLarge; }
-    set marginRightLarge(value) {
-        if (this._marginRightLarge != null)
-            this.removeClass(`mr-${+this._marginRightLarge < 0 ? 'n' : ''}${this._marginRightLarge}-lg`);
-        this._marginRightLarge = value;
-        if (this._marginRightLarge != null)
-            this.class(`mr-${+this._marginRightLarge < 0 ? 'n' : ''}${this._marginRightLarge}-lg`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _marginRightXL;
-    /**
-     * small breakpoint right margin
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get marginRightXL() { return this._marginRightXL; }
-    set marginRightXL(value) {
-        if (this._marginRightXL != null)
-            this.removeClass(`mr-${+this._marginRightXL < 0 ? 'n' : ''}${this._marginRightXL}-xl`);
-        this._marginRightXL = value;
-        if (this._marginRightXL != null)
-            this.class(`mr-${+this._marginRightXL < 0 ? 'n' : ''}${this._marginRightXL}-xl`);
-    }
-
-    /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _margins;
@@ -1543,7 +1406,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginsSmall;
@@ -1561,7 +1424,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginsMedium;
@@ -1579,7 +1442,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginsLarge;
@@ -1597,7 +1460,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginsXL;
@@ -1615,7 +1478,277 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginBottom;
+    /**
+     * bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottom() { return this._marginBottom; }
+    set marginBottom(value) {
+        if (this._marginBottom != null)
+            this.removeClass(`mb-${+this._marginBottom < 0 ? 'n' : ''}${this._marginBottom}`);
+        this._marginBottom = value;
+        if (this._marginBottom != null)
+            this.class(`mb-${+this._marginBottom < 0 ? 'n' : ''}${this._marginBottom}`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginBottomSmall;
+    /**
+     * small breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomSmall() { return this._marginBottomSmall; }
+    set marginBottomSmall(value) {
+        if (this._marginBottomSmall != null)
+            this.removeClass(`mb-${+this._marginBottomSmall < 0 ? 'n' : ''}${this._marginBottomSmall}-sm`);
+        this._marginBottomSmall = value;
+        if (this._marginBottomSmall != null)
+            this.class(`mb-${+this._marginBottomSmall < 0 ? 'n' : ''}${this._marginBottomSmall}-sm`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginBottomMedium;
+    /**
+     * medium breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomMedium() { return this._marginBottomMedium; }
+    set marginBottomMedium(value) {
+        if (this._marginBottomMedium != null)
+            this.removeClass(`mb-${+this._marginBottomMedium < 0 ? 'n' : ''}${this._marginBottomMedium}-md`);
+        this._marginBottomMedium = value;
+        if (this._marginBottomMedium != null)
+            this.class(`mb-${+this._marginBottomMedium < 0 ? 'n' : ''}${this._marginBottomMedium}-md`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginBottomLarge;
+    /**
+     * large breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomLarge() { return this._marginBottomLarge; }
+    set marginBottomLarge(value) {
+        if (this._marginBottomLarge != null)
+            this.removeClass(`mb-${+this._marginBottomLarge < 0 ? 'n' : ''}${this._marginBottomLarge}-lg`);
+        this._marginBottomLarge = value;
+        if (this._marginBottomLarge != null)
+            this.class(`mb-${+this._marginBottomLarge < 0 ? 'n' : ''}${this._marginBottomLarge}-lg`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginBottomXL;
+    /**
+     * small breakpoint bottom margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginBottomXL() { return this._marginBottomXL; }
+    set marginBottomXL(value) {
+        if (this._marginBottomXL != null)
+            this.removeClass(`mb-${+this._marginBottomXL < 0 ? 'n' : ''}${this._marginBottomXL}-xl`);
+        this._marginBottomXL = value;
+        if (this._marginBottomXL != null)
+            this.class(`mb-${+this._marginBottomXL < 0 ? 'n' : ''}${this._marginBottomXL}-xl`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginLeft;
+    /**
+     * left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeft() { return this._marginLeft; }
+    set marginLeft(value) {
+        if (this._marginLeft != null)
+            this.removeClass(`ml-${+this._marginLeft < 0 ? 'n' : ''}${this._marginLeft}`);
+        this._marginLeft = value;
+        if (this._marginLeft != null)
+            this.class(`ml-${+this._marginLeft < 0 ? 'n' : ''}${this._marginLeft}`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginLeftSmall;
+    /**
+     * small breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftSmall() { return this._marginLeftSmall; }
+    set marginLeftSmall(value) {
+        if (this._marginLeftSmall != null)
+            this.removeClass(`ml-${+this._marginLeftSmall < 0 ? 'n' : ''}${this._marginLeftSmall}-sm`);
+        this._marginLeftSmall = value;
+        if (this._marginLeftSmall != null)
+            this.class(`ml-${+this._marginLeftSmall < 0 ? 'n' : ''}${this._marginLeftSmall}-sm`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginLeftMedium;
+    /**
+     * medium breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftMedium() { return this._marginLeftMedium; }
+    set marginLeftMedium(value) {
+        if (this._marginLeftMedium != null)
+            this.removeClass(`ml-${+this._marginLeftMedium < 0 ? 'n' : ''}${this._marginLeftMedium}-md`);
+        this._marginLeftMedium = value;
+        if (this._marginLeftMedium != null)
+            this.class(`ml-${+this._marginLeftMedium < 0 ? 'n' : ''}${this._marginLeftMedium}-md`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginLeftLarge;
+    /**
+     * large breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftLarge() { return this._marginLeftLarge; }
+    set marginLeftLarge(value) {
+        if (this._marginLeftLarge != null)
+            this.removeClass(`ml-${+this._marginLeftLarge < 0 ? 'n' : ''}${this._marginLeftLarge}-lg`);
+        this._marginLeftLarge = value;
+        if (this._marginLeftLarge != null)
+            this.class(`ml-${+this._marginLeftLarge < 0 ? 'n' : ''}${this._marginLeftLarge}-lg`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginLeftXL;
+    /**
+     * small breakpoint left margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginLeftXL() { return this._marginLeftXL; }
+    set marginLeftXL(value) {
+        if (this._marginLeftXL != null)
+            this.removeClass(`ml-${+this._marginLeftXL < 0 ? 'n' : ''}${this._marginLeftXL}-xl`);
+        this._marginLeftXL = value;
+        if (this._marginLeftXL != null)
+            this.class(`ml-${+this._marginLeftXL < 0 ? 'n' : ''}${this._marginLeftXL}-xl`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginRight;
+    /**
+     * right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRight() { return this._marginRight; }
+    set marginRight(value) {
+        if (this._marginRight != null)
+            this.removeClass(`mr-${+this._marginRight < 0 ? 'n' : ''}${this._marginRight}`);
+        this._marginRight = value;
+        if (this._marginRight != null)
+            this.class(`mr-${+this._marginRight < 0 ? 'n' : ''}${this._marginRight}`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginRightSmall;
+    /**
+     * small breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightSmall() { return this._marginRightSmall; }
+    set marginRightSmall(value) {
+        if (this._marginRightSmall != null)
+            this.removeClass(`mr-${+this._marginRightSmall < 0 ? 'n' : ''}${this._marginRightSmall}-sm`);
+        this._marginRightSmall = value;
+        if (this._marginRightSmall != null)
+            this.class(`mr-${+this._marginRightSmall < 0 ? 'n' : ''}${this._marginRightSmall}-sm`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginRightMedium;
+    /**
+     * medium breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightMedium() { return this._marginRightMedium; }
+    set marginRightMedium(value) {
+        if (this._marginRightMedium != null)
+            this.removeClass(`mr-${+this._marginRightMedium < 0 ? 'n' : ''}${this._marginRightMedium}-md`);
+        this._marginRightMedium = value;
+        if (this._marginRightMedium != null)
+            this.class(`mr-${+this._marginRightMedium < 0 ? 'n' : ''}${this._marginRightMedium}-md`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginRightLarge;
+    /**
+     * large breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightLarge() { return this._marginRightLarge; }
+    set marginRightLarge(value) {
+        if (this._marginRightLarge != null)
+            this.removeClass(`mr-${+this._marginRightLarge < 0 ? 'n' : ''}${this._marginRightLarge}-lg`);
+        this._marginRightLarge = value;
+        if (this._marginRightLarge != null)
+            this.class(`mr-${+this._marginRightLarge < 0 ? 'n' : ''}${this._marginRightLarge}-lg`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _marginRightXL;
+    /**
+     * small breakpoint right margin
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get marginRightXL() { return this._marginRightXL; }
+    set marginRightXL(value) {
+        if (this._marginRightXL != null)
+            this.removeClass(`mr-${+this._marginRightXL < 0 ? 'n' : ''}${this._marginRightXL}-xl`);
+        this._marginRightXL = value;
+        if (this._marginRightXL != null)
+            this.class(`mr-${+this._marginRightXL < 0 ? 'n' : ''}${this._marginRightXL}-xl`);
+    }
+
+    /**
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginTop;
@@ -1633,7 +1766,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginTopSmall;
@@ -1651,7 +1784,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginTopMedium;
@@ -1669,7 +1802,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginTopLarge;
@@ -1687,7 +1820,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginTopXL;
@@ -1705,7 +1838,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginX;
@@ -1723,7 +1856,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginXSmall;
@@ -1741,7 +1874,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginXMedium;
@@ -1759,7 +1892,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginXLarge;
@@ -1777,7 +1910,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginXXL;
@@ -1795,7 +1928,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginY;
@@ -1813,7 +1946,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginYSmall;
@@ -1831,7 +1964,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginYMedium;
@@ -1849,7 +1982,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginYLarge;
@@ -1867,7 +2000,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _marginYXL;
@@ -1885,277 +2018,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingBottom;
-    /**
-     * bottom padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingBottom() { return this._paddingBottom; }
-    set paddingBottom(value) {
-        if (this._paddingBottom != null)
-            this.removeClass(`pb-${this._paddingBottom}`);
-        this._paddingBottom = value;
-        if (this._paddingBottom != null)
-            this.class(`pb-${this._paddingBottom}`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingBottomSmall;
-    /**
-     * small breakpoint bottom padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingBottomSmall() { return this._paddingBottomSmall; }
-    set paddingBottomSmall(value) {
-        if (this._paddingBottomSmall != null)
-            this.removeClass(`pb-${+this._paddingBottomSmall < 0 ? 'n' : ''}${this._paddingBottomSmall}-sm`);
-        this._paddingBottomSmall = value;
-        if (this._paddingBottomSmall != null)
-            this.class(`pb-${+this._paddingBottomSmall < 0 ? 'n' : ''}${this._paddingBottomSmall}-sm`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingBottomMedium;
-    /**
-     * medium breakpoint bottom padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingBottomMedium() { return this._paddingBottomMedium; }
-    set paddingBottomMedium(value) {
-        if (this._paddingBottomMedium != null)
-            this.removeClass(`pb-${+this._paddingBottomMedium < 0 ? 'n' : ''}${this._paddingBottomMedium}-md`);
-        this._paddingBottomMedium = value;
-        if (this._paddingBottomMedium != null)
-            this.class(`pb-${+this._paddingBottomMedium < 0 ? 'n' : ''}${this._paddingBottomMedium}-md`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingBottomLarge;
-    /**
-     * large breakpoint bottom padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingBottomLarge() { return this._paddingBottomLarge; }
-    set paddingBottomLarge(value) {
-        if (this._paddingBottomLarge != null)
-            this.removeClass(`pb-${+this._paddingBottomLarge < 0 ? 'n' : ''}${this._paddingBottomLarge}-lg`);
-        this._paddingBottomLarge = value;
-        if (this._paddingBottomLarge != null)
-            this.class(`pb-${+this._paddingBottomLarge < 0 ? 'n' : ''}${this._paddingBottomLarge}-lg`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingBottomXL;
-    /**
-     * small breakpoint bottom padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingBottomXL() { return this._paddingBottomXL; }
-    set paddingBottomXL(value) {
-        if (this._paddingBottomXL != null)
-            this.removeClass(`pb-${+this._paddingBottomXL < 0 ? 'n' : ''}${this._paddingBottomXL}-xl`);
-        this._paddingBottomXL = value;
-        if (this._paddingBottomXL != null)
-            this.class(`pb-${+this._paddingBottomXL < 0 ? 'n' : ''}${this._paddingBottomXL}-xl`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingLeft;
-    /**
-     * left padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingLeft() { return this._paddingLeft; }
-    set paddingLeft(value) {
-        if (this._paddingLeft != null)
-            this.removeClass(`pl-${+this._paddingLeft < 0 ? 'n' : ''}${this._paddingLeft}`);
-        this._paddingLeft = value;
-        if (this._paddingLeft != null)
-            this.class(`pl-${+this._paddingLeft < 0 ? 'n' : ''}${this._paddingLeft}`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingLeftSmall;
-    /**
-     * small breakpoint left padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingLeftSmall() { return this._paddingLeftSmall; }
-    set paddingLeftSmall(value) {
-        if (this._paddingLeftSmall != null)
-            this.removeClass(`pl-${+this._paddingLeftSmall < 0 ? 'n' : ''}${this._paddingLeftSmall}-sm`);
-        this._paddingLeftSmall = value;
-        if (this._paddingLeftSmall != null)
-            this.class(`pl-${+this._paddingLeftSmall < 0 ? 'n' : ''}${this._paddingLeftSmall}-sm`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingLeftMedium;
-    /**
-     * medium breakpoint left padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingLeftMedium() { return this._paddingLeftMedium; }
-    set paddingLeftMedium(value) {
-        if (this._paddingLeftMedium != null)
-            this.removeClass(`pl-${+this._paddingLeftMedium < 0 ? 'n' : ''}${this._paddingLeftMedium}-md`);
-        this._paddingLeftMedium = value;
-        if (this._paddingLeftMedium != null)
-            this.class(`pl-${+this._paddingLeftMedium < 0 ? 'n' : ''}${this._paddingLeftMedium}-md`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingLeftLarge;
-    /**
-     * large breakpoint left padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingLeftLarge() { return this._paddingLeftLarge; }
-    set paddingLeftLarge(value) {
-        if (this._paddingLeftLarge != null)
-            this.removeClass(`pl-${+this._paddingLeftLarge < 0 ? 'n' : ''}${this._paddingLeftLarge}-lg`);
-        this._paddingLeftLarge = value;
-        if (this._paddingLeftLarge != null)
-            this.class(`pl-${+this._paddingLeftLarge < 0 ? 'n' : ''}${this._paddingLeftLarge}-lg`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingLeftXL;
-    /**
-     * small breakpoint left padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingLeftXL() { return this._paddingLeftXL; }
-    set paddingLeftXL(value) {
-        if (this._paddingLeftXL != null)
-            this.removeClass(`pl-${+this._paddingLeftXL < 0 ? 'n' : ''}${this._paddingLeftXL}-xl`);
-        this._paddingLeftXL = value;
-        if (this._paddingLeftXL != null)
-            this.class(`pl-${+this._paddingLeftXL < 0 ? 'n' : ''}${this._paddingLeftXL}-xl`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingRight;
-    /**
-     * right padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingRight() { return this._paddingRight; }
-    set paddingRight(value) {
-        if (this._paddingRight != null)
-            this.removeClass(`pr-${+this._paddingRight < 0 ? 'n' : ''}${this._paddingRight}`);
-        this._paddingRight = value;
-        if (this._paddingRight != null)
-            this.class(`pr-${+this._paddingRight < 0 ? 'n' : ''}${this._paddingRight}`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingRightSmall;
-    /**
-     * small breakpoint right padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingRightSmall() { return this._paddingRightSmall; }
-    set paddingRightSmall(value) {
-        if (this._paddingRightSmall != null)
-            this.removeClass(`pr-${+this._paddingRightSmall < 0 ? 'n' : ''}${this._paddingRightSmall}-sm`);
-        this._paddingRightSmall = value;
-        if (this._paddingRightSmall != null)
-            this.class(`pr-${+this._paddingRightSmall < 0 ? 'n' : ''}${this._paddingRightSmall}-sm`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingRightMedium;
-    /**
-     * medium breakpoint right padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingRightMedium() { return this._paddingRightMedium; }
-    set paddingRightMedium(value) {
-        if (this._paddingRightMedium != null)
-            this.removeClass(`pr-${+this._paddingRightMedium < 0 ? 'n' : ''}${this._paddingRightMedium}-md`);
-        this._paddingRightMedium = value;
-        if (this._paddingRightMedium != null)
-            this.class(`pr-${+this._paddingRightMedium < 0 ? 'n' : ''}${this._paddingRightMedium}-md`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingRightLarge;
-    /**
-     * large breakpoint right padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingRightLarge() { return this._paddingRightLarge; }
-    set paddingRightLarge(value) {
-        if (this._paddingRightLarge != null)
-            this.removeClass(`pr-${+this._paddingRightLarge < 0 ? 'n' : ''}${this._paddingRightLarge}-lg`);
-        this._paddingRightLarge = value;
-        if (this._paddingRightLarge != null)
-            this.class(`pr-${+this._paddingRightLarge < 0 ? 'n' : ''}${this._paddingRightLarge}-lg`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
-     * @protected
-     */
-    _paddingRightXL;
-    /**
-     * small breakpoint right padding
-     * https://getbootstrap.com/docs/4.5/utilities/spacing/
-     */
-    get paddingRightXL() { return this._paddingRightXL; }
-    set paddingRightXL(value) {
-        if (this._paddingRightXL != null)
-            this.removeClass(`pr-${+this._paddingRightXL < 0 ? 'n' : ''}${this._paddingRightXL}-xl`);
-        this._paddingRightXL = value;
-        if (this._paddingRightXL != null)
-            this.class(`pr-${+this._paddingRightXL < 0 ? 'n' : ''}${this._paddingRightXL}-xl`);
-    }
-
-    /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _padding;
@@ -2173,7 +2036,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingSmall;
@@ -2191,7 +2054,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingMedium;
@@ -2209,7 +2072,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingLarge;
@@ -2227,7 +2090,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingXL;
@@ -2245,7 +2108,277 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingBottom;
+    /**
+     * bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottom() { return this._paddingBottom; }
+    set paddingBottom(value) {
+        if (this._paddingBottom != null)
+            this.removeClass(`pb-${this._paddingBottom}`);
+        this._paddingBottom = value;
+        if (this._paddingBottom != null)
+            this.class(`pb-${this._paddingBottom}`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingBottomSmall;
+    /**
+     * small breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomSmall() { return this._paddingBottomSmall; }
+    set paddingBottomSmall(value) {
+        if (this._paddingBottomSmall != null)
+            this.removeClass(`pb-${+this._paddingBottomSmall < 0 ? 'n' : ''}${this._paddingBottomSmall}-sm`);
+        this._paddingBottomSmall = value;
+        if (this._paddingBottomSmall != null)
+            this.class(`pb-${+this._paddingBottomSmall < 0 ? 'n' : ''}${this._paddingBottomSmall}-sm`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingBottomMedium;
+    /**
+     * medium breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomMedium() { return this._paddingBottomMedium; }
+    set paddingBottomMedium(value) {
+        if (this._paddingBottomMedium != null)
+            this.removeClass(`pb-${+this._paddingBottomMedium < 0 ? 'n' : ''}${this._paddingBottomMedium}-md`);
+        this._paddingBottomMedium = value;
+        if (this._paddingBottomMedium != null)
+            this.class(`pb-${+this._paddingBottomMedium < 0 ? 'n' : ''}${this._paddingBottomMedium}-md`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingBottomLarge;
+    /**
+     * large breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomLarge() { return this._paddingBottomLarge; }
+    set paddingBottomLarge(value) {
+        if (this._paddingBottomLarge != null)
+            this.removeClass(`pb-${+this._paddingBottomLarge < 0 ? 'n' : ''}${this._paddingBottomLarge}-lg`);
+        this._paddingBottomLarge = value;
+        if (this._paddingBottomLarge != null)
+            this.class(`pb-${+this._paddingBottomLarge < 0 ? 'n' : ''}${this._paddingBottomLarge}-lg`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingBottomXL;
+    /**
+     * small breakpoint bottom padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingBottomXL() { return this._paddingBottomXL; }
+    set paddingBottomXL(value) {
+        if (this._paddingBottomXL != null)
+            this.removeClass(`pb-${+this._paddingBottomXL < 0 ? 'n' : ''}${this._paddingBottomXL}-xl`);
+        this._paddingBottomXL = value;
+        if (this._paddingBottomXL != null)
+            this.class(`pb-${+this._paddingBottomXL < 0 ? 'n' : ''}${this._paddingBottomXL}-xl`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingLeft;
+    /**
+     * left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeft() { return this._paddingLeft; }
+    set paddingLeft(value) {
+        if (this._paddingLeft != null)
+            this.removeClass(`pl-${+this._paddingLeft < 0 ? 'n' : ''}${this._paddingLeft}`);
+        this._paddingLeft = value;
+        if (this._paddingLeft != null)
+            this.class(`pl-${+this._paddingLeft < 0 ? 'n' : ''}${this._paddingLeft}`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingLeftSmall;
+    /**
+     * small breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftSmall() { return this._paddingLeftSmall; }
+    set paddingLeftSmall(value) {
+        if (this._paddingLeftSmall != null)
+            this.removeClass(`pl-${+this._paddingLeftSmall < 0 ? 'n' : ''}${this._paddingLeftSmall}-sm`);
+        this._paddingLeftSmall = value;
+        if (this._paddingLeftSmall != null)
+            this.class(`pl-${+this._paddingLeftSmall < 0 ? 'n' : ''}${this._paddingLeftSmall}-sm`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingLeftMedium;
+    /**
+     * medium breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftMedium() { return this._paddingLeftMedium; }
+    set paddingLeftMedium(value) {
+        if (this._paddingLeftMedium != null)
+            this.removeClass(`pl-${+this._paddingLeftMedium < 0 ? 'n' : ''}${this._paddingLeftMedium}-md`);
+        this._paddingLeftMedium = value;
+        if (this._paddingLeftMedium != null)
+            this.class(`pl-${+this._paddingLeftMedium < 0 ? 'n' : ''}${this._paddingLeftMedium}-md`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingLeftLarge;
+    /**
+     * large breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftLarge() { return this._paddingLeftLarge; }
+    set paddingLeftLarge(value) {
+        if (this._paddingLeftLarge != null)
+            this.removeClass(`pl-${+this._paddingLeftLarge < 0 ? 'n' : ''}${this._paddingLeftLarge}-lg`);
+        this._paddingLeftLarge = value;
+        if (this._paddingLeftLarge != null)
+            this.class(`pl-${+this._paddingLeftLarge < 0 ? 'n' : ''}${this._paddingLeftLarge}-lg`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingLeftXL;
+    /**
+     * small breakpoint left padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingLeftXL() { return this._paddingLeftXL; }
+    set paddingLeftXL(value) {
+        if (this._paddingLeftXL != null)
+            this.removeClass(`pl-${+this._paddingLeftXL < 0 ? 'n' : ''}${this._paddingLeftXL}-xl`);
+        this._paddingLeftXL = value;
+        if (this._paddingLeftXL != null)
+            this.class(`pl-${+this._paddingLeftXL < 0 ? 'n' : ''}${this._paddingLeftXL}-xl`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingRight;
+    /**
+     * right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRight() { return this._paddingRight; }
+    set paddingRight(value) {
+        if (this._paddingRight != null)
+            this.removeClass(`pr-${+this._paddingRight < 0 ? 'n' : ''}${this._paddingRight}`);
+        this._paddingRight = value;
+        if (this._paddingRight != null)
+            this.class(`pr-${+this._paddingRight < 0 ? 'n' : ''}${this._paddingRight}`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingRightSmall;
+    /**
+     * small breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightSmall() { return this._paddingRightSmall; }
+    set paddingRightSmall(value) {
+        if (this._paddingRightSmall != null)
+            this.removeClass(`pr-${+this._paddingRightSmall < 0 ? 'n' : ''}${this._paddingRightSmall}-sm`);
+        this._paddingRightSmall = value;
+        if (this._paddingRightSmall != null)
+            this.class(`pr-${+this._paddingRightSmall < 0 ? 'n' : ''}${this._paddingRightSmall}-sm`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingRightMedium;
+    /**
+     * medium breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightMedium() { return this._paddingRightMedium; }
+    set paddingRightMedium(value) {
+        if (this._paddingRightMedium != null)
+            this.removeClass(`pr-${+this._paddingRightMedium < 0 ? 'n' : ''}${this._paddingRightMedium}-md`);
+        this._paddingRightMedium = value;
+        if (this._paddingRightMedium != null)
+            this.class(`pr-${+this._paddingRightMedium < 0 ? 'n' : ''}${this._paddingRightMedium}-md`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingRightLarge;
+    /**
+     * large breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightLarge() { return this._paddingRightLarge; }
+    set paddingRightLarge(value) {
+        if (this._paddingRightLarge != null)
+            this.removeClass(`pr-${+this._paddingRightLarge < 0 ? 'n' : ''}${this._paddingRightLarge}-lg`);
+        this._paddingRightLarge = value;
+        if (this._paddingRightLarge != null)
+            this.class(`pr-${+this._paddingRightLarge < 0 ? 'n' : ''}${this._paddingRightLarge}-lg`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @protected
+     */
+    _paddingRightXL;
+    /**
+     * small breakpoint right padding
+     * https://getbootstrap.com/docs/4.5/utilities/spacing/
+     */
+    get paddingRightXL() { return this._paddingRightXL; }
+    set paddingRightXL(value) {
+        if (this._paddingRightXL != null)
+            this.removeClass(`pr-${+this._paddingRightXL < 0 ? 'n' : ''}${this._paddingRightXL}-xl`);
+        this._paddingRightXL = value;
+        if (this._paddingRightXL != null)
+            this.class(`pr-${+this._paddingRightXL < 0 ? 'n' : ''}${this._paddingRightXL}-xl`);
+    }
+
+    /**
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingTop;
@@ -2263,7 +2396,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingTopSmall;
@@ -2281,7 +2414,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingTopMedium;
@@ -2299,7 +2432,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingTopLarge;
@@ -2317,7 +2450,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingTopXL;
@@ -2335,7 +2468,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingX;
@@ -2353,7 +2486,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingXSmall;
@@ -2371,7 +2504,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingXMedium;
@@ -2389,7 +2522,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingXLarge;
@@ -2407,7 +2540,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingXXL;
@@ -2425,7 +2558,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingY;
@@ -2443,7 +2576,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingYSmall;
@@ -2461,7 +2594,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingYMedium;
@@ -2479,7 +2612,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingYLarge;
@@ -2497,7 +2630,7 @@ class BootstrapTag {
     }
 
     /**
-     * @type {null | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
+     * @type {0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
      */
     _paddingYXL;
@@ -2512,6 +2645,29 @@ class BootstrapTag {
         this._paddingYXL = value;
         if (this._paddingYXL != null)
             this.class(`py-${+this._paddingYXL < 0 ? 'n' : ''}${this._paddingYXL}-xl`);
+    }
+
+
+    /**********************************
+     ***** Properties: Typography *****
+     *********************************/
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _leading;
+    /**
+     * make element stand out (e.g., leading paragraph)
+     * https://getbootstrap.com/docs/4.5/content/typography/#lead
+     */
+    get leading() { return this._leading; }
+    set leading(value) {
+        if (this._leading)
+            this.removeClass('lead');
+        this._leading = value;
+        if (this._leading)
+            this.class('lead');
     }
 
 
@@ -5520,6 +5676,47 @@ class Image extends CrossOriginTag {
     set width(value) {
         this._width = value;
         this._setStandardValue('width', value);
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _thumbnail;
+    /**
+     * add a thin, rounded border
+     * https://getbootstrap.com/docs/4.5/content/images/#image-thumbnails
+     */
+    get thumbnail() { return this._thumbnail; }
+    set thumbnail(value) {
+        if (this._thumbnail)
+            this.removeClass('img-thumbnail');
+        this._thumbnail = value;
+        if (this._thumbnail)
+            this.class('img-thumbnail');
+    }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _responsive;
+    /**
+     * make the image responsive by scaling it with the parent element
+     * https://getbootstrap.com/docs/4.5/content/images/#responsive-images
+     */
+    get responsive() { return this._responsive; }
+    set responsive(value) {
+        if (this._responsive)
+            this.removeClass('img-fluid');
+        this._responsive = value;
+        if (this._responsive)
+            this.class('img-fluid');
     }
 }
 exports.Image = Image;

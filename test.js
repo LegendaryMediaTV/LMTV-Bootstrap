@@ -30,10 +30,10 @@ http.createServer((req, res) => {
     html.resourceLink(urlCSS);
     html.style([`.test { ${cssValue} }`, 'p.test { color: blue; }'], { media: 'print' });
     html.script(jsValue);
-    html.class('m-5');
+    html.body.margins = 5;
 
     html.comment('Content');
-    html.display1('Content');
+    html.displayHeading1('Content');
 
     html.abbreviation('HW', stringValue);
     html.add('\n');
@@ -54,11 +54,11 @@ http.createServer((req, res) => {
     html.details(stringValue, `${stringValue} ${stringValue} ${stringValue}`, { open: true, onToggle: jsValue });
     html.add('\n');
     html.division(stringValue);
-    html.display1(stringValue);
-    html.display2(stringValue);
-    html.display3(stringValue);
-    html.display4(stringValue);
-    html.add('\n');
+    html.displayHeading1(stringValue);
+    html.displayHeading2(stringValue);
+    html.displayHeading3(stringValue);
+    html.displayHeading4(stringValue);
+    html.leadingParagraph(stringValue);
     html.emphasis(stringValue);
     html.add('\n');
     html.figure(urlImage, stringValue, stringValue, { captionOnTop: true });
@@ -121,7 +121,7 @@ http.createServer((req, res) => {
     html.add('\n');
 
     html.comment('Form');
-    html.display1('Form');
+    html.displayHeading1('Form');
 
     const form = new bs.Form();
     form.checkbox('plain checkbox', 'on', 'demo-checkbox-plain', null, { plain: true });
@@ -161,7 +161,7 @@ http.createServer((req, res) => {
     html.add('\n');
 
     html.comment('Components');
-    html.display1('Components');
+    html.displayHeading1('Components');
 
     // default alert
     html.alert(stringValue);
@@ -181,7 +181,7 @@ http.createServer((req, res) => {
     html.add(alert);
 
     html.comment('Grid System');
-    html.display1('Grid System');
+    html.displayHeading1('Grid System');
 
     let row;
 
@@ -458,6 +458,7 @@ test.paddingYSmall = 'auto';
 test.paddingYMedium = 'auto';
 test.paddingYLarge = 'auto';
 test.paddingYXL = 'auto';
+test.displayHeading = 1;
 test.leading = true;
 console.log(test.toString());
 

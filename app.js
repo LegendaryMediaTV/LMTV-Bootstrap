@@ -2652,6 +2652,25 @@ class BootstrapTag {
      ***** Properties: Typography *****
      *********************************/
 
+
+    /**
+     * @type {1 | 2 | 3 | 4}
+     * @protected
+     */
+    _displayHeading;
+    /**
+     * larger, slighly more opinionated heading style
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     */
+    get displayHeading() { return this._displayHeading; }
+    set displayHeading(value) {
+        if (this._displayHeading)
+            this.removeClass(`display-${this._displayHeading}`);
+        this._displayHeading = value;
+        if (this._displayHeading)
+            this.class(`display-${this._displayHeading}`);
+    }
+
     /**
      * @type {boolean}
      * @protected
@@ -3502,7 +3521,7 @@ class BootstrapTag {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display1(contents, attributes) { this.add(new Display1(contents, attributes)); }
+    displayHeading1(contents, attributes) { this.add(new DisplayHeading1(contents, attributes)); }
 
     /**
      * secondary opinionated heading
@@ -3510,7 +3529,7 @@ class BootstrapTag {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display2(contents, attributes) { this.add(new Display2(contents, attributes)); }
+    displayHeading2(contents, attributes) { this.add(new DisplayHeading2(contents, attributes)); }
 
     /**
      * tertiary opinionated heading
@@ -3518,7 +3537,7 @@ class BootstrapTag {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display3(contents, attributes) { this.add(new Display3(contents, attributes)); }
+    displayHeading3(contents, attributes) { this.add(new DisplayHeading3(contents, attributes)); }
 
     /**
      * quaternary opinionated heading
@@ -3526,7 +3545,15 @@ class BootstrapTag {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display4(contents, attributes) { this.add(new Display4(contents, attributes)); }
+    displayHeading4(contents, attributes) { this.add(new DisplayHeading4(contents, attributes)); }
+
+    /**
+     * larger paragraph that stands out more than regular paragraph
+     * https://getbootstrap.com/docs/4.5/content/typography/#lead
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    leadingParagraph(contents, attributes) { this.add(new LeadingParagraph(contents, attributes)); }
 
     /**
      * hide elements on all devices except screen readers
@@ -8536,7 +8563,7 @@ exports.InputGroup = InputGroup;
  * primary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-class Display1 extends Heading1 {
+class DisplayHeading1 extends Heading1 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -8544,16 +8571,16 @@ class Display1 extends Heading1 {
      */
     constructor(contents, attributes) {
         super(contents, attributes);
-        this.class('display-1');
+        this.displayHeading = 1;
     }
 }
-exports.Display1 = Display1;
+exports.DisplayHeading1 = DisplayHeading1;
 
 /**
  * secondary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-class Display2 extends Heading2 {
+class DisplayHeading2 extends Heading2 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -8561,16 +8588,16 @@ class Display2 extends Heading2 {
      */
     constructor(contents, attributes) {
         super(contents, attributes);
-        this.class('display-2');
+        this.displayHeading = 2;
     }
 }
-exports.Display2 = Display2;
+exports.DisplayHeading2 = DisplayHeading2;
 
 /**
  * tertiary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-class Display3 extends Heading3 {
+class DisplayHeading3 extends Heading3 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -8578,16 +8605,16 @@ class Display3 extends Heading3 {
      */
     constructor(contents, attributes) {
         super(contents, attributes);
-        this.class('display-3');
+        this.displayHeading = 3;
     }
 }
-exports.Display3 = Display3;
+exports.DisplayHeading3 = DisplayHeading3;
 
 /**
  * quaternary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-class Display4 extends Heading4 {
+class DisplayHeading4 extends Heading4 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -8595,10 +8622,27 @@ class Display4 extends Heading4 {
      */
     constructor(contents, attributes) {
         super(contents, attributes);
-        this.class('display-4');
+        this.displayHeading = 4;
     }
 }
-exports.Display4 = Display4;
+exports.DisplayHeading4 = DisplayHeading4;
+
+/**
+ * larger paragraph that stands out more than regular paragraph
+ * https://getbootstrap.com/docs/4.5/content/typography/#lead
+ */
+class LeadingParagraph extends Paragraph {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents, attributes) {
+        super(contents, attributes);
+        this.leading = true;
+    }
+}
+exports.LeadingParagraph = LeadingParagraph;
 
 /**
  * hide elements on all devices except screen readers

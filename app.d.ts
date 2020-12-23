@@ -2291,7 +2291,7 @@ export class InputGroup extends Division {
  * primary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-export class Display1 extends Heading1 {
+export class DisplayHeading1 extends Heading1 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2303,7 +2303,7 @@ export class Display1 extends Heading1 {
  * secondary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-export class Display2 extends Heading2 {
+export class DisplayHeading2 extends Heading2 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2315,7 +2315,7 @@ export class Display2 extends Heading2 {
  * tertiary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-export class Display3 extends Heading3 {
+export class DisplayHeading3 extends Heading3 {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2327,7 +2327,19 @@ export class Display3 extends Heading3 {
  * quaternary opinionated heading
  * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
  */
-export class Display4 extends Heading4 {
+export class DisplayHeading4 extends Heading4 {
+    /**
+     * create a new instance of the object
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(contents: any, attributes: object);
+}
+/**
+ * larger paragraph that stands out more than regular paragraph
+ * https://getbootstrap.com/docs/4.5/content/typography/#lead
+ */
+export class LeadingParagraph extends Paragraph {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -4199,6 +4211,17 @@ declare class BootstrapTag {
      ***** Properties: Typography *****
      *********************************/
     /**
+     * @type {1 | 2 | 3 | 4}
+     * @protected
+     */
+    protected _displayHeading: 1 | 2 | 3 | 4;
+    set displayHeading(arg: 1 | 2 | 3 | 4);
+    /**
+     * larger, slighly more opinionated heading style
+     * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
+     */
+    get displayHeading(): 1 | 2 | 3 | 4;
+    /**
      * @type {boolean}
      * @protected
      */
@@ -4777,28 +4800,35 @@ declare class BootstrapTag {
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display1(contents: any, attributes: object): void;
+    displayHeading1(contents: any, attributes: object): void;
     /**
      * secondary opinionated heading
      * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display2(contents: any, attributes: object): void;
+    displayHeading2(contents: any, attributes: object): void;
     /**
      * tertiary opinionated heading
      * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display3(contents: any, attributes: object): void;
+    displayHeading3(contents: any, attributes: object): void;
     /**
      * quaternary opinionated heading
      * https://getbootstrap.com/docs/4.5/content/typography/#display-headings
      * @param {any} contents value or array of values to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
-    display4(contents: any, attributes: object): void;
+    displayHeading4(contents: any, attributes: object): void;
+    /**
+     * larger paragraph that stands out more than regular paragraph
+     * https://getbootstrap.com/docs/4.5/content/typography/#lead
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    leadingParagraph(contents: any, attributes: object): void;
     /**
      * hide elements on all devices except screen readers
      * https://getbootstrap.com/docs/4.5/utilities/screen-readers/

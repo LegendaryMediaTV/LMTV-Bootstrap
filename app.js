@@ -914,6 +914,128 @@ class BootstrapTag {
     }
 
 
+    /*************************************************
+     ***** Properties: Alignment and Positioning *****
+     ************************************************/
+
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    _alignment;
+    /**
+     * align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignment() { return this._alignment; }
+    set alignment(value) {
+        if (this._alignment)
+            this.removeClass(`text-${this._alignment}`);
+        this._alignment = value;
+        if (this._alignment)
+            this.class(`text-${this._alignment}`);
+    }
+
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    _alignmentSmall;
+    /**
+     * small breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentSmall() { return this._alignmentSmall; }
+    set alignmentSmall(value) {
+        if (this._alignmentSmall)
+            this.removeClass(`text-sm-${this._alignmentSmall}`);
+        this._alignmentSmall = value;
+        if (this._alignmentSmall)
+            this.class(`text-sm-${this._alignmentSmall}`);
+    }
+
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    _alignmentMedium;
+    /**
+     * medium breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentMedium() { return this._alignmentMedium; }
+    set alignmentMedium(value) {
+        if (this._alignmentMedium)
+            this.removeClass(`text-md-${this._alignmentMedium}`);
+        this._alignmentMedium = value;
+        if (this._alignmentMedium)
+            this.class(`text-md-${this._alignmentMedium}`);
+    }
+
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    _alignmentLarge;
+    /**
+     * large breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentLarge() { return this._alignmentLarge; }
+    set alignmentLarge(value) {
+        if (this._alignmentLarge)
+            this.removeClass(`text-lg-${this._alignmentLarge}`);
+        this._alignmentLarge = value;
+        if (this._alignmentLarge)
+            this.class(`text-lg-${this._alignmentLarge}`);
+    }
+
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    _alignmentXL;
+    /**
+     * extra-large breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentXL() { return this._alignmentXL; }
+    set alignmentXL(value) {
+        if (this._alignmentXL)
+            this.removeClass(`text-xl-${this._alignmentXL}`);
+        this._alignmentXL = value;
+        if (this._alignmentXL)
+            this.class(`text-xl-${this._alignmentXL}`);
+    }
+
+    /**
+     * @type {'absolute' | 'fixed' | 'fixed-bottom' | 'fixed-top' | 'relative' | 'static' | 'sticky' | 'sticky-top'}
+     * @protected
+     */
+    _position;
+    /**
+     * align text components
+     * https://getbootstrap.com/docs/4.5/utilities/position/
+     */
+    get position() { return this._position; }
+    set position(value) {
+        const fullname = ['fixed-bottom', 'fixed-top', 'sticky-top'];
+        if (this._position) {
+            if (fullname.indexOf(this._position) !== -1)
+                this.removeClass(this._position);
+            else
+                this.removeClass(`position-${this._position}`);
+        }
+        this._position = value;
+        if (this._position) {
+            if (fullname.indexOf(this._position) !== -1)
+                this.class(this._position);
+            else
+                this.class(`position-${this._position}`);
+        }
+    }
+
+
     /*******************************
      ***** Properties: Borders *****
      ******************************/
@@ -1465,7 +1587,7 @@ class BootstrapTag {
      */
     _marginsXL;
     /**
-     * small breakpoint margins for all sides
+     * extra-large breakpoint margins for all sides
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsXL() { return this._marginsXL; }
@@ -1555,7 +1677,7 @@ class BootstrapTag {
      */
     _marginsXXL;
     /**
-     * small breakpoint left/right margin
+     * extra-large breakpoint left/right margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsXXL() { return this._marginsXXL; }
@@ -1645,7 +1767,7 @@ class BootstrapTag {
      */
     _marginsYXL;
     /**
-     * small breakpoint top/bottom margin
+     * extra-large breakpoint top/bottom margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsYXL() { return this._marginsYXL; }
@@ -1735,7 +1857,7 @@ class BootstrapTag {
      */
     _marginBottomXL;
     /**
-     * small breakpoint bottom margin
+     * extra-large breakpoint bottom margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginBottomXL() { return this._marginBottomXL; }
@@ -1825,7 +1947,7 @@ class BootstrapTag {
      */
     _marginLeftXL;
     /**
-     * small breakpoint left margin
+     * extra-large breakpoint left margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginLeftXL() { return this._marginLeftXL; }
@@ -1915,7 +2037,7 @@ class BootstrapTag {
      */
     _marginRightXL;
     /**
-     * small breakpoint right margin
+     * extra-large breakpoint right margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginRightXL() { return this._marginRightXL; }
@@ -2005,7 +2127,7 @@ class BootstrapTag {
      */
     _marginTopXL;
     /**
-     * small breakpoint top margin
+     * extra-large breakpoint top margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginTopXL() { return this._marginTopXL; }
@@ -2095,7 +2217,7 @@ class BootstrapTag {
      */
     _paddingXL;
     /**
-     * small breakpoint padding for all sides
+     * extra-large breakpoint padding for all sides
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingXL() { return this._paddingXL; }
@@ -2185,7 +2307,7 @@ class BootstrapTag {
      */
     _paddingBottomXL;
     /**
-     * small breakpoint bottom padding
+     * extra-large breakpoint bottom padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingBottomXL() { return this._paddingBottomXL; }
@@ -2275,7 +2397,7 @@ class BootstrapTag {
      */
     _paddingLeftXL;
     /**
-     * small breakpoint left padding
+     * extra-large breakpoint left padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingLeftXL() { return this._paddingLeftXL; }
@@ -2365,7 +2487,7 @@ class BootstrapTag {
      */
     _paddingRightXL;
     /**
-     * small breakpoint right padding
+     * extra-large breakpoint right padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingRightXL() { return this._paddingRightXL; }
@@ -2455,7 +2577,7 @@ class BootstrapTag {
      */
     _paddingTopXL;
     /**
-     * small breakpoint top padding
+     * extra-large breakpoint top padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingTopXL() { return this._paddingTopXL; }
@@ -2545,7 +2667,7 @@ class BootstrapTag {
      */
     _paddingXXL;
     /**
-     * small breakpoint left/right padding
+     * extra-large breakpoint left/right padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingXXL() { return this._paddingXXL; }
@@ -2635,7 +2757,7 @@ class BootstrapTag {
      */
     _paddingYXL;
     /**
-     * small breakpoint top/bottom padding
+     * extra-large breakpoint top/bottom padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingYXL() { return this._paddingYXL; }
@@ -2648,10 +2770,158 @@ class BootstrapTag {
     }
 
 
+    /******************************
+     ***** Properties: Sizing *****
+     *****************************/
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _maxHeight;
+    /**
+     * maximum height in relation to the element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get maxHeight() { return this._maxHeight; }
+    set maxHeight(value) {
+        if (this._maxHeight)
+            this.removeClass(`mh-${this._maxHeight}`);
+        this._maxHeight = value;
+        if (this._maxHeight)
+            this.class(`mh-${this._maxHeight}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _maxWidth;
+    /**
+     * maximum width in relation to the element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get maxWidth() { return this._maxWidth; }
+    set maxWidth(value) {
+        if (this._maxWidth)
+            this.removeClass(`mw-${this._maxWidth}`);
+        this._maxWidth = value;
+        if (this._maxWidth)
+            this.class(`mw-${this._maxWidth}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _relativeHeight;
+    /**
+     * height relative to element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get relativeHeight() { return this._relativeHeight; }
+    set relativeHeight(value) {
+        if (this._relativeHeight)
+            this.removeClass(`h-${this._relativeHeight}`);
+        this._relativeHeight = value;
+        if (this._relativeHeight)
+            this.class(`h-${this._relativeHeight}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _relativeWidth;
+    /**
+     * width relative to element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get relativeWidth() { return this._relativeWidth; }
+    set relativeWidth(value) {
+        if (this._relativeWidth)
+            this.removeClass(`w-${this._relativeWidth}`);
+        this._relativeWidth = value;
+        if (this._relativeWidth)
+            this.class(`w-${this._relativeWidth}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _viewportHeight;
+    /**
+     * height relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportHeight() { return this._viewportHeight; }
+    set viewportHeight(value) {
+        if (this._viewportHeight)
+            this.removeClass(`vh-${this._viewportHeight}`);
+        this._viewportHeight = value;
+        if (this._viewportHeight)
+            this.class(`vh-${this._viewportHeight}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _viewportWidth;
+    /**
+     * width relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportWidth() { return this._viewportWidth; }
+    set viewportWidth(value) {
+        if (this._viewportWidth)
+            this.removeClass(`vw-${this._viewportWidth}`);
+        this._viewportWidth = value;
+        if (this._viewportWidth)
+            this.class(`vw-${this._viewportWidth}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _viewportMinHeight;
+    /**
+     * minimum height relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportMinHeight() { return this._viewportMinHeight; }
+    set viewportMinHeight(value) {
+        if (this._viewportMinHeight)
+            this.removeClass(`min-vh-${this._viewportMinHeight}`);
+        this._viewportMinHeight = value;
+        if (this._viewportMinHeight)
+            this.class(`min-vh-${this._viewportMinHeight}`);
+    }
+
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    _viewportMinWidth;
+    /**
+     * minimum width relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportMinWidth() { return this._viewportMinWidth; }
+    set viewportMinWidth(value) {
+        if (this._viewportMinWidth)
+            this.removeClass(`min-vw-${this._viewportMinWidth}`);
+        this._viewportMinWidth = value;
+        if (this._viewportMinWidth)
+            this.class(`min-vw-${this._viewportMinWidth}`);
+    }
+
+
     /**********************************
      ***** Properties: Typography *****
      *********************************/
-
 
     /**
      * @type {1 | 2 | 3 | 4}

@@ -3144,6 +3144,75 @@ declare class BootstrapTag {
     set onPaste(arg: string);
     /** user pastes some content in an element */
     get onPaste(): string;
+    /*************************************************
+     ***** Properties: Alignment and Positioning *****
+     ************************************************/
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    protected _alignment: 'center' | 'left' | 'right';
+    set alignment(arg: "left" | "right" | "center");
+    /**
+     * align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignment(): "left" | "right" | "center";
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    protected _alignmentSmall: 'center' | 'left' | 'right';
+    set alignmentSmall(arg: "left" | "right" | "center");
+    /**
+     * small breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentSmall(): "left" | "right" | "center";
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    protected _alignmentMedium: 'center' | 'left' | 'right';
+    set alignmentMedium(arg: "left" | "right" | "center");
+    /**
+     * medium breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentMedium(): "left" | "right" | "center";
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    protected _alignmentLarge: 'center' | 'left' | 'right';
+    set alignmentLarge(arg: "left" | "right" | "center");
+    /**
+     * large breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentLarge(): "left" | "right" | "center";
+    /**
+     * @type {'center' | 'left' | 'right'}
+     * @protected
+     */
+    protected _alignmentXL: 'center' | 'left' | 'right';
+    set alignmentXL(arg: "left" | "right" | "center");
+    /**
+     * extra-large breakpoint align text components
+     * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+     */
+    get alignmentXL(): "left" | "right" | "center";
+    /**
+     * @type {'absolute' | 'fixed' | 'fixed-bottom' | 'fixed-top' | 'relative' | 'static' | 'sticky' | 'sticky-top'}
+     * @protected
+     */
+    protected _position: 'absolute' | 'fixed' | 'fixed-bottom' | 'fixed-top' | 'relative' | 'static' | 'sticky' | 'sticky-top';
+    set position(arg: "absolute" | "fixed" | "fixed-bottom" | "fixed-top" | "relative" | "static" | "sticky" | "sticky-top");
+    /**
+     * align text components
+     * https://getbootstrap.com/docs/4.5/utilities/position/
+     */
+    get position(): "absolute" | "fixed" | "fixed-bottom" | "fixed-top" | "relative" | "static" | "sticky" | "sticky-top";
     /*******************************
      ***** Properties: Borders *****
      ******************************/
@@ -3488,7 +3557,7 @@ declare class BootstrapTag {
     protected _marginsXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginsXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint margins for all sides
+     * extra-large breakpoint margins for all sides
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3543,7 +3612,7 @@ declare class BootstrapTag {
     protected _marginsXXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginsXXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint left/right margin
+     * extra-large breakpoint left/right margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsXXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3598,7 +3667,7 @@ declare class BootstrapTag {
     protected _marginsYXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginsYXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint top/bottom margin
+     * extra-large breakpoint top/bottom margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginsYXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3653,7 +3722,7 @@ declare class BootstrapTag {
     protected _marginBottomXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginBottomXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint bottom margin
+     * extra-large breakpoint bottom margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginBottomXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3708,7 +3777,7 @@ declare class BootstrapTag {
     protected _marginLeftXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginLeftXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint left margin
+     * extra-large breakpoint left margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginLeftXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3763,7 +3832,7 @@ declare class BootstrapTag {
     protected _marginRightXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginRightXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint right margin
+     * extra-large breakpoint right margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginRightXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3818,7 +3887,7 @@ declare class BootstrapTag {
     protected _marginTopXL: -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set marginTopXL(arg: 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2);
     /**
-     * small breakpoint top margin
+     * extra-large breakpoint top margin
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get marginTopXL(): 0 | "auto" | 1 | 2 | -1 | 3 | 4 | 5 | -5 | -4 | -3 | -2;
@@ -3873,7 +3942,7 @@ declare class BootstrapTag {
     protected _paddingXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint padding for all sides
+     * extra-large breakpoint padding for all sides
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -3928,7 +3997,7 @@ declare class BootstrapTag {
     protected _paddingBottomXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingBottomXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint bottom padding
+     * extra-large breakpoint bottom padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingBottomXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -3983,7 +4052,7 @@ declare class BootstrapTag {
     protected _paddingLeftXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingLeftXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint left padding
+     * extra-large breakpoint left padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingLeftXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -4038,7 +4107,7 @@ declare class BootstrapTag {
     protected _paddingRightXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingRightXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint right padding
+     * extra-large breakpoint right padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingRightXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -4093,7 +4162,7 @@ declare class BootstrapTag {
     protected _paddingTopXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingTopXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint top padding
+     * extra-large breakpoint top padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingTopXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -4148,7 +4217,7 @@ declare class BootstrapTag {
     protected _paddingXXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingXXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint left/right padding
+     * extra-large breakpoint left/right padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingXXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
@@ -4203,10 +4272,101 @@ declare class BootstrapTag {
     protected _paddingYXL: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
     set paddingYXL(arg: 0 | "auto" | 1 | 2 | 3 | 4 | 5);
     /**
-     * small breakpoint top/bottom padding
+     * extra-large breakpoint top/bottom padding
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingYXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
+    /******************************
+     ***** Properties: Sizing *****
+     *****************************/
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _maxHeight: 25 | 50 | 75 | 100 | 'auto';
+    set maxHeight(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * maximum height in relation to the element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get maxHeight(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _maxWidth: 25 | 50 | 75 | 100 | 'auto';
+    set maxWidth(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * maximum width in relation to the element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get maxWidth(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _relativeHeight: 25 | 50 | 75 | 100 | 'auto';
+    set relativeHeight(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * height relative to element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get relativeHeight(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _relativeWidth: 25 | 50 | 75 | 100 | 'auto';
+    set relativeWidth(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * width relative to element's parent
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-parent
+     */
+    get relativeWidth(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _viewportHeight: 25 | 50 | 75 | 100 | 'auto';
+    set viewportHeight(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * height relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportHeight(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _viewportWidth: 25 | 50 | 75 | 100 | 'auto';
+    set viewportWidth(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * width relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportWidth(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _viewportMinHeight: 25 | 50 | 75 | 100 | 'auto';
+    set viewportMinHeight(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * minimum height relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportMinHeight(): "auto" | 25 | 50 | 75 | 100;
+    /**
+     * @type {25 | 50 | 75 | 100 | 'auto'}
+     * @protected
+     */
+    protected _viewportMinWidth: 25 | 50 | 75 | 100 | 'auto';
+    set viewportMinWidth(arg: "auto" | 25 | 50 | 75 | 100);
+    /**
+     * minimum width relative to the viewport/screen
+     * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
+     */
+    get viewportMinWidth(): "auto" | 25 | 50 | 75 | 100;
     /**********************************
      ***** Properties: Typography *****
      *********************************/

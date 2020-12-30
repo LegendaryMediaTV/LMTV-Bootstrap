@@ -922,90 +922,90 @@ class BootstrapTag {
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    _alignment;
+    _align;
     /**
      * align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignment() { return this._alignment; }
-    set alignment(value) {
-        if (this._alignment)
-            this.removeClass(`text-${this._alignment}`);
-        this._alignment = value;
-        if (this._alignment)
-            this.class(`text-${this._alignment}`);
+    get align() { return this._align; }
+    set align(value) {
+        if (this._align)
+            this.removeClass(`text-${this._align}`);
+        this._align = value;
+        if (this._align)
+            this.class(`text-${this._align}`);
     }
 
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    _alignmentSmall;
+    _alignSmall;
     /**
      * small breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentSmall() { return this._alignmentSmall; }
-    set alignmentSmall(value) {
-        if (this._alignmentSmall)
-            this.removeClass(`text-sm-${this._alignmentSmall}`);
-        this._alignmentSmall = value;
-        if (this._alignmentSmall)
-            this.class(`text-sm-${this._alignmentSmall}`);
+    get alignSmall() { return this._alignSmall; }
+    set alignSmall(value) {
+        if (this._alignSmall)
+            this.removeClass(`text-sm-${this._alignSmall}`);
+        this._alignSmall = value;
+        if (this._alignSmall)
+            this.class(`text-sm-${this._alignSmall}`);
     }
 
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    _alignmentMedium;
+    _alignMedium;
     /**
      * medium breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentMedium() { return this._alignmentMedium; }
-    set alignmentMedium(value) {
-        if (this._alignmentMedium)
-            this.removeClass(`text-md-${this._alignmentMedium}`);
-        this._alignmentMedium = value;
-        if (this._alignmentMedium)
-            this.class(`text-md-${this._alignmentMedium}`);
+    get alignMedium() { return this._alignMedium; }
+    set alignMedium(value) {
+        if (this._alignMedium)
+            this.removeClass(`text-md-${this._alignMedium}`);
+        this._alignMedium = value;
+        if (this._alignMedium)
+            this.class(`text-md-${this._alignMedium}`);
     }
 
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    _alignmentLarge;
+    _alignLarge;
     /**
      * large breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentLarge() { return this._alignmentLarge; }
-    set alignmentLarge(value) {
-        if (this._alignmentLarge)
-            this.removeClass(`text-lg-${this._alignmentLarge}`);
-        this._alignmentLarge = value;
-        if (this._alignmentLarge)
-            this.class(`text-lg-${this._alignmentLarge}`);
+    get alignLarge() { return this._alignLarge; }
+    set alignLarge(value) {
+        if (this._alignLarge)
+            this.removeClass(`text-lg-${this._alignLarge}`);
+        this._alignLarge = value;
+        if (this._alignLarge)
+            this.class(`text-lg-${this._alignLarge}`);
     }
 
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    _alignmentXL;
+    _alignXL;
     /**
      * extra-large breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentXL() { return this._alignmentXL; }
-    set alignmentXL(value) {
-        if (this._alignmentXL)
-            this.removeClass(`text-xl-${this._alignmentXL}`);
-        this._alignmentXL = value;
-        if (this._alignmentXL)
-            this.class(`text-xl-${this._alignmentXL}`);
+    get alignXL() { return this._alignXL; }
+    set alignXL(value) {
+        if (this._alignXL)
+            this.removeClass(`text-xl-${this._alignXL}`);
+        this._alignXL = value;
+        if (this._alignXL)
+            this.class(`text-xl-${this._alignXL}`);
     }
 
     /**

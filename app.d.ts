@@ -3151,57 +3151,57 @@ declare class BootstrapTag {
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    protected _alignment: 'center' | 'left' | 'right';
-    set alignment(arg: "left" | "right" | "center");
+    protected _align: 'center' | 'left' | 'right';
+    set align(arg: "left" | "right" | "center");
     /**
      * align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignment(): "left" | "right" | "center";
+    get align(): "left" | "right" | "center";
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    protected _alignmentSmall: 'center' | 'left' | 'right';
-    set alignmentSmall(arg: "left" | "right" | "center");
+    protected _alignSmall: 'center' | 'left' | 'right';
+    set alignSmall(arg: "left" | "right" | "center");
     /**
      * small breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentSmall(): "left" | "right" | "center";
+    get alignSmall(): "left" | "right" | "center";
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    protected _alignmentMedium: 'center' | 'left' | 'right';
-    set alignmentMedium(arg: "left" | "right" | "center");
+    protected _alignMedium: 'center' | 'left' | 'right';
+    set alignMedium(arg: "left" | "right" | "center");
     /**
      * medium breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentMedium(): "left" | "right" | "center";
+    get alignMedium(): "left" | "right" | "center";
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    protected _alignmentLarge: 'center' | 'left' | 'right';
-    set alignmentLarge(arg: "left" | "right" | "center");
+    protected _alignLarge: 'center' | 'left' | 'right';
+    set alignLarge(arg: "left" | "right" | "center");
     /**
      * large breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentLarge(): "left" | "right" | "center";
+    get alignLarge(): "left" | "right" | "center";
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
      */
-    protected _alignmentXL: 'center' | 'left' | 'right';
-    set alignmentXL(arg: "left" | "right" | "center");
+    protected _alignXL: 'center' | 'left' | 'right';
+    set alignXL(arg: "left" | "right" | "center");
     /**
      * extra-large breakpoint align text components
      * https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
      */
-    get alignmentXL(): "left" | "right" | "center";
+    get alignXL(): "left" | "right" | "center";
     /**
      * @type {'absolute' | 'fixed' | 'fixed-bottom' | 'fixed-top' | 'relative' | 'static' | 'sticky' | 'sticky-top'}
      * @protected

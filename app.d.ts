@@ -2,7 +2,7 @@
  * contains all the contents of an HTML document, such as text, hyperlinks, images, tables, lists, etc.
  * https://www.w3schools.com/tags/tag_body.asp
  */
-export class Body extends ThemeableTag {
+export class Body extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -87,7 +87,7 @@ export class Comment {
     toString(): string;
 }
 /** container for all the head elements, including the title for the document, scripts, styles, meta information, and more */
-export class Head extends BootstrapTag {
+export class Head extends HTMLTag {
     /**
      * container for all the head elements, including the title for the document, scripts, styles, meta information, and more
      * https://www.w3schools.com/tags/tag_head.asp
@@ -217,7 +217,7 @@ export class ResourceLink extends CrossOriginTag {
  * document type and the container for all other HTML elements
  * https://www.w3schools.com/tags/tag_html.asp
  */
-export class HTML extends BootstrapTag {
+export class HTML extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {any} titleContents contents for the title element
@@ -292,7 +292,7 @@ export class HTML extends BootstrapTag {
  * provides metadata about the HTML document
  * https://www.w3schools.com/tags/tag_meta.asp
  */
-export class Metadata extends BootstrapTag {
+export class Metadata extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {'application-name' | 'author' | 'description' | 'generator' | 'keywords' | 'viewport'} name name for the metadata element
@@ -438,7 +438,7 @@ export class Script extends CrossOriginTag {
  * contains embedded styling information
  * https://www.w3schools.com/tags/tag_style.asp
  */
-export class Style extends BootstrapTag {
+export class Style extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -464,7 +464,7 @@ export class Style extends BootstrapTag {
  * defines the title of the document, shows in browser toolbar, favorites, and search engine results
  * https://www.w3schools.com/tags/tag_title.asp
  */
-export class Title extends BootstrapTag {
+export class Title extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -479,7 +479,7 @@ export class Title extends BootstrapTag {
  * abbreviation or acronym
  * https://www.w3schools.com/tags/tag_abbr.asp
  */
-export class Abbreviation extends ThemeableTag {
+export class Abbreviation extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -492,7 +492,7 @@ export class Abbreviation extends ThemeableTag {
  * contact information for the author/owner of a document (within <body>) or an article (within <article>)
  * https://www.w3schools.com/tags/tag_address.asp
  */
-export class Address extends ThemeableTag {
+export class Address extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -504,7 +504,7 @@ export class Address extends ThemeableTag {
  * standalone piece of content that would make sense if syndicated as a news item
  * https://www.w3schools.com/tags/tag_article.asp
  */
-export class Article extends ThemeableTag {
+export class Article extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -516,7 +516,7 @@ export class Article extends ThemeableTag {
  * block of content that is related to the main content around it, but can be removed without reducing the main content meaning
  * https://www.w3schools.com/tags/tag_aside.asp
  */
-export class Aside extends ThemeableTag {
+export class Aside extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -528,7 +528,7 @@ export class Aside extends ThemeableTag {
  * highlight without emphasis (bold)
  * https://www.w3schools.com/tags/tag_b.asp
  */
-export class Bold extends ThemeableTag {
+export class Bold extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -541,7 +541,7 @@ export class Bold extends ThemeableTag {
  * TIP: use <q> for inline (short) quotations
  * https://www.w3schools.com/tags/tag_blockquote.asp
  */
-export class BlockQuote extends ThemeableTag {
+export class BlockQuote extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -558,7 +558,7 @@ export class BlockQuote extends ThemeableTag {
  * cited reference (i.e., title of a work)
  * https://www.w3schools.com/tags/tag_cite.asp
  */
-export class Cite extends ThemeableTag {
+export class Cite extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -570,7 +570,7 @@ export class Cite extends ThemeableTag {
  * computer code block (monospaced)
  * https://www.w3schools.com/tags/tag_code.asp
  */
-export class Code extends ThemeableTag {
+export class Code extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -582,7 +582,7 @@ export class Code extends ThemeableTag {
  * deleted content (strikethrough)
  * https://www.w3schools.com/tags/tag_del.asp
  */
-export class Deleted extends ThemeableTag {
+export class Deleted extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -594,7 +594,7 @@ export class Deleted extends ThemeableTag {
  * definition description
  * https://www.w3schools.com/tags/tag_dd.asp
  */
-export class DefinitionDescription extends ThemeableTag {
+export class DefinitionDescription extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -606,7 +606,7 @@ export class DefinitionDescription extends ThemeableTag {
  * definition list
  * https://www.w3schools.com/tags/tag_dl.asp
  */
-export class DefinitionList extends ThemeableTag {
+export class DefinitionList extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {object} contents key–value pairs to go inside the HTML element
@@ -618,7 +618,7 @@ export class DefinitionList extends ThemeableTag {
  * definition term/name
  * https://www.w3schools.com/tags/tag_dt.asp
  */
-export class DefinitionTerm extends ThemeableTag {
+export class DefinitionTerm extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -630,7 +630,7 @@ export class DefinitionTerm extends ThemeableTag {
  * additional details that the user can view or hide on demand
  * https://www.w3schools.com/tags/tag_details.asp
  */
-export class Details extends ThemeableTag {
+export class Details extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} summmary value or array of values to go inside the summary element
@@ -670,7 +670,7 @@ export class Details extends ThemeableTag {
  * visible heading for Details, which can be clicked to view/hide the details
  * https://www.w3schools.com/tags/tag_summary.asp
  */
-export class DetailSummary extends ThemeableTag {
+export class DetailSummary extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -682,7 +682,7 @@ export class DetailSummary extends ThemeableTag {
  * generic container for grouping content for styling/visual purposes
  * https://www.w3schools.com/tags/tag_div.asp
  */
-export class Division extends ThemeableTag {
+export class Division extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -694,7 +694,7 @@ export class Division extends ThemeableTag {
  * emphasized text (italics)
  * https://www.w3schools.com/tags/tag_em.asp
  */
-export class Emphasis extends ThemeableTag {
+export class Emphasis extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -707,7 +707,7 @@ export class Emphasis extends ThemeableTag {
  * TIP: if removed it should not affect the flow of the document
  * https://www.w3schools.com/tags/tag_figure.asp
  */
-export class Figure extends ThemeableTag {
+export class Figure extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} url path to the image
@@ -751,7 +751,7 @@ export class Figure extends ThemeableTag {
  * caption for a <figure> element
  * https://www.w3schools.com/tags/tag_figcaption.asp
  */
-export class FigureCaption extends ThemeableTag {
+export class FigureCaption extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -764,7 +764,7 @@ export class FigureCaption extends ThemeableTag {
  * TIP: contact information inside a <footer> element should go inside an <address> tag
  * https://www.w3schools.com/tags/tag_footer.asp
  */
-export class Footer extends ThemeableTag {
+export class Footer extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -776,7 +776,7 @@ export class Footer extends ThemeableTag {
  * thematic group of introductory or navigational aids, typically with a h#, logo/icon, and/or authorship
  * https://www.w3schools.com/tags/tag_header.asp
  */
-export class Header extends ThemeableTag {
+export class Header extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -788,7 +788,7 @@ export class Header extends ThemeableTag {
  * primary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading1 extends ThemeableTag {
+export class Heading1 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -800,7 +800,7 @@ export class Heading1 extends ThemeableTag {
  * secondary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading2 extends ThemeableTag {
+export class Heading2 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -812,7 +812,7 @@ export class Heading2 extends ThemeableTag {
  * tertiary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading3 extends ThemeableTag {
+export class Heading3 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -824,7 +824,7 @@ export class Heading3 extends ThemeableTag {
  * quaternary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading4 extends ThemeableTag {
+export class Heading4 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -836,7 +836,7 @@ export class Heading4 extends ThemeableTag {
  * quinary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading5 extends ThemeableTag {
+export class Heading5 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -848,7 +848,7 @@ export class Heading5 extends ThemeableTag {
  * senary heading
  * https://www.w3schools.com/tags/tag_hn.asp
  */
-export class Heading6 extends ThemeableTag {
+export class Heading6 extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -860,7 +860,7 @@ export class Heading6 extends ThemeableTag {
  * marked text (highlighted)
  * https://www.w3schools.com/tags/tag_mark.asp
  */
-export class Highlight extends ThemeableTag {
+export class Highlight extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -873,7 +873,7 @@ export class Highlight extends ThemeableTag {
  * TIP: usually use <em>, <strong>, <mark>, <cite>, <dfn> (define) instead
  * https://www.w3schools.com/tags/tag_i.asp
  */
-export class Italics extends ThemeableTag {
+export class Italics extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -885,7 +885,7 @@ export class Italics extends ThemeableTag {
  * FontAwesome icon
  * https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
  */
-export class Icon extends ThemeableTag {
+export class Icon extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} name FontAwesome class name (e.g., "fas fa-camera")
@@ -898,7 +898,7 @@ export class Icon extends ThemeableTag {
  * inline frame for embedding another document
  * https://www.w3schools.com/tags/tag_iframe.asp
  */
-export class InlineFrame extends ThemeableTag {
+export class InlineFrame extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} url address of the document to embed
@@ -1067,7 +1067,7 @@ export class Image extends CrossOriginTag {
  * underline (insertion)
  * https://www.w3schools.com/tags/tag_ins.asp
  */
-export class Insert extends ThemeableTag {
+export class Insert extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1079,7 +1079,7 @@ export class Insert extends ThemeableTag {
  * horizontal ruler for a thematic break (e.g. a shift of topic)
  * https://www.w3schools.com/tags/tag_hr.asp
  */
-export class Line extends ThemeableTag {
+export class Line extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1091,7 +1091,7 @@ export class Line extends ThemeableTag {
  * line break
  * https://www.w3schools.com/tags/tag_br.asp
  */
-export class LineBreak extends ThemeableTag {
+export class LineBreak extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {object} attributes key–value pairs of HTML attributes and other properties
@@ -1102,7 +1102,7 @@ export class LineBreak extends ThemeableTag {
  * hyperlink (anchor)
  * https://www.w3schools.com/tags/tag_a.asp
  */
-export class Link extends ThemeableTag {
+export class Link extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} url URL of the page the link goes to
@@ -1205,7 +1205,7 @@ export class Link extends ThemeableTag {
  * https://www.w3schools.com/tags/tag_ol.asp
  * https://www.w3schools.com/tags/tag_ul.asp
  */
-export class List extends ThemeableTag {
+export class List extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} items items to add to the list
@@ -1249,7 +1249,7 @@ export class List extends ThemeableTag {
  * list item for ordered/unordered lists
  * https://www.w3schools.com/tags/tag_li.asp
  */
-export class ListItem extends ThemeableTag {
+export class ListItem extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1272,7 +1272,7 @@ export class ListItem extends ThemeableTag {
  * monospaced and preserves whitespace (pre-formatted)
  * https://www.w3schools.com/tags/tag_pre.asp
  */
-export class Monospace extends ThemeableTag {
+export class Monospace extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1284,7 +1284,7 @@ export class Monospace extends ThemeableTag {
  * major navigation information (i.e., not just a group of links) and other constructs (e.g., search form)
  * https://www.w3schools.com/tags/tag_nav.asp
  */
-export class Navigation extends ThemeableTag {
+export class Navigation extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1296,7 +1296,7 @@ export class Navigation extends ThemeableTag {
  * represents the result of a calculation (like one performed by a script)
  * https://www.w3schools.com/tags/tag_output.asp
  */
-export class Output extends ThemeableTag {
+export class Output extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1335,7 +1335,7 @@ export class Output extends ThemeableTag {
  * paragraph
  * https://www.w3schools.com/tags/tag_p.asp
  */
-export class Paragraph extends ThemeableTag {
+export class Paragraph extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1348,7 +1348,7 @@ export class Paragraph extends ThemeableTag {
  * TIP: use BlockQuote for longer quotations
  * https://www.w3schools.com/tags/tag_q.asp
  */
-export class Quote extends ThemeableTag {
+export class Quote extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1360,7 +1360,7 @@ export class Quote extends ThemeableTag {
  * strikethrough (no longer accurate)
  * https://www.w3schools.com/tags/tag_s.asp
  */
-export class Strike extends ThemeableTag {
+export class Strike extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1372,7 +1372,7 @@ export class Strike extends ThemeableTag {
  * used to either group different articles into different purposes or subjects, or to define the different sections of a single article
  * https://www.w3schools.com/tags/tag_section.asp
  */
-export class Section extends ThemeableTag {
+export class Section extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1384,7 +1384,7 @@ export class Section extends ThemeableTag {
  * smaller text (e.g., fine print)
  * https://www.w3schools.com/tags/tag_small.asp
  */
-export class Small extends ThemeableTag {
+export class Small extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1396,7 +1396,7 @@ export class Small extends ThemeableTag {
  * span for grouping inline elements
  * https://www.w3schools.com/tags/tag_span.asp
  */
-export class Span extends ThemeableTag {
+export class Span extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1408,7 +1408,7 @@ export class Span extends ThemeableTag {
  * important text (bold)
  * https://www.w3schools.com/tags/tag_strong.asp
  */
-export class Strong extends ThemeableTag {
+export class Strong extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1420,7 +1420,7 @@ export class Strong extends ThemeableTag {
  * subscript
  * https://www.w3schools.com/tags/tag_sub.asp
  */
-export class Subscript extends ThemeableTag {
+export class Subscript extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1432,7 +1432,7 @@ export class Subscript extends ThemeableTag {
  * superscript
  * https://www.w3schools.com/tags/tag_sup.asp
  */
-export class Superscript extends ThemeableTag {
+export class Superscript extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1445,7 +1445,7 @@ export class Superscript extends ThemeableTag {
  * https://www.w3schools.com/tags/tag_svg.asp
  * TODO: add various methods for SVG elements: https://www.w3schools.com/graphics/svg_intro.asp
  */
-export class SVG extends ThemeableTag {
+export class SVG extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1479,7 +1479,7 @@ export class SVG extends ThemeableTag {
  * TIP: use the ID so it's easily linked to via "#id")
  * https://www.w3schools.com/tags/tag_dfn.asp
  */
-export class Term extends ThemeableTag {
+export class Term extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1491,7 +1491,7 @@ export class Term extends ThemeableTag {
  * human-readable date/time, optionally with a SQL-like timestamp
  * https://www.w3schools.com/tags/tag_time.asp
  */
-export class Time extends ThemeableTag {
+export class Time extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1514,7 +1514,7 @@ export class Time extends ThemeableTag {
  * underline
  * https://www.w3schools.com/tags/tag_u.asp
  */
-export class Underline extends ThemeableTag {
+export class Underline extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1526,7 +1526,7 @@ export class Underline extends ThemeableTag {
  * tabular data (rows and columns)
  * https://www.w3schools.com/tags/tag_table.asp
  */
-export class Table extends ThemeableTag {
+export class Table extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1568,7 +1568,7 @@ export class TableBody extends TableSectionTag {
  * table caption
  * https://www.w3schools.com/tags/tag_caption.asp
  */
-export class TableCaption extends ThemeableTag {
+export class TableCaption extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1774,7 +1774,7 @@ export class DropdownGroup extends DropdownContainerTag {
  * dropdown item
  * https://www.w3schools.com/tags/tag_option.asp
  */
-export class DropdownOption extends BootstrapTag {
+export class DropdownOption extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -1832,7 +1832,7 @@ export class FileUploader extends FormTag {
  * https://www.w3schools.com/tags/tag_form.asp
  * https://getbootstrap.com/docs/4.5/components/forms/
  */
-export class Form extends ThemeableTag {
+export class Form extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2155,7 +2155,7 @@ export class Input extends FormSubmitTag {
  * label for a form element
  * https://www.w3schools.com/tags/tag_label.asp
  */
-export class Label extends ThemeableTag {
+export class Label extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
@@ -2540,8 +2540,8 @@ export class Row extends Division {
  * NOTE: this simply returns a string, which should probably be put into an HTML body that includes the required components (Bootstrap CSS/JS, jQuery, etc.)
  */
 export function demo(): string;
-/** theme support (abstract) */
-declare class ThemeableTag extends BootstrapTag {
+/** Bootstrap support (abstract) */
+declare class BootstrapTag extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -2549,604 +2549,9 @@ declare class ThemeableTag extends BootstrapTag {
      * @param {object} attributes key–value pairs of HTML attributes and other properties
      */
     constructor(tag: string, contents: any, attributes: object);
-    /**********************
-     ***** Properties *****
-     *********************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _textTheme: string;
-    set textTheme(arg: string);
-    /**
-     * Bootstrap text theme
-     * valid values: black-50, body, danger, dark, info, light, muted, primary, secondary, success, warning, white, white-50
-     */
-    get textTheme(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _theme: string;
-    set theme(arg: string);
-    /**
-     * Bootstrap background theme
-     * valid values: danger, dark, info, light, primary, secondary, success, transparent, warning
-     */
-    get theme(): string;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _outline: boolean;
-    set outline(arg: boolean);
-    /**
-     * Bootstrap outline theme
-     * outline with theme color (via borders) [true] instead of background color [false]
-     */
-    get outline(): boolean;
-    /*****************************
-     ***** Protected Methods *****
-     ****************************/
-    /**
-     * background/outline theme are mutually exclusive
-     * @param {boolean} outline border theme (true) or background (false)
-     * @param {string} theme theme color
-     * @protected
-     */
-    protected _setOutlineTheme(outline: boolean, theme: string): void;
-}
-/***************************************************************************************************************
- ************************************************** HTML Core **************************************************
- **************************************************************************************************************/
-/** baseline HTML element (abstract) */
-declare class BootstrapTag {
-    /**
-     * create a new instance of the object
-     * @param {string} tag HTML element name
-     * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
-     */
-    constructor(tag: string, contents: any, attributes: object);
-    set tag(arg: string);
-    /** tag: HTML tag element */
-    get tag(): string;
-    set contents(arg: any);
-    /** contents for innerHTML */
-    get contents(): any;
-    set attributes(arg: any);
-    /** attributes: HTML attributes */
-    get attributes(): any;
-    /**********************************
-     ***** Properties: Essentials *****
-     *********************************/
-    /**
-     * @type {object}
-     * @protected
-     */
-    protected _attributes: object;
-    set classes(arg: string[]);
-    /**
-     * classes: CSS classes defined in a style sheet
-     * @type {string[]}
-     */
-    get classes(): string[];
-    set styles(arg: string[]);
-    /**
-     * inline CSS style(s)
-     * @type {string[]}
-     */
-    get styles(): string[];
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _blockClose: boolean;
-    set blockClose(arg: boolean);
-    /** blockClose: add newline after close tag */
-    get blockClose(): boolean;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _blockOpen: boolean;
-    set blockOpen(arg: boolean);
-    /** blockOpen: add newline after open tag */
-    get blockOpen(): boolean;
-    /**
-     * @type {any}
-     * @protected
-     */
-    protected _contents: any;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _selfClosing: boolean;
-    set selfClosing(arg: boolean);
-    /** selfClosing: self-closing tag */
-    get selfClosing(): boolean;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _tag: string;
-    /****************************
-     ***** Properties: ARIA *****
-     ***************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _ariaControls: string;
-    set ariaControls(arg: string);
-    /** ID(s) for element(s) whose contents or presence are controlled by the current element */
-    get ariaControls(): string;
-    /**
-     * @type {'date' | 'location' | 'page' | 'step' | 'time'}
-     * @protected
-     */
-    protected _ariaCurrent: 'date' | 'location' | 'page' | 'step' | 'time';
-    set ariaCurrent(arg: "time" | "date" | "location" | "page" | "step");
-    get ariaCurrent(): "time" | "date" | "location" | "page" | "step";
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _ariaDescribedBy: string;
-    set ariaDescribedBy(arg: string);
-    /** ID(s) for element(s) that describes the object */
-    get ariaDescribedBy(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _ariaDetails: string;
-    set ariaDetails(arg: string);
-    /** ID for the element that provides a detailed, extended description for the object */
-    get ariaDetails(): string;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _ariaDisabled: boolean;
-    set ariaDisabled(arg: boolean);
-    /** the element is perceivable but disabled, so it is not editable or otherwise operable */
-    get ariaDisabled(): boolean;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _ariaExpanded: boolean;
-    set ariaExpanded(arg: boolean);
-    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed */
-    get ariaExpanded(): boolean;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _ariaHidden: boolean;
-    set ariaHidden(arg: boolean);
-    /** indicates whether the element is exposed to an accessibility API */
-    get ariaHidden(): boolean;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _ariaLabel: string;
-    set ariaLabel(arg: string);
-    /** string value that labels the current element */
-    get ariaLabel(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _ariaLabelledBy: string;
-    set ariaLabelledBy(arg: string);
-    /** ID(s) for the element(s) that label the current element */
-    get ariaLabelledBy(): string;
-    /**
-     * @type {number}
-     * @protected
-     */
-    protected _ariaValueMax: number;
-    set ariaValueMax(arg: number);
-    /** maximum allowed value for a range widget */
-    get ariaValueMax(): number;
-    /**
-     * @type {number}
-     * @protected
-     */
-    protected _ariaValueMin: number;
-    set ariaValueMin(arg: number);
-    /** minimum allowed value for a range widget */
-    get ariaValueMin(): number;
-    /**
-     * @type {number}
-     * @protected
-     */
-    protected _ariaValueNow: number;
-    set ariaValueNow(arg: number);
-    /** current value for a range widget */
-    get ariaValueNow(): number;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _role: string;
-    set role(arg: string);
-    /**
-     * role type of user interface element
-     * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
-     */
-    get role(): string;
-    /********************************
-     ***** Properties: Standard *****
-     *******************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _accessKey: string;
-    set accessKey(arg: string);
-    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
-    get accessKey(): string;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _disabled: boolean;
-    set disabled(arg: boolean);
-    /** not available for all elements */
-    get disabled(): boolean;
-    set tabIndex(arg: number);
-    /** tabbing order */
-    get tabIndex(): number;
-    /**
-     * @type {'auto' | 'ltr' | 'rtl'}
-     * @protected
-     */
-    protected _direction: 'auto' | 'ltr' | 'rtl';
-    set direction(arg: NotificationDirection);
-    /** text direction for the content [auto, ltr, rtl] */
-    get direction(): NotificationDirection;
-    /**
-     * @type {true | false | 'auto'}
-     * @protected
-     */
-    protected _draggable: true | false | 'auto';
-    set draggable(arg: boolean | "auto");
-    /**
-     * element can be dragged (requires JavaScript)
-     * https://www.w3schools.com/html/html5_draganddrop.asp
-     */
-    get draggable(): boolean | "auto";
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _editable: boolean;
-    set editable(arg: boolean);
-    /** content is editable [boolean] */
-    get editable(): boolean;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _hidden: boolean;
-    set hidden(arg: boolean);
-    /** hide element because it is not yet (or no longer) relevant */
-    get hidden(): boolean;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _id: string;
-    set id(arg: string);
-    /** unique identifier [alphanumeric, underscore, hyphen] */
-    get id(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _language: string;
-    set language(arg: string);
-    /**
-     * language of the element's content [2-character code]
-     * https://www.w3schools.com/tags/ref_language_codes.asp
-     */
-    get language(): string;
-    /**
-     * @type {boolean}
-     * @protected
-     */
-    protected _spellcheck: boolean;
-    set spellcheck(arg: boolean);
-    /** content should be spellchecked */
-    get spellcheck(): boolean;
-    /**
-     * @type {number}
-     * @protected
-     */
-    protected _tabIndex: number;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _title: string;
-    set title(arg: string);
-    /** extra information about an element */
-    get title(): string;
-    /***********************************
-     ***** Properties: Form Events *****
-     **********************************/
-    /**
-     * form events – applies to almost all HTML elements, but is most used in form elements
-     * https://www.w3schools.com/tags/ref_eventattributes.asp
-     */
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onBlur: string;
-    set onBlur(arg: string);
-    /** loses focus */
-    get onBlur(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onChange: string;
-    set onChange(arg: string);
-    /** value of the element is changed */
-    get onChange(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onContextMenu: string;
-    set onContextMenu(arg: string);
-    /** context menu is triggered */
-    get onContextMenu(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onFocus: string;
-    set onFocus(arg: string);
-    /** gets focus */
-    get onFocus(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onInput: string;
-    set onInput(arg: string);
-    /** gets user input */
-    get onInput(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onInvalid: string;
-    set onInvalid(arg: string);
-    /** element is invalid */
-    get onInvalid(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onReset: string;
-    set onReset(arg: string);
-    /** reset button in a form is clicked */
-    get onReset(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onSearch: string;
-    set onSearch(arg: string);
-    /** user writes something in a search field (for <input type="search">) */
-    get onSearch(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onSelect: string;
-    set onSelect(arg: string);
-    /** some text has been selected in an element */
-    get onSelect(): string;
-    /***************************************
-     ***** Properties: Keyboard Events *****
-     **************************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onKeyDown: string;
-    set onKeyDown(arg: string);
-    /** user is pressing a key */
-    get onKeyDown(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onKeyPress: string;
-    set onKeyPress(arg: string);
-    /** user presses a key */
-    get onKeyPress(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onKeyUp: string;
-    set onKeyUp(arg: string);
-    /** user releases a key */
-    get onKeyUp(): string;
-    /************************************
-     ***** Properties: Mouse Events *****
-     ***********************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onClick: string;
-    set onClick(arg: string);
-    /** mouse click on the element */
-    get onClick(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDoubleClick: string;
-    set onDoubleClick(arg: string);
-    /** mouse double-click on the element */
-    get onDoubleClick(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onMouseDown: string;
-    set onMouseDown(arg: string);
-    /** mouse button is pressed down on an element */
-    get onMouseDown(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onMouseMove: string;
-    set onMouseMove(arg: string);
-    /** mouse pointer is moving while it is over an element */
-    get onMouseMove(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onMouseOut: string;
-    set onMouseOut(arg: string);
-    /** mouse pointer moves off of an element */
-    get onMouseOut(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onMouseOver: string;
-    set onMouseOver(arg: string);
-    /** mouse pointer moves over an element */
-    get onMouseOver(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onMouseUp: string;
-    set onMouseUp(arg: string);
-    /** mouse button is released over an element */
-    get onMouseUp(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onWheel: string;
-    set onWheel(arg: string);
-    /** mouse wheel rolls up or down over an element */
-    get onWheel(): string;
-    /***********************************
-     ***** Properties: Drag Events *****
-     **********************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDrag: string;
-    set onDrag(arg: string);
-    /** element is dragged */
-    get onDrag(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDragEnd: string;
-    set onDragEnd(arg: string);
-    /** end of a drag operation */
-    get onDragEnd(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDragEnter: string;
-    set onDragEnter(arg: string);
-    /** has been dragged to a valid drop target */
-    get onDragEnter(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDragLeave: string;
-    set onDragLeave(arg: string);
-    /** leaves a valid drop target */
-    get onDragLeave(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDragOver: string;
-    set onDragOver(arg: string);
-    /** being dragged over a valid drop target */
-    get onDragOver(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDragStart: string;
-    set onDragStart(arg: string);
-    /** start of a drag operation */
-    get onDragStart(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onDrop: string;
-    set onDrop(arg: string);
-    /** dragged element is being dropped */
-    get onDrop(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onScroll: string;
-    set onScroll(arg: string);
-    /** element's scrollbar is being scrolled */
-    get onScroll(): string;
-    /****************************************
-     ***** Properties: Clipboard Events *****
-     ***************************************/
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onCopy: string;
-    set onCopy(arg: string);
-    /** user copies the content of an element */
-    get onCopy(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onCut: string;
-    set onCut(arg: string);
-    /** user cuts the content of an element */
-    get onCut(): string;
-    /**
-     * @type {string}
-     * @protected
-     */
-    protected _onPaste: string;
-    set onPaste(arg: string);
-    /** user pastes some content in an element */
-    get onPaste(): string;
-    /*************************************************
-     ***** Properties: Alignment and Positioning *****
-     ************************************************/
+    /*************************************
+     ***** Alignment and Positioning *****
+     ************************************/
     /**
      * @type {'center' | 'left' | 'right'}
      * @protected
@@ -3213,9 +2618,9 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/utilities/position/
      */
     get position(): "absolute" | "fixed" | "fixed-bottom" | "fixed-top" | "relative" | "static" | "sticky" | "sticky-top";
-    /*******************************
-     ***** Properties: Borders *****
-     ******************************/
+    /*******************
+     ***** Borders *****
+     ******************/
     /**
      * @type {boolean}
      * @protected
@@ -3295,9 +2700,9 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/utilities/borders/#border-color
      */
     get borderTheme(): string;
-    /****************************
-     ***** Properties: Grid *****
-     ***************************/
+    /***********************
+     ***** Grid System *****
+     **********************/
     /**
      * @type {true | 'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}
      * @protected
@@ -3503,9 +2908,9 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/layout/grid/#no-gutters
      */
     get gridRowNoGutters(): boolean;
-    /******************************
-     ***** Properties: Layout *****
-     *****************************/
+    /******************
+     ***** Layout *****
+     *****************/
     /**
      * @type {-5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 'auto'}
      * @protected
@@ -4276,9 +3681,9 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/utilities/spacing/
      */
     get paddingYXL(): 0 | "auto" | 1 | 2 | 3 | 4 | 5;
-    /******************************
-     ***** Properties: Sizing *****
-     *****************************/
+    /******************
+     ***** Sizing *****
+     *****************/
     /**
      * @type {25 | 50 | 75 | 100 | 'auto'}
      * @protected
@@ -4367,9 +3772,52 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/utilities/sizing/#relative-to-the-viewport
      */
     get viewportMinWidth(): "auto" | 25 | 50 | 75 | 100;
-    /**********************************
-     ***** Properties: Typography *****
-     *********************************/
+    /*****************
+     ***** Theme *****
+     ****************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _textTheme: string;
+    set textTheme(arg: string);
+    /**
+     * Bootstrap text theme
+     * valid values: black-50, body, danger, dark, info, light, muted, primary, secondary, success, warning, white, white-50
+     */
+    get textTheme(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _theme: string;
+    set theme(arg: string);
+    /**
+     * Bootstrap background theme
+     * valid values: danger, dark, info, light, primary, secondary, success, transparent, warning
+     */
+    get theme(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _outline: boolean;
+    set outline(arg: boolean);
+    /**
+     * Bootstrap outline theme
+     * outline with theme color (via borders) [true] instead of background color [false]
+     */
+    get outline(): boolean;
+    /**
+     * background/outline theme are mutually exclusive
+     * @param {boolean} outline border theme (true) or background (false)
+     * @param {string} theme theme color
+     * @protected
+     */
+    protected _setOutlineTheme(outline: boolean, theme: string): void;
+    /**********************
+     ***** Typography *****
+     *********************/
     /**
      * @type {1 | 2 | 3 | 4}
      * @protected
@@ -4392,6 +3840,555 @@ declare class BootstrapTag {
      * https://getbootstrap.com/docs/4.5/content/typography/#lead
      */
     get leading(): boolean;
+}
+/***************************************************************************************************************
+ ************************************************** HTML Core **************************************************
+ **************************************************************************************************************/
+/** baseline HTML element (abstract) */
+declare class HTMLTag {
+    /**
+     * create a new instance of the object
+     * @param {string} tag HTML element name
+     * @param {any} contents value or array of values to go inside the HTML element
+     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     */
+    constructor(tag: string, contents: any, attributes: object);
+    set tag(arg: string);
+    /** tag: HTML tag element */
+    get tag(): string;
+    set contents(arg: any);
+    /** contents for innerHTML */
+    get contents(): any;
+    set attributes(arg: any);
+    /** attributes: HTML attributes */
+    get attributes(): any;
+    /**********************************
+     ***** Properties: Essentials *****
+     *********************************/
+    /**
+     * @type {object}
+     * @protected
+     */
+    protected _attributes: object;
+    set classes(arg: string[]);
+    /**
+     * classes: CSS classes defined in a style sheet
+     * @type {string[]}
+     */
+    get classes(): string[];
+    set styles(arg: string[]);
+    /**
+     * inline CSS style(s)
+     * @type {string[]}
+     */
+    get styles(): string[];
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _blockClose: boolean;
+    set blockClose(arg: boolean);
+    /** blockClose: add newline after close tag */
+    get blockClose(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _blockOpen: boolean;
+    set blockOpen(arg: boolean);
+    /** blockOpen: add newline after open tag */
+    get blockOpen(): boolean;
+    /**
+     * @type {any}
+     * @protected
+     */
+    protected _contents: any;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _selfClosing: boolean;
+    set selfClosing(arg: boolean);
+    /** selfClosing: self-closing tag */
+    get selfClosing(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _tag: string;
+    /****************************
+     ***** Properties: ARIA *****
+     ***************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaControls: string;
+    set ariaControls(arg: string);
+    /** ID(s) for element(s) whose contents or presence are controlled by the current element */
+    get ariaControls(): string;
+    /**
+     * @type {'date' | 'location' | 'page' | 'step' | 'time'}
+     * @protected
+     */
+    protected _ariaCurrent: 'date' | 'location' | 'page' | 'step' | 'time';
+    set ariaCurrent(arg: "time" | "date" | "location" | "page" | "step");
+    get ariaCurrent(): "time" | "date" | "location" | "page" | "step";
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaDescribedBy: string;
+    set ariaDescribedBy(arg: string);
+    /** ID(s) for element(s) that describes the object */
+    get ariaDescribedBy(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaDetails: string;
+    set ariaDetails(arg: string);
+    /** ID for the element that provides a detailed, extended description for the object */
+    get ariaDetails(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaDisabled: boolean;
+    set ariaDisabled(arg: boolean);
+    /** the element is perceivable but disabled, so it is not editable or otherwise operable */
+    get ariaDisabled(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaExpanded: boolean;
+    set ariaExpanded(arg: boolean);
+    /** indicates whether the element, or another grouping element it controls, is currently expanded or collapsed */
+    get ariaExpanded(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _ariaHidden: boolean;
+    set ariaHidden(arg: boolean);
+    /** indicates whether the element is exposed to an accessibility API */
+    get ariaHidden(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaLabel: string;
+    set ariaLabel(arg: string);
+    /** string value that labels the current element */
+    get ariaLabel(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _ariaLabelledBy: string;
+    set ariaLabelledBy(arg: string);
+    /** ID(s) for the element(s) that label the current element */
+    get ariaLabelledBy(): string;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueMax: number;
+    set ariaValueMax(arg: number);
+    /** maximum allowed value for a range widget */
+    get ariaValueMax(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueMin: number;
+    set ariaValueMin(arg: number);
+    /** minimum allowed value for a range widget */
+    get ariaValueMin(): number;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _ariaValueNow: number;
+    set ariaValueNow(arg: number);
+    /** current value for a range widget */
+    get ariaValueNow(): number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _role: string;
+    set role(arg: string);
+    /**
+     * role type of user interface element
+     * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+     */
+    get role(): string;
+    /********************************
+     ***** Properties: Standard *****
+     *******************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _accessKey: string;
+    set accessKey(arg: string);
+    /** define shortcut key to activate/focus when (Alt / Alt+Shift / Cmd) + AccessKey [single character] */
+    get accessKey(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _disabled: boolean;
+    set disabled(arg: boolean);
+    /** not available for all elements */
+    get disabled(): boolean;
+    set tabIndex(arg: number);
+    /** tabbing order */
+    get tabIndex(): number;
+    /**
+     * @type {'auto' | 'ltr' | 'rtl'}
+     * @protected
+     */
+    protected _direction: 'auto' | 'ltr' | 'rtl';
+    set direction(arg: NotificationDirection);
+    /** text direction for the content [auto, ltr, rtl] */
+    get direction(): NotificationDirection;
+    /**
+     * @type {true | false | 'auto'}
+     * @protected
+     */
+    protected _draggable: true | false | 'auto';
+    set draggable(arg: boolean | "auto");
+    /**
+     * element can be dragged (requires JavaScript)
+     * https://www.w3schools.com/html/html5_draganddrop.asp
+     */
+    get draggable(): boolean | "auto";
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _editable: boolean;
+    set editable(arg: boolean);
+    /** content is editable [boolean] */
+    get editable(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _hidden: boolean;
+    set hidden(arg: boolean);
+    /** hide element because it is not yet (or no longer) relevant */
+    get hidden(): boolean;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _id: string;
+    set id(arg: string);
+    /** unique identifier [alphanumeric, underscore, hyphen] */
+    get id(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _language: string;
+    set language(arg: string);
+    /**
+     * language of the element's content [2-character code]
+     * https://www.w3schools.com/tags/ref_language_codes.asp
+     */
+    get language(): string;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _spellcheck: boolean;
+    set spellcheck(arg: boolean);
+    /** content should be spellchecked */
+    get spellcheck(): boolean;
+    /**
+     * @type {number}
+     * @protected
+     */
+    protected _tabIndex: number;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _title: string;
+    set title(arg: string);
+    /** extra information about an element */
+    get title(): string;
+    /***********************************
+     ***** Properties: Form Events *****
+     **********************************/
+    /**
+     * form events – applies to almost all HTML elements, but is most used in form elements
+     * https://www.w3schools.com/tags/ref_eventattributes.asp
+     */
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onBlur: string;
+    set onBlur(arg: string);
+    /** loses focus */
+    get onBlur(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onChange: string;
+    set onChange(arg: string);
+    /** value of the element is changed */
+    get onChange(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onContextMenu: string;
+    set onContextMenu(arg: string);
+    /** context menu is triggered */
+    get onContextMenu(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onFocus: string;
+    set onFocus(arg: string);
+    /** gets focus */
+    get onFocus(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onInput: string;
+    set onInput(arg: string);
+    /** gets user input */
+    get onInput(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onInvalid: string;
+    set onInvalid(arg: string);
+    /** element is invalid */
+    get onInvalid(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onReset: string;
+    set onReset(arg: string);
+    /** reset button in a form is clicked */
+    get onReset(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onSearch: string;
+    set onSearch(arg: string);
+    /** user writes something in a search field (for <input type="search">) */
+    get onSearch(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onSelect: string;
+    set onSelect(arg: string);
+    /** some text has been selected in an element */
+    get onSelect(): string;
+    /***************************************
+     ***** Properties: Keyboard Events *****
+     **************************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyDown: string;
+    set onKeyDown(arg: string);
+    /** user is pressing a key */
+    get onKeyDown(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyPress: string;
+    set onKeyPress(arg: string);
+    /** user presses a key */
+    get onKeyPress(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onKeyUp: string;
+    set onKeyUp(arg: string);
+    /** user releases a key */
+    get onKeyUp(): string;
+    /************************************
+     ***** Properties: Mouse Events *****
+     ***********************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onClick: string;
+    set onClick(arg: string);
+    /** mouse click on the element */
+    get onClick(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDoubleClick: string;
+    set onDoubleClick(arg: string);
+    /** mouse double-click on the element */
+    get onDoubleClick(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseDown: string;
+    set onMouseDown(arg: string);
+    /** mouse button is pressed down on an element */
+    get onMouseDown(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseMove: string;
+    set onMouseMove(arg: string);
+    /** mouse pointer is moving while it is over an element */
+    get onMouseMove(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseOut: string;
+    set onMouseOut(arg: string);
+    /** mouse pointer moves off of an element */
+    get onMouseOut(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseOver: string;
+    set onMouseOver(arg: string);
+    /** mouse pointer moves over an element */
+    get onMouseOver(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onMouseUp: string;
+    set onMouseUp(arg: string);
+    /** mouse button is released over an element */
+    get onMouseUp(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onWheel: string;
+    set onWheel(arg: string);
+    /** mouse wheel rolls up or down over an element */
+    get onWheel(): string;
+    /***********************************
+     ***** Properties: Drag Events *****
+     **********************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDrag: string;
+    set onDrag(arg: string);
+    /** element is dragged */
+    get onDrag(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragEnd: string;
+    set onDragEnd(arg: string);
+    /** end of a drag operation */
+    get onDragEnd(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragEnter: string;
+    set onDragEnter(arg: string);
+    /** has been dragged to a valid drop target */
+    get onDragEnter(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragLeave: string;
+    set onDragLeave(arg: string);
+    /** leaves a valid drop target */
+    get onDragLeave(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragOver: string;
+    set onDragOver(arg: string);
+    /** being dragged over a valid drop target */
+    get onDragOver(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDragStart: string;
+    set onDragStart(arg: string);
+    /** start of a drag operation */
+    get onDragStart(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onDrop: string;
+    set onDrop(arg: string);
+    /** dragged element is being dropped */
+    get onDrop(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onScroll: string;
+    set onScroll(arg: string);
+    /** element's scrollbar is being scrolled */
+    get onScroll(): string;
+    /****************************************
+     ***** Properties: Clipboard Events *****
+     ***************************************/
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onCopy: string;
+    set onCopy(arg: string);
+    /** user copies the content of an element */
+    get onCopy(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onCut: string;
+    set onCut(arg: string);
+    /** user cuts the content of an element */
+    get onCut(): string;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _onPaste: string;
+    set onPaste(arg: string);
+    /** user pastes some content in an element */
+    get onPaste(): string;
     /*******************
      ***** Methods *****
      ******************/
@@ -5055,7 +5052,7 @@ declare class BootstrapTag {
  * cross-site linked resources (abstract)
  * https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
  */
-declare class CrossOriginTag extends BootstrapTag {
+declare class CrossOriginTag extends HTMLTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -5094,7 +5091,7 @@ declare class CrossOriginTag extends BootstrapTag {
     protected _crossOriginIntegrity(crossOrigin: any, integrity: any): void;
 }
 /** shared features of table sections (abstract) */
-declare class TableSectionTag extends ThemeableTag {
+declare class TableSectionTag extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -5107,7 +5104,7 @@ declare class TableSectionTag extends ThemeableTag {
  ***** Table *****
  ****************/
 /** shared features of table cells (abstract) */
-declare class TableCellTag extends ThemeableTag {
+declare class TableCellTag extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name
@@ -5304,7 +5301,7 @@ declare class DropdownContainerTag extends FormTag {
  ************************************************** Form **************************************************
  *********************************************************************************************************/
 /** form input element (abstract) */
-declare class FormTag extends ThemeableTag {
+declare class FormTag extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {string} tag HTML element name

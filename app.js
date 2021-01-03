@@ -35,7 +35,7 @@ class HTMLTag {
      * @protected
      */
     _attributes;
-    /** attributes: HTML attributes */
+    /** HTML attributes */
     get attributes() { return this._attributes; }
     set attributes(value) {
         // is empty or object
@@ -78,17 +78,17 @@ class HTMLTag {
      * classes: CSS classes defined in a style sheet
      * @type {string[]}
      */
-    get classes() { return this._attributes.class; }
+    get classes() { return this.attributes.class; }
     set classes(value) {
         // is empty, create blank array
         if (value !== 0 && !value)
-            this._attributes.class = [];
+            this.attributes.class = [];
         // is single item, create array of one
         else if (!Array.isArray(value))
-            this._attributes.class = [value];
+            this.attributes.class = [value];
         // is array, use as-is
         else
-            this._attributes.class = value;
+            this.attributes.class = value;
     }
 
     /**
@@ -123,17 +123,17 @@ class HTMLTag {
      * inline CSS style(s)
      * @type {string[]}
      */
-    get styles() { return this._attributes.style; }
+    get styles() { return this.attributes.style; }
     set styles(value) {
         // is empty, create blank array
         if (value !== 0 && !value)
-            this._attributes.style = [];
+            this.attributes.style = [];
         // is single item, create array of one
         else if (!Array.isArray(value))
-            this._attributes.style = [value];
+            this.attributes.style = [value];
         // is array, use as-is
         else
-            this._attributes.style = value;
+            this.attributes.style = value;
     }
 
     /**
@@ -464,7 +464,7 @@ class HTMLTag {
     get language() { return this._language; }
     set language(value) {
         this._language = value;
-        this._setStandardValue('language', value);
+        this._setStandardValue('lang', value);
     }
 
     /**
@@ -968,7 +968,7 @@ class HTMLTag {
 
         // one argument passed, return the current value
         if (value === '`RETURN`')
-            return this._attributes[`data-${key}`];
+            return this.attributes[`data-${key}`];
         else
             this._setStandardValue(`data-${key}`, value);
     }
@@ -1132,13 +1132,13 @@ class HTMLTag {
 
         // true
         if (this._setBooleanValue.enabled.indexOf(value.toString().trim().toLowerCase()) != -1)
-            this._attributes[key] = onOff ? 'on' : 'true';
+            this.attributes[key] = onOff ? 'on' : 'true';
         // false
         else if (this._setBooleanValue.disabled.indexOf(value.toString().trim().toLowerCase()) != -1)
-            this._attributes[key] = onOff ? 'off' : 'false';
+            this.attributes[key] = onOff ? 'off' : 'false';
         // remove
         else
-            delete this._attributes[key];
+            delete this.attributes[key];
     }
 
     /**
@@ -1150,10 +1150,10 @@ class HTMLTag {
     _setStandardValue(key, value) {
         // value
         if (value != null)
-            this._attributes[key] = value;
+            this.attributes[key] = value;
         // remove
         else
-            delete this._attributes[key];
+            delete this.attributes[key];
     }
 
     /**
@@ -1169,10 +1169,10 @@ class HTMLTag {
 
         // true
         if (value != null && this._setTogglableValue.enabled.indexOf(value.toString().trim().toLowerCase()) != -1)
-            this._attributes[key] = null;
+            this.attributes[key] = null;
         // remove
         else
-            delete this._attributes[key];
+            delete this.attributes[key];
     }
 
 
@@ -4542,24 +4542,23 @@ class HTML extends HTMLTag {
      * create a new instance of the object
      * @param {any} titleContents contents for the title element
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the body tag
      */
     constructor(titleContents, contents, attributes) {
-        // set defaults
+        // initialize attributes
         if (!attributes || typeof attributes != 'object')
             attributes = {};
-        if (!attributes.language)
-            attributes.language = 'en';
 
         // create baseline object
-        super('html', contents, attributes);
+        super('html', contents);
+
+        // split out language
+        this.language = attributes.language ? attributes.language : 'en';
+        delete attributes.language;
 
         // initialize elements
         this.head = new Head(titleContents);
-        this.body = new Body();
-
-        // initialize attributes
-        this.attributes = attributes;
+        this.body = new Body(null, attributes);
     }
 
 
@@ -4568,18 +4567,18 @@ class HTML extends HTMLTag {
      *********************/
 
     /**
-     * @type {string}
-     * @protected
-     */
-    _language;
-    /**
      * language code of the text in the linked document
      * https://www.w3schools.com/tags/att_global_lang.asp
+     * @type {string}
+     * @protected
      */
     get language() { return this._language; }
     set language(value) {
         this._language = value;
-        this._setStandardValue('lang', value);
+        if (value)
+            this._attributes = { 'lang': value };
+        else
+            this._attributes = {};
     }
 
 
@@ -4619,6 +4618,17 @@ class HTML extends HTMLTag {
     /**********************
      ***** Properties *****
      *********************/
+
+    /**
+     * HTML attributes
+     * @type {object}
+     * @protected
+     */
+    get attributes() { return this.body.attributes; }
+    set attributes(value) {
+        if (this.body)
+            this.body.attributes = value;
+    }
 
     /**
      * character set
@@ -7885,7 +7895,7 @@ class FileUploader extends FormTag {
         super('input', null, name, null, attributes);
 
         // flag as file uploader
-        this._attributes['type'] = 'file';
+        this.attributes['type'] = 'file';
 
         // not plain, add Bootstrap components
         if (!attributes.plain) {

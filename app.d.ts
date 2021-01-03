@@ -217,12 +217,12 @@ export class ResourceLink extends CrossOriginTag {
  * document type and the container for all other HTML elements
  * https://www.w3schools.com/tags/tag_html.asp
  */
-export class HTML extends HTMLTag {
+export class HTML extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} titleContents contents for the title element
      * @param {any} contents value or array of values to go inside the HTML element
-     * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} attributes key–value pairs of HTML attributes and other properties for the body tag
      */
     constructor(titleContents: any, contents: any, attributes: object);
     /** HTML head tag */
@@ -245,9 +245,6 @@ export class HTML extends HTMLTag {
      */
     get scripts(): Script[];
     set charset(arg: string);
-    /**********************
-     ***** Properties *****
-     *********************/
     /**
      * character set
      * https://www.w3schools.com/tags/att_meta_charset.asp
@@ -3860,7 +3857,7 @@ declare class HTMLTag {
     /** contents for innerHTML */
     get contents(): any;
     set attributes(arg: any);
-    /** attributes: HTML attributes */
+    /** HTML attributes */
     get attributes(): any;
     /**********************************
      ***** Properties: Essentials *****

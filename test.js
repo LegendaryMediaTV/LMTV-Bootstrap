@@ -30,7 +30,7 @@ http.createServer((req, res) => {
     html.resourceLink(urlCSS);
     html.style([`.test { ${cssValue} }`, 'p.test { color: blue; }'], { media: 'print' });
     html.script(jsValue);
-    html.body.margins = 5;
+    html.margins = 5;
 
     html.comment('Content');
     html.displayHeading1('Content');

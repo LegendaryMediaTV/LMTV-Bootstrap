@@ -4537,7 +4537,7 @@ exports.ResourceLink = ResourceLink;
  * document type and the container for all other HTML elements
  * https://www.w3schools.com/tags/tag_html.asp
  */
-class HTML extends HTMLTag {
+class HTML extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} titleContents contents for the title element

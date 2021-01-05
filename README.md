@@ -2,7 +2,7 @@
 
 This is a Node.js framework for working with [HTML 5](https://www.w3schools.com/html/) and [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
 
-Besides HTML classes, it has support for Bootstrap themes, grid system, alerts, and forms.
+Besides HTML classes, it has support for Bootstrap themes, grid system, layout, some typography, some utilities, alerts, forms, and spinners. For more information about recent additions, see the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
 
 ## Getting started
 

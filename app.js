@@ -1240,10 +1240,13 @@ class HTMLTag {
      * quote blocks of content from another source
      * TIP: use <q> for inline (short) quotations
      * https://www.w3schools.com/tags/tag_blockquote.asp
+     * https://getbootstrap.com/docs/4.5/content/typography/#blockquotes
      * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} footerContents value or array of values to go inside the footer element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the footer
      */
-    blockQuote(contents, attributes) { this.add(new BlockQuote(contents, attributes)); }
+    blockQuote(contents, footerContents, attributes, footerAttributes) { this.add(new BlockQuote(contents, footerContents, attributes, footerAttributes)); }
 
     /**
      * cited reference (i.e., title of a work)
@@ -1264,10 +1267,13 @@ class HTMLTag {
     /**
      * definition list
      * https://www.w3schools.com/tags/tag_dl.asp
-     * @param {object} contents key–value pairs to go inside the HTML element
+     * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
+     * @param {any} contents key–value pairs to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {object} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
-    definitionList(contents, attributes) { this.add(new DefinitionList(contents, attributes)); }
+    definitionList(contents, attributes, termAttributes, descriptionAttributes) { this.add(new DefinitionList(contents, attributes, termAttributes, descriptionAttributes)); }
 
     /**
      * deleted (strikethrough)
@@ -1314,6 +1320,7 @@ class HTMLTag {
      * self-contained content, like illustrations, diagrams, photos, code listings, etc.
      * TIP: if removed it should not affect the flow of the document
      * https://www.w3schools.com/tags/tag_figure.asp
+     * https://getbootstrap.com/docs/4.5/content/figures/
      * @param {string} url path to the image
      * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {any} caption value or array of values to go inside the caption element
@@ -1480,6 +1487,7 @@ class HTMLTag {
      * list of items
      * https://www.w3schools.com/tags/tag_ol.asp
      * https://www.w3schools.com/tags/tag_ul.asp
+     * https://getbootstrap.com/docs/4.5/content/typography/#lists
      * @param {any} items items to add to the list
      * @param {boolean} ordered list is ordered (i.e., numbered); default is false (i.e., unordered/bulleted)
      * @param {object} attributes key–value pairs of HTML attributes and other properties for the list
@@ -2153,6 +2161,119 @@ class BootstrapTag extends HTMLTag {
         this._borderTheme = value;
         if (this._borderTheme != null)
             this.class(`border-${this._borderTheme}`);
+    }
+
+
+    /*****************
+     ***** Float *****
+     ****************/
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _clearFix;
+    /**
+     * clear floated content within a container
+     * https://getbootstrap.com/docs/4.5/utilities/clearfix/
+     */
+    get clearFix() { return this._clearFix; }
+    set clearFix(value) {
+        if (this._clearFix)
+            this.removeClass('clearfix');
+        this._clearFix = value;
+        if (this._clearFix)
+            this.class('clearfix');
+    }
+
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    _float;
+    /**
+     * float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get float() { return this._float; }
+    set float(value) {
+        if (this._float)
+            this.removeClass(`float-${this._float}`);
+        this._float = value;
+        if (this._float)
+            this.class(`float-${this._float}`);
+    }
+
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    _floatSmall;
+    /**
+     * small breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatSmall() { return this._floatSmall; }
+    set floatSmall(value) {
+        if (this._floatSmall)
+            this.removeClass(`float-sm-${this._floatSmall}`);
+        this._floatSmall = value;
+        if (this._floatSmall)
+            this.class(`float-sm-${this._floatSmall}`);
+    }
+
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    _floatMedium;
+    /**
+     * medium breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatMedium() { return this._floatMedium; }
+    set floatMedium(value) {
+        if (this._floatMedium)
+            this.removeClass(`float-md-${this._floatMedium}`);
+        this._floatMedium = value;
+        if (this._floatMedium)
+            this.class(`float-md-${this._floatMedium}`);
+    }
+
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    _floatLarge;
+    /**
+     * large breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatLarge() { return this._floatLarge; }
+    set floatLarge(value) {
+        if (this._floatLarge)
+            this.removeClass(`float-lg-${this._floatLarge}`);
+        this._floatLarge = value;
+        if (this._floatLarge)
+            this.class(`float-lg-${this._floatLarge}`);
+    }
+
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    _floatXL;
+    /**
+     * extra-large breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatXL() { return this._floatXL; }
+    set floatXL(value) {
+        if (this._floatXL)
+            this.removeClass(`float-xl-${this._floatXL}`);
+        this._floatXL = value;
+        if (this._floatXL)
+            this.class(`float-xl-${this._floatXL}`);
     }
 
 
@@ -4029,6 +4150,24 @@ class BootstrapTag extends HTMLTag {
         if (this._leading)
             this.class('lead');
     }
+
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    _truncate;
+    /**
+     *  class to truncate the text with an ellipsis
+     * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
+     */
+    get truncate() { return this._truncate; }
+    set truncate(value) {
+        if (this._truncate)
+            this.removeClass('text-truncate');
+        this._truncate = value;
+        if (this._truncate)
+            this.class('text-truncate');
+    }
 }
 
 /**
@@ -5185,31 +5324,76 @@ exports.Bold = Bold;
  * quote blocks of content from another source
  * TIP: use <q> for inline (short) quotations
  * https://www.w3schools.com/tags/tag_blockquote.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#blockquotes
  */
 class BlockQuote extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} footerContents value or array of values to go inside the footer element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the footer
      */
-    constructor(contents, attributes) {
+    constructor(contents, footerContents, attributes, footerAttributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
         // create baseline object
         super('blockquote', contents, attributes);
 
         // initialize attributes
         this.attributes = attributes;
+
+        // initalize elements
+        this.footer = new Footer(footerContents, footerAttributes);
+
+        // add Bootstrap classes
+        if (!attributes.plain) {
+            this.class('blockquote');
+            this.footer.class('blockquote-footer');
+        }
     }
+
 
     /**********************
      ***** Attributes *****
      *********************/
 
-    /** URL source of the quotation */
+    /**
+     * @type {string}
+     * @protected
+     */
     _cite;
+    /** URL source of the quotation */
     get cite() { return this._cite; }
     set cite(value) {
         this._cite = value;
         this._setStandardValue('cite', value);
+    }
+
+
+    /********************
+     ***** Elements *****
+     *******************/
+
+    /** footer for the blockquote; usually used to identify the source, by containing a Cite tag */
+    footer;
+
+
+    /*******************
+     ***** Methods *****
+     ******************/
+
+    /** close the HTML tag */
+    stop() {
+        let output = '';
+
+        if (this.footer.contents.length)
+            output += this.footer;
+        output += super.stop();
+
+        return output;
     }
 }
 exports.BlockQuote = BlockQuote;
@@ -5273,22 +5457,32 @@ exports.DefinitionDescription = DefinitionDescription;
 /**
  * definition list
  * https://www.w3schools.com/tags/tag_dl.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
  */
 class DefinitionList extends BootstrapTag {
     /**
      * create a new instance of the object
-     * @param {object} contents key–value pairs to go inside the HTML element
+     * @param {any} contents key–value pairs to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {object} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
-    constructor(contents, attributes) {
+    constructor(contents, attributes, termAttributes, descriptionAttributes) {
+        // normalize attributes
+        if (!attributes || typeof attributes != 'object')
+            attributes = {};
+
         // create baseline object
         super('dl', null, attributes);
+
+        if (!attributes.plain)
+            this.gridRow = true;
 
         // add contents
         if (contents) {
             if (typeof contents == 'object') {
                 for (const [key, value] of Object.entries(contents))
-                    this.add(key, value);
+                    this.add(key, value, termAttributes, descriptionAttributes);
             }
         }
     }
@@ -5297,10 +5491,37 @@ class DefinitionList extends BootstrapTag {
      * add a new term/description pair
      * @param {any} term either a definitionTerm or content for a new one
      * @param {any} description either a definitionDescription or content for a new one
-     * @param {any} termAttributes attributes for when creating a new DefinitionTerm
-     * @param {any} descriptionAttributes attributes for when creating a new DefinitionDescription
+     * @param {object} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {object} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
     add(term, description, termAttributes, descriptionAttributes) {
+        // normalize attributes
+        if (!termAttributes || typeof termAttributes != 'object')
+            termAttributes = {};
+        if (!descriptionAttributes || typeof descriptionAttributes != 'object')
+            descriptionAttributes = {};
+
+        // configure grid
+        if (!termAttributes.plain) {
+            // set term grid size
+            if (termAttributes.gridColumn == null && termAttributes.gridColumnSmall == null && termAttributes.gridColumnMedium == null && termAttributes.gridColumnLarge == null && termAttributes.gridColumnXL == null)
+                termAttributes.gridColumnSmall = 3;
+
+            // compute description grid size
+            if (!descriptionAttributes.plain) {
+                if (typeof termAttributes.gridColumn == 'number')
+                    descriptionAttributes.gridColumn = 12 - termAttributes.gridColumn;
+                if (typeof termAttributes.gridColumnSmall == 'number')
+                    descriptionAttributes.gridColumnSmall = 12 - termAttributes.gridColumnSmall;
+                if (typeof termAttributes.gridColumnMedium == 'number')
+                    descriptionAttributes.gridColumnMedium = 12 - termAttributes.gridColumnMedium;
+                if (typeof termAttributes.gridColumnLarge == 'number')
+                    descriptionAttributes.gridColumnLarge = 12 - termAttributes.gridColumnLarge;
+                if (typeof termAttributes.gridColumnXL == 'number')
+                    descriptionAttributes.gridColumnXL = 12 - termAttributes.gridColumnXL;
+            }
+        }
+
         // convert term to a definitionTerm object
         if (!(term instanceof DefinitionTerm))
             term = new DefinitionTerm(term, termAttributes);
@@ -5458,6 +5679,7 @@ exports.Emphasis = Emphasis;
  * self-contained content, like illustrations, diagrams, photos, code listings, etc.
  * TIP: if removed it should not affect the flow of the document
  * https://www.w3schools.com/tags/tag_figure.asp
+ * https://getbootstrap.com/docs/4.5/content/figures/
  */
 class Figure extends BootstrapTag {
     /**
@@ -5477,6 +5699,13 @@ class Figure extends BootstrapTag {
 
         // initialize attributes
         this.attributes = attributes;
+
+        // add Bootstrap classes
+        if (!attributes.plain) {
+            this.class('figure');
+            this.caption.class('figure-caption');
+            this.image.class('figure-img');
+        }
     }
 
 
@@ -6219,6 +6448,7 @@ exports.Link = Link;
  * list of items
  * https://www.w3schools.com/tags/tag_ol.asp
  * https://www.w3schools.com/tags/tag_ul.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#lists
  */
 class List extends BootstrapTag {
     /**
@@ -6280,14 +6510,34 @@ class List extends BootstrapTag {
      * @protected
      */
     _type;
-    /**
-     * markers to use for ordered lists
-     * valid values: 1, A, a, I, i
-     */
+    /** markers to use for ordered lists */
     get type() { return this._type; }
     set type(value) {
         this._type = value;
         this._setStandardValue('type', value);
+    }
+
+
+    /**********************
+     ***** Properties *****
+     *********************/
+
+
+    /**
+     * @type {'inline' | 'unstyled'}
+     * @protected
+     */
+    _listStyle;
+    /**
+     * remove the list's bullets and left margin on list items (immediate children only)
+     */
+    get listStyle() { return this._listStyle; }
+    set listStyle(value) {
+        if (this._listStyle)
+            this.removeClass(`list-${this._listStyle}`);
+        this._listStyle = value;
+        if (this._listStyle)
+            this.class(`list-${this._listStyle}`);
     }
 
 
@@ -6305,6 +6555,33 @@ class List extends BootstrapTag {
             contents = new ListItem(contents, attributes);
 
         super.add(contents);
+    }
+
+    /** contents of the tag */
+    innerHTML() {
+        let output = '';
+
+        if (this._listStyle != 'inline')
+            output = super.innerHTML();
+        else {
+            this.contents.forEach(content => {
+                if (content instanceof ListItem) {
+                    // add dynamic Bootstrap classes
+                    const classes = content.classes.slice();
+                    content.class('list-inline-item');
+
+                    // process output
+                    output += content.toString();
+
+                    // reset classes
+                    content.classes = classes;
+                }
+                else
+                    output += content.toString();
+            });
+        }
+
+        return output;
     }
 }
 exports.List = List;

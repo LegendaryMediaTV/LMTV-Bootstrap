@@ -1,6 +1,6 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "1.13.4",
+  "version": "1.14.0",
   "description": "Framework for working with HTML and Bootstrap",
   "keywords": [ "Bootstrap", "HTML", "framework", "ADA", "accessibility" ],
   "main": "app",

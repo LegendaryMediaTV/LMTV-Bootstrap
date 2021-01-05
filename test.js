@@ -35,90 +35,89 @@ http.createServer((req, res) => {
     html.comment('Content');
     html.displayHeading1('Content');
 
-    html.abbreviation('HW', stringValue);
-    html.add('\n');
-    html.address(stringValue);
-    html.add('\n');
-    html.article(stringValue);
-    html.aside(stringValue);
-    html.bold(stringValue);
-    html.add('\n');
-    html.blockQuote(stringValue, { cite: url });
-    html.cite(stringValue);
-    html.add('\n');
-    html.code(stringValue);
-    html.add('\n');
+    html.displayHeading3('Inline tags');
+    const inline = new bs.Division();
+    inline.abbreviation('abbreviation', stringValue);
+    inline.add(' ');
+    inline.bold('bold');
+    inline.add(' ');
+    inline.cite('cite');
+    inline.add(' ');
+    inline.code('code');
+    inline.add(' ');
+    inline.deleted('deleted');
+    inline.add(' ');
+    inline.emphasis('emphasis');
+    inline.add(' ');
+    inline.highlight(stringValue);
+    inline.add(' ');
+    inline.italics(stringValue);
+    inline.add(' ');
+    inline.icon('fas fa-camera');
+    inline.add(' ');
+    inline.insert('insert');
+    inline.add(' ');
+    inline.lineBreak();
+    inline.add(' ');
+    inline.link(url, 'link', { target: '_blank' });
+    inline.add(' ');
+    inline.output('output', { for: 'test' });
+    inline.add(' ');
+    inline.quote('quote');
+    inline.add(' ');
+    inline.strike('strike');
+    inline.add(' ');
+    inline.small('small');
+    inline.add(' ');
+    inline.span('span');
+    inline.add(' ');
+    inline.strong('strong');
+    inline.add(' ');
+    inline.subscript('subscript');
+    inline.add(' ');
+    inline.superscript('superscript');
+    inline.add(' ');
+    inline.time('11/22 @ 2:56 PM', { timestamp: '2020-11-22 14:56' });
+    inline.add(' ');
+    inline.underline('underline');
+    html.add(inline);
+
+    html.displayHeading3('Block-level tags');
+    html.address('address');
+    html.article('article');
+    html.aside('aside');
+    html.blockQuote('blockquote', 'blockquote footer', { cite: url });
     html.definitionList({ 'term 1': 'definition 1', 'term 2': 'definition 2', 'term 3': 'definition 3' });
-    html.deleted(stringValue);
-    html.add('\n');
-    html.details(stringValue, `${stringValue} ${stringValue} ${stringValue}`, { open: true, onToggle: jsValue });
-    html.add('\n');
-    html.division(stringValue);
-    html.displayHeading1(stringValue);
-    html.displayHeading2(stringValue);
-    html.displayHeading3(stringValue);
-    html.displayHeading4(stringValue);
-    html.leadingParagraph(stringValue);
-    html.emphasis(stringValue);
-    html.add('\n');
-    html.figure(urlImage, stringValue, stringValue, { captionOnTop: true });
-    html.add('\n');
-    html.footer(stringValue);
-    html.header(stringValue);
-    html.heading1(stringValue);
-    html.heading2(stringValue);
-    html.heading3(stringValue);
-    html.heading4(stringValue);
-    html.heading5(stringValue);
-    html.heading6(stringValue);
-    html.highlight(stringValue);
-    html.add('\n');
-    html.italics(stringValue);
-    html.add('\n');
-    html.icon('fas fa-camera');
-    html.add('\n');
-    html.inlineFrame(url);
-    html.add('\n');
-    html.image(urlImage, stringValue, { thumbnail: true, responsive: true });
-    html.add('\n');
-    html.insert(stringValue);
-    html.add('\n');
+    html.details('summary', `details ${stringValue} ${stringValue} ${stringValue}`, { open: true, onToggle: jsValue });
+    html.division('division');
+    html.displayHeading1('display heading 1');
+    html.displayHeading2('display heading 2');
+    html.displayHeading3('display heading 3');
+    html.displayHeading4('display heading 4');
+    html.leadingParagraph('leading paragraph');
+    html.figure(urlImage, 'alternate text', 'figure caption', { captionOnTop: true });
+    html.footer('footer');
+    html.header('header');
+    html.heading1('heading 1');
+    html.heading2('heading 2');
+    html.heading3('heading 3');
+    html.heading4('heading 4');
+    html.heading5('heading 5');
+    html.heading6('heading 6');
+    html.inlineFrame(url, { height: 150, width: '100%' });
+    html.image(urlImage, 'alternate text', { thumbnail: true, responsive: true });
     html.line();
-    html.lineBreak();
-    html.add('\n');
-    html.link(url, stringValue, { target: '_blank' });
-    html.add('\n');
     html.list(['an item', 'another item', 'yet another item']);
     html.list(['item 1', 'item 2', 'item 3'], true);
-    html.monospace(stringValue);
-    html.navigation(stringValue);
-    html.output(stringValue, { for: 'test' });
-    html.add('\n');
+    html.list(['inline item', 'another inline item', 'yet another inline item'], null, { listStyle: 'inline' });
+    html.list(['unstyled item', 'another unstyled item', 'yet another unstyled item'], null, { listStyle: 'unstyled' });
+    html.monospace('monospace');
+    html.navigation('navigation');
     html.paragraph(stringValue);
-    html.quote(stringValue);
-    html.add('\n');
-    html.strike(stringValue);
-    html.add('\n');
     html.section(stringValue);
-    html.small(stringValue);
-    html.add('\n');
-    html.spinner(stringValue, { theme: 'danger' });
-    html.span(stringValue);
-    html.add('\n');
-    html.strong(stringValue);
-    html.add('\n');
-    html.subscript(stringValue);
-    html.add('\n');
-    html.superscript(stringValue);
-    html.add('\n');
     html.svg(`<rect x="50" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />`, 400, 180);
-    html.add('\n');
     html.paragraph([new bs.Term('HTML', { title: 'HyperText Markup Language', id: 'html-definition' }), ' is the standard markup language for creating web pages.']);
-    html.table([objectValue, objectValue], stringValue);
-    html.time('11/22 @ 2:56 PM', { timestamp: '2020-11-22 14:56' });
-    html.add('\n');
-    html.underline(stringValue);
-    html.add('\n');
+    html.table([objectValue, objectValue], 'caption');
 
     html.comment('Form');
     html.displayHeading1('Form');
@@ -163,47 +162,65 @@ http.createServer((req, res) => {
     html.comment('Components');
     html.displayHeading1('Components');
 
+    html.displayHeading3('Alerts');
+
     // default alert
     html.alert(stringValue);
 
     // customized alert
     const alert = new bs.Alert(null, { theme: 'warning' });
     alert.dismissible = true;
-    alert.heading1(stringValue);
-    alert.heading2(stringValue);
-    alert.heading3(stringValue);
-    alert.heading4(stringValue);
-    alert.heading5(stringValue);
-    alert.heading6(stringValue);
-    alert.link(url, stringValue);
+    alert.heading1('heading 1');
+    alert.heading2('heading 2');
+    alert.heading3('heading 3');
+    alert.heading4('heading 4');
+    alert.heading5('heading 5');
+    alert.heading6('heading 6');
+    alert.link(url, 'link');
     alert.add('\n');
     alert.paragraph('Link: ' + bs.Alert.formatLink(new bs.Link(url, stringValue)));
     html.add(alert);
 
-    html.comment('Grid System');
-    html.displayHeading1('Grid System');
+    html.displayHeading3('Spinners');
+
+    html.spinner(stringValue, { theme: 'danger' });
+    html.spinner(stringValue, { type: 'grow', theme: 'danger' });
+
+    html.comment('Utilities');
+    html.displayHeading1('Utilities');
+
+    html.displayHeading3('Float');
+
+    const floatContainer = new bs.Division();
+    floatContainer.theme = 'secondary';
+    floatContainer.clearFix = true;
+    floatContainer.button('Floated left', { type: 'button', float: 'left' });
+    floatContainer.button('Floated right', { type: 'button', float: 'right' });
+    html.add(floatContainer);
+
+    html.displayHeading3('Grid System');
 
     let row;
 
-    html.heading2('Standard Grid');
+    html.heading4('Standard Grid');
     row = new bs.Row();
     for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
         row.column(`${stringValue} ${columnIndex}`, null, 6, true);
     html.container(row);
 
-    html.heading2('Reordered');
+    html.heading4('Reordered');
     row = new bs.Row();
     for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
         row.column(`${stringValue} ${columnIndex}`, null, 6, true, null, null, { gridOrder: Math.abs(columnIndex - 5) });
     html.container(row);
 
-    html.heading2('Offset');
+    html.heading4('Offset');
     row = new bs.Row();
     for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
         row.column(`${stringValue} ${columnIndex}`, null, 4, null, null, null, { gridOffsetSmall: 2 });
     html.container(row);
 
-    html.heading2('No Gutters');
+    html.heading4('No Gutters');
     row = new bs.Row();
     row.gridRowNoGutters = true;
     for (var columnIndex = 1; columnIndex <= 4; columnIndex++)
@@ -376,6 +393,12 @@ test.borderRight = true;
 test.borderTop = true;
 test.borderRadius = 'circle';
 test.borderTheme = 'primary';
+test.clearFix = true;
+test.float = 'left';
+test.floatSmall = 'right';
+test.floatMedium = 'none';
+test.floatLarge = 'left';
+test.floatXL = 'right';
 test.gridColumn = 3;
 test.gridColumnSmall = 3;
 test.gridColumnMedium = 3;
@@ -474,6 +497,7 @@ test.viewportMinHeight = 50;
 test.viewportMinWidth = 50;
 test.displayHeading = 1;
 test.leading = true;
+test.truncate = true;
 console.log(test.toString());
 
 // themeable element

@@ -537,19 +537,25 @@ export class Bold extends BootstrapTag {
  * quote blocks of content from another source
  * TIP: use <q> for inline (short) quotations
  * https://www.w3schools.com/tags/tag_blockquote.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#blockquotes
  */
 export class BlockQuote extends BootstrapTag {
     /**
      * create a new instance of the object
      * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} footerContents value or array of values to go inside the footer element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the footer
      */
-    constructor(contents: any, attributes: object);
+    constructor(contents: any, footerContents: any, attributes: object, footerAttributes: object);
     /**********************
      ***** Attributes *****
      *********************/
-    /** URL source of the quotation */
-    _cite: any;
+    /**
+     * @type {string}
+     * @protected
+     */
+    protected _cite: string;
 }
 /**
  * cited reference (i.e., title of a work)
@@ -602,14 +608,17 @@ export class DefinitionDescription extends BootstrapTag {
 /**
  * definition list
  * https://www.w3schools.com/tags/tag_dl.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
  */
 export class DefinitionList extends BootstrapTag {
     /**
      * create a new instance of the object
-     * @param {object} contents key–value pairs to go inside the HTML element
+     * @param {any} contents key–value pairs to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {object} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
-    constructor(contents: object, attributes: object);
+    constructor(contents: any, attributes: object, termAttributes: object, descriptionAttributes: object);
 }
 /**
  * definition term/name
@@ -703,6 +712,7 @@ export class Emphasis extends BootstrapTag {
  * self-contained content, like illustrations, diagrams, photos, code listings, etc.
  * TIP: if removed it should not affect the flow of the document
  * https://www.w3schools.com/tags/tag_figure.asp
+ * https://getbootstrap.com/docs/4.5/content/figures/
  */
 export class Figure extends BootstrapTag {
     /**
@@ -1201,6 +1211,7 @@ export class Link extends BootstrapTag {
  * list of items
  * https://www.w3schools.com/tags/tag_ol.asp
  * https://www.w3schools.com/tags/tag_ul.asp
+ * https://getbootstrap.com/docs/4.5/content/typography/#lists
  */
 export class List extends BootstrapTag {
     /**
@@ -1236,11 +1247,21 @@ export class List extends BootstrapTag {
      */
     protected _type: '1' | 'A' | 'a' | 'I' | 'i';
     set type(arg: "a" | "i" | "1" | "A" | "I");
-    /**
-     * markers to use for ordered lists
-     * valid values: 1, A, a, I, i
-     */
+    /** markers to use for ordered lists */
     get type(): "a" | "i" | "1" | "A" | "I";
+    /**********************
+     ***** Properties *****
+     *********************/
+    /**
+     * @type {'inline' | 'unstyled'}
+     * @protected
+     */
+    protected _listStyle: 'inline' | 'unstyled';
+    set listStyle(arg: "inline" | "unstyled");
+    /**
+     * remove the list's bullets and left margin on list items (immediate children only)
+     */
+    get listStyle(): "inline" | "unstyled";
 }
 /**
  * list item for ordered/unordered lists
@@ -2697,6 +2718,75 @@ declare class BootstrapTag extends HTMLTag {
      * https://getbootstrap.com/docs/4.5/utilities/borders/#border-color
      */
     get borderTheme(): string;
+    /*****************
+     ***** Float *****
+     ****************/
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _clearFix: boolean;
+    set clearFix(arg: boolean);
+    /**
+     * clear floated content within a container
+     * https://getbootstrap.com/docs/4.5/utilities/clearfix/
+     */
+    get clearFix(): boolean;
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    protected _float: 'left' | 'none' | 'right';
+    set float(arg: "left" | "right" | "none");
+    /**
+     * float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get float(): "left" | "right" | "none";
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    protected _floatSmall: 'left' | 'none' | 'right';
+    set floatSmall(arg: "left" | "right" | "none");
+    /**
+     * small breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatSmall(): "left" | "right" | "none";
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    protected _floatMedium: 'left' | 'none' | 'right';
+    set floatMedium(arg: "left" | "right" | "none");
+    /**
+     * medium breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatMedium(): "left" | "right" | "none";
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    protected _floatLarge: 'left' | 'none' | 'right';
+    set floatLarge(arg: "left" | "right" | "none");
+    /**
+     * large breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatLarge(): "left" | "right" | "none";
+    /**
+     * @type {'left' | 'none' | 'right'}
+     * @protected
+     */
+    protected _floatXL: 'left' | 'none' | 'right';
+    set floatXL(arg: "left" | "right" | "none");
+    /**
+     * extra-large breakpoint float an element to the left or right, or disable floating; has no effect on flex items
+     * https://getbootstrap.com/docs/4.5/utilities/float/
+     */
+    get floatXL(): "left" | "right" | "none";
     /***********************
      ***** Grid System *****
      **********************/
@@ -3837,6 +3927,17 @@ declare class BootstrapTag extends HTMLTag {
      * https://getbootstrap.com/docs/4.5/content/typography/#lead
      */
     get leading(): boolean;
+    /**
+     * @type {boolean}
+     * @protected
+     */
+    protected _truncate: boolean;
+    set truncate(arg: boolean);
+    /**
+     *  class to truncate the text with an ellipsis
+     * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
+     */
+    get truncate(): boolean;
 }
 /***************************************************************************************************************
  ************************************************** HTML Core **************************************************
@@ -4509,10 +4610,13 @@ declare class HTMLTag {
      * quote blocks of content from another source
      * TIP: use <q> for inline (short) quotations
      * https://www.w3schools.com/tags/tag_blockquote.asp
+     * https://getbootstrap.com/docs/4.5/content/typography/#blockquotes
      * @param {any} contents value or array of values to go inside the HTML element
+     * @param {any} footerContents value or array of values to go inside the footer element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} footerAttributes key–value pairs of HTML attributes and other properties for the footer
      */
-    blockQuote(contents: any, attributes: object): void;
+    blockQuote(contents: any, footerContents: any, attributes: object, footerAttributes: object): void;
     /**
      * cited reference (i.e., title of a work)
      * https://www.w3schools.com/tags/tag_cite.asp
@@ -4530,10 +4634,13 @@ declare class HTMLTag {
     /**
      * definition list
      * https://www.w3schools.com/tags/tag_dl.asp
-     * @param {object} contents key–value pairs to go inside the HTML element
+     * https://getbootstrap.com/docs/4.5/content/typography/#description-list-alignment
+     * @param {any} contents key–value pairs to go inside the HTML element
      * @param {object} attributes key–value pairs of HTML attributes and other properties
+     * @param {object} termAttributes attributes for when creating a new DefinitionTerm
+     * @param {object} descriptionAttributes attributes for when creating a new DefinitionDescription
      */
-    definitionList(contents: object, attributes: object): void;
+    definitionList(contents: any, attributes: object, termAttributes: object, descriptionAttributes: object): void;
     /**
      * deleted (strikethrough)
      * https://www.w3schools.com/tags/tag_del.asp
@@ -4574,6 +4681,7 @@ declare class HTMLTag {
      * self-contained content, like illustrations, diagrams, photos, code listings, etc.
      * TIP: if removed it should not affect the flow of the document
      * https://www.w3schools.com/tags/tag_figure.asp
+     * https://getbootstrap.com/docs/4.5/content/figures/
      * @param {string} url path to the image
      * @param {string} alternateText alternate text (for accessibility (read out loud by screen readers) and displayed for broken image references) – https://webaim.org/techniques/alttext/
      * @param {any} caption value or array of values to go inside the caption element
@@ -4720,6 +4828,7 @@ declare class HTMLTag {
      * list of items
      * https://www.w3schools.com/tags/tag_ol.asp
      * https://www.w3schools.com/tags/tag_ul.asp
+     * https://getbootstrap.com/docs/4.5/content/typography/#lists
      * @param {any} items items to add to the list
      * @param {boolean} ordered list is ordered (i.e., numbered); default is false (i.e., unordered/bulleted)
      * @param {object} attributes key–value pairs of HTML attributes and other properties for the list

@@ -1,0 +1,5 @@
+.btn.HelpIcon {
+    box-shadow: none;
+    cursor: help !important;
+    padding: 0 0.25rem;
+}

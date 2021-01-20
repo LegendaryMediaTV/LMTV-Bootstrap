@@ -1,15 +1,43 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "1.14.0",
-  "description": "Framework for working with HTML and Bootstrap",
-  "keywords": [ "Bootstrap", "HTML", "framework", "ADA", "accessibility" ],
+  "version": "2.0.0",
+  "description": "additional Bootstrap-based React components for extending functionality to react-bootstrap and gatsby",
+  "keywords": [
+    "Bootstrap",
+    "React",
+    "react-bootstrap",
+    "gatsby",
+    "FontAwesome",
+    "ADA",
+    "accessibility",
+    "extension",
+    "additional components"
+  ],
   "main": "app",
-  "author": {
+  "scripts": {
+    "react": "gatsby develop",
+    "react-build": "gatsby clean && gatsby build",
+    "react-clean": "gatsby clean"
+  },
+ "author": {
     "name": "LegendaryMediaTV",
     "email": "webmaster@legendarymediatv.com",
     "url": "https://www.legendarymediatv.com/"
   },
   "homepage": "https://github.com/LegendaryMediaTV/LMTV-Bootstrap#readme",
   "repository": "github:LegendaryMediaTV/LMTV-Bootstrap",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^2.31.0",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "gatsby": "^2.31.0",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0"
+  }
 }

@@ -13,13 +13,31 @@ const ListGroup = (props) => {
     else
         items = [];
 
-    let displayField = props.displayField ? props.displayField : 'title';
-    let urlField = props.urlField ? props.urlField : 'url';
-    let keyField = props.keyField ? props.keyField : 'id';
+    const displayField = props.displayField ? props.displayField : 'title';
+    const urlField = props.urlField ? props.urlField : 'url';
+    const keyField = props.keyField ? props.keyField : 'id';
 
     return (
-        <BSListGroup className={props.className} style={props.style}>
-            { props.title ? <BSListGroup.Item className={`bg-${props.variant ? props.variant : 'primary'}`}><h3 className="mb-0">{props.title}</h3></BSListGroup.Item> : null }
+        <BSListGroup
+            activeKey={props.activeKey}
+            as={props.as}
+            defaultActiveKey={props.defaultActiveKey}
+            horizontal={props.horizontal}
+            onSelect={props.onSelect}
+            variant={props.variant}
+            className={props.className}
+            style={props.style}
+        >
+            {
+                props.title
+                ? <BSListGroup.Item
+                    as={props.titleAs ? props.titleAs : 'h3' }
+                    variant={props.titleVariant ? props.titleVariant : 'primary' }
+                    className={props.titleClassName}
+                    style={props.titleStyle}
+                >{props.title}</BSListGroup.Item>
+                : null
+            }
             {items.map((item, index) => (
                 <>
                     {

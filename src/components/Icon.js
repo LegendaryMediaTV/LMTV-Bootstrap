@@ -11,7 +11,7 @@ const Icon = (props) => {
 
     // ensure alt text
     let alt;
-    if ('alt' in props)
+    if (props.alt != null)
         alt = props.alt;
     else
         alt = props.name.replace('-alt', '').replace(/^(fa[a-z]? )?fa-/, '').replace(/-/g, ' ');

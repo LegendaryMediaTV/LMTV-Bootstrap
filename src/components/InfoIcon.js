@@ -10,17 +10,17 @@ import Popover from 'react-bootstrap/Popover';
 import Icon from './Icon';
 
 // styling
-import './HelpIcon.css';
+import './InfoIcon.css';
 
-const HelpIcon = (props) => {
+const InfoIcon = (props) => {
     // determine class name
-    let className = 'HelpIcon';
+    let className = 'InfoIcon';
     if (props.className)
         className += ` ${props.className}`;
 
     const popover = (
         <Popover>
-            { props.title ? <Popover.Title as="h3">{props.title}</Popover.Title> : null }
+            { props.title ? <Popover.Title as={ props.titleAs ? props.titleAs : 'h3' }>{props.title}</Popover.Title> : null }
             { props.children ? <Popover.Content>{props.children}</Popover.Content> : null }
         </Popover>
     );
@@ -33,9 +33,9 @@ const HelpIcon = (props) => {
                 style={props.style}
             >
                 <Icon
-                    name={!('name' in props) ? 'fas fa-question-circle' : props.name}
-                    alt={!('alt' in props) ? 'info' : props.alt}
-                    variant={!('variant' in props) ? 'info' : props.variant}
+                    name={ props.name ? props.name : 'fas fa-info-circle' }
+                    alt={props.alt}
+                    variant={ props.variant != null ? props.variant : 'info' }
                     className={props.iconClassName}
                     style={props.iconStyle}
                 />
@@ -44,4 +44,4 @@ const HelpIcon = (props) => {
     );
 }
 
-export default HelpIcon;
+export default InfoIcon;

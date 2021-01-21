@@ -33,8 +33,8 @@ const HelpIcon = (props) => {
                 style={props.style}
             >
                 <Icon
-                    name="fas fa-info-circle"
-                    alt="info"
+                    name={!('name' in props) ? 'fas fa-question-circle' : props.name}
+                    alt={!('alt' in props) ? 'info' : props.alt}
                     variant={!('variant' in props) ? 'info' : props.variant}
                     className={props.iconClassName}
                     style={props.iconStyle}

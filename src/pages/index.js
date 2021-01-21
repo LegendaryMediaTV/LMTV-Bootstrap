@@ -48,14 +48,18 @@ const Home = () => {
 
             <h2 className="display-2"><code>&lt;HelpIcon&gt;</code></h2>
 
-            <HelpIcon
-                name="fas fa-camera"
-                title="Help Title"
-            />
+            <HelpIcon title="Help Title">Help Content</HelpIcon>
+
+            <HelpIcon title="Title Only"></HelpIcon>
+
+            <HelpIcon>Content Only</HelpIcon>
 
             <HelpIcon
-                name="fas fa-camera"
                 title="Help Title"
+                name="bi bi-info-circle-fill"
+                alt="help me!"
+                variant="danger"
+                iconStyle={{ fontSize: '2rem' }}
             >Things, <i>stuff</i>, <b>content</b>!</HelpIcon>
 
 

@@ -1,6 +1,6 @@
 # LegendaryMediaTV Bootstrap
 
-This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io), which is based on [Bootstrap 4](https://getbootstrap.com/). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
+This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 4](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
 
 ## Getting started
@@ -29,9 +29,31 @@ npm install @legendarymediatv/bootstrap
 
 ### Preparation
 
+Configure Gatsby to tell Webpack to [correctly resolve peer dependencies](https://spectrum.chat/gatsby-js/general/update-gatsby-to-the-latest-version-resulting-in-webpack-98124-error~ae0a5978-9a12-4511-834e-e9a81a798652).
+
+> *NOTE: not configuring this will result in the following error when running `gatsby build`: ERROR #98124 WEBPACK – Generating development JavaScript bundle failed; Can't resolve react*
+
+**Sample `/gatsby-node.js`**
+
+```JavaScript
+const path = require('path');
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+    actions.setWebpackConfig({
+        resolve: {
+            modules: [
+                path.resolve(__dirname, 'node_modules'),
+                path.resolve(__dirname, 'src'),
+                'node_modules'
+            ],
+        },
+    })
+}
+```
+
 Either import Bootstrap CSS or link Bootstrap into your layout or app file.
 
-**Sample `/src/components/Layout.js` (link)**
+**Sample `/src/components/Layout.js` (link, with FontAwesome)**
 
 ```JavaScript
 import React from 'react';
@@ -48,7 +70,7 @@ const Layout = (props) => {
                 <meta name="description" content={props.description} />
 
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-                <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet" />
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
             </Helmet>
             <Container className="py-4">
                 <h1 className="display-1">{props.title}</h1>
@@ -129,13 +151,14 @@ import { HelpIcon } from '@legendarymediatv/bootstrap';
 
 ...
 
-<HelpIcon name="fas fa-camera" title="Help Title" />
-
-<HelpIcon name="fas fa-camera">Things, <i>stuff</i>, <b>content</b>!</HelpIcon>
+<HelpIcon title="Help Title">Help Content</HelpIcon>
 
 <HelpIcon
-    name="fas fa-camera"
     title="Help Title"
+    name="bi bi-info-circle-fill"
+    alt="help me!"
+    variant="danger"
+    iconStyle={{ fontSize: '2rem' }}
 >Things, <i>stuff</i>, <b>content</b>!</HelpIcon>
 ```
 
@@ -143,9 +166,11 @@ import { HelpIcon } from '@legendarymediatv/bootstrap';
 | :- | :- | :- | :- |
 | children | JSX |  | popover content |
 | `title` | string |  | popover title (`<h3>` tag) |
-| `variant` | string | `info` | Bootstrap theme color name (e.g., `primary`) applied to the icon |
 | `className` | string |  | CSS classes (space-separated) applied to the popover toggler button |
 | `style` | object |  | key–value pairs of CSS styles applied to the popover toggler button |
+| `name` | string | `fas fa-question-circle` | icon class name |
+| `alt` | string | variation of `name` (e.g., `camera`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
+| `variant` | string | `info` | Bootstrap theme color name (e.g., `primary`) applied to the icon |
 | `iconClassName` | string |  | CSS classes (space-separated) applied to the icon |
 | `iconStyle` | object |  | key–value pairs of CSS styles applied to the icon |
 
@@ -191,8 +216,9 @@ const objectArray = [
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `items` | string[] or object[] | required | array of URL strings or an array of objects |
-| `displayKey` | string | `title` | when `items` is an array of objects, this is the object key to display |
-| `urlKey` | string | `url` | when `items` is an array of objects, this is the object key use as the link URL |
+| `displayField` | string | `title` | when `items` is an array of objects, this is the object field to display |
+| `urlField` | string | `url` | when `items` is an array of objects, this is the object field to use as the link URL |
+| `keyField` | string | `id` | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
 | `click` | function |  | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument |
 | `title` | string |  | list group title (`<h3>` tag) |
 | `variant` | string | `primary` | Bootstrap theme color name (e.g., `primary`) for the list group title |

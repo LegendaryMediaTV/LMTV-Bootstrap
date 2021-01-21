@@ -1,6 +1,6 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "additional Bootstrap-based React components for extending functionality to react-bootstrap and gatsby",
   "keywords": [
     "Bootstrap",
@@ -19,7 +19,7 @@
     "react-build": "gatsby clean && gatsby build",
     "react-clean": "gatsby clean"
   },
- "author": {
+  "author": {
     "name": "LegendaryMediaTV",
     "email": "webmaster@legendarymediatv.com",
     "url": "https://www.legendarymediatv.com/"
@@ -28,10 +28,10 @@
   "repository": "github:LegendaryMediaTV/LMTV-Bootstrap",
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^2.31.0",
-    "react": "^17.0.1",
-    "react-bootstrap": "^1.4.3",
-    "react-dom": "^17.0.1"
+    "gatsby": "2.x",
+    "react": "17.x",
+    "react-bootstrap": "1.x",
+    "react-dom": "17.x"
   },
   "devDependencies": {
     "gatsby": "^2.31.0",

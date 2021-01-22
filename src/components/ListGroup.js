@@ -2,67 +2,75 @@
 import React from 'react';
 
 // components
-import { Link } from 'gatsby';
+import Link from './Link';
 import BSListGroup from 'react-bootstrap/ListGroup';
 
 const ListGroup = (props) => {
-    // ensure there are items to traverse
-    let items;
-    if ('items' in props)
-        items = props.items;
-    else
-        items = [];
+    // copy properties (original can't be manipulated)
+    const properties = {...props};
 
-    const displayField = props.displayField ? props.displayField : 'title';
-    const urlField = props.urlField ? props.urlField : 'url';
-    const keyField = props.keyField ? props.keyField : 'id';
+    // establish field names
+    const displayField = properties.displayField ? properties.displayField : 'title';
+    delete properties.displayField;
+    const urlField = properties.urlField ? properties.urlField : 'url';
+    delete properties.urlField;
+    const keyField = properties.keyField ? properties.keyField : 'id';
+    delete properties.keyField;
+
+    // establish title
+    let title;
+    if (properties.title) {
+        properties.titleClassName = properties.titleClassName != null ? properties.titleClassName : 'mb-0';
+
+        if (properties.titleVariant == null)
+            properties.titleVariant = 'primary';
+        if (properties.titleVariant)
+            properties.titleClassName += ` bg-${properties.titleVariant}`;
+        properties.titleClassName = properties.titleClassName.trim().replace(/\s+/, ' ');
+
+        title = (
+            <BSListGroup.Item
+                as={ properties.titleAs ? properties.titleAs : 'h3' }
+                className={properties.titleClassName}
+                style={properties.titleStyle}
+            >{properties.title}</BSListGroup.Item>
+        );
+    }    
+    delete properties.title;
+    delete properties.titleAs;
+    delete properties.titleVariant;
+    delete properties.titleClassName;
+    delete properties.titleStyle;
+
+    // extract items and establish children
+    let items = 'items' in properties ? properties.items : [];
+    items = items.map((item, index) => {
+        if (!((typeof item === 'object' && urlField in item) || typeof item === 'string')) {
+            return (
+                <BSListGroup.Item
+                    action
+                    onClick={ properties.click ? properties.click.bind(this, item) : null }
+                    key={ typeof item === 'object' && keyField in item ? item[keyField] : index }
+                >{item[displayField]}</BSListGroup.Item>
+            );
+        }
+        else {
+            return (
+                <Link
+                    href={ typeof item === 'object' ? item[urlField] : item }
+                    className="list-group-item list-group-item-action"
+                    key={ typeof item === 'object' && keyField in item ? item[keyField] : index }
+                >{ typeof item === 'object' ? item[displayField] : item }</Link>
+            );
+        }
+    });
+    delete properties.items;
+    delete properties.click;
 
     return (
-        <BSListGroup
-            activeKey={props.activeKey}
-            as={props.as}
-            defaultActiveKey={props.defaultActiveKey}
-            horizontal={props.horizontal}
-            onSelect={props.onSelect}
-            variant={props.variant}
-            className={props.className}
-            style={props.style}
-        >
-            {
-                props.title
-                ? <BSListGroup.Item
-                    as={props.titleAs ? props.titleAs : 'h3' }
-                    variant={props.titleVariant ? props.titleVariant : 'primary' }
-                    className={props.titleClassName}
-                    style={props.titleStyle}
-                >{props.title}</BSListGroup.Item>
-                : null
-            }
-            {items.map((item, index) => (
-                <>
-                    {
-                        !((typeof item === 'object' && urlField in item) || typeof item === 'string')
-                        ? <BSListGroup.Item
-                            action
-                            onClick={props.click ? props.click.bind(this, item) : null}
-                            key={typeof item === 'object' && keyField in item ? item[keyField] : index}
-                        >{item[displayField]}</BSListGroup.Item>
-                        : (
-                            !(typeof item === 'object' ? item[urlField] : item).match(/(^https?:\/\/|\.[a-z0-9]+$)/i)
-                            ? <Link
-                                to={typeof item === 'object' ? item[urlField] : item}
-                                className="list-group-item list-group-item-action"
-                                key={typeof item === 'object' && keyField in item ? item[keyField] : index}
-                            >{typeof item === 'object' ? item[displayField] : item}</Link>
-                            : <a
-                                href={typeof item === 'object' ? item[urlField] : item}
-                                className="list-group-item list-group-item-action"
-                                key={typeof item === 'object' && keyField in item ? item[keyField] : index}
-                            >{typeof item === 'object' ? item[displayField] : item}</a>
-                        )
-                    }
-                </>
-            ))}
+        <BSListGroup {...properties}>
+            {title}
+            {items}
         </BSListGroup>
     );
 }

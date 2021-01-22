@@ -2,22 +2,24 @@
 import React from 'react';
 
 // components
-import Spinner from 'react-bootstrap/Spinner';
+import BSSpinner from 'react-bootstrap/Spinner';
+import VisuallyHidden from './VisuallyHidden';
 
-const FormGroup = (props) => {
+const Spinner = (props) => {
+    // copy properties (original can't be manipulated)
+    const properties = {...props};
+
+    // set defaults
+    if (!properties.animation)
+        properties.animation = 'border';
+    if (!properties.role)
+        properties.role = 'status';
+
     return (
-        <Spinner
-            animation={props.animation ? props.animation : 'border'}
-            as={props.as}
-            role={props.role ? props.role : 'status'}
-            size={props.size}
-            variant={props.variant}
-            className={props.className}
-            style={props.style}
-        >
-            <span className="sr-only">Loading...</span>
-        </Spinner>
-);
+        <BSSpinner {...properties}>
+            <VisuallyHidden>Loading...</VisuallyHidden>
+        </BSSpinner>
+    );
 }
 
-export default FormGroup;
+export default Spinner;

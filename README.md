@@ -122,6 +122,34 @@ export default Home;
 ## Components
 
 
+### `<DisplayHeading*>`
+
+Bootstrap’s display heading typography classes.
+
+- `<DisplayHeading1>`
+- `<DisplayHeading2>`
+- `<DisplayHeading3>`
+- `<DisplayHeading4>`
+
+```JavaScript
+import { DisplayHeading1, DisplayHeading2, DisplayHeading3, DisplayHeading4 } from '@legendarymediatv/bootstrap';
+
+...
+
+<DisplayHeading1>Display Heading 1</DisplayHeading1>
+
+<DisplayHeading2>Display Heading 2</DisplayHeading2>
+
+<DisplayHeading3>Display Heading 3</DisplayHeading3>
+
+<DisplayHeading4>Display Heading 4</DisplayHeading4>
+```
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `as` | elementType | `<h#>` corresponding to the size | changes the HTML tag |
+
+
 ### `<FormGroup>`
 
 An extension of React Bootstrap’s [`<Form.Group>`](https://react-bootstrap.github.io/components/forms/#form-group-props), which automatically contains a React Bootstrap [`<Form.Label>`](https://react-bootstrap.github.io/components/forms/#form-label-props). The label then optionally includes a `<InfoIcon>` when the `info` attribute is set.
@@ -138,7 +166,7 @@ import { FormGroup } from '@legendarymediatv/bootstrap';
     <Form.Control
         name="sample"
         maxLength="80"
-        value="eleventeen"
+        defaultValue="eleventeen"
     />
 </FormGroup>
 ```
@@ -226,9 +254,28 @@ import { InfoIcon } from '@legendarymediatv/bootstrap';
 | `variant` | string | `info` | Bootstrap theme color name (e.g., `'primary'`) applied to the icon |
 
 
+### `<Link>`
+
+A combination of an HTML `<a>` tag and Gatsby’s [`<Link>`](https://www.gatsbyjs.com/docs/linking-between-pages/), using the normal `<a>` tag attributes (i.e., `href` and not `to`).
+
+If the `href` attribute begins with `#` (i.e., anchor), a protocol (e.g., `https://` or `mailto:`), or ends with a file extension (e.g., `sample.jpg`), then it uses an `<a>` tag. Otherwise, it uses Gatsby’s `<Link>` tag.
+
+```JavaScript
+import { Link } from '@legendarymediatv/bootstrap';
+
+...
+
+<Link href="/">Gatsby</Link>
+
+<Link href="#link">HTML</Link>
+
+<Link href="https://www.legendarymediatv.com/">HTML</Link>
+```
+
+
 ### `<ListGroup>`
 
-An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the URL for an item is external (i.e., begins with `http://` or `https://`) or has a file extension (i.e., ends with `.something`) then it is rendered as an `<a>` tag, otherwise it's rendered as a Gatsby `<Link>`. If the item does not have a URL, then it is rendered as a Bootstrap React `<ListGroup.Item>` instead.
+An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as a Bootstrap React `<ListGroup.Item>` instead.
 
 ```JavaScript
 import { ListGroup } from '@legendarymediatv/bootstrap';
@@ -258,8 +305,8 @@ function sampleHandler(itemSelected) {
 }
 ...
 const objectArray = [
-    { id: 1, title: 'Test Link' },
-    { id: 2, title: 'Sample Link' }
+    { id: 1, title: 'Test Non-Link' },
+    { id: 2, title: 'Sample Non-Link' }
 ];
 ...
 <ListGroup
@@ -315,6 +362,28 @@ import { Icon } from '@legendarymediatv/bootstrap';
 | `role` | string | `'status'` | ARIA accessibility role |
 | `size` | string |  | component size variations (e.g., `sm`) |
 | `variant` | string | `'primary'` | Bootstrap theme color name (e.g., `'primary'`) |
+
+
+### `<VisuallyHidden>`
+
+Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/4.6/getting-started/accessibility/#visually-hidden-content) (a.k.a., screen reader only).
+
+
+```JavaScript
+import { DisplayHeading1, DisplayHeading2, DisplayHeading3, DisplayHeading4 } from '@legendarymediatv/bootstrap';
+
+...
+
+<p class="text-danger">
+  <VisuallyHidden>Danger: </VisuallyHidden>
+  This action is not reversible
+</p>
+
+```
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| focusable | boolean | false | item is focusable |
 
 
 ## Additional examples

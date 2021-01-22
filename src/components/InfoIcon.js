@@ -13,33 +13,45 @@ import Icon from './Icon';
 import './InfoIcon.css';
 
 const InfoIcon = (props) => {
-    // determine class name
-    let className = 'InfoIcon';
-    if (props.className)
-        className += ` ${props.className}`;
+    // copy properties (original can't be manipulated)
+    const properties = {...props};
 
+    // add required class
+    properties.className = `InfoIcon ${ properties.className ? properties.className : '' }`.trim().replace(/\s+/, ' ');
+
+    // establish popover
     const popover = (
         <Popover>
-            { props.title ? <Popover.Title as={ props.titleAs ? props.titleAs : 'h3' }>{props.title}</Popover.Title> : null }
-            { props.children ? <Popover.Content>{props.children}</Popover.Content> : null }
+            { properties.title ? <Popover.Title as={ properties.titleAs ? properties.titleAs : 'h3' }>{properties.title}</Popover.Title> : null }
+            { properties.children ? <Popover.Content>{properties.children}</Popover.Content> : null }
         </Popover>
     );
+    delete properties.title;
+    delete properties.titleAs;
+    delete properties.children;
+
+    // establish icon
+    const icon = (
+        <Icon
+            name={ properties.name ? properties.name : 'fas fa-info-circle' }
+            alt={properties.alt}
+            variant={ properties.variant != null ? properties.variant : 'info' }
+            className={properties.iconClassName}
+            style={properties.iconStyle}
+        />
+    );
+    delete properties.name;
+    delete properties.alt;
+    delete properties.variant;
+    delete properties.iconClassName;
+    delete properties.iconStyle;
 
     return (
         <OverlayTrigger trigger="click" overlay={popover} rootClose>
             <Button
                 variant="link"
-                className={className}
-                style={props.style}
-            >
-                <Icon
-                    name={ props.name ? props.name : 'fas fa-info-circle' }
-                    alt={props.alt}
-                    variant={ props.variant != null ? props.variant : 'info' }
-                    className={props.iconClassName}
-                    style={props.iconStyle}
-                />
-            </Button>
+                {...properties}
+            >{icon}</Button>
         </OverlayTrigger>
     );
 }

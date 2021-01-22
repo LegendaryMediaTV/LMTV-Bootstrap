@@ -2,22 +2,41 @@
 import React from 'react';
 
 const Icon = (props) => {
-    // determine class name
-    let className = props.name;
-    if (props.className)
-        className += ` ${props.className}`;
-    if (props.variant)
-        className += ` text-${props.variant}`;
+    // enforce requirements
+    if (!props.name)
+        throw new Error('Icon name is required');
+
+    // copy properties (original can't be manipulated)
+    const properties = {...props};
 
     // ensure alt text
-    let alt;
-    if (props.alt != null)
-        alt = props.alt;
-    else
-        alt = props.name.replace('-alt', '').replace(/^(fa[a-z]? )?fa-/, '').replace(/-/g, ' ');
+    if (properties['aria-label'] == null) {
+        if (properties.alt != null)
+            properties['aria-label'] = properties.alt;
+        else {
+            properties['aria-label'] = properties.name
+                .replace('-alt', '')
+                .replace(/^[a-z]+ [a-z]{2}-/, '')
+                .replace(/-fill$/, '')
+                .replace(/-/g, ' ');
+        }
+    }
+    delete properties.alt;
+
+    // add icon name to class
+    properties.className = `${properties.name} ${ properties.className ? properties.className : '' }`;
+    delete properties.name;
+
+    // add variant to class
+    if (properties.variant)
+        properties.className += ` text-${properties.variant}`;
+    delete properties.variant;
+
+    // clean up className
+    properties.className = properties.className.trim().replace(/\s+/, ' ');
 
     return (
-        <i className={className} aria-label={alt} style={props.style} />
+        <i {...properties} />
     );
 }
 

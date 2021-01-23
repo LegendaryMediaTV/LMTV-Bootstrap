@@ -1,24 +1,23 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
-const VisuallyHidden = (props) => {
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+const Component = (props) => {
+    // prepare properties
+    const [ properties, children] = f.prepare(props);
 
     // add Bootstrap classes
-    properties.className = `sr-only ${ properties.focusable ? 'sr-only-focusable' : '' } ${ properties.className ? properties.className : '' }`;
+    properties.className.push('sr-only');
+    if (properties.focusable)
+        properties.className.push('sr-only-focusable');
     delete properties.focusable;
 
-    // clean up className
-    properties.className = properties.className.trim().replace(/\s+/, ' ');
-
-    // extract children
-    const children = properties.children;
-    delete properties.children;
+    // merge classes
+    properties.className = properties.className.length ? properties.className.join(' ') : null;
 
     return (
         <span {...properties}>{children}</span>
     );
 }
 
-export default VisuallyHidden;
+export default Component;

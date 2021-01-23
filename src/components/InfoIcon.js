@@ -1,5 +1,6 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
 // components
 import Button from 'react-bootstrap/Button';
@@ -12,23 +13,22 @@ import Icon from './Icon';
 // styling
 import './InfoIcon.css';
 
-const InfoIcon = (props) => {
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+const Component = (props) => {
+    // prepare properties
+    const [ properties, children] = f.prepare(props);
 
     // add required class
-    properties.className = `InfoIcon ${ properties.className ? properties.className : '' }`.trim().replace(/\s+/, ' ');
+    properties.className.push('InfoIcon');
 
     // establish popover
     const popover = (
         <Popover>
             { properties.title ? <Popover.Title as={ properties.titleAs ? properties.titleAs : 'h3' }>{properties.title}</Popover.Title> : null }
-            { properties.children ? <Popover.Content>{properties.children}</Popover.Content> : null }
+            { children ? <Popover.Content>{children}</Popover.Content> : null }
         </Popover>
     );
     delete properties.title;
     delete properties.titleAs;
-    delete properties.children;
 
     // establish icon
     const icon = (
@@ -46,6 +46,10 @@ const InfoIcon = (props) => {
     delete properties.iconClassName;
     delete properties.iconStyle;
 
+    // merge classes
+    properties.className = f.combine(properties.className);
+
+    // render component
     return (
         <OverlayTrigger trigger="click" overlay={popover} rootClose>
             <Button
@@ -56,4 +60,4 @@ const InfoIcon = (props) => {
     );
 }
 
-export default InfoIcon;
+export default Component;

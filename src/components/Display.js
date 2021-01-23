@@ -1,9 +1,10 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
-export const DisplayHeading = (props) => {
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+export const Heading = (props) => {
+    // prepare properties
+    const [ properties, children] = f.prepare(props);
 
     // set defaults
     const size = properties.size ? properties.size : '1';
@@ -12,19 +13,16 @@ export const DisplayHeading = (props) => {
     delete properties.as;
 
     // add Bootstrap class
-    properties.className = `display-${size} ${ properties.className ? properties.className : '' }`.trim().replace(/\s+/, ' ');
+    properties.className.push(`display-${size}`);
 
-    // extract children
-    const children = properties.children;
-    delete properties.children;
+    // merge classes
+    properties.className = f.combine(properties.className);
 
+    // render component
     return React.createElement(htmlElement, properties, children);
 }
 
-export default DisplayHeading;
-
-
-export const DisplayHeading1 = (props) => {
+export const Heading1 = (props) => {
     // copy properties (original can't be manipulated)
     const properties = {...props};
 
@@ -36,12 +34,12 @@ export const DisplayHeading1 = (props) => {
     delete properties.children;
 
     return (
-        <DisplayHeading {...properties} size={size}>{children}</DisplayHeading>
+        <Heading {...properties} size={size}>{children}</Heading>
     )
 }
 
 
-export const DisplayHeading2 = (props) => {
+export const Heading2 = (props) => {
     // copy properties (original can't be manipulated)
     const properties = {...props};
 
@@ -53,12 +51,12 @@ export const DisplayHeading2 = (props) => {
     delete properties.children;
 
     return (
-        <DisplayHeading {...properties} size={size}>{children}</DisplayHeading>
+        <Heading {...properties} size={size}>{children}</Heading>
     )
 }
 
 
-export const DisplayHeading3 = (props) => {
+export const Heading3 = (props) => {
     // copy properties (original can't be manipulated)
     const properties = {...props};
 
@@ -70,12 +68,12 @@ export const DisplayHeading3 = (props) => {
     delete properties.children;
 
     return (
-        <DisplayHeading {...properties} size={size}>{children}</DisplayHeading>
+        <Heading {...properties} size={size}>{children}</Heading>
     )
 }
 
 
-export const DisplayHeading4 = (props) => {
+export const Heading4 = (props) => {
     // copy properties (original can't be manipulated)
     const properties = {...props};
 
@@ -87,6 +85,14 @@ export const DisplayHeading4 = (props) => {
     delete properties.children;
 
     return (
-        <DisplayHeading {...properties} size={size}>{children}</DisplayHeading>
+        <Heading {...properties} size={size}>{children}</Heading>
     )
+}
+
+export default {
+    Heading,
+    Heading1,
+    Heading2,
+    Heading3,
+    Heading4
 }

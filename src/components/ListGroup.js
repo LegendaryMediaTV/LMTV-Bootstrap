@@ -1,13 +1,14 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
 // components
 import Link from './Link';
-import BSListGroup from 'react-bootstrap/ListGroup';
+import ListGroup from 'react-bootstrap/ListGroup';
 
-const ListGroup = (props) => {
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+const Component = (props) => {
+    // prepare properties
+    const [ properties, children] = f.prepare(props);
 
     // establish field names
     const displayField = properties.displayField ? properties.displayField : 'title';
@@ -29,11 +30,11 @@ const ListGroup = (props) => {
         properties.titleClassName = properties.titleClassName.trim().replace(/\s+/, ' ');
 
         title = (
-            <BSListGroup.Item
+            <ListGroup.Item
                 as={ properties.titleAs ? properties.titleAs : 'h3' }
                 className={properties.titleClassName}
                 style={properties.titleStyle}
-            >{properties.title}</BSListGroup.Item>
+            >{properties.title}</ListGroup.Item>
         );
     }    
     delete properties.title;
@@ -45,34 +46,33 @@ const ListGroup = (props) => {
     // extract items and establish children
     let items = 'items' in properties ? properties.items : [];
     items = items.map((item, index) => {
-        if (!((typeof item === 'object' && urlField in item) || typeof item === 'string')) {
-            return (
-                <BSListGroup.Item
-                    action
-                    onClick={ properties.click ? properties.click.bind(this, item) : null }
-                    key={ typeof item === 'object' && keyField in item ? item[keyField] : index }
-                >{item[displayField]}</BSListGroup.Item>
-            );
-        }
-        else {
-            return (
-                <Link
-                    href={ typeof item === 'object' ? item[urlField] : item }
-                    className="list-group-item list-group-item-action"
-                    key={ typeof item === 'object' && keyField in item ? item[keyField] : index }
-                >{ typeof item === 'object' ? item[displayField] : item }</Link>
-            );
-        }
+        // determine whether item is a link
+        const isLink = (typeof item === 'object' && urlField in item) || typeof item === 'string';
+
+        return (
+            <ListGroup.Item
+                action
+                as={ isLink ? Link : null }
+                to={ isLink ? ( typeof item === 'object' ? item[urlField] : item ) : null }
+                onClick={ properties.click ? properties.click.bind(this, item) : null }
+                key={ typeof item === 'object' && keyField in item ? item[keyField] : index }
+            >{ typeof item === 'object' ? item[displayField] : item }</ListGroup.Item>
+        );
     });
     delete properties.items;
     delete properties.click;
 
+    // merge classes
+    properties.className = f.combine(properties.className);
+
+    // render component
     return (
-        <BSListGroup {...properties}>
+        <ListGroup {...properties}>
             {title}
             {items}
-        </BSListGroup>
+            {children}
+        </ListGroup>
     );
 }
 
-export default ListGroup;
+export default Component;

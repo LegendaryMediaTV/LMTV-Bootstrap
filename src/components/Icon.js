@@ -1,13 +1,14 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
-const Icon = (props) => {
+const Component = (props) => {
     // enforce requirements
     if (!props.name)
-        throw new Error('Icon name is required');
+        throw new Error('<Icon> "name" property is required');
 
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+    // prepare properties
+    const properties = (f.prepare(props))[0];
 
     // ensure alt text
     if (properties['aria-label'] == null) {
@@ -24,20 +25,20 @@ const Icon = (props) => {
     delete properties.alt;
 
     // add icon name to class
-    properties.className = `${properties.name} ${ properties.className ? properties.className : '' }`;
+    properties.className.push(properties.name);
     delete properties.name;
 
     // add variant to class
-    if (properties.variant)
-        properties.className += ` text-${properties.variant}`;
+    properties.className.push(`text-${properties.variant}`);
     delete properties.variant;
 
-    // clean up className
-    properties.className = properties.className.trim().replace(/\s+/, ' ');
+    // merge classes
+    properties.className = f.combine(properties.className);
 
+    // render component
     return (
         <i {...properties} />
     );
 }
 
-export default Icon;
+export default Component;

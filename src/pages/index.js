@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Layout from '../components/Layout';
 
 // LegendaryMediaTV components
-import { DisplayHeading1, DisplayHeading2, DisplayHeading3, DisplayHeading4 } from '../../app.js';
+import { Display } from '../../app.js';
 import { FormGroup } from '../../app.js';
 import { InfoIcon } from '../../app.js';
 import { Icon } from '../../app.js';
@@ -20,7 +20,7 @@ function sampleHandler(itemSelected) {
     alert(JSON.stringify(itemSelected, null, 4));
 }
 
-const Home = () => {
+const Page = () => {
     const linkArray = [
         '/test',
         '/sample'
@@ -39,18 +39,18 @@ const Home = () => {
     return (
         <Layout title="Bootstrap Components">
 
-            <DisplayHeading2><code>&lt;DisplayHeading&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;Display&gt;</code></Display.Heading2>
  
-            <DisplayHeading1>Display Heading 1</DisplayHeading1>
+            <Display.Heading1>Display Heading 1</Display.Heading1>
 
-            <DisplayHeading2>Display Heading 2</DisplayHeading2>
+            <Display.Heading2>Display Heading 2</Display.Heading2>
 
-            <DisplayHeading3>Display Heading 3</DisplayHeading3>
+            <Display.Heading3>Display Heading 3</Display.Heading3>
 
-            <DisplayHeading4>Display Heading 4</DisplayHeading4>
+            <Display.Heading4>Display Heading 4</Display.Heading4>
 
 
-            <DisplayHeading2><code>&lt;FormGroup&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;FormGroup&gt;</code></Display.Heading2>
 
             <FormGroup title="Simple textbox">
                 <Form.Control name="sample" />
@@ -68,7 +68,7 @@ const Home = () => {
             </FormGroup>
 
 
-            <DisplayHeading2><code>&lt;Icon&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;Icon&gt;</code></Display.Heading2>
 
             <Icon name="fas fa-camera" />
 
@@ -83,7 +83,7 @@ const Home = () => {
             />
 
 
-            <DisplayHeading2><code>&lt;InfoIcon&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;InfoIcon&gt;</code></Display.Heading2>
 
             <InfoIcon title="Info Title">Info Content</InfoIcon>
 
@@ -100,17 +100,25 @@ const Home = () => {
             >Things, <i>stuff</i>, <b>content</b>!</InfoIcon>
 
 
-            <DisplayHeading2 id="link"><code>&lt;Link&gt;</code></DisplayHeading2>
+            <Display.Heading2 id="link"><code>&lt;Link&gt;</code></Display.Heading2>
 
             <ul>
                 <li>Internal: <Link href="/">Gatsby</Link></li>
                 <li>Anchor: <Link href="#link">HTML</Link></li>
                 <li>Mail: <Link href="mailto:webmaster@legendarymediatv.com">HTML</Link></li>
-                <li>External: <Link href="https://www.legendarymediatv.com/">HTML</Link></li>
+                <li>De-External: <Link href="http://localhost:8000" external="false">HTML</Link></li>
+                <li>Auto External: <Link href="https://www.legendarymediatv.com">HTML</Link></li>
+                <li>
+                    Explicit External: <Link
+                        href="/external-somehow"
+                        externalIcon="bi bi-box-arrow-up-right"
+                        externalVariant="danger"
+                    >HTML</Link>
+                </li>
             </ul>
 
 
-            <DisplayHeading2><code>&lt;ListGroup&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;ListGroup&gt;</code></Display.Heading2>
 
             <ListGroup title="Array of Links" items={linkArray} />
 
@@ -129,17 +137,18 @@ const Home = () => {
             />
 
 
-            <DisplayHeading2><code>&lt;Spinner&gt;</code></DisplayHeading2>
+            <Display.Heading2><code>&lt;Spinner&gt;</code></Display.Heading2>
 
             <Spinner />
 
             <Spinner
                 animation="grow"
                 variant="success"
+                className="small"
             />
 
         </Layout>
     );
 }
 
-export default Home;
+export default Page;

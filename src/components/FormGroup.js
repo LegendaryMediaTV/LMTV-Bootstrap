@@ -1,13 +1,14 @@
 // dependencies
 import React from 'react';
+import * as f from '../functions';
 
 // components
 import Form from 'react-bootstrap/Form';
 import InfoIcon from './InfoIcon';
 
-const FormGroup = (props) => {
-    // copy properties (original can't be manipulated)
-    const properties = {...props};
+const Component = (props) => {
+    // prepare properties
+    const [ properties, children] = f.prepare(props);
 
     // create info icon
     let icon;
@@ -61,10 +62,10 @@ const FormGroup = (props) => {
     delete properties.labelStyle;
     delete properties.title;
 
-    // extract children
-    const children = properties.children;
-    delete properties.children;
+    // merge classes
+    properties.className = f.combine(properties.className);
 
+    // render component
     return (
         <Form.Group {...properties}>
             {label}
@@ -73,4 +74,4 @@ const FormGroup = (props) => {
     );
 }
 
-export default FormGroup;
+export default Component;

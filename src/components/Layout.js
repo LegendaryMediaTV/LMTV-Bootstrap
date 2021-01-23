@@ -1,9 +1,11 @@
+// dependencies
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+// components
 import Container from 'react-bootstrap/Container';
 
-const Layout = (props) => {
+const Component = (props) => {
     return (
         <>
             <Helmet>
@@ -22,4 +24,4 @@ const Layout = (props) => {
     );
 }
 
-export default Layout;
+export default Component;

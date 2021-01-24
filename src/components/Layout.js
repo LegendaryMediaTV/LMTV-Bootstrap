@@ -1,5 +1,7 @@
 // dependencies
 import React from "react";
+
+// vendor components
 import { Helmet } from "react-helmet";
 
 // components
@@ -9,7 +11,9 @@ const Component = (props) => {
   return (
     <>
       <Helmet>
-        <title>{props.title} | LegendaryMediaTV</title>
+        <title>
+          {`${(props.title ? props.title + " | " : "") + "LegendaryMediaTV"}`}
+        </title>
 
         <link
           rel="stylesheet"
@@ -27,7 +31,7 @@ const Component = (props) => {
         />
       </Helmet>
       <Container className="py-4">
-        <h1 className="display-1">{props.title}</h1>
+        {props.title ? <h1 className="display-1">{props.title}</h1> : null}
 
         {props.children}
       </Container>

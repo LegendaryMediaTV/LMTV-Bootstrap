@@ -202,6 +202,51 @@ import { FormGroup } from '@legendarymediatv/bootstrap';
 | `labelClassName` | string                      |                  | `className` property for the `<Form.Label>` |
 | `labelStyle`     | object                      |                  | `style` property for the `<Form.Label>`     |
 
+### `<FullPage>`
+
+Make your page always use at least the full height of the browser window using flexbox instead of fixed/sticky styling. Plus, it has a footer component that will display at the bottom of the page without forcing a scrollbar!
+
+This component set doesn't have any special properties, but it is made up of three parts:
+
+- `<FullPage>` – the wrapper (should only contain the other FullPage components below)
+- `<FullPage.Content>` (**required**) – page content (should contain your `<Navbar>` and page copy components such as `<article>`)
+- `<FullPage.Footer>` (optional) – page footer (can be styled directly or given an `id` and styled elsewhere)
+
+```JavaScript
+import { FormGroup } from '@legendarymediatv/bootstrap';
+
+...
+
+<FullPage>
+  <FullPage.Content>Page Content</FullPage.Content>
+  <FullPage.Footer>Footer</FullPage.Footer>
+</FullPage>
+```
+
+**Containerized example:**
+
+```JavaScript
+<div className="bg-dark">
+  <Container className="bg-light p-0">
+    <FullPage>
+      <FullPage.Content>
+        <Navbar bg="primary" variant="dark">
+          <Navbar.Brand>LegendaryMediaTV</Navbar.Brand>
+        </Navbar>
+        <article className="py-4 px-2">
+          <h1>Title or whatever</h1>
+          <p>Things, stuff, content!</p>
+        </article>
+      </FullPage.Content>
+      <FullPage.Footer className="bg-secondary py-2 text-center text-white">
+        Footer
+      </FullPage.Footer>
+    </FullPage>
+  </Container>
+</div>
+
+```
+
 ### `<Icon>`
 
 Class-based icon (`<i>` tag) that can automatically add an [ARIA label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) based on the icon name.
@@ -399,7 +444,7 @@ import { VisuallyHidden } from '@legendarymediatv/bootstrap';
 
 ...
 
-<p class="text-danger">
+<p className="text-danger">
   <VisuallyHidden>Danger: </VisuallyHidden>
   This action is not reversible
 </p>

@@ -21,7 +21,7 @@ function sampleHandler(itemSelected) {
 }
 
 const Page = () => {
-  const linkArray = ["/", "/demo"];
+  const linkArray = ["/demo", "/full-page"];
 
   const linkObjects = [
     { title: "Test Link", url: "/" },

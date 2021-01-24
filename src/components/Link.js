@@ -1,69 +1,83 @@
 // dependencies
-import React from 'react';
-import * as f from '../functions';
+import React from "react";
+import * as f from "../functions";
 
 // components
-import Icon from './Icon';
-import { Link } from 'gatsby';
+import Icon from "./Icon";
+import { Link } from "gatsby";
 
 const Component = (props) => {
-    // prepare properties
-    const [ properties, children] = f.prepare(props);
+  // prepare properties
+  const [properties, children] = f.prepare(props);
 
-    // extract URL
-    const url = properties.href ? properties.href : properties.to;
-    delete properties.href;
-    delete properties.to;
+  // extract URL
+  const url = properties.href ? properties.href : properties.to;
+  delete properties.href;
+  delete properties.to;
 
-    // enforce requirements
-    if (!url)
-        throw new Error('<Link> "href" or "to" property is required');
+  // enforce requirements
+  if (!url) throw new Error('<Link> "href" or "to" property is required');
 
-    // determine external status
-    if (properties.external === 'false')
-        properties.external = false;
-    else if (properties.external || properties.externalIcon || url.match(/^https?:/i))
-        properties.external = true;
+  // determine external status
+  if (properties.external === "false") properties.external = false;
+  else if (
+    properties.external ||
+    properties.externalIcon ||
+    url.match(/^https?:/i)
+  )
+    properties.external = true;
 
-    // native: starts with anchor hash tag, flagged as external, starts with a protocol, or ends with a file extension
-    let elementType;
-    if (url[0] === '#' || properties.external || url.match(/(^[a-z]+:|\.[a-z0-9]+$)/i)) {
-        elementType = 'a';
-        properties.href = url;
-    }
-    // Gatsby: anchor or non-file internal
-    else {
-        elementType = Link;
-        properties.to = url;
-    }
+  // native: starts with anchor hash tag, flagged as external, starts with a protocol, or ends with a file extension
+  let elementType;
+  if (
+    url[0] === "#" ||
+    properties.external ||
+    url.match(/(^[a-z]+:|\.[a-z0-9]+$)/i)
+  ) {
+    elementType = "a";
+    properties.href = url;
+  }
+  // Gatsby: anchor or non-file internal
+  else {
+    elementType = Link;
+    properties.to = url;
+  }
 
-    // external icon
-    let external;
-    if (properties.external) {
-        external = (
-            <small>
-                <Icon
-                    name={ properties.externalIcon ? properties.externalIcon : 'fas fa-external-link-alt' }
-                    variant={ properties.externalVariant ? properties.externalVariant : 'muted' }
-                    className={ properties.externalClassName ? properties.externalClassName : 'small pl-1 align-text-top' }
-                    style={properties.externalStyle}
-                />
-            </small>
-        );
-    }
-    else
-        external = null;
-    delete properties.external;
-    delete properties.externalIcon;
-    delete properties.externalVariant;
-    delete properties.externalClassName;
-    delete properties.externalStyle;
+  // external icon
+  let external;
+  if (properties.external) {
+    external = (
+      <small>
+        <Icon
+          name={
+            properties.externalIcon
+              ? properties.externalIcon
+              : "fas fa-external-link-alt"
+          }
+          variant={
+            properties.externalVariant ? properties.externalVariant : "muted"
+          }
+          className={
+            properties.externalClassName
+              ? properties.externalClassName
+              : "small pl-1 align-text-top"
+          }
+          style={properties.externalStyle}
+        />
+      </small>
+    );
+  } else external = null;
+  delete properties.external;
+  delete properties.externalIcon;
+  delete properties.externalVariant;
+  delete properties.externalClassName;
+  delete properties.externalStyle;
 
-    // merge classes
-    properties.className = f.combine(properties.className);
+  // merge classes
+  properties.className = f.combine(properties.className);
 
-    // render component
-    return React.createElement(elementType, properties, children, external);
-}
+  // render component
+  return React.createElement(elementType, properties, children, external);
+};
 
 export default Component;

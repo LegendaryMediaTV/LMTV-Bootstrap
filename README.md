@@ -2,9 +2,7 @@
 
 This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 4](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
-
 ## Getting started
-
 
 ### Installation
 
@@ -26,38 +24,37 @@ Install this package.
 npm install @legendarymediatv/bootstrap
 ```
 
-
 ### Preparation
 
 [Modify the Babel loader](https://www.gatsbyjs.com/docs/how-to/custom-configuration/add-custom-webpack-config/#modifying-the-babel-loader) to transpile JSX for this package.
 
-> *NOTE: not configuring this will result in the following error when running `gatsby build`: ERROR #98123 WEBPACK –  Generating development JavaScript bundle failed: Unexpected token*
+> _NOTE: not configuring this will result in the following error when running `gatsby build`: ERROR #98123 WEBPACK – Generating development JavaScript bundle failed: Unexpected token_
 
 **Sample `/gatsby-node.js`**
 
 ```JavaScript
 exports.onCreateWebpackConfig = ({ actions, loaders, getConfig }) => {
-    const config = getConfig()
-    config.module.rules = [
-        // omit the default rule where test === '\.jsx?$'
-        ...config.module.rules.filter(
-            rule => String(rule.test) !== String(/\.jsx?$/)
-        ),
-        // re-create it with custom exclude filter
-        {
-            // apply required Babel presets/plugins and merge in your configuration from `babel.config.js`.
-            ...loaders.js(),
-            test: /\.jsx?$/,
-            // exclude all node_modules from transpilation, except for this plugin
-            // NOTE: their pattern has "\/" but this has "[\\\/]" to support all OS path separators
-            exclude: modulePath =>
-                /node_modules/.test(modulePath) &&
-                !/node_modules[\\\/]@legendarymediatv[\\\/]bootstrap/.test(modulePath),
-        },
-    ]
-    // replace the webpack config with the modified object.
-    actions.replaceWebpackConfig(config)
-}
+  const config = getConfig();
+  config.module.rules = [
+    // omit the default rule where test === '\.jsx?$'
+    ...config.module.rules.filter(
+      (rule) => String(rule.test) !== String(/\.jsx?$/)
+    ),
+    // re-create it with custom exclude filter
+    {
+      // apply required Babel presets/plugins and merge in your configuration from `babel.config.js`.
+      ...loaders.js(),
+      test: /\.jsx?$/,
+      // exclude all node_modules from transpilation, except for this plugin
+      // NOTE: their pattern has "\/" but this has "[\\\/]" to support all OS path separators
+      exclude: (modulePath) =>
+        /node_modules/.test(modulePath) &&
+        !/node_modules[\\\/]@legendarymediatv[\\\/]bootstrap/.test(modulePath),
+    },
+  ];
+  // replace the webpack config with the modified object.
+  actions.replaceWebpackConfig(config);
+};
 ```
 
 Either import Bootstrap CSS or link Bootstrap into your layout or app file.
@@ -65,30 +62,38 @@ Either import Bootstrap CSS or link Bootstrap into your layout or app file.
 **Sample `/src/components/Layout.js` (link, with FontAwesome)**
 
 ```JavaScript
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 
 const Layout = (props) => {
-    return (
-        <>
-            <Helmet>
-                <title>{props.title}</title>
+  return (
+    <>
+      <Helmet>
+        <title>{props.title}</title>
 
-                <meta name="description" content={props.description} />
+        <meta name="description" content={props.description} />
 
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
-            </Helmet>
-            <Container className="py-4">
-                <h1 className="display-1">{props.title}</h1>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        />
+      </Helmet>
+      <Container className="py-4">
+        <h1 className="display-1">{props.title}</h1>
 
-                {props.children}
-            </Container>
-        </>
-    );
-}
+        {props.children}
+      </Container>
+    </>
+  );
+};
 
 export default Layout;
 ```
@@ -99,28 +104,32 @@ Finally, import the components as needed into your app/components.
 
 ```JavaScript
 // dependencies
-import React from 'react';
+import React from "react";
 
 // page layout template
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
 
 // sample LegendaryMediaTV component
-import { Icon } from '@legendarymediatv/bootstrap';
+import { Icon } from "@legendarymediatv/bootstrap";
 
 const Home = () => {
-    return (
-        <Layout title="Page Title" description="Page Description">
-            <Icon name="fas fa-camera" />
-        </Layout>
-    );
-}
+  return (
+    <Layout title="Page Title" description="Page Description">
+      <Icon name="fas fa-camera" />
+    </Layout>
+  );
+};
 
 export default Home;
 ```
 
-
 ## Components
 
+### `<Demo>`
+
+This component is intended to be used for development purposes (e.g., testing your custom Bootstrap theme) by having everything all one one page!
+
+> _WARNING: This component is still under development and often uses Bootstrap’s raw classes instead of React Bootstrap components or even **this** package’s components. Stay tuned for more updates!_
 
 ### `<Display>`
 
@@ -145,10 +154,9 @@ import { Display } from '@legendarymediatv/bootstrap';
 <Display.Heading4>Display Heading 4</Display.Heading4>
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
+| Name | Type        | Default                          | Description          |
+| :--- | :---------- | :------------------------------- | :------------------- |
 | `as` | elementType | `<h#>` corresponding to the size | changes the HTML tag |
-
 
 ### `<FormGroup>`
 
@@ -160,40 +168,39 @@ import { FormGroup } from '@legendarymediatv/bootstrap';
 ...
 
 <FormGroup
-    title="Sample textbox"
-    info={<p>Things, <i>stuff</i>, <b>content</b>!</p>}
+  title="Sample textbox"
+  info={<p>Things, <i>stuff</i>, <b>content</b>!</p>}
 >
-    <Form.Control
-        name="sample"
-        maxLength="80"
-        defaultValue="eleventeen"
-    />
+  <Form.Control
+    name="sample"
+    maxLength="80"
+    defaultValue="eleventeen"
+  />
 </FormGroup>
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `ref` | ReactRef | inherited | `ref` property for the `<Form.Group>` |
-| `as` | elementType | inherited | `as` property for the `<Form.Group>` |
-| `controlId` | string | inherited | `controlId` property for the `<Form.Group>` |
-| `info` | JSX |  | popover content for the `<InfoIcon>` |
-| `infoAlt` | string | inherited | `alt` property for the `<InfoIcon>` |
-| `infoClassName` | string |  | `className` property for the `<InfoIcon>` |
-| `infoStyle` | object |  | `style` property for the `<InfoIcon>` |
-| `infoName` | string | inherited | `name` property for the `<InfoIcon>` |
-| `infoTitle` | JSX | `title` property | `title` property for the `<InfoIcon>` |
-| `infoTitleAs` | elementType | inherited | `titleAs` property for the `<InfoIcon>` |
-| `infoVariant` | string | inherited | `variant` property for the `<InfoIcon>` |
-| `iconClassName` | string |  | `className` property for the `<InfoIcon>` |
-| `iconStyle` | object |  | `style` property for the `<InfoIcon>` |
-| `labelRef` | ReactRef | inherited | `ref` property for the `<Form.Label>` |
-| `labelAs` | elementType | inherited | `as` property for the `<Form.Label>` |
-| `column` | boolean \| `'sm'` \| `'lg'` | inherited | `column` property for the `<Form.Label>` |
-| `htmlFor` | string | inherited | `htmlFor` property for the `<Form.Label>` |
-| `srOnly` | boolean | inherited | `srOnly` property for the `<Form.Label>` |
-| `labelClassName` | string |  | `className` property for the `<Form.Label>` |
-| `labelStyle` | object |  | `style` property for the `<Form.Label>` |
-
+| Name             | Type                        | Default          | Description                                 |
+| :--------------- | :-------------------------- | :--------------- | :------------------------------------------ |
+| `ref`            | ReactRef                    | inherited        | `ref` property for the `<Form.Group>`       |
+| `as`             | elementType                 | inherited        | `as` property for the `<Form.Group>`        |
+| `controlId`      | string                      | inherited        | `controlId` property for the `<Form.Group>` |
+| `info`           | JSX                         |                  | popover content for the `<InfoIcon>`        |
+| `infoAlt`        | string                      | inherited        | `alt` property for the `<InfoIcon>`         |
+| `infoClassName`  | string                      |                  | `className` property for the `<InfoIcon>`   |
+| `infoStyle`      | object                      |                  | `style` property for the `<InfoIcon>`       |
+| `infoName`       | string                      | inherited        | `name` property for the `<InfoIcon>`        |
+| `infoTitle`      | JSX                         | `title` property | `title` property for the `<InfoIcon>`       |
+| `infoTitleAs`    | elementType                 | inherited        | `titleAs` property for the `<InfoIcon>`     |
+| `infoVariant`    | string                      | inherited        | `variant` property for the `<InfoIcon>`     |
+| `iconClassName`  | string                      |                  | `className` property for the `<InfoIcon>`   |
+| `iconStyle`      | object                      |                  | `style` property for the `<InfoIcon>`       |
+| `labelRef`       | ReactRef                    | inherited        | `ref` property for the `<Form.Label>`       |
+| `labelAs`        | elementType                 | inherited        | `as` property for the `<Form.Label>`        |
+| `column`         | boolean \| `'sm'` \| `'lg'` | inherited        | `column` property for the `<Form.Label>`    |
+| `htmlFor`        | string                      | inherited        | `htmlFor` property for the `<Form.Label>`   |
+| `srOnly`         | boolean                     | inherited        | `srOnly` property for the `<Form.Label>`    |
+| `labelClassName` | string                      |                  | `className` property for the `<Form.Label>` |
+| `labelStyle`     | object                      |                  | `style` property for the `<Form.Label>`     |
 
 ### `<Icon>`
 
@@ -207,20 +214,19 @@ import { Icon } from '@legendarymediatv/bootstrap';
 <Icon name="fas fa-camera" />
 
 <Icon
-    name="fas fa-camera"
-    alt="DSLR"
-    variant="success"
-    className="ml-3"
-    style={{ fontSize: '2rem' }}
+  name="fas fa-camera"
+  alt="DSLR"
+  variant="success"
+  className="ml-3"
+  style={{ fontSize: '2rem' }}
 />
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `alt` | string | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
-| `name` | string | required | icon class name (e.g., `'fas fa-camera'`) |
-| `variant` | string |  | Bootstrap theme color name (e.g., `'primary'`) |
-
+| Name      | Type   | Default                                | Description                                                                                                     |
+| :-------- | :----- | :------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| `alt`     | string | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
+| `name`    | string | required                               | icon class name (e.g., `'fas fa-camera'`)                                                                       |
+| `variant` | string |                                        | Bootstrap theme color name (e.g., `'primary'`)                                                                  |
 
 ### `<InfoIcon>`
 
@@ -234,25 +240,26 @@ import { InfoIcon } from '@legendarymediatv/bootstrap';
 <InfoIcon title="Info Title">Info Content</InfoIcon>
 
 <InfoIcon
-    title="Info Title"
-    name="bi bi-info-circle-fill"
-    alt="help me!"
-    variant="danger"
-    iconStyle={{ fontSize: '2rem' }}
->Things, <i>stuff</i>, <b>content</b>!</InfoIcon>
+  title="Info Title"
+  name="bi bi-info-circle-fill"
+  alt="help me!"
+  variant="danger"
+  iconStyle={{ fontSize: "2rem" }}
+>
+  Things, <i>stuff</i>, <b>content</b>!
+</InfoIcon>
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| children | JSX |  | popover content |
-| `alt` | string | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the `<Icon>` (i.e., ends up in `aria-label`) |
-| `iconClassName` | string |  | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button) |
-| `iconStyle` | object |  | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button) |
-| `name` | string | `'fas fa-question-circle'` | icon class name |
-| `title` | JSX |  | popover title |
-| `titleAs` | elementType | `<h3>` | `as` property for the popover title |
-| `variant` | string | `info` | Bootstrap theme color name (e.g., `'primary'`) applied to the icon |
-
+| Name            | Type        | Default                                | Description                                                                                                         |
+| :-------------- | :---------- | :------------------------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| children        | JSX         |                                        | popover content                                                                                                     |
+| `alt`           | string      | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the `<Icon>` (i.e., ends up in `aria-label`) |
+| `iconClassName` | string      |                                        | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                          |
+| `iconStyle`     | object      |                                        | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                              |
+| `name`          | string      | `'fas fa-question-circle'`             | icon class name                                                                                                     |
+| `title`         | JSX         |                                        | popover title                                                                                                       |
+| `titleAs`       | elementType | `<h3>`                                 | `as` property for the popover title                                                                                 |
+| `variant`       | string      | `info`                                 | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                  |
 
 ### `<Link>`
 
@@ -272,11 +279,11 @@ import { Link } from '@legendarymediatv/bootstrap';
 <Link href="https://www.legendarymediatv.com">auto-external HTML link</Link>
 
 <Link
-    href="/external-somehow"
-    externalIcon="bi bi-box-arrow-up-right"
-    externalVariant="danger"
+  href="/external-somehow"
+  externalIcon="bi bi-box-arrow-up-right"
+  externalVariant="danger"
 >
-    HTML link with custom external icon and color
+  HTML link with custom external icon and color
 </Link>
 
 <Navbar.Brand as={Link} to='/'>LegendaryMediaTV</Navbar.Brand>
@@ -284,15 +291,14 @@ import { Link } from '@legendarymediatv/bootstrap';
 <Nav.Link as={Link} to='/'>Home</Nav.Link>
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `href` \| `to` | URL | required | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
-| `external` | boolean  | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
-| `externalIcon` | icon class name | `'fas fa-external-link-alt'` | external icon class name |
-| `externalVariant` | string | `info` | Bootstrap theme color name (e.g., `'primary'`) applied to the icon |
-| `externalClassName` | string | `'small pl-1 align-text-top'` | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button) |
-| `externalStyle` | object |  | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button) |
-
+| Name                | Type            | Default                                                                    | Description                                                                                                                 |
+| :------------------ | :-------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| `href` \| `to`      | URL             | required                                                                   | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`)             |
+| `external`          | boolean         | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
+| `externalIcon`      | icon class name | `'fas fa-external-link-alt'`                                               | external icon class name                                                                                                    |
+| `externalVariant`   | string          | `info`                                                                     | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                          |
+| `externalClassName` | string          | `'small pl-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
+| `externalStyle`     | object          |                                                                            | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                                      |
 
 ### `<ListGroup>`
 
@@ -304,8 +310,8 @@ import { ListGroup } from '@legendarymediatv/bootstrap';
 ...
 
 const linkArray = [
-    '/test',
-    '/sample'
+  '/test',
+  '/sample'
 ];
 ...
 <ListGroup title="Array of Links" items={linkArray} />
@@ -313,8 +319,8 @@ const linkArray = [
 ...
 
 const linkObjects = [
-    { title: 'Test Link', url: '/test' },
-    { title: 'Sample Link', url: '/sample' }
+  { title: 'Test Link', url: '/test' },
+  { title: 'Sample Link', url: '/sample' }
 ];
 ...
 <ListGroup title="Array of Objects with Links" items={linkObjects} />
@@ -322,42 +328,41 @@ const linkObjects = [
 ...
 
 function sampleHandler(itemSelected) {
-    alert(JSON.stringify(itemSelected, null, 4));
+  alert(JSON.stringify(itemSelected, null, 4));
 }
 ...
 const objectArray = [
-    { id: 1, title: 'Test Non-Link' },
-    { id: 2, title: 'Sample Non-Link' }
+  { id: 1, title: 'Test Non-Link' },
+  { id: 2, title: 'Sample Non-Link' }
 ];
 ...
 <ListGroup
-    title="Array of Objects with Click Handler"
-    titleVariant="success"
-    items={objectArray}
-    click={sampleHandler}
-    className="mt-3"
+  title="Array of Objects with Click Handler"
+  titleVariant="success"
+  items={objectArray}
+  click={sampleHandler}
+  className="mt-3"
 />
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `activeKey` | unknown | inherited | `activeKey` property |
-| `as` | elementType | inherited  | `as` property |
-| `defaultActiveKey` | unknown | inherited | `defaultActiveKey` property |
-| `horizontal` | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited | `horizontal` property |
-| `onSelect` | SelectCallback | inherited | `onSelect` property |
-| `variant` | 'flush' | inherited | `variant` property |
-| `click` | function |  | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument |
-| `displayField` | string | `'title'` | when `items` is an array of objects, this is the object field to display |
-| `items` | string[] or object[] | required | array of URL strings or an array of objects |
-| `keyField` | string | `'id'` | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
-| `title` | string |  | list group title |
-| `titleAs` | elementType | `<h3>` | `as` property for the list group title |
-| `titleVariant` | string | `'primary'` | Bootstrap theme color name for the list group title |
-| `titleClassName` | string |  | `className` property for the list group title |
-| `titleStyle` | object |  | `style` property for the list group title |
-| `urlField` | string | `'url'` | when `items` is an array of objects, this is the object field to use as the link URL |
-
+| Name               | Type                                           | Default     | Description                                                                                                                                   |
+| :----------------- | :--------------------------------------------- | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeKey`        | unknown                                        | inherited   | `activeKey` property                                                                                                                          |
+| `as`               | elementType                                    | inherited   | `as` property                                                                                                                                 |
+| `defaultActiveKey` | unknown                                        | inherited   | `defaultActiveKey` property                                                                                                                   |
+| `horizontal`       | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited   | `horizontal` property                                                                                                                         |
+| `onSelect`         | SelectCallback                                 | inherited   | `onSelect` property                                                                                                                           |
+| `variant`          | 'flush'                                        | inherited   | `variant` property                                                                                                                            |
+| `click`            | function                                       |             | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
+| `displayField`     | string                                         | `'title'`   | when `items` is an array of objects, this is the object field to display                                                                      |
+| `items`            | string[] or object[]                           | required    | array of URL strings or an array of objects                                                                                                   |
+| `keyField`         | string                                         | `'id'`      | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
+| `title`            | string                                         |             | list group title                                                                                                                              |
+| `titleAs`          | elementType                                    | `<h3>`      | `as` property for the list group title                                                                                                        |
+| `titleVariant`     | string                                         | `'primary'` | Bootstrap theme color name for the list group title                                                                                           |
+| `titleClassName`   | string                                         |             | `className` property for the list group title                                                                                                 |
+| `titleStyle`       | object                                         |             | `style` property for the list group title                                                                                                     |
+| `urlField`         | string                                         | `'url'`     | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
 
 ### `<Spinner>`
 
@@ -371,25 +376,23 @@ import { Icon } from '@legendarymediatv/bootstrap';
 <Spinner />
 
 <Spinner
-    animation="grow"
-    variant="success"
+  animation="grow"
+  variant="success"
 />
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| children | JSX | `'loading…'` | content for `<VisuallyHidden>` child component |
-| `animation` | `'border'` \| `'grow'` | `'border'` | changes the animation style of the spinner |
-| `as` | string | `'div'` | custom HTML tag |
-| `role` | string | `'status'` | ARIA accessibility role |
-| `size` | string |  | component size variations (e.g., `sm`) |
-| `variant` | string | `'primary'` | Bootstrap theme color name (e.g., `'primary'`) |
-
+| Name        | Type                   | Default      | Description                                    |
+| :---------- | :--------------------- | :----------- | :--------------------------------------------- |
+| children    | JSX                    | `'loading…'` | content for `<VisuallyHidden>` child component |
+| `animation` | `'border'` \| `'grow'` | `'border'`   | changes the animation style of the spinner     |
+| `as`        | string                 | `'div'`      | custom HTML tag                                |
+| `role`      | string                 | `'status'`   | ARIA accessibility role                        |
+| `size`      | string                 |              | component size variations (e.g., `sm`)         |
+| `variant`   | string                 | `'primary'`  | Bootstrap theme color name (e.g., `'primary'`) |
 
 ### `<VisuallyHidden>`
 
 Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/4.6/getting-started/accessibility/#visually-hidden-content) (a.k.a., screen reader only).
-
 
 ```JavaScript
 import { VisuallyHidden } from '@legendarymediatv/bootstrap';
@@ -403,10 +406,9 @@ import { VisuallyHidden } from '@legendarymediatv/bootstrap';
 
 ```
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| focusable | boolean | false | item is focusable |
-
+| Name      | Type    | Default | Description       |
+| :-------- | :------ | :------ | :---------------- |
+| focusable | boolean | false   | item is focusable |
 
 ## Additional examples
 

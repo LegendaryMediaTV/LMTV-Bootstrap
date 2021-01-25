@@ -148,7 +148,7 @@ export default () => {
           </li>
         </ul>
       </nav>
-      <section className="container" className="pt-5">
+      <section className="container pt-5">
         <Alert variant="warning">
           <Alert.Heading>Beta Feature</Alert.Heading>
           <p>

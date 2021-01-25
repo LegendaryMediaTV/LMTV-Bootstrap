@@ -474,7 +474,7 @@ If an array has elements, `join()` them via space separator, otherwise return `n
 A React component's properties cannot be altered, so use this function to create a new `properties` array and `children` variable. Then, manipulate the array as you see fit, and spread out the new properties in your component.
 
 ```JavaScript
-import { combine, prepare } from "../functions";
+import { combine, prepare } from "@legendarymediatv/bootstrap";
 
 …
 

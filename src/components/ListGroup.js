@@ -1,14 +1,14 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
 // components
 import Link from "./Link";
 import ListGroup from "react-bootstrap/ListGroup";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // establish field names
   const displayField = properties.displayField
@@ -75,7 +75,7 @@ const Component = (props) => {
   delete properties.click;
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return (
@@ -86,5 +86,3 @@ const Component = (props) => {
     </ListGroup>
   );
 };
-
-export default Component;

@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
 // components
 import Button from "react-bootstrap/Button";
@@ -13,9 +13,9 @@ import Icon from "./Icon";
 // styling
 import "./InfoIcon.css";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // add required class
   properties.className.push("InfoIcon");
@@ -51,7 +51,7 @@ const Component = (props) => {
   delete properties.iconStyle;
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return (
@@ -62,5 +62,3 @@ const Component = (props) => {
     </OverlayTrigger>
   );
 };
-
-export default Component;

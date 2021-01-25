@@ -1,10 +1,10 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
-export const Heading = (props) => {
+const Heading = (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // set defaults
   const size = properties.size ? properties.size : "1";
@@ -16,13 +16,13 @@ export const Heading = (props) => {
   properties.className.push(`display-${size}`);
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return React.createElement(htmlElement, properties, children);
 };
 
-export const Heading1 = (props) => {
+const Heading1 = (props) => {
   // copy properties (original can't be manipulated)
   const properties = { ...props };
 
@@ -40,7 +40,7 @@ export const Heading1 = (props) => {
   );
 };
 
-export const Heading2 = (props) => {
+const Heading2 = (props) => {
   // copy properties (original can't be manipulated)
   const properties = { ...props };
 
@@ -58,7 +58,7 @@ export const Heading2 = (props) => {
   );
 };
 
-export const Heading3 = (props) => {
+const Heading3 = (props) => {
   // copy properties (original can't be manipulated)
   const properties = { ...props };
 
@@ -76,7 +76,7 @@ export const Heading3 = (props) => {
   );
 };
 
-export const Heading4 = (props) => {
+const Heading4 = (props) => {
   // copy properties (original can't be manipulated)
   const properties = { ...props };
 

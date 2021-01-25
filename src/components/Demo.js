@@ -5,7 +5,7 @@ import React from "react";
 import { Alert, Button } from "react-bootstrap";
 import { Display, InfoIcon, Link, Spinner } from "../../app.js";
 
-const Demo = () => {
+export default () => {
   // TODO: make this use React Bootstrap instead of native HTML
   return (
     <>
@@ -3621,5 +3621,3 @@ const Demo = () => {
     </>
   );
 };
-
-export default Demo;

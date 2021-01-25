@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 // components
 import Container from "react-bootstrap/Container";
 
-const Component = (props) => {
+export default (props) => {
   return (
     <>
       <Helmet>
@@ -38,5 +38,3 @@ const Component = (props) => {
     </>
   );
 };
-
-export default Component;

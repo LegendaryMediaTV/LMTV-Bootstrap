@@ -67,7 +67,7 @@ import { Helmet } from "react-helmet";
 
 import Container from "react-bootstrap/Container";
 
-const Layout = (props) => {
+export default (props) => {
   return (
     <>
       <Helmet>
@@ -94,8 +94,6 @@ const Layout = (props) => {
     </>
   );
 };
-
-export default Layout;
 ```
 
 Finally, import the components as needed into your app/components.
@@ -112,18 +110,26 @@ import Layout from "../components/Layout";
 // sample LegendaryMediaTV component
 import { Icon } from "@legendarymediatv/bootstrap";
 
-const Home = () => {
+export default () => {
   return (
     <Layout title="Page Title" description="Page Description">
       <Icon name="fas fa-camera" />
     </Layout>
   );
 };
-
-export default Home;
 ```
 
 ## Components
+
+### `<Breakpoint>`
+
+Quickly see what the current breakpoint is (e.g., 'md').
+
+> _NOTE: This component is intended to be used for development purposes and probably should be removed before deploying your app_
+
+| Name      | Type   | Default | Description                |
+| :-------- | :----- | :------ | :------------------------- |
+| `variant` | string | info    | Bootstrap theme color name |
 
 ### `<Demo>`
 
@@ -143,7 +149,7 @@ Bootstrap’s display heading typography classes.
 ```JavaScript
 import { Display } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <Display.Heading1>Display Heading 1</Display.Heading1>
 
@@ -165,7 +171,7 @@ An extension of React Bootstrap’s [`<Form.Group>`](https://react-bootstrap.git
 ```JavaScript
 import { FormGroup } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <FormGroup
   title="Sample textbox"
@@ -215,7 +221,7 @@ This component set doesn't have any special properties, but it is made up of thr
 ```JavaScript
 import { FormGroup } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <FullPage>
   <FullPage.Content>Page Content</FullPage.Content>
@@ -254,7 +260,7 @@ Class-based icon (`<i>` tag) that can automatically add an [ARIA label](https://
 ```JavaScript
 import { Icon } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <Icon name="fas fa-camera" />
 
@@ -280,7 +286,7 @@ An extension of React Bootstrap’s [`<Popover>`](https://react-bootstrap.netlif
 ```JavaScript
 import { InfoIcon } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <InfoIcon title="Info Title">Info Content</InfoIcon>
 
@@ -315,7 +321,7 @@ If `href` property begins with `#` (i.e., anchor), a protocol (e.g., `https://` 
 ```JavaScript
 import { Link } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <Link href="/">Gatsby link</Link>
 
@@ -352,35 +358,35 @@ An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netl
 ```JavaScript
 import { ListGroup } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 const linkArray = [
   '/test',
   '/sample'
 ];
-...
+…
 <ListGroup title="Array of Links" items={linkArray} />
 
-...
+…
 
 const linkObjects = [
   { title: 'Test Link', url: '/test' },
   { title: 'Sample Link', url: '/sample' }
 ];
-...
+…
 <ListGroup title="Array of Objects with Links" items={linkObjects} />
 
-...
+…
 
 function sampleHandler(itemSelected) {
   alert(JSON.stringify(itemSelected, null, 4));
 }
-...
+…
 const objectArray = [
   { id: 1, title: 'Test Non-Link' },
   { id: 2, title: 'Sample Non-Link' }
 ];
-...
+…
 <ListGroup
   title="Array of Objects with Click Handler"
   titleVariant="success"
@@ -416,7 +422,7 @@ An extension of React Bootstrap’s [`<Spinner>`](https://react-bootstrap.github
 ```JavaScript
 import { Icon } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <Spinner />
 
@@ -442,7 +448,7 @@ Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/4.6/gettin
 ```JavaScript
 import { VisuallyHidden } from '@legendarymediatv/bootstrap';
 
-...
+…
 
 <p className="text-danger">
   <VisuallyHidden>Danger: </VisuallyHidden>
@@ -455,6 +461,45 @@ import { VisuallyHidden } from '@legendarymediatv/bootstrap';
 | :-------- | :------ | :------ | :---------------- |
 | focusable | boolean | false   | item is focusable |
 
+## Functions
+
+### `combine(array)`
+
+If an array has elements, `join()` them via space separator, otherwise return `null`.
+
+> _NOTE: this is helpful when used in conjunction with `prepare(props)` in order to join `className` before rendering the component; see the example there_
+
+### `prepare(props)`
+
+A React component's properties cannot be altered, so use this function to create a new `properties` array and `children` variable. Then, manipulate the array as you see fit, and spread out the new properties in your component.
+
+```JavaScript
+import { combine, prepare } from "../functions";
+
+…
+
+// prepare properties
+const [properties, children] = prepare(props);
+
+// add variant to class
+properties.className.push(`text-${properties.variant}`);
+delete properties.variant;
+
+// merge classes
+properties.className = combine(properties.className);
+
+// render component
+return (
+  <div {...properties}>{children}</div>
+);
+```
+
+> _NOTE: this is helpful when used in conjunction with `prepare(props)` in order to join `className` before rendering the component_
+
 ## Additional examples
 
 For more examples of usage, see ['/src/pages/index.js](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/blob/src/pages/index.js)
+
+```
+
+```

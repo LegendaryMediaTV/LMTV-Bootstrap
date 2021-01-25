@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 import Layout from "../components/Layout";
 
 // LegendaryMediaTV components
+import { Breakpoint } from "../../app.js";
 import { Display } from "../../app.js";
 import { FormGroup } from "../../app.js";
 import { InfoIcon } from "../../app.js";
@@ -20,7 +21,7 @@ function sampleHandler(itemSelected) {
   alert(JSON.stringify(itemSelected, null, 4));
 }
 
-const Page = () => {
+export default () => {
   const linkArray = ["/demo", "/full-page"];
 
   const linkObjects = [
@@ -35,6 +36,12 @@ const Page = () => {
 
   return (
     <Layout title="Bootstrap Components">
+      <Display.Heading2>
+        <code>&lt;Breakpoint&gt;</code>
+      </Display.Heading2>
+
+      <Breakpoint />
+
       <Display.Heading2>
         <code>&lt;Display&gt;</code>
       </Display.Heading2>
@@ -172,5 +179,3 @@ const Page = () => {
     </Layout>
   );
 };
-
-export default Page;

@@ -1,3 +1,4 @@
+export { default as Breakpoint } from "./src/components/Breakpoint";
 export { default as Demo } from "./src/components/Demo";
 export { default as Display } from "./src/components/Display";
 export { default as FormGroup } from "./src/components/FormGroup";

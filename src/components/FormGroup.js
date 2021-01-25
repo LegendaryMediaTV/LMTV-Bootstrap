@@ -1,14 +1,14 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
 // components
 import Form from "react-bootstrap/Form";
 import InfoIcon from "./InfoIcon";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // create info icon
   let icon;
@@ -65,7 +65,7 @@ const Component = (props) => {
   delete properties.title;
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return (
@@ -75,5 +75,3 @@ const Component = (props) => {
     </Form.Group>
   );
 };
-
-export default Component;

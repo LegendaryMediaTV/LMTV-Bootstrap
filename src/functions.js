@@ -1,5 +1,5 @@
-// combine classes
-export const combine = (classes) => (classes.length ? classes.join(" ") : null);
+// join array via space, returning null if empty
+export const combine = (array) => (array.length ? array.join(" ") : null);
 
 // prepare properties
 export const prepare = (props) => {

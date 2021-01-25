@@ -1,21 +1,21 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
 // components
 import Spinner from "react-bootstrap/Spinner";
 import VisuallyHidden from "./VisuallyHidden";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // set defaults
   if (!properties.animation) properties.animation = "border";
   if (!properties.role) properties.role = "status";
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return (
@@ -24,5 +24,3 @@ const Component = (props) => {
     </Spinner>
   );
 };
-
-export default Component;

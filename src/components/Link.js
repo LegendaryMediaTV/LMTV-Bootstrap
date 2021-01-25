@@ -1,14 +1,14 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
 // components
 import Icon from "./Icon";
 import { Link } from "gatsby";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // extract URL
   const url = properties.href ? properties.href : properties.to;
@@ -74,10 +74,8 @@ const Component = (props) => {
   delete properties.externalStyle;
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return React.createElement(elementType, properties, children, external);
 };
-
-export default Component;

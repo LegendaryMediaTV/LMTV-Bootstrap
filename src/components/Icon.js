@@ -1,13 +1,13 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
-const Component = (props) => {
+export default (props) => {
   // enforce requirements
   if (!props.name) throw new Error('<Icon> "name" property is required');
 
   // prepare properties
-  const properties = f.prepare(props)[0];
+  const properties = prepare(props)[0];
 
   // ensure alt text
   if (properties["aria-label"] == null) {
@@ -31,10 +31,8 @@ const Component = (props) => {
   delete properties.variant;
 
   // merge classes
-  properties.className = f.combine(properties.className);
+  properties.className = combine(properties.className);
 
   // render component
   return <i {...properties} />;
 };
-
-export default Component;

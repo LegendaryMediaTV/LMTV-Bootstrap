@@ -1,10 +1,10 @@
 // dependencies
 import React from "react";
-import * as f from "../functions";
+import { combine, prepare } from "../functions";
 
-const Component = (props) => {
+export default (props) => {
   // prepare properties
-  const [properties, children] = f.prepare(props);
+  const [properties, children] = prepare(props);
 
   // add Bootstrap classes
   properties.className.push("sr-only");
@@ -18,5 +18,3 @@ const Component = (props) => {
 
   return <span {...properties}>{children}</span>;
 };
-
-export default Component;

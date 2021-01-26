@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Demo",
+  "private": true,
+  "module": "Demo",
+  "types": "Demo.d.ts"
+}

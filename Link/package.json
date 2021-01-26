@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Link",
+  "private": true,
+  "module": "Link",
+  "types": "Link.d.ts"
+}

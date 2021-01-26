@@ -12,9 +12,7 @@ export default (props) => {
   delete properties.focusable;
 
   // merge classes
-  properties.className = properties.className.length
-    ? properties.className.join(" ")
-    : null;
+  properties.className = combine(properties.className);
 
   return <span {...properties}>{children}</span>;
 };

@@ -1,13 +1,13 @@
 // dependencies
 import React from "react";
-import { Navbar } from "react-bootstrap";
 
 // vendor components
 import Container from "react-bootstrap/Container";
 import { Helmet } from "react-helmet";
+import Navbar from "react-bootstrap/Navbar";
 
 // LegendaryMediaTV components
-import { FullPage } from "../../app.js";
+import FullPage from "../../FullPage";
 
 export default () => {
   return (

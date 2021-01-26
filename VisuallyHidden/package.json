@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/VisuallyHidden",
+  "private": true,
+  "module": "VisuallyHidden",
+  "types": "VisuallyHidden.d.ts"
+}

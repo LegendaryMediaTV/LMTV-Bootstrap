@@ -1,0 +1,13 @@
+tsc ./app.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Breakpoint/Breakpoint.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Demo/Demo.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Display/Display.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./FormGroup/FormGroup.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./FullPage/FullPage.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./functions/functions.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Icon/Icon.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./InfoIcon/InfoIcon.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Link/Link.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./ListGroup/ListGroup.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./Spinner/Spinner.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+tsc ./VisuallyHidden/VisuallyHidden.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop

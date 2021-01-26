@@ -2,9 +2,11 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-// components
-import Link from "./Link";
+// vendor components
 import ListGroup from "react-bootstrap/ListGroup";
+
+// custom components
+import Link from "../Link";
 
 export default (props) => {
   // prepare properties

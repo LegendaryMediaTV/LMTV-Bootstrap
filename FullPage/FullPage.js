@@ -28,7 +28,7 @@ const Footer = (props) => {
   return <footer {...properties}>{children}</footer>;
 };
 
-export default class Component extends React.Component {
+export default class extends React.Component {
   // sub-components
   static Content = Content;
   static Footer = Footer;

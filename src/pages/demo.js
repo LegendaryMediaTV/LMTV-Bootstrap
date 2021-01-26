@@ -5,7 +5,7 @@ import React from "react";
 import Layout from "../components/Layout";
 
 // LegendaryMediaTV components
-import { Demo } from "../../app.js";
+import Demo from "../../Demo";
 
 export default () => {
   return (

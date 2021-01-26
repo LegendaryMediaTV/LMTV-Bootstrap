@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Display",
+  "private": true,
+  "module": "Display",
+  "types": "Display.d.ts"
+}

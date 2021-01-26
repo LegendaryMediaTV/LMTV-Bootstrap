@@ -12,7 +12,7 @@ Install peer dependencies (if they aren't already).
 npm install react react-dom react-bootstrap gatsby
 ```
 
-Optionally, install React Helmet (useful for linking Bootstrap resources).
+Optionally, install [React Helmet](https://github.com/nfl/react-helmet) (useful for linking Bootstrap resources).
 
 ```JavaScript
 npm install react-helmet
@@ -108,7 +108,7 @@ import React from "react";
 import Layout from "../components/Layout";
 
 // sample LegendaryMediaTV component
-import { Icon } from "@legendarymediatv/bootstrap";
+import Icon from "@legendarymediatv/bootstrap/Icon";
 
 export default () => {
   return (
@@ -120,6 +120,16 @@ export default () => {
 ```
 
 ## Components
+
+> _NOTE: components can be imported at the package level or at the component level_
+
+```JavaScript
+// package-level
+import { Demo } from '@legendarymediatv/bootstrap';
+
+// component level
+import Demo from '@legendarymediatv/bootstrap/Demo';
+```
 
 ### `<Breakpoint>`
 
@@ -147,7 +157,7 @@ Bootstrap’s display heading typography classes.
 - `<Display.Heading4>`
 
 ```JavaScript
-import { Display } from '@legendarymediatv/bootstrap';
+import Display from '@legendarymediatv/bootstrap/Display';
 
 …
 
@@ -169,7 +179,7 @@ import { Display } from '@legendarymediatv/bootstrap';
 An extension of React Bootstrap’s [`<Form.Group>`](https://react-bootstrap.github.io/components/forms/#form-group-props), which automatically contains a React Bootstrap [`<Form.Label>`](https://react-bootstrap.github.io/components/forms/#form-label-props). The label then optionally includes a `<InfoIcon>` when the `info` property is set.
 
 ```JavaScript
-import { FormGroup } from '@legendarymediatv/bootstrap';
+import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
 
 …
 
@@ -219,7 +229,7 @@ This component set doesn't have any special properties, but it is made up of thr
 - `<FullPage.Footer>` (optional) – page footer (can be styled directly or given an `id` and styled elsewhere)
 
 ```JavaScript
-import { FormGroup } from '@legendarymediatv/bootstrap';
+import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
 
 …
 
@@ -250,15 +260,16 @@ import { FormGroup } from '@legendarymediatv/bootstrap';
     </FullPage>
   </Container>
 </div>
-
 ```
+
+> _NOTE: if using [React Helmet](https://github.com/nfl/react-helmet), you can use its `bodyAttributes` property instead of a `<div>` wrapper to set the main background color: `<Helmet bodyAttributes={{ class: "bg-dark" }}>`_
 
 ### `<Icon>`
 
 Class-based icon (`<i>` tag) that can automatically add an [ARIA label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) based on the icon name.
 
 ```JavaScript
-import { Icon } from '@legendarymediatv/bootstrap';
+import Icon from '@legendarymediatv/bootstrap/Icon';
 
 …
 
@@ -284,7 +295,7 @@ import { Icon } from '@legendarymediatv/bootstrap';
 An extension of React Bootstrap’s [`<Popover>`](https://react-bootstrap.netlify.app/components/overlays/#popovers) (with `rootClose` set to auto-close when it loses focus) that contains an `<Icon>`.
 
 ```JavaScript
-import { InfoIcon } from '@legendarymediatv/bootstrap';
+import InfoIcon from '@legendarymediatv/bootstrap/InfoIcon';
 
 …
 
@@ -319,7 +330,7 @@ A combination of an HTML `<a>` tag and Gatsby’s [`<Link>`](https://www.gatsbyj
 If `href` property begins with `#` (i.e., anchor), a protocol (e.g., `https://` or `mailto:`), or ends with a file extension (e.g., `sample.jpg`), or `external` is set, then it uses an `<a>` tag. Otherwise, it uses Gatsby’s `<Link>` tag, so that it doesn’t force a page reload.
 
 ```JavaScript
-import { Link } from '@legendarymediatv/bootstrap';
+import Link from '@legendarymediatv/bootstrap/Link';
 
 …
 
@@ -356,7 +367,7 @@ import { Link } from '@legendarymediatv/bootstrap';
 An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as a Bootstrap React `<ListGroup.Item>` instead.
 
 ```JavaScript
-import { ListGroup } from '@legendarymediatv/bootstrap';
+import from '@legendarymediatv/bootstrap/ListGroup';
 
 …
 
@@ -420,7 +431,7 @@ const objectArray = [
 An extension of React Bootstrap’s [`<Spinner>`](https://react-bootstrap.github.io/components/spinners/) that automatically selects the `border` animation and adds the screen reader and ARIA role, so it can be self-closing and easily [ensure the maximum accessibility](https://react-bootstrap.github.io/components/spinners/#accessibility).
 
 ```JavaScript
-import { Icon } from '@legendarymediatv/bootstrap';
+import Icon from '@legendarymediatv/bootstrap/Icon';
 
 …
 
@@ -446,7 +457,7 @@ import { Icon } from '@legendarymediatv/bootstrap';
 Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/4.6/getting-started/accessibility/#visually-hidden-content) (a.k.a., screen reader only).
 
 ```JavaScript
-import { VisuallyHidden } from '@legendarymediatv/bootstrap';
+import VisuallyHidden from '@legendarymediatv/bootstrap/VisuallyHidden';
 
 …
 
@@ -474,7 +485,7 @@ If an array has elements, `join()` them via space separator, otherwise return `n
 A React component's properties cannot be altered, so use this function to create a new `properties` array and `children` variable. Then, manipulate the array as you see fit, and spread out the new properties in your component.
 
 ```JavaScript
-import { combine, prepare } from "@legendarymediatv/bootstrap";
+import { combine, prepare } from "@legendarymediatv/bootstrap/functions";
 
 …
 

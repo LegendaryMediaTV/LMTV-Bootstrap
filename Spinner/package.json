@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Spinner",
+  "private": true,
+  "module": "Spinner",
+  "types": "Spinner.d.ts"
+}

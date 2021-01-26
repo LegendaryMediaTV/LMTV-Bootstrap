@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/InfoIcon",
+  "private": true,
+  "module": "InfoIcon",
+  "types": "InfoIcon.d.ts"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/functions",
+  "private": true,
+  "module": "functions",
+  "types": "functions.d.ts"
+}

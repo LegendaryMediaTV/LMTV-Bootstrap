@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Breakpoint",
+  "private": true,
+  "module": "Breakpoint",
+  "types": "Breakpoint.d.ts"
+}

@@ -3,7 +3,12 @@ import React from "react";
 
 // vendor components
 import { Alert, Button } from "react-bootstrap";
-import { Display, InfoIcon, Link, Spinner } from "../../app.js";
+
+// custom components
+import Display from "../Display";
+import InfoIcon from "../InfoIcon";
+import Link from "../Link";
+import Spinner from "../Spinner";
 
 export default () => {
   // TODO: make this use React Bootstrap instead of native HTML

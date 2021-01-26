@@ -2,9 +2,11 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-// components
+// vendor components
 import Spinner from "react-bootstrap/Spinner";
-import VisuallyHidden from "./VisuallyHidden";
+
+// custom components
+import VisuallyHidden from "../VisuallyHidden";
 
 export default (props) => {
   // prepare properties

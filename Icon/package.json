@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Icon",
+  "private": true,
+  "module": "Icon",
+  "types": "Icon.d.ts"
+}

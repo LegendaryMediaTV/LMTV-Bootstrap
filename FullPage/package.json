@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/FullPage",
+  "private": true,
+  "module": "FullPage",
+  "types": "FullPage.d.ts"
+}

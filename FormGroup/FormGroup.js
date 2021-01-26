@@ -2,9 +2,11 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-// components
+// vendor components
 import Form from "react-bootstrap/Form";
-import InfoIcon from "./InfoIcon";
+
+// custom components
+import InfoIcon from "../InfoIcon";
 
 export default (props) => {
   // prepare properties

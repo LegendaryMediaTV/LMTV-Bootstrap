@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/ListGroup",
+  "private": true,
+  "module": "ListGroup",
+  "types": "ListGroup.d.ts"
+}

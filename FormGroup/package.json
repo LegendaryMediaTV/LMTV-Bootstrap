@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/FormGroup",
+  "private": true,
+  "module": "FormGroup",
+  "types": "FormGroup.d.ts"
+}

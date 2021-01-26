@@ -4,7 +4,7 @@ import { combine, prepare } from "../functions";
 
 export default (props) => {
   // prepare properties
-  const [properties, children] = prepare(props);
+  const [properties] = prepare(props);
 
   // set defaults
   if (!properties.className.length)

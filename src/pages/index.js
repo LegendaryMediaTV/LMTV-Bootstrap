@@ -8,14 +8,14 @@ import Form from "react-bootstrap/Form";
 import Layout from "../components/Layout";
 
 // LegendaryMediaTV components
-import { Breakpoint } from "../../app.js";
-import { Display } from "../../app.js";
-import { FormGroup } from "../../app.js";
-import { InfoIcon } from "../../app.js";
-import { Icon } from "../../app.js";
-import { Link } from "../../app.js";
-import { ListGroup } from "../../app.js";
-import { Spinner } from "../../app.js";
+import Breakpoint from "../../Breakpoint";
+import Display from "../../Display";
+import FormGroup from "../../FormGroup";
+import InfoIcon from "../../InfoIcon";
+import Icon from "../../Icon";
+import Link from "../../Link";
+import ListGroup from "../../ListGroup";
+import Spinner from "../../Spinner";
 
 function sampleHandler(itemSelected) {
   alert(JSON.stringify(itemSelected, null, 4));

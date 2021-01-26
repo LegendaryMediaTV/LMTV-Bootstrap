@@ -1,6 +1,6 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "additional Bootstrap-based React components for extending functionality to react-bootstrap and gatsby",
   "keywords": [
     "Bootstrap",
@@ -14,10 +14,10 @@
     "extension",
     "additional components"
   ],
-  "main": "app",
+  "module": "app",
   "scripts": {
     "react": "gatsby develop",
-    "react-build": "gatsby clean && gatsby build",
+    "react-build": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./build.ps1",
     "react-clean": "gatsby clean"
   },
   "author": {
@@ -35,7 +35,7 @@
     "react-dom": "17.x"
   },
   "devDependencies": {
-    "gatsby": "^2.31.0",
+    "gatsby": "^2.31.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",

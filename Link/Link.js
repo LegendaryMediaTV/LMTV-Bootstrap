@@ -2,9 +2,11 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-// components
-import Icon from "./Icon";
+// vendor components
 import { Link } from "gatsby";
+
+// custom components
+import Icon from "../Icon";
 
 export default (props) => {
   // prepare properties

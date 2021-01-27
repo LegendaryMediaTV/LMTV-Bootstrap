@@ -9,4 +9,4 @@ export { default as Link } from "./Link/Link";
 export { default as ListGroup } from "./ListGroup/ListGroup";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden/VisuallyHidden";
-export { combine, prepare } from "./functions";
+export { combine, formData, prepare } from "./functions";

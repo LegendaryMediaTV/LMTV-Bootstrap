@@ -2,7 +2,9 @@
 import React from "react";
 
 // vendor components
-import { Alert, Button } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 
 // custom components
 import Display from "../Display";
@@ -204,6 +206,7 @@ export default () => {
             </a>
             .
           </p>
+
           {[
             "primary",
             "secondary",
@@ -215,10 +218,10 @@ export default () => {
             "dark",
           ].map((variant, idx) => (
             <Alert
-              key={idx}
               variant={variant}
               dismissible
               onClose={() => alert("insert your dismiss logic here")}
+              key={idx}
             >
               <Alert.Heading>{variant}</Alert.Heading>
               This is a {variant} alert—
@@ -238,6 +241,14 @@ export default () => {
           <p>
             For more information, see{" "}
             <a
+              href="https://react-bootstrap.github.io/components/badge/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              React Bootstrap Alerts
+            </a>{" "}
+            and{" "}
+            <a
               href="https://getbootstrap.com/docs/4.6/components/badge/"
               target="_blank"
               rel="noreferrer"
@@ -246,33 +257,23 @@ export default () => {
             </a>
             .
           </p>
-          <h3>
-            <span className="badge badge-primary badge-pill">Default</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-danger">Danger</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-dark">Dark</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-info">Info</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-light">Light</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-primary">Primary</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-secondary">Secondary</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-success">Success</span>
-          </h3>
-          <h3>
-            <span className="badge badge-pill badge-warning">Warning</span>
-          </h3>
+
+          {[
+            "primary",
+            "secondary",
+            "success",
+            "danger",
+            "warning",
+            "info",
+            "light",
+            "dark",
+          ].map((variant, idx) => (
+            <h3>
+              <Badge pill variant={variant} key={idx}>
+                {variant}
+              </Badge>
+            </h3>
+          ))}
         </section>
 
         <section id="breadcrumb" className="mt-5">
@@ -2678,8 +2679,8 @@ export default () => {
           data-toggle="popover"
           data-trigger="focus"
           data-html="true"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={(event) => {
+            event.preventDefault();
           }}
           title="Popover title"
           data-content="And here’s some <strong>amazing</strong> content. It’s very engaging. Right?"

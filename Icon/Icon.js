@@ -7,7 +7,7 @@ export default (props) => {
   if (!props.name) throw new Error('<Icon> "name" property is required');
 
   // prepare properties
-  const properties = prepare(props)[0];
+  const [properties] = prepare(props);
 
   // ensure alt text
   if (properties["aria-label"] == null) {

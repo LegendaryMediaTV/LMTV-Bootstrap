@@ -210,6 +210,7 @@ import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
 | `infoVariant`    | string                      | inherited        | `variant` property for the `<InfoIcon>`     |
 | `iconClassName`  | string                      |                  | `className` property for the `<InfoIcon>`   |
 | `iconStyle`      | object                      |                  | `style` property for the `<InfoIcon>`       |
+| `title`          | JSX                         |                  | content for the `<Form.Label>`              |
 | `labelRef`       | ReactRef                    | inherited        | `ref` property for the `<Form.Label>`       |
 | `labelAs`        | elementType                 | inherited        | `as` property for the `<Form.Label>`        |
 | `column`         | boolean \| `'sm'` \| `'lg'` | inherited        | `column` property for the `<Form.Label>`    |
@@ -507,10 +508,38 @@ return (
 
 > _NOTE: this is helpful when used in conjunction with `prepare(props)` in order to join `className` before rendering the component_
 
+### `formData(formObject)`
+
+Pass this function a form object (e.g., via an `onSubmit` event handler’s `event.target`) and it will return a JSON object containing key–value pairs. Key names are pulled from either the form element `name` or `id` attribute, otherwise the unnamed/unidentified element is omitted. Unchecked/unselected `checkbox` and `radio` elements are ignored as well.
+
+> _NOTE: JSON data returned from this function could be utilized in API calls via [Axios](https://github.com/axios/axios)_
+
+```JavaScript
+import { formData } from "@legendarymediatv/bootstrap/functions";
+
+...
+
+const submitHander = (event) => {
+  // don't traditionally submit the form
+  event.preventDefault();
+
+  // get the data from the form
+  const data = formData(event.target);
+
+  // display the form data object
+  alert(JSON.stringify(data, null, 4));
+}
+
+...
+
+<Form onSubmit={submitHandler}>
+  <FormGroup title="Simple textbox">
+    <Form.Control name="sample" />
+  </FormGroup>
+  <Button type="submit">Submit</Button>
+</Form>
+```
+
 ## Additional examples
 
 For more examples of usage, see ['/src/pages/index.js](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/blob/src/pages/index.js)
-
-```
-
-```

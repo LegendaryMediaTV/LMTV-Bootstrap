@@ -1,7 +1,9 @@
 // dependencies
 import React from "react";
+import { formData } from "../../functions";
 
 // components
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 // custom components
@@ -17,10 +19,6 @@ import Link from "../../Link";
 import ListGroup from "../../ListGroup";
 import Spinner from "../../Spinner";
 
-function sampleHandler(itemSelected) {
-  alert(JSON.stringify(itemSelected, null, 4));
-}
-
 export default () => {
   const linkArray = ["/demo", "/full-page"];
 
@@ -33,6 +31,21 @@ export default () => {
     { id: 1, title: "Test Non-Link" },
     { id: 2, title: "Sample Non-Link" },
   ];
+
+  const submitHandler = (event) => {
+    // don't traditionally submit the form
+    event.preventDefault();
+
+    // get the data from the form
+    const data = formData(event.target);
+
+    // display the form data object
+    alert(JSON.stringify(data, null, 4));
+  };
+
+  const sampleHandler = (itemSelected) => {
+    alert(JSON.stringify(itemSelected, null, 4));
+  };
 
   return (
     <Layout title="Bootstrap Components">
@@ -58,20 +71,48 @@ export default () => {
         <code>&lt;FormGroup&gt;</code>
       </Display.Heading2>
 
-      <FormGroup title="Simple textbox">
-        <Form.Control name="sample" />
-      </FormGroup>
+      <Form onSubmit={submitHandler}>
+        <FormGroup title="Simple textbox">
+          <Form.Control name="sample" />
+        </FormGroup>
 
-      <FormGroup
-        title="Kitchen sink"
-        info={
-          <p>
-            Things, <i>stuff</i>, <b>content</b>!
-          </p>
-        }
-      >
-        <Form.Control name="sample" maxLength="80" defaultValue="eleventeen" />
-      </FormGroup>
+        <FormGroup
+          title="Kitchen sink"
+          info={
+            <p>
+              Things, <i>stuff</i>, <b>content</b>!
+            </p>
+          }
+        >
+          <Form.Control
+            name="sample"
+            maxLength="80"
+            defaultValue="eleventeen"
+          />
+        </FormGroup>
+        <div>
+          <label>
+            <input name="agree" type="checkbox" /> agree?
+          </label>
+        </div>
+        <div>
+          <label>
+            {" "}
+            <input name="option" type="radio" value="a" /> A
+          </label>
+          ,{" "}
+          <label>
+            {" "}
+            <input name="option" type="radio" value="b" /> B
+          </label>
+          ,{" "}
+          <label>
+            {" "}
+            <input name="option" type="radio" value="c" /> C
+          </label>
+        </div>
+        <Button type="submit">Submit</Button>
+      </Form>
 
       <Display.Heading2>
         <code>&lt;Icon&gt;</code>

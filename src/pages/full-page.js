@@ -1,7 +1,7 @@
 // dependencies
 import React from "react";
 
-// vendor components
+// components
 import Container from "react-bootstrap/Container";
 import { Helmet } from "react-helmet";
 import Navbar from "react-bootstrap/Navbar";

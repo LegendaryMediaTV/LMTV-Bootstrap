@@ -427,6 +427,30 @@ const objectArray = [
 | `titleStyle`       | object                                         |             | `style` property for the list group title                                                                                                     |
 | `urlField`         | string                                         | `'url'`     | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
 
+### `<ScrollToTop>`
+
+Customizable icon that automatically appears in the bottom-right corner when you’re scrolled down the page a bit and smoothly scrolls to the top of the page when clicked.
+
+```JavaScript
+import ScrollToTop from '@legendarymediatv/bootstrap/ScrollToTop';
+
+…
+
+<ScrollToTop />
+
+<ScrollToTop name="fas fa-caret-square-up" variant="success" />
+```
+
+> _NOTE: the `scrollToTop()` handler function can be exported as well; see below for details_
+
+| Name            | Type   | Default                      | Description                                                                                                     |
+| :-------------- | :----- | :--------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| `alt`           | string | `'up arrow'`                 | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
+| `name`          | string | `'fas fa-chevron-circle-up'` | icon class name                                                                                                 |
+| `variant`       | string | `'dark'`                     | Bootstrap theme color name                                                                                      |
+| `iconClassName` | string |                              | `className` property for the `<Icon>`                                                                           |
+| `iconStyle`     | object |                              | `style` property for the `<Icon>`                                                                               |
+
 ### `<Spinner>`
 
 An extension of React Bootstrap’s [`<Spinner>`](https://react-bootstrap.github.io/components/spinners/) that automatically selects the `border` animation and adds the screen reader and ARIA role, so it can be self-closing and easily [ensure the maximum accessibility](https://react-bootstrap.github.io/components/spinners/#accessibility).
@@ -471,7 +495,7 @@ import VisuallyHidden from '@legendarymediatv/bootstrap/VisuallyHidden';
 
 | Name      | Type    | Default | Description       |
 | :-------- | :------ | :------ | :---------------- |
-| focusable | boolean | false   | item is focusable |
+| focusable | boolean | `false` | item is focusable |
 
 ## Functions
 
@@ -510,9 +534,9 @@ return (
 
 ### `formData(formObject)`
 
-Pass this function a form object (e.g., via an `onSubmit` event handler’s `event.target`) and it will return a JSON object containing key–value pairs. Key names are pulled from either the form element `name` or `id` attribute, otherwise the unnamed/unidentified element is omitted. Unchecked/unselected `checkbox` and `radio` elements are ignored as well.
+Pass this function a form object (e.g., via an `onSubmit` event handler’s `event.target`) and it will return a JSON object containing the form’s element data as key–value pairs. Key names are pulled from either the form element `name` (preferred) or `id` attribute, otherwise unnamed/unidentified elements are omitted. Unchecked/unselected `checkbox` and `radio` elements are ignored as well.
 
-> _NOTE: JSON data returned from this function could be utilized in API calls via [Axios](https://github.com/axios/axios)_
+> _NOTE: JSON data returned from this function could be utilized in API calls via extensions like [Axios](https://github.com/axios/axios)_
 
 ```JavaScript
 import { formData } from "@legendarymediatv/bootstrap/functions";
@@ -523,7 +547,7 @@ const submitHander = (event) => {
   // don't traditionally submit the form
   event.preventDefault();
 
-  // get the data from the form
+  // extract data from the form
   const data = formData(event.target);
 
   // display the form data object
@@ -540,6 +564,24 @@ const submitHander = (event) => {
 </Form>
 ```
 
+### `scrollToTopHandler(event)`
+
+Add the ability for any component to smoothly scroll to the top of the window.
+
+```JavaScript
+import { scrollToTopHandler } from '@legendarymediatv/bootstrap/ScrollToTop';
+
+…
+
+<Button onClick={scrollToTopHandler}>Scroll to Top</Button>
+
+<Link to="#" onClick={scrollToTopHandler}>
+  scroll to top
+</Link>
+```
+
+> _NOTE: see the `<ScrollToTop>` component above for a pre-packaged scroll-to-top solution_
+
 ## Additional examples
 
-For more examples of usage, see ['/src/pages/index.js](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/blob/src/pages/index.js)
+For more examples of usage, see [/src/pages](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/tree/main/src/pages)

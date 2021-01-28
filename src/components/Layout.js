@@ -1,11 +1,9 @@
 // dependencies
 import React from "react";
 
-// vendor components
-import { Helmet } from "react-helmet";
-
 // components
 import Container from "react-bootstrap/Container";
+import { Helmet } from "react-helmet";
 
 export default (props) => {
   return (

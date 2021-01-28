@@ -1,13 +1,13 @@
 // dependencies
 import React from "react";
-import { formData } from "../../functions";
 
 // components
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-// custom components
 import Layout from "../components/Layout";
+
+// LegendaryMediaTV functions
+import { formData } from "../../functions";
 
 // LegendaryMediaTV components
 import Breakpoint from "../../Breakpoint";
@@ -17,6 +17,8 @@ import InfoIcon from "../../InfoIcon";
 import Icon from "../../Icon";
 import Link from "../../Link";
 import ListGroup from "../../ListGroup";
+import ScrollToTop from "../../ScrollToTop";
+import { scrollToTopHandler } from "../../ScrollToTop";
 import Spinner from "../../Spinner";
 
 export default () => {
@@ -36,7 +38,7 @@ export default () => {
     // don't traditionally submit the form
     event.preventDefault();
 
-    // get the data from the form
+    // extract the data from the form
     const data = formData(event.target);
 
     // display the form data object
@@ -217,6 +219,18 @@ export default () => {
       <Spinner />
 
       <Spinner animation="grow" variant="success" className="small" />
+
+      <Display.Heading2>
+        <code>scrollToTopHandler()</code>
+      </Display.Heading2>
+
+      <Button onClick={scrollToTopHandler}>Scroll to Top</Button>
+
+      <Link to="#" onClick={scrollToTopHandler}>
+        scroll to top
+      </Link>
+
+      <ScrollToTop name="fas fa-caret-square-up" variant="success" />
     </Layout>
   );
 };

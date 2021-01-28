@@ -1,0 +1,19 @@
+button.ScrollToTop {
+  bottom: 1.5rem;
+  box-shadow: none !important;
+  opacity: 0;
+  padding: 0;
+  position: fixed;
+  right: 1.5rem;
+  transition: all 0.4s ease-in-out;
+  visibility: hidden;
+}
+
+button.ScrollToTop.show {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+button.ScrollToTop.show:hover {
+  opacity: 0.85;
+}

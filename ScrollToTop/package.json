@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/ScrollToTop",
+  "private": true,
+  "module": "ScrollToTop",
+  "types": "ScrollToTop.d.ts"
+}

@@ -1,7 +1,7 @@
 // dependencies
 import React from "react";
 
-// custom components
+// components
 import Layout from "../components/Layout";
 
 // LegendaryMediaTV components

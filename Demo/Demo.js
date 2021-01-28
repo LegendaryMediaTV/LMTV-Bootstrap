@@ -1,16 +1,18 @@
 // dependencies
 import React from "react";
 
-// vendor components
+// components
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 
-// custom components
+// LegendaryMediaTV components
 import Display from "../Display";
+import Icon from "../Icon";
 import InfoIcon from "../InfoIcon";
 import Link from "../Link";
 import Spinner from "../Spinner";
+import ScrollToTop from "../ScrollToTop";
 
 export default () => {
   // TODO: make this use React Bootstrap instead of native HTML
@@ -208,23 +210,23 @@ export default () => {
           </p>
 
           {[
-            "primary",
-            "secondary",
-            "success",
-            "danger",
-            "warning",
-            "info",
-            "light",
-            "dark",
+            "Danger",
+            "Dark",
+            "Info",
+            "Light",
+            "Primary",
+            "Secondary",
+            "Success",
+            "Warning",
           ].map((variant, idx) => (
             <Alert
-              variant={variant}
+              variant={variant.toLowerCase()}
               dismissible
               onClose={() => alert("insert your dismiss logic here")}
               key={idx}
             >
               <Alert.Heading>{variant}</Alert.Heading>
-              This is a {variant} alert—
+              This alert has a link—
               <Alert.Link as={Link} to="#">
                 check it out!
               </Alert.Link>
@@ -259,17 +261,17 @@ export default () => {
           </p>
 
           {[
-            "primary",
-            "secondary",
-            "success",
-            "danger",
-            "warning",
-            "info",
-            "light",
-            "dark",
+            "Danger",
+            "Dark",
+            "Info",
+            "Light",
+            "Primary",
+            "Secondary",
+            "Success",
+            "Warning",
           ].map((variant, idx) => (
             <h3>
-              <Badge pill variant={variant} key={idx}>
+              <Badge pill variant={variant.toLowerCase()} key={idx}>
                 {variant}
               </Badge>
             </h3>
@@ -385,185 +387,56 @@ export default () => {
           </nav>
         </section>
 
-        <Display.Heading2 id="button" className="mt-5 mb-3">
-          Button
-        </Display.Heading2>
-        <p>
-          Use to provide actions in forms, dialogs, and more. Any action besides
-          submitting a form is usually handled via JavaScript events either
-          defined on the button directly or assigned when the page loads.
-        </p>
-        <p>
-          For more information, see{" "}
-          <a
-            href="https://getbootstrap.com/docs/4.6/components/buttons/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Bootstrap Buttons
-          </a>
-          .
-        </p>
-        <div>
-          <button type="button" className="btn btn-primary mr-3 mb-3">
-            Default
-          </button>
-          <button type="button" className="btn btn-primary mr-3 mb-3">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn btn-primary mr-3 mb-3">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Default
-          </button>
-          <button type="button" className="btn btn-primary mr-3 mb-3">
-            Default
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-danger">
-            Danger
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-danger">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-danger">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Danger
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-danger">
-            Danger
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-dark">
-            Dark
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-dark">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-dark">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Dark
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-dark">
-            Dark
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-info">
-            Info
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-info">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-info">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Info
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-info">
-            Info
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-light">
-            Light
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-light">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-light">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Light
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-light">
-            Light
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-primary">
-            Primary
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-primary">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-primary">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Primary
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-primary">
-            Primary
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-secondary">
-            Secondary
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-secondary">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-secondary">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Secondary
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-secondary">
-            Secondary
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-success">
-            Success
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-success">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-success">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Success
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-success">
-            Success
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-warning">
-            Warning
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-warning">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-warning">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Warning
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-warning">
-            Warning
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn mr-3 mb-3 btn-link">
-            Link
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-link">
-            <i aria-label="camera" className="fas fa-camera" />
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-link">
-            <i aria-label="camera" className="fas fa-camera pr-2" />
-            Link
-          </button>
-          <button type="button" className="btn mr-3 mb-3 btn-link">
-            Link
-            <i aria-label="camera" className="fas fa-camera pl-2" />
-          </button>
-        </div>
+        <section id="button" className="mt-5">
+          <Display.Heading2 id="button" className="mb-3">
+            Button
+          </Display.Heading2>
+          <p>
+            Use to provide actions in forms, dialogs, and more. Any action
+            besides submitting a form is usually handled via JavaScript events
+            either defined on the button directly or assigned when the page
+            loads.
+          </p>
+          <p>
+            For more information, see{" "}
+            <a
+              href="https://getbootstrap.com/docs/4.6/components/buttons/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Bootstrap Buttons
+            </a>
+            .
+          </p>
+          {[
+            "Danger",
+            "Dark",
+            "Info",
+            "Light",
+            "Link",
+            "Primary",
+            "Secondary",
+            "Success",
+            "Warning",
+          ].map((variant, idx) => (
+            <div key={idx}>
+              <Button variant={variant.toLowerCase()} className="mr-3 mb-3">
+                {variant ?? "Default"}
+              </Button>
+              <Button variant={variant.toLowerCase()} className="mr-3 mb-3">
+                <Icon name="fas fa-camera" />
+              </Button>
+              <Button variant={variant.toLowerCase()} className="mr-3 mb-3">
+                <Icon name="fas fa-camera" className="pr-2" />
+                Default
+              </Button>
+              <Button variant={variant.toLowerCase()} className="mr-3 mb-3">
+                Default
+                <Icon name="fas fa-camera" className="pl-2" />
+              </Button>
+            </div>
+          ))}
+        </section>
 
         <Display.Heading2 id="button-group" className="mt-5 mb-3">
           Button Group
@@ -3624,6 +3497,8 @@ export default () => {
           </footer>
         </blockquote>
       </div>
+
+      <ScrollToTop />
     </>
   );
 };

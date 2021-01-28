@@ -2,13 +2,11 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-// vendor components
+// components
 import Button from "react-bootstrap/Button";
+import Icon from "../Icon";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
-
-// custom components
-import Icon from "../Icon";
 
 // styling
 import "./InfoIcon.css";

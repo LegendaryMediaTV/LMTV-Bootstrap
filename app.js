@@ -7,6 +7,10 @@ export { default as Icon } from "./Icon/Icon";
 export { default as InfoIcon } from "./InfoIcon/InfoIcon";
 export { default as Link } from "./Link/Link";
 export { default as ListGroup } from "./ListGroup/ListGroup";
+export {
+  default as ScrollToTop,
+  scrollToTopHandler,
+} from "./ScrollToTop/ScrollToTop";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden/VisuallyHidden";
 export { combine, formData, prepare } from "./functions";

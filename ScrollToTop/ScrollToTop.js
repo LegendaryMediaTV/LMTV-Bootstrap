@@ -43,9 +43,8 @@ export default (props) => {
   delete properties.variant;
 
   // extract iconClassName
-  const iconClassName = properties.iconClassName
-    ? properties.iconClassName.trim().split(/\s+/)
-    : ["h1 m-0"];
+  const iconClassName = properties.iconClassName;
+  delete properties.iconClassName;
 
   // extract iconStyle
   const iconStyle = properties.iconStyle;
@@ -67,7 +66,7 @@ export default (props) => {
         name={name}
         alt={alt}
         variant={variant}
-        className={combine(iconClassName)}
+        className={iconClassName}
         style={iconStyle}
       />
     </Button>

@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/BackgroundImage",
+  "private": true,
+  "module": "BackgroundImage",
+  "types": "BackgroundImage.d.ts"
+}

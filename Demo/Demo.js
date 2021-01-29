@@ -3444,9 +3444,8 @@ export default () => {
         <p className="lead">Leading paragraph</p>
         <h4>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</h4>
         <h4>
-          “The
-          <a href="#typography">quick brown fox</a>
-          jumps over the ‘lazy’ dog …” 0123456789 Il1 bdpq rnm cld
+          “The <a href="#typography">quick brown fox</a> jumps over the ‘lazy’
+          dog …” 0123456789 Il1 bdpq rnm cld
         </h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -3459,9 +3458,8 @@ export default () => {
         </p>
         <p>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</p>
         <p>
-          “The
-          <a href="#typography">quick brown fox</a>
-          jumps over the ‘lazy’ dog …” 0123456789 Il1 bdpq rnm cld
+          “The <a href="#typography">quick brown fox</a> jumps over the ‘lazy’
+          dog …” 0123456789 Il1 bdpq rnm cld
         </p>
         <blockquote className="blockquote">
           <p>

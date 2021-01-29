@@ -6,6 +6,9 @@ import Container from "react-bootstrap/Container";
 import { Helmet } from "react-helmet";
 import Navbar from "react-bootstrap/Navbar";
 
+// LegendaryMediaTV functions
+import { title } from "../../functions";
+
 // LegendaryMediaTV components
 import FullPage from "../../FullPage";
 
@@ -13,7 +16,9 @@ export default () => {
   return (
     <>
       <Helmet>
-        <title>Full Page | LegendaryMediaTV</title>
+        <title>
+          {title("LegendaryMediaTV", "Full Page Demo", "Bootstrap Demo")}
+        </title>
 
         <link
           rel="stylesheet"

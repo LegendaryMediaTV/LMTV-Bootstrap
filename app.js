@@ -1,3 +1,4 @@
+export { default as BackgroundImage } from "./BackgroundImage/BackgroundImage";
 export { default as Breakpoint } from "./Breakpoint/Breakpoint";
 export { default as Demo } from "./Demo/Demo";
 export { default as Display } from "./Display/Display";
@@ -13,4 +14,4 @@ export {
 } from "./ScrollToTop/ScrollToTop";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden/VisuallyHidden";
-export { combine, formData, prepare } from "./functions";
+export { combine, formData, prepare, title } from "./functions";

@@ -131,9 +131,35 @@ import { Demo } from '@legendarymediatv/bootstrap';
 import Demo from '@legendarymediatv/bootstrap/Demo';
 ```
 
+### `<BackgroundImage>`
+
+Set a background image so that it covers the whole screen without distorting and stays in place, regardless of scrolling.
+
+```JavaScript
+import BackgroundImage from '@legendarymediatv/bootstrap/BackgroundImage';
+
+…
+
+<BackgroundImage src="/images/sample.jpg" />
+```
+
+| Name  | Type   | Default  | Description            |
+| :---- | :----- | :------- | :--------------------- |
+| `src` | string | required | path to the image file |
+
+> _NOTE: Due to the simplicity of this component all other attributes will be ignored. However, the image’s `<div>` wrapper has its `id` set to `BackgroundImage` for styling purposes._
+
 ### `<Breakpoint>`
 
 Quickly see what the current breakpoint is (e.g., 'md').
+
+```JavaScript
+import Breakpoint from '@legendarymediatv/bootstrap/Breakpoint';
+
+…
+
+<Breakpoint />
+```
 
 > _NOTE: This component is intended to be used for development purposes and probably should be removed before deploying your app_
 
@@ -466,16 +492,19 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
   animation="grow"
   variant="success"
 />
+
+<Spinner alert />
 ```
 
-| Name        | Type                   | Default      | Description                                    |
-| :---------- | :--------------------- | :----------- | :--------------------------------------------- |
-| children    | JSX                    | `'loading…'` | content for `<VisuallyHidden>` child component |
-| `animation` | `'border'` \| `'grow'` | `'border'`   | changes the animation style of the spinner     |
-| `as`        | string                 | `'div'`      | custom HTML tag                                |
-| `role`      | string                 | `'status'`   | ARIA accessibility role                        |
-| `size`      | string                 |              | component size variations (e.g., `sm`)         |
-| `variant`   | string                 | `'primary'`  | Bootstrap theme color name (e.g., `'primary'`) |
+| Name        | Type                   | Default      | Description                                                                                                                                                                                                 |
+| :---------- | :--------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children    | JSX                    | `'loading…'` | content for `<VisuallyHidden>` child component                                                                                                                                                              |
+| `animation` | `'border'` \| `'grow'` | `'border'`   | changes the animation style of the spinner                                                                                                                                                                  |
+| `alert`     | boolean                | `false`      | wrap the spinner in an [`<Alert>`](https://react-bootstrap.github.io/components/alerts/) (centered with `py-5` padding), defaulting `variant` to `'info'`, and applying non-spinner properties to the alert |
+| `as`        | string                 | `'div'`      | custom HTML tag                                                                                                                                                                                             |
+| `role`      | string                 | `'status'`   | ARIA accessibility role                                                                                                                                                                                     |
+| `size`      | string                 |              | component size variations (e.g., `sm`)                                                                                                                                                                      |
+| `variant`   | string                 | `'primary'`  | Bootstrap theme color name (e.g., `'primary'`)                                                                                                                                                              |
 
 ### `<VisuallyHidden>`
 
@@ -564,6 +593,34 @@ const submitHander = (event) => {
 </Form>
 ```
 
+### `title(site, title, parent)`
+
+Generate an SEO-friendly HTML title in the format `Title | Site`. Optionally, include the `parent` argument to render `Title – Parent | Site`. Also, if `title` and `parent` are omitted, then it just uses the site.
+
+> _NOTE: this is designed to be used in conjunction with a plugin like [React Helmet](https://github.com/nfl/react-helmet)_
+
+```JavaScript
+import { title } from '@legendarymediatv/bootstrap/functions';
+
+…
+
+<Helmet>
+  <title>{title("LegendaryMediaTV", "Bootstrap Demo")}</title>
+</Helmet>
+
+<Helmet>
+  <title>
+    {title("LegendaryMediaTV", "Full Page Demo", "Bootstrap Demo")}
+  </title>
+</Helmet>
+```
+
+| Name     | Type   | Default  | Description         |
+| :------- | :----- | :------- | :------------------ |
+| `site`   | string | required | site/company name   |
+| `title`  | string | optional | this page’s title   |
+| `parent` | string | optional | parent page’s title |
+
 ### `scrollToTopHandler(event)`
 
 Add the ability for any component to smoothly scroll to the top of the window.
@@ -580,7 +637,7 @@ import { scrollToTopHandler } from '@legendarymediatv/bootstrap/ScrollToTop';
 </Link>
 ```
 
-> _NOTE: see the `<ScrollToTop>` component above for a pre-packaged scroll-to-top solution_
+> _NOTE: see the `<ScrollToTop>` component above for a turnkey_ 🦃 _scroll-to-top solution_
 
 ## Additional examples
 

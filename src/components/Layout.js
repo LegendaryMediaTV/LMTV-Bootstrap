@@ -4,14 +4,13 @@ import React from "react";
 // components
 import Container from "react-bootstrap/Container";
 import { Helmet } from "react-helmet";
+import { title } from "../../functions";
 
 export default (props) => {
   return (
     <>
       <Helmet>
-        <title>
-          {`${(props.title ? props.title + " | " : "") + "LegendaryMediaTV"}`}
-        </title>
+        <title>{title("LegendaryMediaTV", props.title, props.parent)}</title>
 
         <link
           rel="stylesheet"
@@ -28,7 +27,7 @@ export default (props) => {
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
         />
       </Helmet>
-      <Container className="py-4">
+      <Container className="bg-white py-4">
         {props.title ? <h1 className="display-1">{props.title}</h1> : null}
 
         {props.children}

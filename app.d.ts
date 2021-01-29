@@ -1,3 +1,4 @@
+export { default as BackgroundImage } from "./BackgroundImage/BackgroundImage";
 export { default as Breakpoint } from "./Breakpoint/Breakpoint";
 export { default as Demo } from "./Demo/Demo";
 export { default as Display } from "./Display/Display";

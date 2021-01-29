@@ -68,3 +68,25 @@ export const prepare = (props) => {
 
   return [properties, children];
 };
+
+/**
+ * generate an SEO-friendly HTML title
+ * @param {string} site site/company name
+ * @param {string} [title] this page’s title
+ * @param {string} [parent] parent page’s title
+ * @returns {string}
+ */
+export const title = (site, title, parent) => {
+  // enforce requirements
+  if (!site) throw new Error('title() "site" argument is required');
+
+  let output = site;
+  if (title || parent) {
+    output = ` | ${output}`;
+    if (parent) output = `${parent}${output}`;
+    if (title && parent) output = ` – ${output}`;
+    if (title) output = `${title}${output}`;
+  }
+
+  return output;
+};

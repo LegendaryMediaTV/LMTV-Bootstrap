@@ -10,6 +10,7 @@ import Layout from "../components/Layout";
 import { formData } from "../../functions";
 
 // LegendaryMediaTV components
+import BackgroundImage from "../../BackgroundImage";
 import Breakpoint from "../../Breakpoint";
 import Display from "../../Display";
 import FormGroup from "../../FormGroup";
@@ -50,7 +51,9 @@ export default () => {
   };
 
   return (
-    <Layout title="Bootstrap Components">
+    <Layout title="Bootstrap Components" parent="Bootstrap Demo">
+      <BackgroundImage src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg" />
+
       <Display.Heading2>
         <code>&lt;Breakpoint&gt;</code>
       </Display.Heading2>
@@ -216,9 +219,13 @@ export default () => {
         <code>&lt;Spinner&gt;</code>
       </Display.Heading2>
 
-      <Spinner />
+      <div>
+        <Spinner />
 
-      <Spinner animation="grow" variant="success" className="small" />
+        <Spinner animation="grow" variant="success" className="small" />
+      </div>
+
+      <Spinner alert className="my-3" />
 
       <Display.Heading2>
         <code>scrollToTopHandler()</code>

@@ -74,18 +74,45 @@ export const prepare = (props) => {
  * @param {string} site site/company name
  * @param {string} [title] this page’s title
  * @param {string} [parent] parent page’s title
+ * @param {string} [siteSeparator] separator between the site and the title/parent
+ * @param {string} [parentSeparator] separator between the title and parent
+ * @param {string} [separatorReplacer] replacement character when title or parent contain the parentSeparator
  * @returns {string}
  */
-export const title = (site, title, parent) => {
+export const title = (
+  site,
+  title,
+  parent,
+  siteSeparator,
+  parentSeparator,
+  separatorReplacer
+) => {
   // enforce requirements
   if (!site) throw new Error('title() "site" argument is required');
 
+  // define separators
+  if (!siteSeparator) siteSeparator = "|";
+  if (!parentSeparator) parentSeparator = "–";
+  if (!separatorReplacer) separatorReplacer = "/";
+
+  // define regular expressions
+  let siteRegExp = new RegExp(siteSeparator, "g");
+  let parentRegExp = new RegExp(parentSeparator, "g");
+
   let output = site;
   if (title || parent) {
-    output = ` | ${output}`;
-    if (parent) output = `${parent}${output}`;
-    if (title && parent) output = ` – ${output}`;
-    if (title) output = `${title}${output}`;
+    output = ` ${siteSeparator} ${output
+      .toString()
+      .replace(siteRegExp, separatorReplacer)}`;
+    if (parent)
+      output = `${parent
+        .toString()
+        .replace(parentRegExp, separatorReplacer)}${output}`;
+    if (title && parent) output = ` ${parentSeparator} ${output}`;
+    if (title)
+      output = `${title
+        .toString()
+        .replace(parentRegExp, separatorReplacer)}${output}`;
   }
 
   return output;

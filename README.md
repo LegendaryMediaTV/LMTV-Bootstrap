@@ -2,6 +2,8 @@
 
 This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 4](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
+For the most recent changes, check out the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
+
 ## Getting started
 
 ### Installation
@@ -143,11 +145,11 @@ import BackgroundImage from '@legendarymediatv/bootstrap/BackgroundImage';
 <BackgroundImage src="/images/sample.jpg" />
 ```
 
-| Name  | Type   | Default  | Description            |
-| :---- | :----- | :------- | :--------------------- |
-| `src` | string | required | path to the image file |
-
-> _NOTE: Due to the simplicity of this component all other attributes will be ignored. However, the image’s `<div>` wrapper has its `id` set to `BackgroundImage` for styling purposes._
+| Name             | Type   | Default  | Description                          |
+| :--------------- | :----- | :------- | :----------------------------------- |
+| `src`            | string | required | path to the image file               |
+| `imageClassName` | string |          | `className` property for the `<img>` |
+| `imageStyle`     | object |          | `style` property for the `<img>`     |
 
 ### `<Breakpoint>`
 
@@ -615,11 +617,14 @@ import { title } from '@legendarymediatv/bootstrap/functions';
 </Helmet>
 ```
 
-| Name     | Type   | Default  | Description         |
-| :------- | :----- | :------- | :------------------ |
-| `site`   | string | required | site/company name   |
-| `title`  | string | optional | this page’s title   |
-| `parent` | string | optional | parent page’s title |
+| Name                | Type   | Default               | Description                                                                  |
+| :------------------ | :----- | :-------------------- | :--------------------------------------------------------------------------- |
+| `site`              | string | required              | site/company name                                                            |
+| `title`             | string |                       | this page’s title                                                            |
+| `parent`            | string |                       | parent page’s title                                                          |
+| `siteSeparator`     | string | pipe: <code>\|</code> | separator between the `site` and the `title`/`parent`                        |
+| `parentSeparator`   | string | en dash: `'–'`        | separator between the `title` and `parent`                                   |
+| `separatorReplacer` | string | forward slash: `'/'`  | replacement character when `title` or `parent` contain the `parentSeparator` |
 
 ### `scrollToTopHandler(event)`
 

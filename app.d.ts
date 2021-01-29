@@ -11,4 +11,4 @@ export { default as ListGroup } from "./ListGroup/ListGroup";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden/VisuallyHidden";
 export { default as ScrollToTop, scrollToTopHandler } from "./ScrollToTop/ScrollToTop";
-export { combine, formData, prepare } from "./functions";
+export { combine, formData, prepare, title } from "./functions";

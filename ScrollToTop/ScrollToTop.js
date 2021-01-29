@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-import { combine, prepare } from "../functions/functions";
+import { combine, prepare } from "../functions";
 import smoothscroll from "smoothscroll-polyfill";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 

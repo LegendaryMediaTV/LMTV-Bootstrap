@@ -52,7 +52,10 @@ export default () => {
 
   return (
     <Layout title="Bootstrap Components" parent="Bootstrap Demo">
-      <BackgroundImage src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg" />
+      <BackgroundImage
+        src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
+        imageStyle={{ opacity: 0.25 }}
+      />
 
       <Display.Heading2>
         <code>&lt;Breakpoint&gt;</code>

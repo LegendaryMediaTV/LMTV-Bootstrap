@@ -1,5 +1,3 @@
-Write-Host "Building app..."
-tsc ./app.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building BackgroundImage..."
 tsc ./BackgroundImage/BackgroundImage.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Breakpoint..."
@@ -28,4 +26,6 @@ Write-Host "Building Spinner..."
 tsc ./Spinner/Spinner.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building VisuallyHidden..."
 tsc ./VisuallyHidden/VisuallyHidden.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building app..."
+tsc ./app.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Done."

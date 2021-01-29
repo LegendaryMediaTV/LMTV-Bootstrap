@@ -96,8 +96,8 @@ export const title = (
   if (!separatorReplacer) separatorReplacer = "/";
 
   // define regular expressions
-  let siteRegExp = new RegExp(siteSeparator, "g");
-  let parentRegExp = new RegExp(parentSeparator, "g");
+  let siteRegExp = new RegExp(siteSeparator.replace("|", "\\|"), "g");
+  let parentRegExp = new RegExp(parentSeparator.replace("|", "\\|"), "g");
 
   let output = site;
   if (title || parent) {

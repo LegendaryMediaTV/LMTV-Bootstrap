@@ -264,7 +264,7 @@ import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
 
 <FullPage>
   <FullPage.Content>Page Content</FullPage.Content>
-  <FullPage.Footer>Footer</FullPage.Footer>
+  <FullPage.Footer>Footer Content</FullPage.Footer>
 </FullPage>
 ```
 
@@ -284,7 +284,7 @@ import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
         </article>
       </FullPage.Content>
       <FullPage.Footer className="bg-secondary py-2 text-center text-white">
-        Footer
+        Footer Content
       </FullPage.Footer>
     </FullPage>
   </Container>

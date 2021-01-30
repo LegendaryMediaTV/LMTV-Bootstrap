@@ -19,7 +19,8 @@ export default (props) => {
   if (!url) throw new Error('<Link> "href" or "to" property is required');
 
   // determine external status
-  if (properties.external === "false") properties.external = false;
+  if (properties.external === "false" || properties.external === false)
+    properties.external = false;
   else if (
     properties.external ||
     properties.externalIcon ||

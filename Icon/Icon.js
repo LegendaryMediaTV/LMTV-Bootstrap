@@ -27,7 +27,8 @@ export default (props) => {
   delete properties.name;
 
   // add variant to class
-  properties.className.push(`text-${properties.variant}`);
+  if (properties.variant)
+    properties.className.push(`text-${properties.variant}`);
   delete properties.variant;
 
   // merge classes

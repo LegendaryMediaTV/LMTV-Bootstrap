@@ -17,6 +17,7 @@ export default (props) => {
   const imageClassName = properties.imageClassName
     ? properties.imageClassName.trim().split(/\s+/)
     : ["h1 m-0"];
+  delete properties.imageClassName;
 
   // extract imageStyle
   const imageStyle = properties.imageStyle;

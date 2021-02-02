@@ -40,7 +40,7 @@ export default () => {
               </article>
             </FullPage.Content>
             <FullPage.Footer className="bg-secondary py-2 text-center text-white">
-              Footer
+              Footer Content
             </FullPage.Footer>
           </FullPage>
         </Container>

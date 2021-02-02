@@ -85,7 +85,7 @@ export default (props) => {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         />
       </Helmet>
       <Container className="py-4">

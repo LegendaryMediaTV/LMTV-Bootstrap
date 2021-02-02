@@ -23,72 +23,48 @@ const Heading = (props) => {
 };
 
 const Heading1 = (props) => {
-  // copy properties (original can't be manipulated)
-  const properties = { ...props };
-
-  // set defaults
-  const size = "1";
-
-  // extract children
-  const children = properties.children;
-  delete properties.children;
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
 
   return (
-    <Heading {...properties} size={size}>
+    <Heading {...properties} size="1">
       {children}
     </Heading>
   );
 };
 
 const Heading2 = (props) => {
-  // copy properties (original can't be manipulated)
-  const properties = { ...props };
-
-  // set defaults
-  const size = "2";
-
-  // extract children
-  const children = properties.children;
-  delete properties.children;
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
 
   return (
-    <Heading {...properties} size={size}>
+    <Heading {...properties} size="2">
       {children}
     </Heading>
   );
 };
 
 const Heading3 = (props) => {
-  // copy properties (original can't be manipulated)
-  const properties = { ...props };
-
-  // set defaults
-  const size = "3";
-
-  // extract children
-  const children = properties.children;
-  delete properties.children;
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
 
   return (
-    <Heading {...properties} size={size}>
+    <Heading {...properties} size="3">
       {children}
     </Heading>
   );
 };
 
 const Heading4 = (props) => {
-  // copy properties (original can't be manipulated)
-  const properties = { ...props };
-
-  // set defaults
-  const size = "4";
-
-  // extract children
-  const children = properties.children;
-  delete properties.children;
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
 
   return (
-    <Heading {...properties} size={size}>
+    <Heading {...properties} size="4">
       {children}
     </Heading>
   );

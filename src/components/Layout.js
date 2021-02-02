@@ -3,6 +3,7 @@ import React from "react";
 
 // components
 import Container from "react-bootstrap/Container";
+import Display from "../../Display";
 import { Helmet } from "react-helmet";
 import { title } from "../../functions";
 
@@ -20,7 +21,7 @@ export default (props) => {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         />
         <link
           rel="stylesheet"
@@ -28,7 +29,9 @@ export default (props) => {
         />
       </Helmet>
       <Container className="bg-white py-4">
-        {props.title ? <h1 className="display-1">{props.title}</h1> : null}
+        {props.title ? (
+          <Display.Heading1>{props.title}</Display.Heading1>
+        ) : null}
 
         {props.children}
       </Container>

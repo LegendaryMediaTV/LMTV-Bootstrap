@@ -202,6 +202,69 @@ import Display from '@legendarymediatv/bootstrap/Display';
 | :--- | :---------- | :------------------------------- | :------------------- |
 | `as` | elementType | `<h#>` corresponding to the size | changes the HTML tag |
 
+### `<Flipper>`
+
+Flashcard-like component that can flip horizontally or vertically using a 3D effect either on hover or via an event.
+
+```JavaScript
+import Flipper from '@legendarymediatv/bootstrap/Flipper';
+
+…
+
+<Flipper
+  front={<h3>flipper front content</h3>}
+  frontClassName="bg-primary text-light"
+  back={<h3>flipper back content</h3>}
+  backClassName="bg-secondary text-light"
+/>
+
+…
+
+// use React state to track flipped state
+const [componentState, setComponentState] = React.useState(false);
+…
+function flipHandler(event) => {
+  // un-click the button
+  event.preventDefault();
+
+  // toggle flip state
+  setComponentState(!componentState);
+};
+…
+<Flipper
+  front={
+    <Button onClick={flipHandler} block>
+      flip to the back
+    </Button>
+  }
+  frontClassName="d-flex align-items-stretch"
+  back={
+    <Button onClick={flipHandler} variant="secondary" block>
+      flip to the front
+    </Button>
+  }
+  backClassName="d-flex align-items-stretch"
+  className="text-center"
+  height="10rem"
+  flipped={componentState}
+  horizontal
+/>
+```
+
+| Name             | Type    | Default | Description                                                                                                                       |
+| :--------------- | :------ | :------ | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `back`           | JSX     |         | flipper back side content                                                                                                         |
+| `backClassName`  | string  |         | `className` property for the back side of the flipper                                                                             |
+| `backStyle`      | object  |         | `style` property for the back side of the flipper                                                                                 |
+| `front`          | JSX     |         | flipper front side content                                                                                                        |
+| `frontClassName` | string  |         | `className` property for the front side of the flipper                                                                            |
+| `frontStyle`     | object  |         | `style` property for the front side of the flipper                                                                                |
+| `flipped`        | boolean | `null`  | determines whether the card should display as flipped over (i.e., tie events to this property), if `null`, then it flips on hover |
+| `height`         | string  | `15rem` | `height` property to apply to the `style` for the flipper and both sides                                                          |
+| `horizontal`     | boolean | `false` | flip the card horizontally instead of vertically                                                                                  |
+
+> _NOTE: if `flipped` is `null`, then doesn’t toggle `aria-label` for the flipper sides, because it flips on an untracked hover action rather than an event_
+
 ### `<FormGroup>`
 
 An extension of React Bootstrap’s [`<Form.Group>`](https://react-bootstrap.github.io/components/forms/#form-group-props), which automatically contains a React Bootstrap [`<Form.Label>`](https://react-bootstrap.github.io/components/forms/#form-label-props). The label then optionally includes a `<InfoIcon>` when the `info` property is set.
@@ -386,6 +449,8 @@ import Link from '@legendarymediatv/bootstrap/Link';
 | :------------------ | :-------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
 | `href` \| `to`      | URL             | required                                                                   | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`)             |
 | `external`          | boolean         | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
+| `newTab`            | boolean         | `false`                                                                    | force the link to open in a new tab (sets `target="_blank" rel="noopener"`)                                                 |
+| `externalNewTab`    | boolean         | `false`                                                                    | set `newTab` to `true` when `external` is `true`                                                                            |
 | `externalIcon`      | icon class name | `'fas fa-external-link-alt'`                                               | external icon class name                                                                                                    |
 | `externalVariant`   | string          | `info`                                                                     | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                          |
 | `externalClassName` | string          | `'small pl-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
@@ -530,11 +595,13 @@ import VisuallyHidden from '@legendarymediatv/bootstrap/VisuallyHidden';
 
 ## Functions
 
-### `combine(array)`
+### `combine(array)` and `separate(string)`
 
-If an array has elements, `join()` them via space separator, otherwise return `null`.
+Use `separate()` to split a string (e.g., `className`) by whitespace into an array, always returning at least an empty array.
 
-> _NOTE: this is helpful when used in conjunction with `prepare(props)` in order to join `className` before rendering the component; see the example there_
+Use `combine()` to join an array with at least one element via a space separator, otherwise return `null`.
+
+> _NOTE: these are helpful when used together or in conjunction with `prepare()` in order to join `className` before rendering the component; see the example there_
 
 ### `prepare(props)`
 

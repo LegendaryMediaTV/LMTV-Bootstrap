@@ -1,0 +1,50 @@
+.Flipper,
+.FlipperHover {
+  perspective: 150rem;
+  position: relative;
+}
+
+.FlipperBack,
+.FlipperFront {
+  backface-visibility: hidden;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 0.8s ease-in-out;
+  width: 100%;
+}
+
+.Flipper,
+.FlipperHover,
+.FlipperBack,
+.FlipperFront {
+  height: 15rem;
+}
+
+.FlipperBack {
+  transform: rotateY(180deg);
+}
+
+.FlipperBack.FlipperHorizontal {
+  transform: rotateX(180deg);
+}
+
+.FlipperHover:hover .FlipperBack,
+.Flipper.FlipperFlipped .FlipperBack {
+  transform: rotateY(360deg);
+}
+
+.FlipperHover:hover .FlipperBack.FlipperHorizontal,
+.Flipper.FlipperFlipped .FlipperBack.FlipperHorizontal {
+  transform: rotateX(360deg);
+}
+
+.FlipperHover:hover .FlipperFront,
+.Flipper.FlipperFlipped .FlipperFront {
+  transform: rotateY(180deg);
+}
+
+.FlipperHover:hover .FlipperFront.FlipperHorizontal,
+.Flipper.FlipperFlipped .FlipperFront.FlipperHorizontal {
+  transform: rotateX(180deg);
+}

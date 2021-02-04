@@ -2,6 +2,7 @@ export { default as BackgroundImage } from "./BackgroundImage/BackgroundImage";
 export { default as Breakpoint } from "./Breakpoint/Breakpoint";
 export { default as Demo } from "./Demo/Demo";
 export { default as Display } from "./Display/Display";
+export { default as Flipper } from "./Flipper/Flipper";
 export { default as FormGroup } from "./FormGroup/FormGroup";
 export { default as FullPage } from "./FullPage/FullPage";
 export { default as Icon } from "./Icon/Icon";

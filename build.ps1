@@ -6,6 +6,8 @@ Write-Host "Building Demo..."
 tsc ./Demo/Demo.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Display..."
 tsc ./Display/Display.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building Flipper..."
+tsc ./Flipper/Flipper.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building FormGroup..."
 tsc ./FormGroup/FormGroup.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building FullPage..."

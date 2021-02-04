@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Flipper",
+  "private": true,
+  "module": "Flipper",
+  "types": "Flipper.d.ts"
+}

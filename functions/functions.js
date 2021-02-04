@@ -3,7 +3,8 @@
  * @param {string[]} array array of strings
  * @returns {string}
  */
-export const combine = (array) => (array.length ? array.join(" ") : null);
+export const combine = (array) =>
+  Array.isArray(array) && array.length ? array.join(" ") : null;
 
 /**
  * retrieve form data as JSON
@@ -62,11 +63,27 @@ export const prepare = (props) => {
   delete properties.children;
 
   // split classes by whitespace
-  properties.className = properties.className
-    ? properties.className.trim().split(/\s+/)
-    : [];
+  properties.className = separate(properties.className);
 
   return [properties, children];
+};
+
+/**
+ * split elements via whitespace, returning an empty array if blank
+ * @param {string} array space-separated string
+ * @returns {string[]}
+ */
+export const separate = (string) => {
+  // string isn't null/undefined, split it
+  if (string != null) {
+    // remove leading/trailing whitespace
+    string = string.toString().trim();
+
+    // split string by whitespace
+    return string.split(/\s+/);
+  }
+  // null/undefined, return empty array
+  else return [];
 };
 
 /**

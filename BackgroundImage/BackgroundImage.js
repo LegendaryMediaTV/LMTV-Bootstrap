@@ -1,6 +1,6 @@
 // dependencies
 import React from "react";
-import { prepare, combine } from "../functions";
+import { combine, prepare, separate } from "../functions";
 
 // styling
 import "./BackgroundImage.css";
@@ -15,7 +15,7 @@ export default (props) => {
 
   // extract imageClassName
   const imageClassName = properties.imageClassName
-    ? properties.imageClassName.trim().split(/\s+/)
+    ? separate(properties.imageClassName)
     : ["h1 m-0"];
   delete properties.imageClassName;
 

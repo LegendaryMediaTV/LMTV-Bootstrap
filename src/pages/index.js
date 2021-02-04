@@ -13,6 +13,7 @@ import { formData } from "../../functions";
 import BackgroundImage from "../../BackgroundImage";
 import Breakpoint from "../../Breakpoint";
 import Display from "../../Display";
+import Flipper from "../../Flipper";
 import FormGroup from "../../FormGroup";
 import InfoIcon from "../../InfoIcon";
 import Icon from "../../Icon";
@@ -23,6 +24,14 @@ import { scrollToTopHandler } from "../../ScrollToTop";
 import Spinner from "../../Spinner";
 
 export default () => {
+  // use React state to track flipped state
+  const [componentState, setComponentState] = React.useState(false);
+
+  const flipHandler = (event) => {
+    event.preventDefault();
+    setComponentState(!componentState);
+  };
+
   const linkArray = ["/demo", "/full-page"];
 
   const linkObjects = [
@@ -74,6 +83,36 @@ export default () => {
       <Display.Heading3>Display Heading 3</Display.Heading3>
 
       <Display.Heading4>Display Heading 4</Display.Heading4>
+
+      <Display.Heading2>
+        <code>&lt;Flipper&gt;</code>
+      </Display.Heading2>
+
+      <Flipper
+        front={<h3>flipper front content</h3>}
+        frontClassName="bg-primary text-light"
+        back={<h3>flipper back content</h3>}
+        backClassName="bg-secondary text-light"
+      />
+
+      <Flipper
+        front={
+          <Button onClick={flipHandler} block>
+            flip to the back
+          </Button>
+        }
+        frontClassName="d-flex align-items-stretch"
+        back={
+          <Button onClick={flipHandler} variant="secondary" block>
+            flip to the front
+          </Button>
+        }
+        backClassName="d-flex align-items-stretch"
+        className="mt-3 text-center"
+        height="10rem"
+        flipped={componentState}
+        horizontal
+      />
 
       <Display.Heading2>
         <code>&lt;FormGroup&gt;</code>
@@ -193,6 +232,18 @@ export default () => {
             externalIcon="bi bi-box-arrow-up-right"
             externalVariant="danger"
           >
+            HTML
+          </Link>
+        </li>
+        <li>
+          Internal with externalNewTab:{" "}
+          <Link href="/" externalNewTab>
+            Gatsby
+          </Link>
+        </li>
+        <li>
+          External New Tab:{" "}
+          <Link href="https://www.legendarymediatv.com" externalNewTab>
             HTML
           </Link>
         </li>

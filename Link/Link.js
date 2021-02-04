@@ -28,6 +28,18 @@ export default (props) => {
   )
     properties.external = true;
 
+  // extract external new tab
+  if (properties.externalNewTab && properties.external)
+    properties.newTab = true;
+  delete properties.externalNewTab;
+
+  // extract new tab
+  if (properties.newTab) {
+    properties.target = "_blank";
+    properties.rel = "noopener";
+  }
+  delete properties.newTab;
+
   // native: starts with anchor hash tag, flagged as external, starts with a protocol, or ends with a file extension
   let elementType;
   if (

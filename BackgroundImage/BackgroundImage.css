@@ -10,5 +10,6 @@
 #BackgroundImage img {
   height: 100vh;
   object-fit: cover;
+  transition: all 0.4s ease-in 0.1s;
   width: 100%;
 }

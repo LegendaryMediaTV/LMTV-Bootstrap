@@ -15,4 +15,4 @@ export {
 } from "./ScrollToTop/ScrollToTop";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden/VisuallyHidden";
-export { combine, formData, prepare, title } from "./functions";
+export { combine, formData, prepare, separate, title } from "./functions";

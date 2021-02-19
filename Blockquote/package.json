@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Blockquote",
+  "private": true,
+  "module": "Blockquote",
+  "types": "Blockquote.d.ts"
+}

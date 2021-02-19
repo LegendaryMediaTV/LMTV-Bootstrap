@@ -1,5 +1,7 @@
 Write-Host "Building BackgroundImage..."
 tsc ./BackgroundImage/BackgroundImage.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building Blockquote..."
+tsc ./Blockquote/Blockquote.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Breakpoint..."
 tsc ./Breakpoint/Breakpoint.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Demo..."

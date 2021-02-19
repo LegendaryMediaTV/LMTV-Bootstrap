@@ -11,6 +11,7 @@ import { formData } from "../../functions";
 
 // LegendaryMediaTV components
 import BackgroundImage from "../../BackgroundImage";
+import Blockquote from "../../Blockquote";
 import Breakpoint from "../../Breakpoint";
 import Display from "../../Display";
 import Flipper from "../../Flipper";
@@ -65,6 +66,25 @@ export default () => {
         src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
         imageStyle={{ opacity: 0.25 }}
       />
+
+      <Display.Heading2>
+        <code>&lt;Blockquote&gt;</code>
+      </Display.Heading2>
+
+      <Blockquote>
+        <p class="mb-0">
+          A well-known quote, contained in a blockquote element.
+        </p>
+      </Blockquote>
+
+      <Blockquote>
+        Success, meaningful success, begins when we take ownership and actively
+        take responsibility for our part in the shortcomings of our life.
+        <Blockquote.Footer>
+          Dr Eric Thomas,{" "}
+          <cite>Greatness Is Upon You: Laying the Foundation</cite>
+        </Blockquote.Footer>
+      </Blockquote>
 
       <Display.Heading2>
         <code>&lt;Breakpoint&gt;</code>

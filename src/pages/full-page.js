@@ -15,7 +15,7 @@ import FullPage from "../../FullPage";
 export default () => {
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <title>
           {title("LegendaryMediaTV", "Full Page Demo", "Bootstrap Demo")}
         </title>

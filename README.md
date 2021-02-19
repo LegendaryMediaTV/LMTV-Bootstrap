@@ -72,7 +72,7 @@ import Container from "react-bootstrap/Container";
 export default (props) => {
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{props.title}</title>
 
         <meta name="description" content={props.description} />
@@ -150,6 +150,33 @@ import BackgroundImage from '@legendarymediatv/bootstrap/BackgroundImage';
 | `src`            | string | required | path to the image file               |
 | `imageClassName` | string |          | `className` property for the `<img>` |
 | `imageStyle`     | object |          | `style` property for the `<img>`     |
+
+### `<Blockquote>`
+
+Quote blocks of content using [Bootstrap’s Blockquote](https://getbootstrap.com/docs/4.6/content/typography/#blockquotes).
+
+```JavaScript
+import Blockquote from '@legendarymediatv/bootstrap/Blockquote';
+
+…
+
+<Blockquote>
+  <p class="mb-0">
+    A well-known quote, contained in a blockquote element.
+  </p>
+</Blockquote>
+
+<Blockquote>
+  <p>
+    Success, meaningful success, begins when we take ownership and actively
+    take responsibility for our part in the shortcomings of our life.
+  </p>
+  <Blockquote.Footer>
+    Dr Eric Thomas,{" "}
+    <cite>Greatness Is Upon You: Laying the Foundation</cite>
+  </Blockquote.Footer>
+</Blockquote>
+```
 
 ### `<Breakpoint>`
 

@@ -10,7 +10,7 @@ import { title } from "../../functions";
 export default (props) => {
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{title("LegendaryMediaTV", props.title, props.parent)}</title>
 
         <link

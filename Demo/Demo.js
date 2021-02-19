@@ -3,8 +3,8 @@ import React from "react";
 
 // components
 import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import Modal from "react-bootstrap/Modal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -12,6 +12,7 @@ import Popover from "react-bootstrap/Popover";
 import Tooltip from "react-bootstrap/Tooltip";
 
 // LegendaryMediaTV components
+import Blockquote from "../Blockquote";
 import Display from "../Display";
 import Icon from "../Icon";
 import InfoIcon from "../InfoIcon";
@@ -169,25 +170,12 @@ export default class extends React.Component {
           </ul>
         </nav>
         <section className="container pt-5">
-          <Alert variant="warning">
-            <Alert.Heading>Beta Feature</Alert.Heading>
-            <p>
-              <em>
-                This component is still under development and often uses
-                Bootstrap’s raw classes instead of React Bootstrap components or
-                even <strong>this</strong> package’s components. Stay tuned for
-                more updates!
-              </em>{" "}
-              😁
-            </p>
-          </Alert>
-
           <Alert variant="info">
             <Alert.Heading>Usage</Alert.Heading>
             <p>
               This component is intended to be used for development purposes
               (e.g., testing your custom Bootstrap theme) by having everything
-              all one one page.
+              all on one page.
             </p>
           </Alert>
 
@@ -3491,39 +3479,39 @@ export default class extends React.Component {
             “The <a href="#typography">quick brown fox</a> jumps over the ‘lazy’
             dog …” 0123456789 Il1 bdpq rnm cld
           </p>
-          <blockquote className="blockquote">
+          <Blockquote>
             <p>
               Success, meaningful success, begins when we take ownership and
               actively take responsibility for our part in the shortcomings of
               our life.
             </p>
-            <footer className="blockquote-footer">
-              Dr Eric Thomas,
+            <Blockquote.Footer>
+              Dr Eric Thomas,{" "}
               <cite>Greatness Is Upon You: Laying the Foundation</cite>
-            </footer>
-          </blockquote>
-          <blockquote className="blockquote text-center">
+            </Blockquote.Footer>
+          </Blockquote>
+          <Blockquote className="text-center">
             <p>
               Success, meaningful success, begins when we take ownership and
               actively take responsibility for our part in the shortcomings of
               our life.
             </p>
-            <footer className="blockquote-footer">
-              Dr Eric Thomas,
+            <Blockquote.Footer>
+              Dr Eric Thomas,{" "}
               <cite>Greatness Is Upon You: Laying the Foundation</cite>
-            </footer>
-          </blockquote>
-          <blockquote className="blockquote text-right">
+            </Blockquote.Footer>
+          </Blockquote>
+          <Blockquote className="text-right">
             <p>
               Success, meaningful success, begins when we take ownership and
               actively take responsibility for our part in the shortcomings of
               our life.
             </p>
-            <footer className="blockquote-footer">
-              Dr Eric Thomas,
+            <Blockquote.Footer>
+              Dr Eric Thomas,{" "}
               <cite>Greatness Is Upon You: Laying the Foundation</cite>
-            </footer>
-          </blockquote>
+            </Blockquote.Footer>
+          </Blockquote>
         </div>
 
         <ScrollToTop />

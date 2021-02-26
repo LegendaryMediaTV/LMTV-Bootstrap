@@ -23,10 +23,15 @@ import ScrollToTop from "../ScrollToTop";
 export default class extends React.Component {
   state = { showCollapse: false, showModal: false };
 
-  modalCloseHandler = () => this.setState({ showModal: false });
-  modalShowHandler = () => this.setState({ showModal: true });
+  modalCloseHandler = () => {
+    this.setState({ showModal: false });
+  };
 
-  render() {
+  modalShowHandler = () => {
+    this.setState({ showModal: true });
+  };
+
+  render = () => {
     // TODO: make this use React Bootstrap instead of native HTML
     return (
       <>
@@ -3517,5 +3522,5 @@ export default class extends React.Component {
         <ScrollToTop />
       </>
     );
-  }
+  };
 }

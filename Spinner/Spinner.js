@@ -44,7 +44,7 @@ export default (props) => {
     return (
       <Alert {...properties}>
         <Spinner {...spinnerProperties}>
-          <VisuallyHidden>{children ? children : "loading…"}</VisuallyHidden>
+          <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
         </Spinner>
       </Alert>
     );
@@ -54,7 +54,7 @@ export default (props) => {
 
     return (
       <Spinner {...properties}>
-        <VisuallyHidden>{children ? children : "loading…"}</VisuallyHidden>
+        <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
       </Spinner>
     );
   }

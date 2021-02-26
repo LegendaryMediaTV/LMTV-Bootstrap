@@ -22,7 +22,7 @@ export default (props) => {
   const popover = (
     <Popover>
       {properties.title ? (
-        <Popover.Title as={properties.titleAs ? properties.titleAs : "h3"}>
+        <Popover.Title as={properties.titleAs ?? "h3"}>
           {properties.title}
         </Popover.Title>
       ) : null}
@@ -35,7 +35,7 @@ export default (props) => {
   // establish icon
   const icon = (
     <Icon
-      name={properties.name ? properties.name : "fas fa-info-circle"}
+      name={properties.name ?? "fas fa-info-circle"}
       alt={properties.alt}
       variant={properties.variant != null ? properties.variant : "info"}
       className={properties.iconClassName}

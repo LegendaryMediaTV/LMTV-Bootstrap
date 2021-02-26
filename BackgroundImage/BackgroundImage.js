@@ -14,9 +14,7 @@ export default (props) => {
   const [properties] = prepare(props);
 
   // extract imageClassName
-  const imageClassName = properties.imageClassName
-    ? separate(properties.imageClassName)
-    : ["h1 m-0"];
+  const imageClassName = separate(properties.imageClassName ?? "h1 m-0");
   delete properties.imageClassName;
 
   // extract imageStyle

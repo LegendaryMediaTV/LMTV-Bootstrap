@@ -4,6 +4,8 @@ Write-Host "Building Blockquote..."
 tsc ./Blockquote/Blockquote.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Breakpoint..."
 tsc ./Breakpoint/Breakpoint.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+#Write-Host "Building DatePicker..."
+#tsc ./DatePicker/DatePicker.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Demo..."
 tsc ./Demo/Demo.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Display..."

@@ -1,0 +1,16 @@
+#DatePicker th {
+  font-weight: normal;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+#DatePicker td .btn {
+  padding: 0.375rem;
+}
+
+#DatePicker td .btn:focus,
+#DatePicker td .btn:hover,
+#DatePicker td .btn:active {
+  background-color: var(--light);
+  text-decoration: none;
+}

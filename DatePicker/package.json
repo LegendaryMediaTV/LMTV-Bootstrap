@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/DatePicker",
+  "private": true,
+  "module": "DatePicker",
+  "types": "DatePicker.d.ts"
+}

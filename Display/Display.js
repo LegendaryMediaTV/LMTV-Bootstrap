@@ -7,9 +7,9 @@ const Heading = (props) => {
   const [properties, children] = prepare(props);
 
   // set defaults
-  const size = properties.size ? properties.size : "1";
+  const size = properties.size ?? "1";
   delete properties.size;
-  let htmlElement = properties.as ? properties.as : `h${size}`;
+  let htmlElement = properties.as ?? `h${size}`;
   delete properties.as;
 
   // add Bootstrap class

@@ -1,6 +1,6 @@
 {
   "name": "@legendarymediatv/bootstrap",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "additional Bootstrap-based React components for extending functionality to react-bootstrap and gatsby",
   "keywords": [
     "Bootstrap",
@@ -35,9 +35,9 @@
     "react-dom": "17.x"
   },
   "devDependencies": {
-    "gatsby": "^2.31.1",
+    "gatsby": "^2.32.4",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.3",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
   },

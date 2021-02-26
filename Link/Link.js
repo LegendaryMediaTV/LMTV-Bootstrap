@@ -11,7 +11,7 @@ export default (props) => {
   const [properties, children] = prepare(props);
 
   // extract URL
-  const url = properties.href ? properties.href : properties.to;
+  const url = properties.href ?? properties.to;
   delete properties.href;
   delete properties.to;
 
@@ -62,18 +62,10 @@ export default (props) => {
     external = (
       <small>
         <Icon
-          name={
-            properties.externalIcon
-              ? properties.externalIcon
-              : "fas fa-external-link-alt"
-          }
-          variant={
-            properties.externalVariant ? properties.externalVariant : "muted"
-          }
+          name={properties.externalIcon ?? "fas fa-external-link-alt"}
+          variant={properties.externalVariant ?? "muted"}
           className={
-            properties.externalClassName
-              ? properties.externalClassName
-              : "small pl-1 align-text-top"
+            properties.externalClassName ?? "small pl-1 align-text-top"
           }
           style={properties.externalStyle}
         />

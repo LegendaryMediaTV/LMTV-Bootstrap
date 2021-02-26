@@ -161,7 +161,7 @@ import Blockquote from '@legendarymediatv/bootstrap/Blockquote';
 …
 
 <Blockquote>
-  <p class="mb-0">
+  <p className="mb-0">
     A well-known quote, contained in a blockquote element.
   </p>
 </Blockquote>

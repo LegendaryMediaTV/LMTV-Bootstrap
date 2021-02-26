@@ -15,9 +15,9 @@ export default (props) => {
     ? properties.displayField
     : "title";
   delete properties.displayField;
-  const urlField = properties.urlField ? properties.urlField : "url";
+  const urlField = properties.urlField ?? "url";
   delete properties.urlField;
-  const keyField = properties.keyField ? properties.keyField : "id";
+  const keyField = properties.keyField ?? "id";
   delete properties.keyField;
 
   // establish title
@@ -35,7 +35,7 @@ export default (props) => {
 
     title = (
       <ListGroup.Item
-        as={properties.titleAs ? properties.titleAs : "h3"}
+        as={properties.titleAs ?? "h3"}
         className={properties.titleClassName}
         style={properties.titleStyle}
       >

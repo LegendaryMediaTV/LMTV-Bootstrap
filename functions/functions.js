@@ -18,9 +18,7 @@ export const formData = (form) => {
   const elements = form.elements;
   for (let index = 0; index < elements.length; index++) {
     // determine the key name
-    const name = elements[index].name
-      ? elements[index].name
-      : elements[index].id;
+    const name = elements[index].name ?? elements[index].id;
 
     // determine the value (not an unchecked checkbox/radio)
     const value = !(

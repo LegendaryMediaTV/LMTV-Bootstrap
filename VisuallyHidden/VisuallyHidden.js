@@ -2,7 +2,7 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-export default (props) => {
+const VisuallyHidden = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -16,3 +16,5 @@ export default (props) => {
 
   return <span {...properties}>{children}</span>;
 };
+
+export default VisuallyHidden;

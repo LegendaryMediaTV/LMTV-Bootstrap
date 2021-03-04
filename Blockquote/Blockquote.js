@@ -15,7 +15,7 @@ const Footer = (props) => {
   return <footer {...properties}>{children}</footer>;
 };
 
-export default class extends React.Component {
+export default class Blockquote extends React.Component {
   // sub-components
   static Footer = Footer;
 

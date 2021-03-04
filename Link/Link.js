@@ -4,9 +4,9 @@ import { combine, prepare } from "../functions";
 
 // components
 import Icon from "../Icon";
-import { Link } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 
-export default (props) => {
+const Link = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -52,7 +52,7 @@ export default (props) => {
   }
   // Gatsby: anchor or non-file internal
   else {
-    elementType = Link;
+    elementType = GatsbyLink;
     properties.to = url;
   }
 
@@ -84,3 +84,5 @@ export default (props) => {
   // render component
   return React.createElement(elementType, properties, children, external);
 };
+
+export default Link;

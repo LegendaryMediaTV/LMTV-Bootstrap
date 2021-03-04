@@ -7,7 +7,7 @@ import Display from "../../Display";
 import { Helmet } from "react-helmet";
 import { title } from "../../functions";
 
-export default (props) => {
+const Layout = (props) => {
   return (
     <>
       <Helmet htmlAttributes={{ lang: "en" }}>
@@ -38,3 +38,5 @@ export default (props) => {
     </>
   );
 };
+
+export default Layout;

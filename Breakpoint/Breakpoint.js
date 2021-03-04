@@ -2,7 +2,7 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-export default (props) => {
+const Breakpoint = (props) => {
   // prepare properties
   const [properties] = prepare(props);
 
@@ -39,3 +39,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default Breakpoint;

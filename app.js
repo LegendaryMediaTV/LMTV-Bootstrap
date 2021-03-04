@@ -1,7 +1,7 @@
 export { default as BackgroundImage } from "./BackgroundImage";
 export { default as Blockquote } from "./Blockquote";
 export { default as Breakpoint } from "./Breakpoint";
-//export { default as DatePicker } from "./DatePicker";
+export { default as DatePicker } from "./DatePicker";
 export { default as Demo } from "./Demo";
 export { default as Display } from "./Display";
 export { default as Flipper } from "./Flipper";

@@ -6,7 +6,7 @@ import { combine, prepare } from "../functions";
 import Form from "react-bootstrap/Form";
 import InfoIcon from "../InfoIcon";
 
-export default (props) => {
+const FormGroup = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -75,3 +75,5 @@ export default (props) => {
     </Form.Group>
   );
 };
+
+export default FormGroup;

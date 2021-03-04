@@ -9,6 +9,7 @@ import Collapse from "react-bootstrap/Collapse";
 import Modal from "react-bootstrap/Modal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import ProgressBar from "react-bootstrap/ProgressBar";
 import Tooltip from "react-bootstrap/Tooltip";
 
 // LegendaryMediaTV components
@@ -20,7 +21,7 @@ import Link from "../Link";
 import Spinner from "../Spinner";
 import ScrollToTop from "../ScrollToTop";
 
-export default class extends React.Component {
+export default class Demo extends React.Component {
   state = { showCollapse: false, showModal: false };
 
   modalCloseHandler = () => {
@@ -474,7 +475,6 @@ export default class extends React.Component {
             </button>
           </div>
           <nav
-            role="toolbar"
             aria-label="Cool Toolbar"
             className="btn-toolbar justify-content-between"
           >
@@ -1378,7 +1378,7 @@ export default class extends React.Component {
             <InfoIcon title="Info Icon Title">
               <p>
                 Info Icon body can be pretty fancy, containing{" "}
-                <a href="#">links</a> and any other elements supported in
+                <a href="/">links</a> and any other elements supported in
                 popovers!
               </p>
             </InfoIcon>
@@ -2048,7 +2048,6 @@ export default class extends React.Component {
             .
           </p>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-expand-sm mb-2"
           >
@@ -2097,7 +2096,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-danger navbar-expand-sm mb-2"
           >
@@ -2146,7 +2144,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-dark navbar-expand-sm mb-2"
           >
@@ -2195,7 +2192,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-info navbar-expand-sm mb-2"
           >
@@ -2244,7 +2240,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-light bg-light navbar-expand-sm mb-2"
           >
@@ -2293,7 +2288,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-primary navbar-expand-sm mb-2"
           >
@@ -2342,7 +2336,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-secondary navbar-expand-sm mb-2"
           >
@@ -2391,7 +2384,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-dark bg-success navbar-expand-sm mb-2"
           >
@@ -2440,7 +2432,6 @@ export default class extends React.Component {
             </div>
           </nav>
           <nav
-            role="toolbar"
             aria-label="navigation bar"
             className="navbar navbar-light bg-warning navbar-expand-sm mb-2"
           >
@@ -2607,232 +2598,37 @@ export default class extends React.Component {
             </a>
             .
           </p>
-          <div className="progress" style={{ height: "1px" }}>
-            <div
-              role="progressbar"
-              aria-valuenow="40"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar"
-              style={{ width: "40%" }}
-            />
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="71"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar"
-              style={{ width: "71%" }}
-            >
-              71%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="71"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar progress-bar-striped"
-              style={{ width: "71%" }}
-            >
-              71%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="65"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-danger"
-              style={{ width: "65%" }}
-            >
-              65%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="65"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-danger progress-bar-striped"
-              style={{ width: "65%" }}
-            >
-              65%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="42"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-dark"
-              style={{ width: "42%" }}
-            >
-              42%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="42"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-dark progress-bar-striped"
-              style={{ width: "42%" }}
-            >
-              42%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="53"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-info"
-              style={{ width: "53%" }}
-            >
-              53%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="53"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-info progress-bar-striped"
-              style={{ width: "53%" }}
-            >
-              53%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="90"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-light"
-              style={{ width: "90%" }}
-            >
-              90%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="90"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-light progress-bar-striped"
-              style={{ width: "90%" }}
-            >
-              90%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="55"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-primary"
-              style={{ width: "55%" }}
-            >
-              55%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="55"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-primary progress-bar-striped"
-              style={{ width: "55%" }}
-            >
-              55%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="51"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-secondary"
-              style={{ width: "51%" }}
-            >
-              51%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="51"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-secondary progress-bar-striped"
-              style={{ width: "51%" }}
-            >
-              51%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-success"
-              style={{ width: "100%" }}
-            >
-              100%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-success progress-bar-striped"
-              style={{ width: "100%" }}
-            >
-              100%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="55"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-warning"
-              style={{ width: "55%" }}
-            >
-              55%
-            </div>
-          </div>
-          <div className="progress mt-2">
-            <div
-              role="progressbar"
-              aria-valuenow="55"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              className="progress-bar bg-warning progress-bar-striped"
-              style={{ width: "55%" }}
-            >
-              55%
-            </div>
-          </div>
+          <ProgressBar now={40} style={{ height: "1px" }} label="40%" srOnly />
+          {[
+            { variant: null, value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "danger", value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "dark", value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "info", value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "light", value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "primary", value: Math.floor(Math.random() * 60) + 41 },
+            {
+              variant: "secondary",
+              value: Math.floor(Math.random() * 60) + 41,
+            },
+            { variant: "success", value: Math.floor(Math.random() * 60) + 41 },
+            { variant: "warning", value: Math.floor(Math.random() * 60) + 41 },
+          ].map((bar) => (
+            <>
+              <ProgressBar
+                variant={bar.variant}
+                now={bar.value}
+                label={`${bar.value}%`}
+                className="mt-2"
+              />
+              <ProgressBar
+                variant={bar.variant}
+                striped
+                now={bar.value}
+                label={`${bar.value}%`}
+                className="mt-2"
+              />
+            </>
+          ))}
 
           <Display.Heading2 id="spinner" className="mt-5 mb-3">
             Spinner

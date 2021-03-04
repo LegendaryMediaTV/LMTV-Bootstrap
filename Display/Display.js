@@ -70,10 +70,12 @@ const Heading4 = (props) => {
   );
 };
 
-export default {
+const Display = {
   Heading,
   Heading1,
   Heading2,
   Heading3,
   Heading4,
 };
+
+export default Display;

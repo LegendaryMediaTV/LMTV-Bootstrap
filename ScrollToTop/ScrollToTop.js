@@ -11,7 +11,7 @@ import Icon from "../Icon";
 // styling
 import "./ScrollToTop.css";
 
-export default (props) => {
+const ScrollToTop = (props) => {
   // use React state to track visibility
   const [componentState, setComponentState] = React.useState(false);
 
@@ -87,3 +87,5 @@ export const scrollToTopHandler = (event) => {
   // scroll to the top
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+export default ScrollToTop;

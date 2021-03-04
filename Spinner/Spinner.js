@@ -4,10 +4,10 @@ import { combine, prepare } from "../functions";
 
 // components
 import Alert from "react-bootstrap/Alert";
-import Spinner from "react-bootstrap/Spinner";
+import { default as BSSpinner } from "react-bootstrap/Spinner";
 import VisuallyHidden from "../VisuallyHidden";
 
-export default (props) => {
+const Spinner = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -43,9 +43,9 @@ export default (props) => {
 
     return (
       <Alert {...properties}>
-        <Spinner {...spinnerProperties}>
+        <BSSpinner {...spinnerProperties}>
           <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
-        </Spinner>
+        </BSSpinner>
       </Alert>
     );
   } else {
@@ -53,9 +53,11 @@ export default (props) => {
     properties.className = combine(properties.className);
 
     return (
-      <Spinner {...properties}>
+      <BSSpinner {...properties}>
         <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
-      </Spinner>
+      </BSSpinner>
     );
   }
 };
+
+export default Spinner;

@@ -4,9 +4,9 @@ import { combine, prepare } from "../functions";
 
 // components
 import Link from "../Link";
-import ListGroup from "react-bootstrap/ListGroup";
+import { default as BSListGroup } from "react-bootstrap/ListGroup";
 
-export default (props) => {
+const ListGroup = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -34,13 +34,13 @@ export default (props) => {
       .replace(/\s+/, " ");
 
     title = (
-      <ListGroup.Item
+      <BSListGroup.Item
         as={properties.titleAs ?? "h3"}
         className={properties.titleClassName}
         style={properties.titleStyle}
       >
         {properties.title}
-      </ListGroup.Item>
+      </BSListGroup.Item>
     );
   }
   delete properties.title;
@@ -48,6 +48,11 @@ export default (props) => {
   delete properties.titleVariant;
   delete properties.titleClassName;
   delete properties.titleStyle;
+
+  // merge deprecated click into onSelect
+  if (properties.click && !properties.onSelect)
+    properties.onSelect = properties.click;
+  delete properties.click;
 
   // extract items and establish children
   let items = "items" in properties ? properties.items : [];
@@ -58,31 +63,35 @@ export default (props) => {
       typeof item === "string";
 
     return (
-      <ListGroup.Item
+      <BSListGroup.Item
         action
         as={isLink ? Link : null}
         to={isLink ? (typeof item === "object" ? item[urlField] : item) : null}
-        onClick={properties.click ? properties.click.bind(this, item) : null}
+        onClick={
+          properties.onSelect ? properties.onSelect.bind(this, item) : null
+        }
         key={
           typeof item === "object" && keyField in item ? item[keyField] : index
         }
       >
         {typeof item === "object" ? item[displayField] : item}
-      </ListGroup.Item>
+      </BSListGroup.Item>
     );
   });
   delete properties.items;
-  delete properties.click;
+  delete properties.onSelect;
 
   // merge classes
   properties.className = combine(properties.className);
 
   // render component
   return (
-    <ListGroup {...properties}>
+    <BSListGroup {...properties}>
       {title}
       {items}
       {children}
-    </ListGroup>
+    </BSListGroup>
   );
 };
+
+export default ListGroup;

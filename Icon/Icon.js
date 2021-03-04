@@ -2,7 +2,7 @@
 import React from "react";
 import { combine, prepare } from "../functions";
 
-export default (props) => {
+const Icon = (props) => {
   // enforce requirements
   if (!props.name) throw new Error('<Icon> "name" property is required');
 
@@ -37,3 +37,5 @@ export default (props) => {
   // render component
   return <i {...properties} />;
 };
+
+export default Icon;

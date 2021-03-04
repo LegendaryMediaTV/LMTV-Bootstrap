@@ -7,10 +7,12 @@ import Layout from "../components/Layout";
 // LegendaryMediaTV components
 import Demo from "../../Demo";
 
-export default () => {
+const DemoPage = () => {
   return (
     <Layout title="Bootstrap Demo">
       <Demo />
     </Layout>
   );
 };
+
+export default DemoPage;

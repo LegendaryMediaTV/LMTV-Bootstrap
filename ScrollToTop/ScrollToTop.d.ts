@@ -1,3 +1,3 @@
-declare function _default(props: any): JSX.Element;
-export default _default;
 export function scrollToTopHandler(event: EventHandlerNonNull): void;
+export default ScrollToTop;
+declare function ScrollToTop(props: any): JSX.Element;

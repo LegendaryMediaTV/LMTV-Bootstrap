@@ -11,7 +11,7 @@ import Popover from "react-bootstrap/Popover";
 // styling
 import "./InfoIcon.css";
 
-export default (props) => {
+const InfoIcon = (props) => {
   // prepare properties
   const [properties, children] = prepare(props);
 
@@ -60,3 +60,5 @@ export default (props) => {
     </OverlayTrigger>
   );
 };
+
+export default InfoIcon;

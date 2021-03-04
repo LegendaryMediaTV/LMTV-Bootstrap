@@ -5,7 +5,7 @@ import { combine, prepare, separate } from "../functions/functions";
 // styling
 import "./Flipper.css";
 
-export default (props) => {
+const Flipper = (props) => {
   // prepare properties
   const [properties] = prepare(props);
 
@@ -73,3 +73,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default Flipper;

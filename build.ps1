@@ -4,10 +4,8 @@ Write-Host "Building Blockquote..."
 tsc ./Blockquote/Blockquote.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Breakpoint..."
 tsc ./Breakpoint/Breakpoint.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
-#Write-Host "Building DatePicker..."
-#tsc ./DatePicker/DatePicker.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
-Write-Host "Building Demo..."
-tsc ./Demo/Demo.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building DatePicker..."
+tsc ./DatePicker/DatePicker.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Display..."
 tsc ./Display/Display.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Flipper..."
@@ -32,6 +30,8 @@ Write-Host "Building Spinner..."
 tsc ./Spinner/Spinner.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building VisuallyHidden..."
 tsc ./VisuallyHidden/VisuallyHidden.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building Demo..."
+tsc ./Demo/Demo.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building app..."
 tsc ./app.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Done."

@@ -12,7 +12,7 @@ import { title } from "../../functions";
 // LegendaryMediaTV components
 import FullPage from "../../FullPage";
 
-export default () => {
+const FullPagePage = () => {
   return (
     <>
       <Helmet htmlAttributes={{ lang: "en" }}>
@@ -48,3 +48,5 @@ export default () => {
     </>
   );
 };
+
+export default FullPagePage;

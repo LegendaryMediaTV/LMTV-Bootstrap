@@ -69,7 +69,7 @@ import { Helmet } from "react-helmet";
 
 import Container from "react-bootstrap/Container";
 
-export default (props) => {
+const Layout = (props) => {
   return (
     <>
       <Helmet htmlAttributes={{ lang: "en" }}>
@@ -96,6 +96,8 @@ export default (props) => {
     </>
   );
 };
+
+export default Layout;
 ```
 
 Finally, import the components as needed into your app/components.
@@ -112,13 +114,15 @@ import Layout from "../components/Layout";
 // sample LegendaryMediaTV component
 import Icon from "@legendarymediatv/bootstrap/Icon";
 
-export default () => {
+const SamplePage = () => {
   return (
     <Layout title="Page Title" description="Page Description">
       <Icon name="fas fa-camera" />
     </Layout>
   );
 };
+
+export default SamplePage;
 ```
 
 ## Components
@@ -195,6 +199,36 @@ import Breakpoint from '@legendarymediatv/bootstrap/Breakpoint';
 | Name      | Type   | Default | Description                |
 | :-------- | :----- | :------ | :------------------------- |
 | `variant` | string | info    | Bootstrap theme color name |
+
+### `<DatePicker>`
+
+Allow someone to select a date using a calendar popover.
+
+```JavaScript
+import DatePicker from '@legendarymediatv/bootstrap/DatePicker';
+…
+// use React state to track selected date
+const [componentState, setComponentState] = React.useState(null);
+…
+// select a new date
+function dateHandler(selected) => {
+  setComponentState(selected);
+};
+…
+<DatePicker
+  title="Contact Date"
+  value={componentState}
+  onChange={dateHandler}
+/>
+```
+
+> _TIP: You could make your date change handler set the value for a hidden form element in addition to setting the state so that the date is submitted with the other form values_
+
+| Name      | Type        | Default       | Description                                              |
+| :-------- | :---------- | :------------ | :------------------------------------------------------- |
+| `title`   | JSX         | `Date Picker` | popover title                                            |
+| `titleAs` | elementType | `<h3>`        | `as` property for the popover title                      |
+| `variant` | string      | `light`       | Bootstrap theme color name applied to the display button |
 
 ### `<Demo>`
 
@@ -440,7 +474,7 @@ import InfoIcon from '@legendarymediatv/bootstrap/InfoIcon';
 | `name`          | string      | `'fas fa-question-circle'`             | icon class name                                                                                                     |
 | `title`         | JSX         |                                        | popover title                                                                                                       |
 | `titleAs`       | elementType | `<h3>`                                 | `as` property for the popover title                                                                                 |
-| `variant`       | string      | `info`                                 | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                  |
+| `variant`       | string      | `info`                                 | Bootstrap theme color name applied to the icon                                                                      |
 
 ### `<Link>`
 
@@ -534,9 +568,8 @@ const objectArray = [
 | `as`               | elementType                                    | inherited   | `as` property                                                                                                                                 |
 | `defaultActiveKey` | unknown                                        | inherited   | `defaultActiveKey` property                                                                                                                   |
 | `horizontal`       | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited   | `horizontal` property                                                                                                                         |
-| `onSelect`         | SelectCallback                                 | inherited   | `onSelect` property                                                                                                                           |
+| `onSelect`         | callback                                       | inherited   | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
 | `variant`          | 'flush'                                        | inherited   | `variant` property                                                                                                                            |
-| `click`            | function                                       |             | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
 | `displayField`     | string                                         | `'title'`   | when `items` is an array of objects, this is the object field to display                                                                      |
 | `items`            | string[] or object[]                           | required    | array of URL strings or an array of objects                                                                                                   |
 | `keyField`         | string                                         | `'id'`      | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |

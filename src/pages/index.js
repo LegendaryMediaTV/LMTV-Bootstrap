@@ -13,7 +13,7 @@ import { formData } from "../../functions";
 import BackgroundImage from "../../BackgroundImage";
 import Blockquote from "../../Blockquote";
 import Breakpoint from "../../Breakpoint";
-//import DatePicker from "../../DatePicker";
+import DatePicker from "../../DatePicker";
 import Display from "../../Display";
 import Flipper from "../../Flipper";
 import FormGroup from "../../FormGroup";
@@ -25,7 +25,7 @@ import ScrollToTop from "../../ScrollToTop";
 import { scrollToTopHandler } from "../../ScrollToTop";
 import Spinner from "../../Spinner";
 
-export default class extends React.Component {
+export default class HomePage extends React.Component {
   state = { flipped: false, date: null };
 
   flipHandler = (event) => {
@@ -99,7 +99,7 @@ export default class extends React.Component {
 
         <Breakpoint />
 
-        {/*<Display.Heading2>
+        <Display.Heading2>
           <code>&lt;DatePicker&gt;</code>
         </Display.Heading2>
 
@@ -107,7 +107,7 @@ export default class extends React.Component {
           title="My Date"
           value={this.state.date}
           onChange={this.dateHandler}
-        />*/}
+        />
 
         <Display.Heading2>
           <code>&lt;Display&gt;</code>

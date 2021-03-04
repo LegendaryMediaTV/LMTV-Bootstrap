@@ -10,7 +10,7 @@ import Popover from "react-bootstrap/Popover";
 // styling
 import "./DatePicker.css";
 
-export default class extends React.Component {
+export default class DatePicker extends React.Component {
   state = {};
   target = React.createRef();
 
@@ -44,7 +44,7 @@ export default class extends React.Component {
       <>
         <Button {...properties}>
           {this.props.value
-            ? this.props.value.toLocaleDateString("en-US")
+            ? this.props.value.toLocaleDateString()
             : "no date selected"}
         </Button>
 
@@ -53,6 +53,7 @@ export default class extends React.Component {
           show={this.state.show}
           rootClose
           onHide={this.onClose}
+          onEnter={this.load}
         >
           {(props) => (
             <Popover {...props}>
@@ -60,28 +61,33 @@ export default class extends React.Component {
                 {title ?? "Date Picker"}
               </Popover.Title>
 
-              <div>
-                Displayed: {this.state.displayed.toLocaleDateString("en-US")}
-              </div>
-              <div>
-                Selected:{" "}
-                {this.state.selected
-                  ? this.state.selected.toLocaleDateString("en-US")
-                  : "none"}
-              </div>
-              <div>Start: {this.state.start.toLocaleDateString("en-US")}</div>
-
               <table id="DatePicker">
                 <thead className="border-bottom">
                   <tr>
-                    <th>&lt;</th>
+                    <th>
+                      <Button
+                        variant="link"
+                        onClick={this.onMonthChange.bind(this, -1)}
+                        className="text-body"
+                      >
+                        &lt;
+                      </Button>
+                    </th>
                     <th colSpan="5">
                       {this.state.displayed.toLocaleDateString("en-US", {
                         month: "long",
                         year: "numeric",
                       })}
                     </th>
-                    <th>&gt;</th>
+                    <th>
+                      <Button
+                        variant="link"
+                        onClick={this.onMonthChange.bind(this, 1)}
+                        className="text-body"
+                      >
+                        &gt;
+                      </Button>
+                    </th>
                   </tr>
                   <tr>
                     <th>Sun</th>
@@ -155,9 +161,6 @@ export default class extends React.Component {
     // close popover
     this.onClose();
 
-    // update settings
-    this.load();
-
     // notify of change
     this.props.onChange(selected);
   };
@@ -166,6 +169,21 @@ export default class extends React.Component {
   onClose = () => {
     this.setState({ show: false });
   };
+
+  /** when month change button clicked (i.e., prev/next month) */
+  onMonthChange(deltaMonths) {
+    // skip the requested number of months
+    const displayed = new Date(
+      this.state.displayed.getFullYear(),
+      this.state.displayed.getMonth() + deltaMonths,
+      1
+    );
+
+    this.setState({
+      displayed: displayed,
+      start: this.startDate(displayed),
+    });
+  }
 
   /** when popover needs to toggle open/closed */
   onToggle = () => {
@@ -191,8 +209,7 @@ export default class extends React.Component {
 
     if (
       this.state.selected &&
-      this.state.selected.toLocaleDateString("en-US") ===
-        current.toLocaleDateString("en-US")
+      this.state.selected.toLocaleDateString() === current.toLocaleDateString()
     )
       className.push("border border-primary");
 

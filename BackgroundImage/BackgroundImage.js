@@ -5,7 +5,7 @@ import { combine, prepare, separate } from "../functions";
 // styling
 import "./BackgroundImage.css";
 
-export default (props) => {
+const BackgroundImage = (props) => {
   // enforce requirements
   if (!props.src)
     throw new Error('<BackgroundImage> "src" property is required');
@@ -36,3 +36,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default BackgroundImage;

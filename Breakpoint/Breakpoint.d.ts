@@ -1,2 +1,2 @@
-declare function _default(props: any): JSX.Element;
-export default _default;
+export default Breakpoint;
+declare function Breakpoint(props: any): JSX.Element;

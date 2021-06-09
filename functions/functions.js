@@ -20,17 +20,20 @@ export const formData = (form) => {
     // determine the key name
     const name = elements[index].name ?? elements[index].id;
 
-    // determine the value (not an unchecked checkbox/radio)
-    const value = !(
-      (elements[index].type === "checkbox" ||
-        elements[index].type === "radio") &&
-      !elements[index].checked
-    )
-      ? elements[index].value
-      : false;
+    // determine the value (not an unchecked radio)
+    let value;
+    if (elements[index].type === "radio")
+      value = elements[index].checked ? elements[index].value : undefined;
+    else if (elements[index].type === "checkbox")
+      value = !elements[index].checked
+        ? false
+        : elements[index].value !== "on"
+        ? elements[index].value
+        : true;
+    else value = elements[index].value;
 
     // only track named elements
-    if (name && value !== false) {
+    if (name && value != null) {
       // key already exists, add it to an array of values
       if (name in output) {
         // convert current value to an array, if not already

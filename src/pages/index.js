@@ -126,16 +126,16 @@ export default class HomePage extends React.Component {
         </Display.Heading2>
 
         <Flipper
-          front={<h3>flipper front content</h3>}
-          frontClassName="bg-primary text-light"
-          back={<h3>flipper back content</h3>}
-          backClassName="bg-secondary text-light"
+          front={<h3>auto-flipper front content</h3>}
+          frontClassName="bg-primary text-light p-2"
+          back={<h3>auto-flipper back content</h3>}
+          backClassName="bg-secondary text-light p-2"
         />
 
         <Flipper
           front={
             <Button onClick={this.flipHandler.bind(this)} block>
-              flip to the back
+              click to flip to the back
             </Button>
           }
           frontClassName="d-flex align-items-stretch"
@@ -145,7 +145,7 @@ export default class HomePage extends React.Component {
               variant="secondary"
               block
             >
-              flip to the front
+              click to flip to the front
             </Button>
           }
           backClassName="d-flex align-items-stretch"

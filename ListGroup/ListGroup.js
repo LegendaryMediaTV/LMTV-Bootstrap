@@ -65,7 +65,7 @@ const ListGroup = (props) => {
     return (
       <BSListGroup.Item
         action
-        as={isLink ? Link : null}
+        as={properties.itemsAs ?? (isLink ? Link : null)}
         to={isLink ? (typeof item === "object" ? item[urlField] : item) : null}
         onClick={
           properties.onSelect ? properties.onSelect.bind(this, item) : null
@@ -79,6 +79,7 @@ const ListGroup = (props) => {
     );
   });
   delete properties.items;
+  delete properties.itemsAs;
   delete properties.onSelect;
 
   // merge classes

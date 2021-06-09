@@ -85,7 +85,7 @@ const Layout = (props) => {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         />
       </Helmet>
       <Container className="py-4">
@@ -273,10 +273,10 @@ import Flipper from '@legendarymediatv/bootstrap/Flipper';
 …
 
 <Flipper
-  front={<h3>flipper front content</h3>}
-  frontClassName="bg-primary text-light"
-  back={<h3>flipper back content</h3>}
-  backClassName="bg-secondary text-light"
+  front={<h3>auto-flipper front content</h3>}
+  frontClassName="bg-primary text-light p-2"
+  back={<h3>auto-flipper back content</h3>}
+  backClassName="bg-secondary text-light p-2"
 />
 
 …
@@ -295,13 +295,13 @@ function flipHandler(event) => {
 <Flipper
   front={
     <Button onClick={flipHandler} block>
-      flip to the back
+      click to flip to the back
     </Button>
   }
   frontClassName="d-flex align-items-stretch"
   back={
     <Button onClick={flipHandler} variant="secondary" block>
-      flip to the front
+      click to flip to the front
     </Button>
   }
   backClassName="d-flex align-items-stretch"
@@ -565,13 +565,14 @@ const objectArray = [
 | Name               | Type                                           | Default     | Description                                                                                                                                   |
 | :----------------- | :--------------------------------------------- | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
 | `activeKey`        | unknown                                        | inherited   | `activeKey` property                                                                                                                          |
-| `as`               | elementType                                    | inherited   | `as` property                                                                                                                                 |
+| `as`               | elementType                                    | inherited   | `as` property for the list group                                                                                                              |
 | `defaultActiveKey` | unknown                                        | inherited   | `defaultActiveKey` property                                                                                                                   |
 | `horizontal`       | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited   | `horizontal` property                                                                                                                         |
 | `onSelect`         | callback                                       | inherited   | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
 | `variant`          | 'flush'                                        | inherited   | `variant` property                                                                                                                            |
 | `displayField`     | string                                         | `'title'`   | when `items` is an array of objects, this is the object field to display                                                                      |
 | `items`            | string[] or object[]                           | required    | array of URL strings or an array of objects                                                                                                   |
+| `itemsAs`          | elementType                                    | inherited   | `as` property for the list group items                                                                                                        |
 | `keyField`         | string                                         | `'id'`      | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
 | `title`            | string                                         |             | list group title                                                                                                                              |
 | `titleAs`          | elementType                                    | `<h3>`      | `as` property for the list group title                                                                                                        |
@@ -692,7 +693,7 @@ return (
 
 ### `formData(formObject)`
 
-Pass this function a form object (e.g., via an `onSubmit` event handler’s `event.target`) and it will return a JSON object containing the form’s element data as key–value pairs. Key names are pulled from either the form element `name` (preferred) or `id` attribute, otherwise unnamed/unidentified elements are omitted. Unchecked/unselected `checkbox` and `radio` elements are ignored as well.
+Pass this function a form object (e.g., via an `onSubmit` event handler’s `event.target`) and it will return a JSON object containing the form’s element data as key–value pairs. Key names are pulled from either the form element `name` (preferred) or `id` attribute, otherwise unnamed/unidentified elements are omitted. Unselected `radio` elements are ignored as well.
 
 > _NOTE: JSON data returned from this function could be utilized in API calls via extensions like [Axios](https://github.com/axios/axios)_
 

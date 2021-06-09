@@ -5,6 +5,7 @@ import React from "react";
 import Alert from "react-bootstrap/Alert";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
 import Collapse from "react-bootstrap/Collapse";
 import Modal from "react-bootstrap/Modal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -39,139 +40,139 @@ export default class Demo extends React.Component {
         <nav aria-label="nav" className="mt-3">
           <ul className="nav nav-tabs">
             <li className="nav-item">
-              <a href="#alert" className="nav-link">
+              <Link to="#alert" className="nav-link">
                 Alert
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#badge" className="nav-link">
+              <Link to="#badge" className="nav-link">
                 Badge
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#breadcrumb" className="nav-link">
+              <Link to="#breadcrumb" className="nav-link">
                 Breadcrumb
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#button" className="nav-link">
+              <Link to="#button" className="nav-link">
                 Button
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#button-group" className="nav-link">
+              <Link to="#button-group" className="nav-link">
                 Button Group
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#card" className="nav-link">
+              <Link to="#card" className="nav-link">
                 Card
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#carousel" className="nav-link">
+              <Link to="#carousel" className="nav-link">
                 Carousel
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#collapse" className="nav-link">
+              <Link to="#collapse" className="nav-link">
                 Collapse
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#description-list" className="nav-link">
+              <Link to="#description-list" className="nav-link">
                 Description List
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#figure" className="nav-link">
+              <Link to="#figure" className="nav-link">
                 Figure
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#form" className="nav-link">
+              <Link to="#form" className="nav-link">
                 Form
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#grid-layout" className="nav-link">
+              <Link to="#grid-layout" className="nav-link">
                 Grid Layout
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#info-icon" className="nav-link">
+              <Link to="#info-icon" className="nav-link">
                 Info Icon
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#image" className="nav-link">
+              <Link to="#image" className="nav-link">
                 Image
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#jumbotron" className="nav-link">
+              <Link to="#jumbotron" className="nav-link">
                 Jumbotron
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#list" className="nav-link">
+              <Link to="#list" className="nav-link">
                 List
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#list-group" className="nav-link">
+              <Link to="#list-group" className="nav-link">
                 List Group
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#modal" className="nav-link">
+              <Link to="#modal" className="nav-link">
                 Modal
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#nav" className="nav-link">
+              <Link to="#nav" className="nav-link">
                 Nav
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#navbar" className="nav-link">
+              <Link to="#navbar" className="nav-link">
                 Navbar
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#pagination" className="nav-link">
+              <Link to="#pagination" className="nav-link">
                 Pagination
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#popover" className="nav-link">
+              <Link to="#popover" className="nav-link">
                 Popover
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#progress" className="nav-link">
+              <Link to="#progress" className="nav-link">
                 Progress
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#spinner" className="nav-link">
+              <Link to="#spinner" className="nav-link">
                 Spinner
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#table" className="nav-link">
+              <Link to="#table" className="nav-link">
                 Table
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#tooltip" className="nav-link">
+              <Link to="#tooltip" className="nav-link">
                 Tooltip
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#typography" className="nav-link">
+              <Link to="#typography" className="nav-link">
                 Typography
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -196,21 +197,13 @@ export default class Demo extends React.Component {
             </p>
             <p>
               For more information, see{" "}
-              <a
-                href="https://react-bootstrap.github.io/components/alerts/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://react-bootstrap.github.io/components/alerts/">
                 React Bootstrap Alerts
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a
-                href="https://getbootstrap.com/docs/4.6/components/alerts/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://getbootstrap.com/docs/4.6/components/alerts/">
                 Bootstrap Alerts
-              </a>
+              </Link>
               .
             </p>
 
@@ -247,21 +240,13 @@ export default class Demo extends React.Component {
             </p>
             <p>
               For more information, see{" "}
-              <a
-                href="https://react-bootstrap.github.io/components/badge/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://react-bootstrap.github.io/components/badge/">
                 React Bootstrap Alerts
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a
-                href="https://getbootstrap.com/docs/4.6/components/badge/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://getbootstrap.com/docs/4.6/components/badge/">
                 Bootstrap Badges
-              </a>
+              </Link>
               .
             </p>
 
@@ -291,19 +276,15 @@ export default class Demo extends React.Component {
             </p>
             <p>
               For more information, see{" "}
-              <a
-                href="https://getbootstrap.com/docs/4.6/components/breadcrumb/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://getbootstrap.com/docs/4.6/components/breadcrumb/">
                 Bootstrap Breadcrumbs
-              </a>
+              </Link>
               .
             </p>
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Default
@@ -313,7 +294,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-danger">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Danger
@@ -323,7 +304,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-dark">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Dark
@@ -333,7 +314,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-info">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Info
@@ -343,7 +324,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-light">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Light
@@ -353,7 +334,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-primary">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Primary
@@ -363,7 +344,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-secondary">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Secondary
@@ -373,7 +354,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-success">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Success
@@ -383,7 +364,7 @@ export default class Demo extends React.Component {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-warning">
                 <li className="breadcrumb-item">
-                  <a href="#breadcrumb">Home</a>
+                  <Link to="#breadcrumb">Home</Link>
                 </li>
                 <li aria-current="page" className="breadcrumb-item active">
                   Warning
@@ -404,13 +385,9 @@ export default class Demo extends React.Component {
             </p>
             <p>
               For more information, see{" "}
-              <a
-                href="https://getbootstrap.com/docs/4.6/components/buttons/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Link to="https://getbootstrap.com/docs/4.6/components/buttons/">
                 Bootstrap Buttons
-              </a>
+              </Link>
               .
             </p>
             {[
@@ -454,13 +431,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/button-group/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/button-group/">
               Bootstrap Button Groups
-            </a>
+            </Link>
             .
           </p>
           <div role="group" className="mb-3 btn-group-lg btn-group-vertical">
@@ -532,13 +505,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/card/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/card/">
               Bootstrap Cards
-            </a>
+            </Link>
             .
           </p>
           <section className="row">
@@ -734,80 +703,45 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/carousel/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.netlify.app/components/carousel/">
+              React Bootstrap Carousel
+            </Link>{" "}
+            and{" "}
+            <Link to="https://getbootstrap.com/docs/4.6/components/carousel/">
               Bootstrap Carousel
-            </a>
+            </Link>
             .
           </p>
-          <section
-            id="bs_carousel_0"
-            data-ride="carousel"
-            className="carousel slide"
-          >
-            <div className="carousel-inner">
-              <ol className="carousel-indicators">
-                <li
-                  data-target="#bs_carousel_0"
-                  data-slide-to="0"
-                  className="active"
-                />
-                <li data-target="#bs_carousel_0" data-slide-to="1" />
-                <li data-target="#bs_carousel_0" data-slide-to="2" />
-              </ol>
-              <div className="carousel-item active">
-                <img
-                  src="https://m.media-amazon.com/images/M/MV5BMjY0NmNmMTEtYjQwZS00N2Y0LWJhOTAtMjUwNmQwMmVlMjNiXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
-                  alt="Knights that Say “Nee”"
-                  className="img-fluid d-block w-100"
-                />
-                <div className="carousel-caption d-none d-sm-block">
-                  “Cut down this entire forest … with a herring.”
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="https://m.media-amazon.com/images/M/MV5BNDZhYThkNjUtYmM0YS00ZGIzLTk4NmYtZDViMTNhNzBkNDYyXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
-                  alt="French Knight"
-                  className="img-fluid d-block w-100"
-                />
-                <div className="carousel-caption d-none d-sm-block">
-                  “Go away or I will taunt you again a second time!”
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="https://m.media-amazon.com/images/M/MV5BMzQ2NjViMjUtOWEwNi00M2ExLTg3MTUtMDUxMzJjZmIzNmMwXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
-                  alt="Black Knight"
-                  className="img-fluid d-block w-100"
-                />
-                <div className="carousel-caption d-none d-sm-block">
-                  “It’s only a flesh wound.”
-                </div>
-              </div>
-            </div>
-            <a
-              href="#bs_carousel_0"
-              role="button"
-              data-slide="prev"
-              className="carousel-control-prev"
-            >
-              <span aria-hidden="true" className="carousel-control-prev-icon" />
-              <span className="sr-only">Previous</span>
-            </a>
-            <a
-              href="#bs_carousel_0"
-              role="button"
-              data-slide="next"
-              className="carousel-control-next"
-            >
-              <span aria-hidden="true" className="carousel-control-next-icon" />
-              <span className="sr-only">Next</span>
-            </a>
-          </section>
+          <Carousel>
+            <Carousel.Item>
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BMjY0NmNmMTEtYjQwZS00N2Y0LWJhOTAtMjUwNmQwMmVlMjNiXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
+                alt="Knights that Say “Nee”"
+                className="img-fluid d-block w-100"
+              />
+              <Carousel.Caption>
+                “Cut down this entire forest … with a herring.”
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BNDZhYThkNjUtYmM0YS00ZGIzLTk4NmYtZDViMTNhNzBkNDYyXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
+                alt="French Knight"
+                className="img-fluid d-block w-100"
+              />
+              <Carousel.Caption>
+                “Go away or I will taunt you again a second time!”
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BMzQ2NjViMjUtOWEwNi00M2ExLTg3MTUtMDUxMzJjZmIzNmMwXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
+                alt="Black Knight"
+                className="img-fluid d-block w-100"
+              />
+              <Carousel.Caption>“It’s only a flesh wound.”</Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
 
           <Display.Heading2 id="collapse" className="mt-5 mb-3">
             Collapse
@@ -817,21 +751,13 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://react-bootstrap.github.io/utilities/transitions/#collapse"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.github.io/utilities/transitions/#collapse">
               React Bootstrap Collapse
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/collapse/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/collapse/">
               Bootstrap Collapse
-            </a>
+            </Link>
             .
           </p>
           <Button
@@ -857,13 +783,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/typography/#description-list-alignment"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/typography/#description-list-alignment">
               Bootstrap Description Lists
-            </a>
+            </Link>
             .
           </p>
           <dl className="row">
@@ -883,13 +805,9 @@ export default class Demo extends React.Component {
           <p>An image with an optional caption.</p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/figures/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/figures/">
               Bootstrap Figures
-            </a>
+            </Link>
             .
           </p>
           <figure className="figure d-block text-center">
@@ -916,13 +834,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/forms/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/forms/">
               Bootstrap Forms
-            </a>
+            </Link>
             .
           </p>
           <h4>Input</h4>
@@ -1217,13 +1131,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/layout/grid/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/layout/grid/">
               Bootstrap Grid System
-            </a>
+            </Link>
             .
           </p>
           <div className="container">
@@ -1351,26 +1261,18 @@ export default class Demo extends React.Component {
             where the icon looks helpful and is themed as{" "}
             <code>information</code>. They are useful for providing short
             instructions and quick tips. Info Icons can contain any elements
-            supported by <a href="#popover">popovers</a> (e.g., paragraphs,
+            supported by <Link to="#popover">popovers</Link> (e.g., paragraphs,
             links, etc., but not blockquotes, description lists, etc.).
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://react-bootstrap.github.io/components/overlays/#popovers"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.github.io/components/overlays/#popovers">
               React Bootstrap Popovers
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/popovers/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/popovers/">
               Bootstrap Popovers
-            </a>
+            </Link>
             .
           </p>
           <p>
@@ -1378,7 +1280,7 @@ export default class Demo extends React.Component {
             <InfoIcon title="Info Icon Title">
               <p>
                 Info Icon body can be pretty fancy, containing{" "}
-                <a href="/">links</a> and any other elements supported in
+                <Link to="/">links</Link> and any other elements supported in
                 popovers!
               </p>
             </InfoIcon>
@@ -1390,13 +1292,9 @@ export default class Demo extends React.Component {
           <p>Responsive (mobile-friendly) images and thumbnails.</p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/images/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/images/">
               Bootstrap Images
-            </a>
+            </Link>
             .
           </p>
           <h3>Fluid image</h3>
@@ -1418,13 +1316,9 @@ export default class Demo extends React.Component {
           <p>Showcase/hero content, often containing headings and/or images.</p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/jumbotron/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/jumbotron/">
               Bootstrap Jumbotron
-            </a>
+            </Link>
             .
           </p>
         </section>
@@ -1497,13 +1391,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/typography/#lists"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/typography/#lists">
               Bootstrap Lists
-            </a>
+            </Link>
             .
           </p>
           <h4>Ordered (bs_ol)</h4>
@@ -1540,24 +1430,20 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/list-group/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/list-group/">
               Bootstrap List Groups
-            </a>
+            </Link>
             .
           </p>
           <h4>List Group Items</h4>
           <div className="list-group mb-3">
             <div className="list-group-item active">active text</div>
-            <a
-              href="#list-group"
+            <Link
+              to="#list-group"
               className="list-group-item list-group-item-action"
             >
               link
-            </a>
+            </Link>
             <button
               type="button"
               className="list-group-item list-group-item-action"
@@ -1565,32 +1451,32 @@ export default class Demo extends React.Component {
               button
             </button>
             <div className="list-group-item d-flex p-0">
-              <a
-                href="#list-group"
+              <Link
+                to="#list-group"
                 className="list-group-item list-group-item-action rounded-0 flex-grow-1 border-0"
                 style={{ marginBottom: "1px" }}
               >
                 flex item link with icon links
-              </a>
-              <a
-                href="#list-group"
+              </Link>
+              <Link
+                to="#list-group"
                 className="list-group-item list-group-item-action list-group-item-info rounded-0 w-auto border-top-0 border-right-0 border-bottom-0"
               >
                 <i aria-label="bootstrap" className="fab fa-bootstrap" />
-              </a>
-              <a
-                href="#list-group"
+              </Link>
+              <Link
+                to="#list-group"
                 className="list-group-item list-group-item-action list-group-item-danger rounded-0 w-auto border-top-0 border-right-0 border-bottom-0"
               >
                 <i aria-label="heart" className="fas fa-heart" />
-              </a>
+              </Link>
             </div>
           </div>
           <h4>List Group List</h4>
           <ul className="list-group mb-3">
             <li className="list-group-item active">active text</li>
             <li className="list-group-item">
-              <a href="#list-group">link</a>
+              <Link to="#list-group">link</Link>
             </li>
             <li className="list-group-item">text</li>
           </ul>
@@ -1604,21 +1490,13 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://react-bootstrap.github.io/components/modal/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.github.io/components/modal/">
               React Bootstrap Modals
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/modal/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/modal/">
               Bootstrap Modals
-            </a>
+            </Link>
             .
           </p>
           <Button variant="primary" onClick={this.modalShowHandler}>
@@ -1655,42 +1533,38 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/navs/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/navs/">
               Bootstrap Navs
-            </a>
+            </Link>
             .
           </p>
           <nav aria-label="nav" className="mb-2">
             <ul className="nav nav-null">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1700,30 +1574,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav nav-tabs">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Tabs
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1733,30 +1607,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav nav-pills">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Pills
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1766,30 +1640,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-danger">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Danger
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1799,30 +1673,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-dark">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Dark
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1832,30 +1706,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-info">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Info
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1865,30 +1739,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-light">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Light
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1898,30 +1772,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-primary">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Primary
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1931,30 +1805,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-secondary">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Secondary
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1964,30 +1838,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-success">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Success
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -1997,30 +1871,30 @@ export default class Demo extends React.Component {
           <nav aria-label="nav" className="mb-2">
             <ul className="nav bg-warning">
               <li className="nav-item">
-                <a href="#nav" aria-current="page" className="nav-link active">
+                <Link to="#nav" aria-current="page" className="nav-link active">
                   Warning
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 1
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#nav" className="nav-link">
+                <Link to="#nav" className="nav-link">
                   Page 2
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  href="#nav"
+                <Link
+                  to="#nav"
                   disabled
                   aria-disabled="true"
                   tabIndex="-1"
                   className="nav-link disabled"
                 >
                   Page 3
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <div className="nav-link">Text</div>
@@ -2038,22 +1912,18 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/navbar/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/navbar/">
               Bootstrap Navbars
-            </a>
+            </Link>
             .
           </p>
           <nav
             aria-label="navigation bar"
             className="navbar navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Brand Name
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2068,29 +1938,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_0" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2099,9 +1969,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-danger navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Danger
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2116,29 +1986,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_1" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2147,9 +2017,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-dark navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Dark
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2164,29 +2034,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_2" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2195,9 +2065,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-info navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Info
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2212,29 +2082,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_3" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2243,9 +2113,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-light bg-light navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Light
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2260,29 +2130,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_4" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2291,9 +2161,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-primary navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Primary
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2308,29 +2178,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_5" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2339,9 +2209,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-secondary navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Secondary
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2356,29 +2226,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_6" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2387,9 +2257,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-dark bg-success navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Success
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2404,29 +2274,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_7" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2435,9 +2305,9 @@ export default class Demo extends React.Component {
             aria-label="navigation bar"
             className="navbar navbar-light bg-warning navbar-expand-sm mb-2"
           >
-            <a href="#navbar" className="navbar-brand">
+            <Link to="#navbar" className="navbar-brand">
               Warning
-            </a>
+            </Link>
             <button
               type="button"
               data-toggle="collapse"
@@ -2452,29 +2322,29 @@ export default class Demo extends React.Component {
             <div id="bs_navbar_items_8" className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     aria-current="page"
                     className="nav-link active"
                   >
                     Page 1
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="#navbar" className="nav-link">
+                  <Link to="#navbar" className="nav-link">
                     Page 2
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#navbar"
+                  <Link
+                    to="#navbar"
                     disabled
                     aria-disabled="true"
                     tabIndex="-1"
                     className="nav-link disabled"
                   >
                     Page 3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -2488,13 +2358,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/pagination/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/pagination/">
               Bootstrap Pagination
-            </a>
+            </Link>
             .
           </p>
           <nav aria-label="sample pagination">
@@ -2508,9 +2374,9 @@ export default class Demo extends React.Component {
                 </span>
               </li>
               <li className="page-item">
-                <a href="#pagination" className="page-link">
+                <Link to="#pagination" className="page-link">
                   1
-                </a>
+                </Link>
               </li>
               <li aria-current="page" className="page-item active">
                 <span className="page-link">
@@ -2518,17 +2384,17 @@ export default class Demo extends React.Component {
                 </span>
               </li>
               <li className="page-item">
-                <a href="#pagination" className="page-link">
+                <Link to="#pagination" className="page-link">
                   3
-                </a>
+                </Link>
               </li>
               <li className="page-item disabled">
                 <span className="page-link">Text</span>
               </li>
               <li className="page-item">
-                <a href="#pagination" className="page-link">
+                <Link to="#pagination" className="page-link">
                   <i aria-label="next" className="fas fa-angle-double-right" />
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -2544,21 +2410,13 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://react-bootstrap.github.io/components/overlays/#popovers"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.github.io/components/overlays/#popovers">
               React Bootstrap Popovers
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/popovers/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/popovers/">
               Bootstrap Popovers
-            </a>
+            </Link>
             .
           </p>
           <OverlayTrigger
@@ -2589,13 +2447,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/progress/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/progress/">
               Bootstrap Progress
-            </a>
+            </Link>
             .
           </p>
           <ProgressBar now={40} style={{ height: "1px" }} label="40%" srOnly />
@@ -2636,13 +2490,9 @@ export default class Demo extends React.Component {
           <p>Indicate the loading state of a component or page.</p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/spinners/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/spinners/">
               Bootstrap Spinners
-            </a>
+            </Link>
             .
           </p>
           <h3>
@@ -2754,13 +2604,9 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/tables/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/tables/">
               Bootstrap Tables
-            </a>
+            </Link>
             .
           </p>
           <section className="table-responsive">
@@ -3204,21 +3050,13 @@ export default class Demo extends React.Component {
           </p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://react-bootstrap.github.io/components/overlays/#tooltips"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://react-bootstrap.github.io/components/overlays/#tooltips">
               React Bootstrap Tooltips
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/components/tooltips/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/components/tooltips/">
               Bootstrap Tooltips
-            </a>
+            </Link>
             .
           </p>
           <OverlayTrigger
@@ -3241,13 +3079,9 @@ export default class Demo extends React.Component {
           <p>Headings, body text, block quotes, links, and more.</p>
           <p>
             For more information, see{" "}
-            <a
-              href="https://getbootstrap.com/docs/4.6/content/typography/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link to="https://getbootstrap.com/docs/4.6/content/typography/">
               Bootstrap Typography
-            </a>
+            </Link>
             .
           </p>
           <Display.Heading1>Display 1</Display.Heading1>
@@ -3263,8 +3097,8 @@ export default class Demo extends React.Component {
           <p className="lead">Leading paragraph</p>
           <h4>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</h4>
           <h4>
-            “The <a href="#typography">quick brown fox</a> jumps over the ‘lazy’
-            dog …” 0123456789 Il1 bdpq rnm cld
+            “The <Link to="#typography">quick brown fox</Link> jumps over the
+            ‘lazy’ dog …” 0123456789 Il1 bdpq rnm cld
           </h4>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -3277,8 +3111,8 @@ export default class Demo extends React.Component {
           </p>
           <p>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</p>
           <p>
-            “The <a href="#typography">quick brown fox</a> jumps over the ‘lazy’
-            dog …” 0123456789 Il1 bdpq rnm cld
+            “The <Link to="#typography">quick brown fox</Link> jumps over the
+            ‘lazy’ dog …” 0123456789 Il1 bdpq rnm cld
           </p>
           <Blockquote>
             <p>

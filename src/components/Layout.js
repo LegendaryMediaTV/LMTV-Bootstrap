@@ -21,11 +21,11 @@ const Layout = (props) => {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
         />
       </Helmet>
       <Container className="bg-white py-4">

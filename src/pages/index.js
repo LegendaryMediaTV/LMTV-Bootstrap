@@ -43,7 +43,11 @@ export default class HomePage extends React.Component {
 
     const linkObjects = [
       { title: "Test Link", url: "/" },
-      { title: "Sample Link", url: "/demo" },
+      {
+        title: "Sample Link",
+        subtitle: "additional information in a subtitle",
+        url: "/demo",
+      },
     ];
 
     const objectArray = [

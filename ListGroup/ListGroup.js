@@ -11,10 +11,12 @@ const ListGroup = (props) => {
   const [properties, children] = prepare(props);
 
   // establish field names
-  const displayField = properties.displayField
-    ? properties.displayField
-    : "title";
+  const displayField = properties.displayField || "title";
   delete properties.displayField;
+  const displaySubField = properties.displaySubField ?? "subtitle";
+  delete properties.displaySubField;
+  const displaySubClassName =
+    properties.displaySubClassName ?? "font-italic small text-muted";
   const urlField = properties.urlField ?? "url";
   delete properties.urlField;
   const keyField = properties.keyField ?? "id";
@@ -74,7 +76,17 @@ const ListGroup = (props) => {
           typeof item === "object" && keyField in item ? item[keyField] : index
         }
       >
-        {typeof item === "object" ? item[displayField] : item}
+        {typeof item === "object" ? (
+          <>
+            {item[displayField]}
+
+            {displaySubField && displaySubField in item ? (
+              <div className={displaySubClassName}>{item[displaySubField]}</div>
+            ) : null}
+          </>
+        ) : (
+          item
+        )}
       </BSListGroup.Item>
     );
   });

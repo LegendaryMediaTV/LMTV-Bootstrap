@@ -79,7 +79,7 @@ const ScrollToTop = (props) => {
  */
 export const scrollToTopHandler = (event) => {
   // ignore default click behavior
-  event.preventDefault();
+  if (event) event.preventDefault();
 
   // enable smooth scrolling for older browsers
   smoothscroll.polyfill();

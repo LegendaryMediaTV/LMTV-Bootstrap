@@ -108,7 +108,7 @@ export default class Demo extends React.Component {
           ))}
         </Nav>
 
-        <Container>
+        <Container fluid="lg">
           <Alert variant="info">
             <Alert.Heading>Usage</Alert.Heading>
 
@@ -253,13 +253,16 @@ export default class Demo extends React.Component {
                 </Button>
 
                 <Button variant={variant.toLowerCase()} className="me-3 mb-3">
-                  <Icon name="fas fa-camera" className="pe-2" />
-                  {variant}
-                </Button>
-
-                <Button variant={variant.toLowerCase()} className="me-3 mb-3">
                   {variant}
                   <Icon name="fas fa-camera" className="ps-2" />
+                </Button>
+
+                <Button
+                  disabled
+                  variant={variant.toLowerCase()}
+                  className="me-3 mb-3"
+                >
+                  {variant}
                 </Button>
               </div>
             ))}
@@ -691,7 +694,7 @@ export default class Demo extends React.Component {
         </Container>
 
         <section id="grid-layout" className="mt-5">
-          <Container>
+          <Container fluid="lg">
             <Display.Heading2 className="mt-5 mb-3">
               Grid Layout
             </Display.Heading2>
@@ -737,7 +740,7 @@ export default class Demo extends React.Component {
           </Container>
         </section>
 
-        <Container>
+        <Container fluid="lg">
           <section id="info-icon" className="mt-5">
             <Display.Heading2 className="mb-3">Info Icon</Display.Heading2>
 
@@ -1133,7 +1136,7 @@ export default class Demo extends React.Component {
 
             {bgVariants.map((variant) => (
               <Navbar
-                expand="sm"
+                expand="md"
                 bg={variant.toLowerCase()}
                 variant={
                   !variant

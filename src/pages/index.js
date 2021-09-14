@@ -88,9 +88,11 @@ export default class HomePage extends React.Component {
         </Blockquote>
 
         <Blockquote>
-          Success, meaningful success, begins when we take ownership and
-          actively take responsibility for our part in the shortcomings of our
-          life.
+          <p>
+            Success, meaningful success, begins when we take ownership and
+            actively take responsibility for our part in the shortcomings of our
+            life.
+          </p>
           <Blockquote.Footer>
             Dr Eric Thomas,{" "}
             <cite>Greatness Is Upon You: Laying the Foundation</cite>
@@ -124,6 +126,10 @@ export default class HomePage extends React.Component {
         <Display.Heading3>Display Heading 3</Display.Heading3>
 
         <Display.Heading4>Display Heading 4</Display.Heading4>
+
+        <Display.Heading5>Display Heading 5</Display.Heading5>
+
+        <Display.Heading6>Display Heading 6</Display.Heading6>
 
         <Display.Heading2>
           <code>&lt;Flipper&gt;</code>
@@ -212,13 +218,13 @@ export default class HomePage extends React.Component {
 
         <Icon name="fas fa-camera" />
 
-        <Icon name="bi bi-info-circle-fill" className="ml-2" />
+        <Icon name="bi bi-info-circle-fill" className="ms-2" />
 
         <Icon
           name="fas fa-camera"
           alt="DSLR"
           variant="success"
-          className="ml-2"
+          className="ms-2"
           style={{ fontSize: "2rem" }}
         />
 
@@ -332,9 +338,11 @@ export default class HomePage extends React.Component {
 
         <Button onClick={scrollToTopHandler}>Scroll to Top</Button>
 
-        <Link to="#" onClick={scrollToTopHandler}>
-          scroll to top
-        </Link>
+        <div className="mt-1">
+          <Link to="#" onClick={scrollToTopHandler}>
+            scroll to top
+          </Link>
+        </div>
 
         <ScrollToTop name="fas fa-caret-square-up" variant="success" />
       </Layout>

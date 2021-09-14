@@ -57,9 +57,9 @@ export default class DatePicker extends React.Component {
         >
           {(props) => (
             <Popover {...props}>
-              <Popover.Title as={titleAs ?? "h3"}>
+              <Popover.Header as={titleAs ?? "h3"}>
                 {title ?? "Date Picker"}
-              </Popover.Title>
+              </Popover.Header>
 
               <table id="DatePicker">
                 <thead className="border-bottom">
@@ -131,7 +131,7 @@ export default class DatePicker extends React.Component {
                   ))}
                 </tbody>
               </table>
-              <div className="text-right">
+              <div className="text-end">
                 <Button
                   variant="link"
                   onClick={this.onChange.bind(this, new Date())}

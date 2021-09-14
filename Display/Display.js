@@ -70,12 +70,38 @@ const Heading4 = (props) => {
   );
 };
 
+const Heading5 = (props) => {
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
+
+  return (
+    <Heading {...properties} size="5">
+      {children}
+    </Heading>
+  );
+};
+
+const Heading6 = (props) => {
+  // prepare properties
+  const [properties, children] = prepare(props);
+  properties.className = combine(properties.className);
+
+  return (
+    <Heading {...properties} size="6">
+      {children}
+    </Heading>
+  );
+};
+
 const Display = {
   Heading,
   Heading1,
   Heading2,
   Heading3,
   Heading4,
+  Heading5,
+  Heading6,
 };
 
 export default Display;

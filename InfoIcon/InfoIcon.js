@@ -22,11 +22,12 @@ const InfoIcon = (props) => {
   const popover = (
     <Popover>
       {properties.title ? (
-        <Popover.Title as={properties.titleAs ?? "h3"}>
+        <Popover.Header as={properties.titleAs ?? "h3"}>
           {properties.title}
-        </Popover.Title>
+        </Popover.Header>
       ) : null}
-      {children ? <Popover.Content>{children}</Popover.Content> : null}
+
+      {children ? <Popover.Body>{children}</Popover.Body> : null}
     </Popover>
   );
   delete properties.title;

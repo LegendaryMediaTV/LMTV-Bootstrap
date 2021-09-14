@@ -65,7 +65,7 @@ const Link = (props) => {
           name={properties.externalIcon ?? "fas fa-external-link-alt"}
           variant={properties.externalVariant ?? "muted"}
           className={
-            properties.externalClassName ?? "small pl-1 align-text-top"
+            properties.externalClassName ?? "small ps-1 align-text-top"
           }
           style={properties.externalStyle}
         />

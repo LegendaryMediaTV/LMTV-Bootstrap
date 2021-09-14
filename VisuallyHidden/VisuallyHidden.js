@@ -7,8 +7,9 @@ const VisuallyHidden = (props) => {
   const [properties, children] = prepare(props);
 
   // add Bootstrap classes
-  properties.className.push("sr-only");
-  if (properties.focusable) properties.className.push("sr-only-focusable");
+  properties.className.push("visually-hidden");
+  if (properties.focusable)
+    properties.className.push("visually-hidden-focusable");
   delete properties.focusable;
 
   // merge classes

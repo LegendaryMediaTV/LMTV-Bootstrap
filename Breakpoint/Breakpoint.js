@@ -33,8 +33,11 @@ const Breakpoint = (props) => {
       <div className="d-none d-lg-block d-xl-none">
         <b>LG</b>
       </div>
-      <div className="d-none d-xl-block">
+      <div className="d-none d-xl-block d-xxl-none">
         <b>XL</b>
+      </div>
+      <div className="d-none d-xxl-block">
+        <b>XXL</b>
       </div>
     </div>
   );

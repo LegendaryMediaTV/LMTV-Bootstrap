@@ -15,19 +15,22 @@ const Layout = (props) => {
 
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
           crossorigin="anonymous"
         />
+
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         />
+
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
         />
       </Helmet>
+
       <Container className="bg-white py-4">
         {props.title ? (
           <Display.Heading1>{props.title}</Display.Heading1>

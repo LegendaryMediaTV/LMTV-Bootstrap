@@ -1,6 +1,6 @@
 # LegendaryMediaTV Bootstrap
 
-This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 4](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
+This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 5](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
 For the most recent changes, check out the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
 
@@ -11,7 +11,7 @@ For the most recent changes, check out the [changelog](https://github.com/Legend
 Install peer dependencies (if they aren't already).
 
 ```JavaScript
-npm install react react-dom react-bootstrap gatsby
+npm install react react-dom react-bootstrap@next gatsby
 ```
 
 Optionally, install [React Helmet](https://github.com/nfl/react-helmet) (useful for linking Bootstrap resources).
@@ -79,13 +79,13 @@ const Layout = (props) => {
 
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
           crossorigin="anonymous"
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         />
       </Helmet>
       <Container className="py-4">
@@ -157,7 +157,7 @@ import BackgroundImage from '@legendarymediatv/bootstrap/BackgroundImage';
 
 ### `<Blockquote>`
 
-Quote blocks of content using [Bootstrap’s Blockquote](https://getbootstrap.com/docs/4.6/content/typography/#blockquotes).
+Quote blocks of content using [Bootstrap’s Blockquote](https://getbootstrap.com/docs/5.1/content/typography/#blockquotes).
 
 ```JavaScript
 import Blockquote from '@legendarymediatv/bootstrap/Blockquote';
@@ -234,8 +234,6 @@ function dateHandler(selected) => {
 
 This component is intended to be used for development purposes (e.g., testing your custom Bootstrap theme) by having everything all one one page!
 
-> _WARNING: This component is still under development and often uses Bootstrap’s raw classes instead of React Bootstrap components or even **this** package’s components. Stay tuned for more updates!_
-
 ### `<Display>`
 
 Bootstrap’s display heading typography classes.
@@ -244,6 +242,8 @@ Bootstrap’s display heading typography classes.
 - `<Display.Heading2>`
 - `<Display.Heading3>`
 - `<Display.Heading4>`
+- `<Display.Heading5>`
+- `<Display.Heading6>`
 
 ```JavaScript
 import Display from '@legendarymediatv/bootstrap/Display';
@@ -257,6 +257,10 @@ import Display from '@legendarymediatv/bootstrap/Display';
 <Display.Heading3>Display Heading 3</Display.Heading3>
 
 <Display.Heading4>Display Heading 4</Display.Heading4>
+
+<Display.Heading5>Display Heading 5</Display.Heading5>
+
+<Display.Heading6>Display Heading 6</Display.Heading6>
 ```
 
 | Name | Type        | Default                          | Description          |
@@ -347,29 +351,29 @@ import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
 </FormGroup>
 ```
 
-| Name             | Type                        | Default          | Description                                 |
-| :--------------- | :-------------------------- | :--------------- | :------------------------------------------ |
-| `ref`            | ReactRef                    | inherited        | `ref` property for the `<Form.Group>`       |
-| `as`             | elementType                 | inherited        | `as` property for the `<Form.Group>`        |
-| `controlId`      | string                      | inherited        | `controlId` property for the `<Form.Group>` |
-| `info`           | JSX                         |                  | popover content for the `<InfoIcon>`        |
-| `infoAlt`        | string                      | inherited        | `alt` property for the `<InfoIcon>`         |
-| `infoClassName`  | string                      |                  | `className` property for the `<InfoIcon>`   |
-| `infoStyle`      | object                      |                  | `style` property for the `<InfoIcon>`       |
-| `infoName`       | string                      | inherited        | `name` property for the `<InfoIcon>`        |
-| `infoTitle`      | JSX                         | `title` property | `title` property for the `<InfoIcon>`       |
-| `infoTitleAs`    | elementType                 | inherited        | `titleAs` property for the `<InfoIcon>`     |
-| `infoVariant`    | string                      | inherited        | `variant` property for the `<InfoIcon>`     |
-| `iconClassName`  | string                      |                  | `className` property for the `<InfoIcon>`   |
-| `iconStyle`      | object                      |                  | `style` property for the `<InfoIcon>`       |
-| `title`          | JSX                         |                  | content for the `<Form.Label>`              |
-| `labelRef`       | ReactRef                    | inherited        | `ref` property for the `<Form.Label>`       |
-| `labelAs`        | elementType                 | inherited        | `as` property for the `<Form.Label>`        |
-| `column`         | boolean \| `'sm'` \| `'lg'` | inherited        | `column` property for the `<Form.Label>`    |
-| `htmlFor`        | string                      | inherited        | `htmlFor` property for the `<Form.Label>`   |
-| `srOnly`         | boolean                     | inherited        | `srOnly` property for the `<Form.Label>`    |
-| `labelClassName` | string                      |                  | `className` property for the `<Form.Label>` |
-| `labelStyle`     | object                      |                  | `style` property for the `<Form.Label>`     |
+| Name             | Type                        | Default          | Description                                      |
+| :--------------- | :-------------------------- | :--------------- | :----------------------------------------------- |
+| `ref`            | ReactRef                    | inherited        | `ref` property for the `<Form.Group>`            |
+| `as`             | elementType                 | inherited        | `as` property for the `<Form.Group>`             |
+| `controlId`      | string                      | inherited        | `controlId` property for the `<Form.Group>`      |
+| `info`           | JSX                         |                  | popover content for the `<InfoIcon>`             |
+| `infoAlt`        | string                      | inherited        | `alt` property for the `<InfoIcon>`              |
+| `infoClassName`  | string                      |                  | `className` property for the `<InfoIcon>`        |
+| `infoStyle`      | object                      |                  | `style` property for the `<InfoIcon>`            |
+| `infoName`       | string                      | inherited        | `name` property for the `<InfoIcon>`             |
+| `infoTitle`      | JSX                         | `title` property | `title` property for the `<InfoIcon>`            |
+| `infoTitleAs`    | elementType                 | inherited        | `titleAs` property for the `<InfoIcon>`          |
+| `infoVariant`    | string                      | inherited        | `variant` property for the `<InfoIcon>`          |
+| `iconClassName`  | string                      |                  | `className` property for the `<InfoIcon>`        |
+| `iconStyle`      | object                      |                  | `style` property for the `<InfoIcon>`            |
+| `title`          | JSX                         |                  | content for the `<Form.Label>`                   |
+| `labelRef`       | ReactRef                    | inherited        | `ref` property for the `<Form.Label>`            |
+| `labelAs`        | elementType                 | inherited        | `as` property for the `<Form.Label>`             |
+| `column`         | boolean \| `'sm'` \| `'lg'` | inherited        | `column` property for the `<Form.Label>`         |
+| `htmlFor`        | string                      | inherited        | `htmlFor` property for the `<Form.Label>`        |
+| `visuallyHidden` | boolean                     | inherited        | `visuallyHidden` property for the `<Form.Label>` |
+| `labelClassName` | string                      |                  | `className` property for the `<Form.Label>`      |
+| `labelStyle`     | object                      |                  | `style` property for the `<Form.Label>`          |
 
 ### `<FullPage>`
 
@@ -432,7 +436,7 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
   name="fas fa-camera"
   alt="DSLR"
   variant="success"
-  className="ml-3"
+  className="ms-3"
   style={{ fontSize: '2rem' }}
 />
 ```
@@ -514,7 +518,7 @@ import Link from '@legendarymediatv/bootstrap/Link';
 | `externalNewTab`    | boolean         | `false`                                                                    | set `newTab` to `true` when `external` is `true`                                                                            |
 | `externalIcon`      | icon class name | `'fas fa-external-link-alt'`                                               | external icon class name                                                                                                    |
 | `externalVariant`   | string          | `info`                                                                     | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                          |
-| `externalClassName` | string          | `'small pl-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
+| `externalClassName` | string          | `'small ps-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
 | `externalStyle`     | object          |                                                                            | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                                      |
 
 ### `<ListGroup>`
@@ -642,7 +646,7 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
 
 ### `<VisuallyHidden>`
 
-Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/4.6/getting-started/accessibility/#visually-hidden-content) (a.k.a., screen reader only).
+Bootstrap’s [visually hidden content](https://getbootstrap.com/docs/5.1/helpers/visually-hidden/) (a.k.a., screen reader only).
 
 ```JavaScript
 import VisuallyHidden from '@legendarymediatv/bootstrap/VisuallyHidden';

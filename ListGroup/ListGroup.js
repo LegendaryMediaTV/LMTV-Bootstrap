@@ -66,12 +66,12 @@ const ListGroup = (props) => {
 
     return (
       <BSListGroup.Item
-        action
         as={properties.itemsAs ?? (isLink ? Link : null)}
         to={isLink ? (typeof item === "object" ? item[urlField] : item) : null}
         onClick={
           properties.onSelect ? properties.onSelect.bind(this, item) : null
         }
+        action
         key={
           typeof item === "object" && keyField in item ? item[keyField] : index
         }

@@ -47,7 +47,7 @@ const FormGroup = (props) => {
       as={properties.labelAs}
       column={properties.column}
       htmlFor={properties.htmlFor}
-      srOnly={properties.srOnly}
+      visuallyHidden={properties.visuallyHidden}
       className={properties.labelClassName}
       style={properties.labelStyle}
     >
@@ -59,7 +59,7 @@ const FormGroup = (props) => {
   delete properties.labelAs;
   delete properties.column;
   delete properties.htmlFor;
-  delete properties.srOnly;
+  delete properties.visuallyHidden;
   delete properties.labelClassName;
   delete properties.labelStyle;
   delete properties.title;

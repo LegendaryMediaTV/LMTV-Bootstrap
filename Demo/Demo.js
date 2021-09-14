@@ -243,26 +243,43 @@ export default class Demo extends React.Component {
             </p>
 
             {btnVariants.map((variant) => (
-              <div key={variant}>
-                <Button variant={variant.toLowerCase()} className="me-3 mb-3">
+              <div className="mb-3" key={variant}>
+                <Button variant={variant.toLowerCase()} className="me-3 mb-1">
                   {variant}
                 </Button>
 
-                <Button variant={variant.toLowerCase()} className="me-3 mb-3">
+                <Button variant={variant.toLowerCase()} className="me-3 mb-1">
                   <Icon name="fas fa-camera" />
                 </Button>
 
-                <Button variant={variant.toLowerCase()} className="me-3 mb-3">
-                  {variant}
-                  <Icon name="fas fa-camera" className="ps-2" />
+                <Button
+                  variant={variant.toLowerCase()}
+                  active
+                  className="me-3 mb-1"
+                >
+                  Active (prop)
+                </Button>
+
+                <Button
+                  variant={variant.toLowerCase()}
+                  className="active me-3 mb-1"
+                >
+                  Active (class)
                 </Button>
 
                 <Button
                   disabled
                   variant={variant.toLowerCase()}
-                  className="me-3 mb-3"
+                  className="me-3 mb-1"
                 >
-                  {variant}
+                  Disabled (prop)
+                </Button>
+
+                <Button
+                  variant={variant.toLowerCase()}
+                  className="disabled me-3 mb-1"
+                >
+                  Disabled (class)
                 </Button>
               </div>
             ))}

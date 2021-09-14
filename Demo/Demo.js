@@ -31,6 +31,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 // LegendaryMediaTV components
 import Blockquote from "../Blockquote";
+import Breakpoint from "../Breakpoint";
 import Display from "../Display";
 import Icon from "../Icon";
 import InfoIcon from "../InfoIcon";
@@ -71,6 +72,7 @@ export default class Demo extends React.Component {
       <>
         <Nav variant="tabs" className="mt-3 mb-5">
           {[
+            { _id: "home", title: "Home", url: "/" },
             { _id: "alert", title: "Alert" },
             { _id: "badge", title: "Badge" },
             { _id: "breadcrumb", title: "Breadcrumb" },
@@ -99,7 +101,7 @@ export default class Demo extends React.Component {
             { _id: "typography", title: "Typography" },
           ].map((item) => (
             <Nav.Item key={item._id}>
-              <Nav.Link as={Link} to={`#${item._id}`}>
+              <Nav.Link as={Link} to={item.url ? item.url : `#${item._id}`}>
                 {item.title}
               </Nav.Link>
             </Nav.Item>
@@ -289,7 +291,7 @@ export default class Demo extends React.Component {
 
             <Row className="mb-4">
               {btnVariants.map((variant) => (
-                <Col md="2" className="mb-1" key={variant}>
+                <Col xs={6} md={4} xl={2} className="mb-1" key={variant}>
                   <ButtonGroup
                     size="lg"
                     vertical
@@ -713,6 +715,8 @@ export default class Demo extends React.Component {
           </Container>
 
           <Container fluid>
+            <Breakpoint className="mb-2 py-1 text-center" />
+
             {[...Array(3).keys()].map((rowIndex) => (
               <Row key={rowIndex}>
                 {[...Array(12).keys()].map((colIndex) => (
@@ -1041,25 +1045,24 @@ export default class Demo extends React.Component {
             {["Tabs", "Pills"].map((variant) => (
               <Nav
                 as="ul"
-                defaultActiveKey="home"
                 variant={variant.toLowerCase()}
                 className="mb-2"
                 key={variant}
               >
                 <Nav.Item as="li">
-                  <Nav.Link as={Link} to="#nav" eventKey="home">
+                  <Nav.Link as={Link} to="#nav" active>
                     {variant}
                   </Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item as="li">
-                  <Nav.Link as={Link} to="#nav" eventKey="page-1">
+                  <Nav.Link as={Link} to="#nav">
                     Page 1
                   </Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item as="li">
-                  <Nav.Link as={Link} to="#nav" eventKey="page-2">
+                  <Nav.Link as={Link} to="#nav">
                     Page 2
                   </Nav.Link>
                 </Nav.Item>
@@ -1152,21 +1155,21 @@ export default class Demo extends React.Component {
                 </Navbar.Toggle>
 
                 <Navbar.Collapse id={`navbar-nav-${variant || "Default"}`}>
-                  <Nav as="ul" defaultActiveKey="home">
+                  <Nav as="ul">
                     <Nav.Item as="li">
-                      <Nav.Link as={Link} to="#nav" eventKey="home">
+                      <Nav.Link as={Link} to="#nav" active>
                         Active
                       </Nav.Link>
                     </Nav.Item>
 
                     <Nav.Item as="li">
-                      <Nav.Link as={Link} to="#nav" eventKey="page-1">
+                      <Nav.Link as={Link} to="#nav">
                         Page 1
                       </Nav.Link>
                     </Nav.Item>
 
                     <Nav.Item as="li">
-                      <Nav.Link as={Link} to="#nav" eventKey="page-2">
+                      <Nav.Link as={Link} to="#nav">
                         Page 2
                       </Nav.Link>
                     </Nav.Item>

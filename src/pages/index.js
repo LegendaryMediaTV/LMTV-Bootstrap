@@ -5,6 +5,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/Layout";
+import Nav from "react-bootstrap/Nav";
 
 // LegendaryMediaTV functions
 import { formData } from "../../functions";
@@ -71,7 +72,27 @@ export default class HomePage extends React.Component {
     };
 
     return (
-      <Layout title="Bootstrap / Components" parent="Bootstrap Demo">
+      <Layout title="Bootstrap Components">
+        <Nav as="ul" variant="pills" className="mb-2">
+          <Nav.Item as="li">
+            <Nav.Link as={Link} to="/" active>
+              Home
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item as="li">
+            <Nav.Link as={Link} to="/demo">
+              Demo
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item as="li">
+            <Nav.Link as={Link} to="/full-page">
+              Full Page
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+
         <BackgroundImage
           src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
           imageStyle={{ opacity: 0.25 }}

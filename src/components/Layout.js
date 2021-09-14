@@ -31,13 +31,17 @@ const Layout = (props) => {
         />
       </Helmet>
 
-      <Container className="bg-white py-4">
-        {props.title ? (
-          <Display.Heading1>{props.title}</Display.Heading1>
-        ) : null}
+      {props.noContainer ? (
+        props.children
+      ) : (
+        <Container className="bg-white py-4">
+          {props.title ? (
+            <Display.Heading1>{props.title}</Display.Heading1>
+          ) : null}
 
-        {props.children}
-      </Container>
+          {props.children}
+        </Container>
+      )}
     </>
   );
 };

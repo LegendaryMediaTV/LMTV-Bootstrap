@@ -22,7 +22,6 @@ import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Pagination from "react-bootstrap/Pagination";
 import Popover from "react-bootstrap/Popover";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Row from "react-bootstrap/Row";
@@ -37,6 +36,7 @@ import Icon from "../Icon";
 import InfoIcon from "../InfoIcon";
 import Link from "../Link";
 import ListGroup from "../ListGroup";
+import Pagination from "../Pagination";
 import Spinner from "../Spinner";
 import ScrollToTop from "../ScrollToTop";
 
@@ -179,8 +179,8 @@ export default class Demo extends React.Component {
             </p>
 
             {variants.map((variant) => (
-              <h3>
-                <Badge pill bg={variant.toLowerCase()} key={variant}>
+              <h3 key={variant}>
+                <Badge pill bg={variant.toLowerCase()}>
                   {variant}
                 </Badge>
               </h3>
@@ -244,25 +244,25 @@ export default class Demo extends React.Component {
 
             {btnVariants.map((variant) => (
               <div className="mb-3" key={variant}>
-                <Button variant={variant.toLowerCase()} className="me-3 mb-1">
+                <Button variant={variant.toLowerCase()} className="me-1 mb-1">
                   {variant}
                 </Button>
 
-                <Button variant={variant.toLowerCase()} className="me-3 mb-1">
+                <Button variant={variant.toLowerCase()} className="me-1 mb-1">
                   <Icon name="fas fa-camera" />
                 </Button>
 
                 <Button
                   variant={variant.toLowerCase()}
                   active
-                  className="me-3 mb-1"
+                  className="me-1 mb-1"
                 >
                   Active (prop)
                 </Button>
 
                 <Button
                   variant={variant.toLowerCase()}
-                  className="active me-3 mb-1"
+                  className="active me-1 mb-1"
                 >
                   Active (class)
                 </Button>
@@ -270,14 +270,14 @@ export default class Demo extends React.Component {
                 <Button
                   disabled
                   variant={variant.toLowerCase()}
-                  className="me-3 mb-1"
+                  className="me-1 mb-1"
                 >
                   Disabled (prop)
                 </Button>
 
                 <Button
                   variant={variant.toLowerCase()}
-                  className="disabled me-3 mb-1"
+                  className="disabled mb-1"
                 >
                   Disabled (class)
                 </Button>
@@ -525,7 +525,7 @@ export default class Demo extends React.Component {
                 { term: "Abigail", value: "pug" },
                 { term: "Garfield", value: "cat" },
               ].map((item) => (
-                <React.Fragment>
+                <React.Fragment key={item.term}>
                   <Col as="dt" sm={3}>
                     {item.term}
                   </Col>
@@ -596,11 +596,15 @@ export default class Demo extends React.Component {
             <h3>Input</h3>
 
             <section>
-              <Form.Control name="plain" value="plain text input" plaintext />
+              <Form.Control
+                name="plain"
+                defaultValue="plain text input"
+                plaintext
+              />
 
               <Form.Control
                 name="readonly"
-                value="read-only input"
+                defaultValue="read-only input"
                 readOnly
                 className="mt-2"
               />
@@ -682,7 +686,7 @@ export default class Demo extends React.Component {
               </InputGroup>
 
               {bgVariants.map((variant) => (
-                <InputGroup size="lg" className="mt-2">
+                <InputGroup size="lg" className="mt-2" key={variant}>
                   <InputGroup.Text
                     className={variant ? `bg-${variant.toLowerCase()}` : null}
                   >
@@ -1163,6 +1167,7 @@ export default class Demo extends React.Component {
                     : "dark"
                 }
                 className="mb-2"
+                key={variant}
               >
                 <Navbar.Brand as={Link} to="#navbar">
                   {variant || "Default"}
@@ -1226,63 +1231,68 @@ export default class Demo extends React.Component {
             </p>
 
             <Pagination>
-              <Pagination.First as={Link} to="#pagination" />
-              <Pagination.Prev as={Link} to="#pagination" />
+              <Pagination.First to="#pagination" />
+              <Pagination.Prev to="#pagination" />
 
-              <Pagination.Item as={Link} to="#pagination">
-                1
-              </Pagination.Item>
+              <Pagination.Item to="#pagination">1</Pagination.Item>
 
               <Pagination.Ellipsis />
 
-              <Pagination.Item as={Link} to="#pagination">
-                10
-              </Pagination.Item>
-              <Pagination.Item as={Link} to="#pagination" active>
+              <Pagination.Item to="#pagination">10</Pagination.Item>
+              <Pagination.Item to="#pagination" active>
                 11
               </Pagination.Item>
-              <Pagination.Item as={Link} to="#pagination">
+              <Pagination.Item
+                to="#pagination"
+                onClick={() => {
+                  alert("you clicked page 12");
+                }}
+              >
                 12
               </Pagination.Item>
               <Pagination.Item disabled>13</Pagination.Item>
 
-              <Pagination.Ellipsis />
+              <Pagination.Ellipsis disabled />
 
-              <Pagination.Next as={Link} to="#pagination" />
-              <Pagination.Last as={Link} to="#pagination" />
+              <Pagination.Next to="#pagination" />
+              <Pagination.Last to="#pagination" />
             </Pagination>
 
             <Pagination>
-              <Pagination.First as={Link} to="#pagination">
+              <Pagination.First to="#pagination">
                 <Icon name="fas fa-angle-double-left" />
               </Pagination.First>
-              <Pagination.Prev as={Link} to="#pagination">
+              <Pagination.Prev to="#pagination">
                 <Icon name="fas fa-angle-left" />
               </Pagination.Prev>
 
-              <Pagination.Item as={Link} to="#pagination">
-                1
-              </Pagination.Item>
+              <Pagination.Item to="#pagination">1</Pagination.Item>
 
-              <Pagination.Ellipsis />
+              <Pagination.Ellipsis>
+                <Icon name="fas fa-ellipsis-h" alt="more" />
+              </Pagination.Ellipsis>
 
-              <Pagination.Item as={Link} to="#pagination">
-                10
-              </Pagination.Item>
-              <Pagination.Item as={Link} to="#pagination">
+              <Pagination.Item to="#pagination">10</Pagination.Item>
+              <Pagination.Item to="#pagination" active>
                 11
               </Pagination.Item>
-              <Pagination.Item as={Link} to="#pagination">
+              <Pagination.Item
+                onClick={() => {
+                  alert("you clicked page 12");
+                }}
+              >
                 12
               </Pagination.Item>
               <Pagination.Item disabled>13</Pagination.Item>
 
-              <Pagination.Ellipsis />
+              <Pagination.Ellipsis disabled>
+                <Icon name="fas fa-ellipsis-h" alt="more" />
+              </Pagination.Ellipsis>
 
-              <Pagination.Next as={Link} to="#pagination">
+              <Pagination.Next to="#pagination">
                 <Icon name="fas fa-angle-right" />
               </Pagination.Next>
-              <Pagination.Last as={Link} to="#pagination">
+              <Pagination.Last to="#pagination">
                 <Icon name="fas fa-angle-double-right" />
               </Pagination.Last>
             </Pagination>

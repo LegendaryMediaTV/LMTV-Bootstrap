@@ -11,6 +11,7 @@ export { default as Icon } from "./Icon";
 export { default as InfoIcon } from "./InfoIcon";
 export { default as Link } from "./Link";
 export { default as ListGroup } from "./ListGroup";
+export { default as Pagination } from "./Pagination";
 export { default as Spinner } from "./Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden";
 export { default as ScrollToTop, scrollToTopHandler } from "./ScrollToTop";

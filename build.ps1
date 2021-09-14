@@ -24,6 +24,8 @@ Write-Host "Building Link..."
 tsc ./Link/Link.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building ListGroup..."
 tsc ./ListGroup/ListGroup.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building Pagination..."
+tsc ./Pagination/Pagination.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building ScrollToTop..."
 tsc ./ScrollToTop/ScrollToTop.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Spinner..."

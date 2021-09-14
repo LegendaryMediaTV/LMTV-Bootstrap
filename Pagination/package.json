@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Pagination",
+  "private": true,
+  "module": "Pagination",
+  "types": "Pagination.d.ts"
+}

@@ -298,13 +298,20 @@ function flipHandler(event) => {
 …
 <Flipper
   front={
-    <Button onClick={flipHandler} block>
+    <Button
+      onClick={flipHandler}
+      className="w-100"
+    >
       click to flip to the back
     </Button>
   }
   frontClassName="d-flex align-items-stretch"
   back={
-    <Button onClick={flipHandler} variant="secondary" block>
+    <Button
+      onClick={flipHandler}
+      variant="secondary"
+      className="w-100"
+    >
       click to flip to the front
     </Button>
   }
@@ -512,7 +519,7 @@ import Link from '@legendarymediatv/bootstrap/Link';
 
 | Name                | Type            | Default                                                                    | Description                                                                                                                 |
 | :------------------ | :-------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| `href` \| `to`      | URL             | required                                                                   | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`)             |
+| `href` \| `to`      | URL             | required                                                                   | URL or anchor target                                                                                                        |
 | `external`          | boolean         | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
 | `newTab`            | boolean         | `false`                                                                    | force the link to open in a new tab (sets `target="_blank" rel="noopener"`)                                                 |
 | `externalNewTab`    | boolean         | `false`                                                                    | set `newTab` to `true` when `external` is `true`                                                                            |
@@ -590,6 +597,83 @@ const objectArray = [
 | `titleClassName`      | string                                         |                                | `className` property for the list group title                                                                                                 |
 | `titleStyle`          | object                                         |                                | `style` property for the list group title                                                                                                     |
 | `urlField`            | string                                         | `'url'`                        | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
+
+### `<Pagination>`
+
+Basically a rebuild of React Bootstrap’s `<Pagination>` and `<PageItem>` components, but based off of our `<Link>` component (in order to be Gatsby-friendly).
+
+Sub-components include:
+
+- `<Pagination.Item>` – creates a pagination item containing a `<Link>` or `<button>` (native), depending on if a URL is provided in the `href`/`to` property
+- `<Pagination.First>` – `<Pagination.Item>` with the content as an ARIA-friendly `«` by default
+- `<Pagination.Last>` – `<Pagination.Item>` with the content as an ARIA-friendly `»` by default
+- `<Pagination.Prev>` – `<Pagination.Item>` with the content as an ARIA-friendly `‹` by default
+- `<Pagination.Next>` – `<Pagination.Item>` with the content as an ARIA-friendly `›` by default
+- `<Pagination.Ellipsis>` – `<Pagination.Item>` with the content as an ARIA-friendly `…` by default
+
+> _TIP: if you prefer to use icons, you can override the default content of any of the above by making the child an_ `<Icon>`
+
+```JavaScript
+import Pagination from '@legendarymediatv/bootstrap/Pagination';
+…
+<Pagination>
+  <Pagination.First />
+  <Pagination.Prev />
+
+  <Pagination.Ellipsis />
+
+  <Pagination.Item>1</Pagination.Item>
+  <Pagination.Item to="/sample">2</Pagination.Item>
+  <Pagination.Item onClick={sampleHandler.bind(this, 3)}>3</Pagination.Item>
+  <Pagination.Item active>4</Pagination.Item>
+  <Pagination.Item disabled>5</Pagination.Item>
+
+  <Pagination.Ellipsis />
+
+  <Pagination.Next />
+  <Pagination.Last />
+</Pagination>
+
+…
+
+<Pagination size="sm">
+  <Pagination.First>
+    <Icon name="fas fa-angle-double-left" alt="first" />
+  </Pagination.First>
+
+  <Pagination.Prev>
+    <Icon name="fas fa-angle-left" alt="previous" />
+  </Pagination.Prev>
+
+  <Pagination.Ellipsis>
+    <Icon name="fas fa-ellipsis-h" alt="more" />
+  </Pagination.Ellipsis>
+
+  <Pagination.Next>
+    <Icon name="fas fa-angle-right" alt="next" />
+  </Pagination.Next>
+
+ <Pagination.Last>
+    <Icon name="fas fa-angle-double-right" alt="last" />
+  </Pagination.Last>
+</Pagination>
+```
+
+#### `<Pagination>` properties
+
+| Name   | Type             | Default | Description                              |
+| :----- | :--------------- | :------ | :--------------------------------------- |
+| `size` | `'sm'` \| `'lg'` |         | sets the sizing for the whole pagination |
+
+#### `<Pagination.*>` properties
+
+| Name           | Type     | Default     | Description                                                                                                                                                                       |
+| :------------- | :------- | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `active`       | boolean  | `false`     | sets the pagination item as `active` and appends the children with a `<VisuallyHidden>` tag containing the `activeLabel`                                                          |
+| `activeLabel`  | string   | `(current)` | content of the `<VisuallyHidden>` tag when flagged as `active`                                                                                                                    |
+| `disabled`     | boolean  | `false`     | sets the pagination item as disabled                                                                                                                                              |
+| `href` \| `to` | URL      |             | URL or anchor target for the `<Link>`; if blank, then a `<button>` is rendered and probably should have an `onClick` defined                                                      |
+| `onClick`      | function |             | callback function for when the component is clicked; _TIP: as in the example above, use_ `bind()` _when assigning the property in order to tell which pagination item is clicked_ |
 
 ### `<ScrollToTop>`
 

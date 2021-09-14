@@ -22,6 +22,7 @@ import InfoIcon from "../../InfoIcon";
 import Icon from "../../Icon";
 import Link from "../../Link";
 import ListGroup from "../../ListGroup";
+import Pagination from "../../Pagination";
 import ScrollToTop from "../../ScrollToTop";
 import { scrollToTopHandler } from "../../ScrollToTop";
 import Spinner from "../../Spinner";
@@ -165,7 +166,7 @@ export default class HomePage extends React.Component {
 
         <Flipper
           front={
-            <Button onClick={this.flipHandler.bind(this)} block>
+            <Button onClick={this.flipHandler.bind(this)} className="w-100">
               click to flip to the back
             </Button>
           }
@@ -174,7 +175,7 @@ export default class HomePage extends React.Component {
             <Button
               onClick={this.flipHandler.bind(this)}
               variant="secondary"
-              block
+              className="w-100"
             >
               click to flip to the front
             </Button>
@@ -209,11 +210,13 @@ export default class HomePage extends React.Component {
               defaultValue="eleventeen"
             />
           </FormGroup>
+
           <div>
             <label>
               <input name="agree" type="checkbox" /> agree?
             </label>
           </div>
+
           <div>
             <label>
               {" "}
@@ -230,6 +233,7 @@ export default class HomePage extends React.Component {
               <input name="option" type="radio" value="c" /> C
             </label>
           </div>
+
           <Button type="submit">Submit</Button>
         </Form>
 
@@ -340,6 +344,64 @@ export default class HomePage extends React.Component {
           click={sampleHandler}
           className="mt-3"
         />
+
+        <Display.Heading2>
+          <code>&lt;Pagination&gt;</code>
+        </Display.Heading2>
+
+        {["sm", "", "lg"].map((size) => (
+          <Pagination size={size} key={size}>
+            <Pagination.First
+              onClick={() => {
+                alert("first");
+              }}
+            />
+            <Pagination.Prev to="#" />
+            <Pagination.Item to="#">{1}</Pagination.Item>
+            <Pagination.Ellipsis />
+
+            <Pagination.Item to="#">{10}</Pagination.Item>
+            <Pagination.Item to="#">{11}</Pagination.Item>
+            <Pagination.Item to="#" active>
+              {12}
+            </Pagination.Item>
+            <Pagination.Item to="#">{13}</Pagination.Item>
+            <Pagination.Item to="#" disabled>
+              {14}
+            </Pagination.Item>
+
+            <Pagination.Ellipsis to="#" />
+            <Pagination.Item to="#">{20}</Pagination.Item>
+            <Pagination.Next to="#" />
+            <Pagination.Last
+              onClick={() => {
+                alert("last");
+              }}
+            />
+          </Pagination>
+        ))}
+
+        <Pagination size="sm">
+          <Pagination.First>
+            <Icon name="fas fa-angle-double-left" alt="first" />
+          </Pagination.First>
+
+          <Pagination.Prev>
+            <Icon name="fas fa-angle-left" alt="previous" />
+          </Pagination.Prev>
+
+          <Pagination.Ellipsis>
+            <Icon name="fas fa-ellipsis-h" alt="more" />
+          </Pagination.Ellipsis>
+
+          <Pagination.Next>
+            <Icon name="fas fa-angle-right" alt="next" />
+          </Pagination.Next>
+
+          <Pagination.Last>
+            <Icon name="fas fa-angle-double-right" alt="last" />
+          </Pagination.Last>
+        </Pagination>
 
         <Display.Heading2>
           <code>&lt;Spinner&gt;</code>

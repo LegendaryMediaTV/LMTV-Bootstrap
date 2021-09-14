@@ -106,7 +106,6 @@ export default class DatePicker extends React.Component {
                         <td key={dayIndex}>
                           <Button
                             variant="link"
-                            block
                             onClick={this.onChange.bind(
                               this,
                               new Date(
@@ -195,7 +194,7 @@ export default class DatePicker extends React.Component {
    ******************/
 
   dayClassName = (week, day) => {
-    const className = [];
+    const className = ["w-100"];
 
     const current = new Date(
       this.state.start.getFullYear(),

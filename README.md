@@ -26,6 +26,8 @@ Install this package.
 npm install @legendarymediatv/bootstrap
 ```
 
+> _NOTE: if you are still using Bootstrap 4.6.x and React Bootstrap 1.6.x, then you can use [version 2.13.1 of this package](https://www.npmjs.com/package/@legendarymediatv/bootstrap/v/2.13.1), however, it is not continuing to be maintained_
+
 ### Preparation
 
 [Modify the Babel loader](https://www.gatsbyjs.com/docs/how-to/custom-configuration/add-custom-webpack-config/#modifying-the-babel-loader) to transpile JSX for this package.
@@ -577,26 +579,26 @@ const objectArray = [
 />
 ```
 
-| Name                  | Type                                           | Default                        | Description                                                                                                                                   |
-| :-------------------- | :--------------------------------------------- | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeKey`           | unknown                                        | inherited                      | `activeKey` property                                                                                                                          |
-| `as`                  | elementType                                    | inherited                      | `as` property for the list group                                                                                                              |
-| `defaultActiveKey`    | unknown                                        | inherited                      | `defaultActiveKey` property                                                                                                                   |
-| `horizontal`          | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited                      | `horizontal` property                                                                                                                         |
-| `onSelect`            | callback                                       | inherited                      | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
-| `variant`             | 'flush'                                        | inherited                      | `variant` property                                                                                                                            |
-| `displayField`        | string                                         | `'title'`                      | when `items` is an array of objects, this is the object field to display                                                                      |
-| `displaySubField`     | string                                         | `'subtitle'`                   | when `items` is an array of objects, this is the object field to subtly display below the `displayField`                                      |
-| `displaySubClassName` | string                                         | `font-italic small text-muted` | when `items` is an array of objects, this is the `className` property for the `displaySubField`                                               |
-| `items`               | string[] or object[]                           | required                       | array of URL strings or an array of objects                                                                                                   |
-| `itemsAs`             | elementType                                    | inherited                      | `as` property for the list group items                                                                                                        |
-| `keyField`            | string                                         | `'id'`                         | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
-| `title`               | string                                         |                                | list group title                                                                                                                              |
-| `titleAs`             | elementType                                    | `<h3>`                         | `as` property for the list group title                                                                                                        |
-| `titleVariant`        | string                                         | `'primary'`                    | Bootstrap theme color name for the list group title                                                                                           |
-| `titleClassName`      | string                                         |                                | `className` property for the list group title                                                                                                 |
-| `titleStyle`          | object                                         |                                | `style` property for the list group title                                                                                                     |
-| `urlField`            | string                                         | `'url'`                        | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
+| Name                  | Type                                           | Default                       | Description                                                                                                                                   |
+| :-------------------- | :--------------------------------------------- | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeKey`           | unknown                                        | inherited                     | `activeKey` property                                                                                                                          |
+| `as`                  | elementType                                    | inherited                     | `as` property for the list group                                                                                                              |
+| `defaultActiveKey`    | unknown                                        | inherited                     | `defaultActiveKey` property                                                                                                                   |
+| `horizontal`          | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited                     | `horizontal` property                                                                                                                         |
+| `onSelect`            | callback                                       | inherited                     | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
+| `variant`             | 'flush'                                        | inherited                     | `variant` property                                                                                                                            |
+| `displayField`        | string                                         | `'title'`                     | when `items` is an array of objects, this is the object field to display                                                                      |
+| `displaySubField`     | string                                         | `'subtitle'`                  | when `items` is an array of objects, this is the object field to subtly display below the `displayField`                                      |
+| `displaySubClassName` | string                                         | `fst-italic small text-muted` | when `items` is an array of objects, this is the `className` property for the `displaySubField`                                               |
+| `items`               | string[] or object[]                           | required                      | array of URL strings or an array of objects                                                                                                   |
+| `itemsAs`             | elementType                                    | inherited                     | `as` property for the list group items                                                                                                        |
+| `keyField`            | string                                         | `'id'`                        | when `items` is an array of objects, this is the object field to use as the React list key; otherwise it just uses the array index as the key |
+| `title`               | string                                         |                               | list group title                                                                                                                              |
+| `titleAs`             | elementType                                    | `<h3>`                        | `as` property for the list group title                                                                                                        |
+| `titleVariant`        | string                                         | `'primary'`                   | Bootstrap theme color name for the list group title                                                                                           |
+| `titleClassName`      | string                                         |                               | `className` property for the list group title                                                                                                 |
+| `titleStyle`          | object                                         |                               | `style` property for the list group title                                                                                                     |
+| `urlField`            | string                                         | `'url'`                       | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
 
 ### `<Pagination>`
 

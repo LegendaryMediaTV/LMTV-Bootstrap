@@ -16,7 +16,7 @@ const ListGroup = (props) => {
   const displaySubField = properties.displaySubField ?? "subtitle";
   delete properties.displaySubField;
   const displaySubClassName =
-    properties.displaySubClassName ?? "font-italic small text-muted";
+    properties.displaySubClassName ?? "fst-italic small text-muted";
   const urlField = properties.urlField ?? "url";
   delete properties.urlField;
   const keyField = properties.keyField ?? "id";

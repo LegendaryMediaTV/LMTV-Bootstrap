@@ -1435,6 +1435,12 @@ export default class Demo extends React.Component {
                 </Button>
               </h3>
             ))}
+
+            <Spinner
+              title="Reticulating splines …"
+              variant="primary"
+              className="mt-3"
+            />
           </section>
 
           <section id="table" className="mt-5">

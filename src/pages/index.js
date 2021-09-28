@@ -415,6 +415,12 @@ export default class HomePage extends React.Component {
 
         <Spinner alert className="my-3" />
 
+        <Spinner
+          title="Reticulating splines …"
+          variant="secondary"
+          className="my-3"
+        />
+
         <Display.Heading2>
           <code>scrollToTopHandler()</code>
         </Display.Heading2>

@@ -2,7 +2,18 @@
 
 This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 5](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
-For the most recent changes, check out the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
+## Recent changes
+
+- **v3.1.2**
+  - added a `title` property to the `<Spinner>` component
+- **v3.1.1:**
+  - updated the dependency for React Bootstrap to `2.0.0-rc.0`
+  - bugfix for the `<ListGroup>` default italics class on `displaySubClassName`
+- **v3.1.0:**
+  - added a `<Pagination>` component that uses our Gatsby-friendly `<Link>` component
+  - made the `<Demo>` component more robust
+
+For more information, check out the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
 
 ## Getting started
 
@@ -718,17 +729,23 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
 />
 
 <Spinner alert />
+
+<Spinner
+  title="Reticulating splines …"
+  variant="primary"
+/>
 ```
 
-| Name        | Type                   | Default      | Description                                                                                                                                                                                                 |
-| :---------- | :--------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| children    | JSX                    | `'loading…'` | content for `<VisuallyHidden>` child component                                                                                                                                                              |
-| `animation` | `'border'` \| `'grow'` | `'border'`   | changes the animation style of the spinner                                                                                                                                                                  |
-| `alert`     | boolean                | `false`      | wrap the spinner in an [`<Alert>`](https://react-bootstrap.github.io/components/alerts/) (centered with `py-5` padding), defaulting `variant` to `'info'`, and applying non-spinner properties to the alert |
-| `as`        | string                 | `'div'`      | custom HTML tag                                                                                                                                                                                             |
-| `role`      | string                 | `'status'`   | ARIA accessibility role                                                                                                                                                                                     |
-| `size`      | string                 |              | component size variations (e.g., `sm`)                                                                                                                                                                      |
-| `variant`   | string                 | `'primary'`  | Bootstrap theme color name (e.g., `'primary'`)                                                                                                                                                              |
+| Name        | Type                   | Default      | Description                                                                                                                                                                                              |
+| :---------- | :--------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children    | JSX                    | `'loading…'` | content for `<VisuallyHidden>` child component                                                                                                                                                           |
+| `animation` | `'border'` \| `'grow'` | `'border'`   | changes the animation style of the spinner                                                                                                                                                               |
+| `alert`     | boolean                | `false`      | wrap the spinner in an [`<Alert>`](https://react-bootstrap.github.io/components/alerts/) (centered with `py-5` padding), defaulting `variant` to `'info'`, and apply non-spinner properties to the alert |
+| `as`        | string                 | `'div'`      | custom HTML tag                                                                                                                                                                                          |
+| `role`      | string                 | `'status'`   | ARIA accessibility role                                                                                                                                                                                  |
+| `size`      | string                 |              | component size variations (e.g., `sm`)                                                                                                                                                                   |
+| `title`     | JSX                    |              | content for `<Alert.Heading>`, also wraps the spinner in an [`<Alert>`](https://react-bootstrap.github.io/components/alerts/) (centered with `py-4` padding), see `alert` above                          |
+| `variant`   | string                 | `'primary'`  | Bootstrap theme color name (e.g., `'primary'`)                                                                                                                                                           |
 
 ### `<VisuallyHidden>`
 

@@ -16,9 +16,13 @@ const Spinner = (props) => {
   if (!properties.role) properties.role = "status";
 
   // render component
-  if (properties.alert) {
-    delete properties.alert;
+  if (properties.alert || properties.title) {
     let spinnerProperties = {};
+
+    // extract title
+    const title = properties.title;
+    delete properties.alert;
+    delete properties.title;
 
     // default variant to info
     if (!properties.variant) properties.variant = "info";
@@ -36,13 +40,15 @@ const Spinner = (props) => {
     delete properties.size;
 
     // append alert classes
-    properties.className.push("py-5 text-center");
+    properties.className.push(`text-center ${title ? "py-4" : "py-5"}`);
 
     // merge classes
     properties.className = combine(properties.className);
 
     return (
       <Alert {...properties}>
+        {title ? <Alert.Heading className="pb-2">{title}</Alert.Heading> : null}
+
         <BSSpinner {...spinnerProperties}>
           <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
         </BSSpinner>

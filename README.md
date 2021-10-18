@@ -4,16 +4,18 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.1.3**
+  - updated the peer dependency for React Bootstrap to `2.0.0-rc.1`
 - **v3.1.2**
   - added a `title` property to the `<Spinner>` component
 - **v3.1.1:**
-  - updated the dependency for React Bootstrap to `2.0.0-rc.0`
+  - updated the peer dependency for React Bootstrap to `2.0.0-rc.0`
   - bugfix for the `<ListGroup>` default italics class on `displaySubClassName`
 - **v3.1.0:**
   - added a `<Pagination>` component that uses our Gatsby-friendly `<Link>` component
   - made the `<Demo>` component more robust
 
-For more information, check out the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
+For more information, check out the [release notes](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/releases) and the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
 
 ## Getting started
 

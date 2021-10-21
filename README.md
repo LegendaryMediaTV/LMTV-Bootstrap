@@ -4,6 +4,9 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.1.4**
+  - updated the peer dependency for React Bootstrap to `2.x`, since 2.0 stable released
+  - updated Bootstrap CSS reference to `5.1.3`
 - **v3.1.3**
   - updated the peer dependency for React Bootstrap to `2.0.0-rc.1`
 - **v3.1.2**
@@ -94,8 +97,8 @@ const Layout = (props) => {
 
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous"
         />
         <link

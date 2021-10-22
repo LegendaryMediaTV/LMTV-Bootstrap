@@ -38,12 +38,12 @@ const Link = (props) => {
     properties.target = "_blank";
     properties.rel = "noopener";
   }
-  delete properties.newTab;
 
   // native: starts with anchor hash tag, flagged as external, starts with a protocol, or ends with a file extension
   let elementType;
   if (
     url[0] === "#" ||
+    properties.newTab ||
     properties.external ||
     url.match(/(^[a-z]+:|\.[a-z0-9]+$)/i)
   ) {
@@ -55,6 +55,7 @@ const Link = (props) => {
     elementType = GatsbyLink;
     properties.to = url;
   }
+  delete properties.newTab;
 
   // external icon
   let external;

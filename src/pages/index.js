@@ -312,8 +312,8 @@ export default class HomePage extends React.Component {
             </Link>
           </li>
           <li>
-            Internal with externalNewTab:{" "}
-            <Link href="/" externalNewTab>
+            Internal with newTab:{" "}
+            <Link href="/" newTab>
               Gatsby
             </Link>
           </li>

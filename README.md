@@ -4,6 +4,9 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.1.5**
+  - updated the peer dependency for Gatsby to `3.x` or `4.x`
+  - bugfix for `Link` opening internal links in a new tab when requested
 - **v3.1.4**
   - updated the peer dependency for React Bootstrap to `2.x`, since 2.0 stable released
   - updated Bootstrap CSS reference to `5.1.3`

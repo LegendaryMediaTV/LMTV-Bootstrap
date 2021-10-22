@@ -552,7 +552,7 @@ import Link from '@legendarymediatv/bootstrap/Link';
 An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as our `<ListGroup.Item>` instead.
 
 ```JavaScript
-import from '@legendarymediatv/bootstrap/ListGroup';
+import ListGroup from '@legendarymediatv/bootstrap/ListGroup';
 
 …
 
@@ -624,7 +624,7 @@ An extension of React Bootstrap’s [`<ListGroup.Item>`](https://react-bootstrap
 The `subactions` property should be an array of objects corresponding containing `<ListGroup.Item>` properties.
 
 ```JavaScript
-import from '@legendarymediatv/bootstrap/ListGroup';
+import ListGroup from '@legendarymediatv/bootstrap/ListGroup';
 
 …
 

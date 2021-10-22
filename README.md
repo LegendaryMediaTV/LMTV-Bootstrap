@@ -150,7 +150,7 @@ export default SamplePage;
 // package-level
 import { Demo } from '@legendarymediatv/bootstrap';
 
-// component level
+// component level (preferred)
 import Demo from '@legendarymediatv/bootstrap/Demo';
 ```
 
@@ -410,7 +410,7 @@ This component set doesn't have any special properties, but it is made up of thr
 - `<FullPage.Footer>` (optional) – page footer (can be styled directly or given an `id` and styled elsewhere)
 
 ```JavaScript
-import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
+import FullPage from '@legendarymediatv/bootstrap/FullPage';
 
 …
 
@@ -790,7 +790,7 @@ import ScrollToTop from '@legendarymediatv/bootstrap/ScrollToTop';
 An extension of React Bootstrap’s [`<Spinner>`](https://react-bootstrap.github.io/components/spinners/) that automatically selects the `border` animation and adds the screen reader and ARIA role, so it can be self-closing and easily [ensure the maximum accessibility](https://react-bootstrap.github.io/components/spinners/#accessibility).
 
 ```JavaScript
-import Icon from '@legendarymediatv/bootstrap/Icon';
+import Spinner from '@legendarymediatv/bootstrap/Spinner';
 
 …
 

@@ -17,7 +17,6 @@ import Figure from "react-bootstrap/Figure";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
-import { default as RBSListGroup } from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -915,74 +914,57 @@ export default class Demo extends React.Component {
               .
             </p>
 
-            <h4>List Group Items</h4>
+            <h4>List Group</h4>
 
-            <RBSListGroup className="mb-3">
-              <RBSListGroup.Item active>active text</RBSListGroup.Item>
+            <ListGroup className="mb-3">
+              <ListGroup.Item active>active text</ListGroup.Item>
 
-              <RBSListGroup.Item as={Link} to={"#list-group"} action>
+              <ListGroup.Item to={"#list-group"}>
                 actionable link
-              </RBSListGroup.Item>
+              </ListGroup.Item>
 
-              <RBSListGroup.Item
-                onClick={() => alert("things, stuff, activity!")}
-                action
-              >
+              <ListGroup.Item onClick={() => alert("things, stuff, activity!")}>
                 actionable button
-              </RBSListGroup.Item>
+              </ListGroup.Item>
 
-              <RBSListGroup.Item className="d-flex p-0">
-                <RBSListGroup.Item
-                  as={Link}
-                  to="#list-group"
-                  action
-                  className="border-0 flex-grow-1"
-                  style={{ marginBottom: "1px" }}
-                >
-                  flex item link with icon links
-                </RBSListGroup.Item>
-
-                <RBSListGroup.Item
-                  as={Link}
-                  to={"#list-group"}
-                  action
-                  variant="info"
-                  className="w-auto border-top-0 border-end-0 border-bottom-0"
-                >
-                  <Icon name="fab fa-bootstrap" alt="Bootstrap" />
-                </RBSListGroup.Item>
-
-                <RBSListGroup.Item
-                  as={Link}
-                  to={"#list-group"}
-                  action
-                  variant="danger"
-                  className="w-auto border-top-0 border-end-0 border-bottom-0 rounded-0"
-                >
-                  <Icon name="fas fa-heart" alt="Bootstrap" />
-                </RBSListGroup.Item>
-              </RBSListGroup.Item>
-            </RBSListGroup>
+              <ListGroup.Item
+                to="#list-group"
+                subactions={[
+                  {
+                    to: "#list-group",
+                    variant: "info",
+                    children: <Icon name="fab fa-bootstrap" alt="Bootstrap" />,
+                  },
+                  {
+                    to: "#list-group",
+                    variant: "danger",
+                    children: <Icon name="fas fa-heart" alt="Bootstrap" />,
+                  },
+                ]}
+              >
+                item link with icon subactions
+              </ListGroup.Item>
+            </ListGroup>
 
             <h4>List Group List</h4>
 
-            <RBSListGroup as="ul" className="mb-3">
-              <RBSListGroup.Item as="li" active>
+            <ListGroup as="ul" className="mb-3">
+              <ListGroup.Item as="li" active>
                 active text
-              </RBSListGroup.Item>
+              </ListGroup.Item>
 
-              <RBSListGroup.Item as="li">
+              <ListGroup.Item as="li">
                 <Link to={"#list-group"}>link</Link>
-              </RBSListGroup.Item>
+              </ListGroup.Item>
 
-              <RBSListGroup.Item as="li">text</RBSListGroup.Item>
+              <ListGroup.Item as="li">text</ListGroup.Item>
 
-              <RBSListGroup.Item as="li" disabled>
+              <ListGroup.Item as="li" disabled>
                 disabled
-              </RBSListGroup.Item>
-            </RBSListGroup>
+              </ListGroup.Item>
+            </ListGroup>
 
-            <h4>LegendaryMediaTV List Group</h4>
+            <h4>List Group with Items Property</h4>
 
             <ListGroup
               title="Array of Objects with Links"

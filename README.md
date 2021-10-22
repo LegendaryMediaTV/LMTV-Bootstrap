@@ -1,25 +1,21 @@
 # LegendaryMediaTV Bootstrap
 
-This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 5](https://getbootstrap.com/)) and [Gatsby](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
+This is a Node.js package for extending [React Bootstrap](https://react-bootstrap.github.io) (which is based on [Bootstrap 5](https://getbootstrap.com/)) and [Gatsby 3 or 4](https://www.gatsbyjs.com). It also has components for class-based icons (i.e., [FontAwesome](https://fontawesome.com), [Bootstrap icons](https://icons.getbootstrap.com), etc.).
 
 ## Recent changes
 
-- **v3.1.5**
-  - updated the peer dependency for Gatsby to `3.x` or `4.x`
-  - bugfix for `Link` opening internal links in a new tab when requested
-- **v3.1.4**
-  - updated the peer dependency for React Bootstrap to `2.x`, since 2.0 stable released
-  - updated Bootstrap CSS reference to `5.1.3`
-- **v3.1.3**
-  - updated the peer dependency for React Bootstrap to `2.0.0-rc.1`
-- **v3.1.2**
-  - added a `title` property to the `<Spinner>` component
-- **v3.1.1:**
-  - updated the peer dependency for React Bootstrap to `2.0.0-rc.0`
-  - bugfix for the `<ListGroup>` default italics class on `displaySubClassName`
-- **v3.1.0:**
+- **v3.2.0**
+  - added a `<ListGroup.Item>` component with `subitem` and `subactions` properties
+  - added a `sleep()` function
+- **v3.1**
   - added a `<Pagination>` component that uses our Gatsby-friendly `<Link>` component
   - made the `<Demo>` component more robust
+  - added a `title` property to the `<Spinner>` component
+  - bugfix for `<Link>` opening internal links in a new tab when requested
+  - bugfix for the `<ListGroup>` default italics class on `displaySubClassName`
+  - updated the peer dependency for React Bootstrap to `2.x`, since 2.0 stable released
+  - updated the peer dependency for Gatsby to `3.x` or `4.x`
+  - updated Bootstrap CSS reference to `5.1.3`
 
 For more information, check out the [release notes](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/releases) and the [changelog](https://github.com/LegendaryMediaTV/LMTV-Bootstrap/commits/main).
 
@@ -30,7 +26,7 @@ For more information, check out the [release notes](https://github.com/Legendary
 Install peer dependencies (if they aren't already).
 
 ```JavaScript
-npm install react react-dom react-bootstrap@next gatsby
+npm install react react-dom react-bootstrap gatsby
 ```
 
 Optionally, install [React Helmet](https://github.com/nfl/react-helmet) (useful for linking Bootstrap resources).
@@ -172,9 +168,9 @@ import BackgroundImage from '@legendarymediatv/bootstrap/BackgroundImage';
 
 | Name             | Type   | Default  | Description                          |
 | :--------------- | :----- | :------- | :----------------------------------- |
-| `src`            | string | required | path to the image file               |
 | `imageClassName` | string |          | `className` property for the `<img>` |
 | `imageStyle`     | object |          | `style` property for the `<img>`     |
+| `src`            | string | required | path to the image file               |
 
 ### `<Blockquote>`
 
@@ -205,7 +201,7 @@ import Blockquote from '@legendarymediatv/bootstrap/Blockquote';
 
 ### `<Breakpoint>`
 
-Quickly see what the current breakpoint is (e.g., 'md').
+Quickly see what the current breakpoint is (e.g., “md”).
 
 ```JavaScript
 import Breakpoint from '@legendarymediatv/bootstrap/Breakpoint';
@@ -217,9 +213,9 @@ import Breakpoint from '@legendarymediatv/bootstrap/Breakpoint';
 
 > _NOTE: This component is intended to be used for development purposes and probably should be removed before deploying your app_
 
-| Name      | Type   | Default | Description                |
-| :-------- | :----- | :------ | :------------------------- |
-| `variant` | string | info    | Bootstrap theme color name |
+| Name      | Type   | Default  | Description                |
+| :-------- | :----- | :------- | :------------------------- |
+| `variant` | string | `'info'` | Bootstrap theme color name |
 
 ### `<DatePicker>`
 
@@ -434,11 +430,13 @@ import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
         <Navbar bg="primary" variant="dark">
           <Navbar.Brand>LegendaryMediaTV</Navbar.Brand>
         </Navbar>
+
         <article className="py-4 px-2">
           <h1>Title or whatever</h1>
           <p>Things, stuff, content!</p>
         </article>
       </FullPage.Content>
+
       <FullPage.Footer className="bg-secondary py-2 text-center text-white">
         Footer Content
       </FullPage.Footer>
@@ -542,16 +540,16 @@ import Link from '@legendarymediatv/bootstrap/Link';
 | :------------------ | :-------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
 | `href` \| `to`      | URL             | required                                                                   | URL or anchor target                                                                                                        |
 | `external`          | boolean         | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
-| `newTab`            | boolean         | `false`                                                                    | force the link to open in a new tab (sets `target="_blank" rel="noopener"`)                                                 |
 | `externalNewTab`    | boolean         | `false`                                                                    | set `newTab` to `true` when `external` is `true`                                                                            |
 | `externalIcon`      | icon class name | `'fas fa-external-link-alt'`                                               | external icon class name                                                                                                    |
 | `externalVariant`   | string          | `info`                                                                     | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                          |
 | `externalClassName` | string          | `'small ps-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
 | `externalStyle`     | object          |                                                                            | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                                      |
+| `newTab`            | boolean         | `false`                                                                    | force the link to open in a new tab (sets `target="_blank" rel="noopener"`)                                                 |
 
 ### `<ListGroup>`
 
-An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as a Bootstrap React `<ListGroup.Item>` instead.
+An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as our `<ListGroup.Item>` instead.
 
 ```JavaScript
 import from '@legendarymediatv/bootstrap/ListGroup';
@@ -604,7 +602,7 @@ const objectArray = [
 | `as`                  | elementType                                    | inherited                     | `as` property for the list group                                                                                                              |
 | `defaultActiveKey`    | unknown                                        | inherited                     | `defaultActiveKey` property                                                                                                                   |
 | `horizontal`          | `true` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` | inherited                     | `horizontal` property                                                                                                                         |
-| `onSelect`            | callback                                       | inherited                     | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
+| `onSelect`            | function                                       | inherited                     | when `items` is an array of objects, this is the `onClick` callback function that passes the clicked item as an argument                      |
 | `variant`             | 'flush'                                        | inherited                     | `variant` property                                                                                                                            |
 | `displayField`        | string                                         | `'title'`                     | when `items` is an array of objects, this is the object field to display                                                                      |
 | `displaySubField`     | string                                         | `'subtitle'`                  | when `items` is an array of objects, this is the object field to subtly display below the `displayField`                                      |
@@ -618,6 +616,73 @@ const objectArray = [
 | `titleClassName`      | string                                         |                               | `className` property for the list group title                                                                                                 |
 | `titleStyle`          | object                                         |                               | `style` property for the list group title                                                                                                     |
 | `urlField`            | string                                         | `'url'`                       | when `items` is an array of objects, this is the object field to use as the link URL                                                          |
+
+### `<ListGroup.Item>`
+
+An extension of React Bootstrap’s [`<ListGroup.Item>`](https://react-bootstrap.netlify.app/components/list-group/) that adds support for sub-items, sub-actions, auto-conversion to a Gatsby-friendly `<Link>` when a URL is provided, and auto-conversion to an action when a URL or click handler are defined.
+
+The `subactions` property should be an array of objects corresponding containing `<ListGroup.Item>` properties.
+
+```JavaScript
+import from '@legendarymediatv/bootstrap/ListGroup';
+
+…
+
+<ListGroup
+  title="ListGroup with items"
+  titleVariant="info"
+>
+  <ListGroup.Item subitem="sample sub-item">
+    ListGroup.Item with a sub-item below
+  </ListGroup.Item>
+
+  <ListGroup.Item to="/sample">
+    ListGroup.Item auto-converted to a link/action
+  </ListGroup.Item>
+
+  <ListGroup.Item
+    onClick={() => {
+      alert("clicked");
+    }}
+  >
+    ListGroup.Item auto-converted to a button
+  </ListGroup.Item>
+
+  <ListGroup.Item
+    to="#list-group"
+    subactions={[
+      {
+        to: "/sample",
+        variant: "info",
+        children: <Icon name="fas fa-camera" />,
+      },
+      {
+        onClick: () => {
+          alert("deleted!");
+        },
+        variant: "danger",
+        children: <Icon name="fas fa-trash-alt" />,
+      },
+    ]}
+  >
+    ListGroup.Item with a URL and sub-actions
+  </ListGroup.Item>
+</ListGroup.Item>
+```
+
+| Name               | Type             | Default                         | Description                                                                                                |
+| :----------------- | :--------------- | :------------------------------ | :--------------------------------------------------------------------------------------------------------- |
+| `action`           | boolean          | inherited / `true`              | marks the item as actionable; will be set to `true` when `href` / `to` / `onClick` are defined             |
+| `active`           | boolean          | inherited                       | marks the item as active                                                                                   |
+| `as`               | elementType      | inherited / `Link`              | `as` property for the item; becomes our Gatsby-friendly `Link` when the `href` or `to` property is defined |
+| `children`         | JSX              |                                 | content for the main list item (will be nested if `subactions` property is set)                            |
+| `disabled`         | boolean          | inherited                       | marks the item as disabled                                                                                 |
+| `eventKey`         | string \| number | inherited                       | unique identifier for when using events                                                                    |
+| `href` \| `to`     | URL              |                                 | URL or anchor target for the `<Link>`                                                                      |
+| `onClick`          | function         |                                 | fired when the item is clicked                                                                             |
+| `subitem`          | JSX              |                                 | to subtly display below the `children`                                                                     |
+| `subitemClassName` | string           | `'fst-italic small text-muted'` | `className` property for the `subitem`                                                                     |
+| `variant`          | string           |                                 | Bootstrap theme color name (e.g., `'primary'`)                                                             |
 
 ### `<Pagination>`
 
@@ -843,6 +908,35 @@ const submitHander = (event) => {
   <Button type="submit">Submit</Button>
 </Form>
 ```
+
+### `sleep(milliseconds)`
+
+Promise-based wrapper for JavaScript’s `setTimeout()` function, allowing your script to pause using `await` or `.then()` syntax.
+
+```JavaScript
+import { sleep } from '@legendarymediatv/bootstrap/functions';
+
+…
+
+// wait one second and then do something
+sleep(1000)
+  .then(() => {
+    // do something
+  });
+
+function async sample() {
+  // do something
+
+  // wait 1/4 second
+  await sleep(250);
+
+  // do something else
+}
+```
+
+| Name           | Type    | Default  | Description                    |
+| :------------- | :------ | :------- | :----------------------------- |
+| `milliseconds` | integer | required | number of milliseconds to wait |
 
 ### `title(site, title, parent)`
 

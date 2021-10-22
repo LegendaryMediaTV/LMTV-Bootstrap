@@ -88,6 +88,14 @@ export const separate = (string) => {
 };
 
 /**
+ * wait the specified number of milliseconds before continuing
+ * @param {number} milliseconds
+ * @returns {Promise}
+ */
+export const sleep = (milliseconds) =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+/**
  * generate an SEO-friendly HTML title
  * @param {string} site site/company name
  * @param {string} [title] this page’s title

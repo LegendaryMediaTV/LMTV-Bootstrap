@@ -4,7 +4,7 @@ import { combine, prepare } from "../functions";
 
 // components
 import Alert from "react-bootstrap/Alert";
-import { default as BSSpinner } from "react-bootstrap/Spinner";
+import { default as RBSSpinner } from "react-bootstrap/Spinner";
 import VisuallyHidden from "../VisuallyHidden";
 
 const Spinner = (props) => {
@@ -49,9 +49,9 @@ const Spinner = (props) => {
       <Alert {...properties}>
         {title ? <Alert.Heading className="pb-2">{title}</Alert.Heading> : null}
 
-        <BSSpinner {...spinnerProperties}>
+        <RBSSpinner {...spinnerProperties}>
           <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
-        </BSSpinner>
+        </RBSSpinner>
       </Alert>
     );
   } else {
@@ -59,9 +59,9 @@ const Spinner = (props) => {
     properties.className = combine(properties.className);
 
     return (
-      <BSSpinner {...properties}>
+      <RBSSpinner {...properties}>
         <VisuallyHidden>{children ?? "loading…"}</VisuallyHidden>
-      </BSSpinner>
+      </RBSSpinner>
     );
   }
 };

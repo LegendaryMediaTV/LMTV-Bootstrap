@@ -345,6 +345,44 @@ export default class HomePage extends React.Component {
           className="mt-3"
         />
 
+        <ListGroup title="Custom Items" titleVariant="info" className="mt-3">
+          <ListGroup.Item subitem="sample sub-item">
+            ListGroup.Item with a sub-item below
+          </ListGroup.Item>
+
+          <ListGroup.Item to="/demo">
+            ListGroup.Item auto-converted to a link/action
+          </ListGroup.Item>
+
+          <ListGroup.Item
+            onClick={() => {
+              alert("clicked");
+            }}
+          >
+            ListGroup.Item auto-converted to a button
+          </ListGroup.Item>
+
+          <ListGroup.Item
+            to="#list-group"
+            subactions={[
+              {
+                to: "/demo",
+                variant: "info",
+                children: <Icon name="fas fa-camera" />,
+              },
+              {
+                onClick: () => {
+                  alert("deleted!");
+                },
+                variant: "danger",
+                children: <Icon name="fas fa-trash-alt" />,
+              },
+            ]}
+          >
+            ListGroup.Item with a URL and sub-actions
+          </ListGroup.Item>
+        </ListGroup>
+
         <Display.Heading2>
           <code>&lt;Pagination&gt;</code>
         </Display.Heading2>

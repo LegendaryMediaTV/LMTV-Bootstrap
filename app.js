@@ -15,4 +15,11 @@ export { default as Pagination } from "./Pagination";
 export { default as ScrollToTop, scrollToTopHandler } from "./ScrollToTop";
 export { default as Spinner } from "./Spinner";
 export { default as VisuallyHidden } from "./VisuallyHidden";
-export { combine, formData, prepare, separate, title } from "./functions";
+export {
+  combine,
+  formData,
+  prepare,
+  separate,
+  sleep,
+  title,
+} from "./functions";

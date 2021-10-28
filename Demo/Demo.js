@@ -1,8 +1,7 @@
 // dependencies
 import React from "react";
 
-// components
-import Alert from "react-bootstrap/Alert";
+// React Bootstrap components
 import Badge from "react-bootstrap/Badge";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Button from "react-bootstrap/Button";
@@ -28,6 +27,7 @@ import Table from "react-bootstrap/Table";
 import Tooltip from "react-bootstrap/Tooltip";
 
 // LegendaryMediaTV components
+import Alert from "../Alert";
 import Blockquote from "../Blockquote";
 import Breakpoint from "../Breakpoint";
 import Display from "../Display";
@@ -150,9 +150,7 @@ export default class Demo extends React.Component {
               >
                 <Alert.Heading>{variant}</Alert.Heading>
                 This alert has a link—
-                <Alert.Link as={Link} to="#">
-                  check it out!
-                </Alert.Link>
+                <Alert.Link to="#">check it out!</Alert.Link>
               </Alert>
             ))}
           </section>

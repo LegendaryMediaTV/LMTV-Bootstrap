@@ -4,6 +4,9 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.3.1**
+  - bugfix for `<Alert>` to not show URL/method when the `error` is an array
+  - made the `<Demo>` utilize the new `<Alert>` component
 - **v3.3.0**
   - added an `<Alert>` component with `title`, `subtitle`, and `error` properties
 - **v3.2.0**

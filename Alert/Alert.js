@@ -141,16 +141,20 @@ export default class Alert extends React.Component {
 
         {children}
 
-        {errorURL ? (
-          <p>
-            <b>URL:</b> {errorURL}
-          </p>
-        ) : null}
+        {!submissionError ? (
+          <>
+            {errorURL ? (
+              <p>
+                <b>URL:</b> {errorURL}
+              </p>
+            ) : null}
 
-        {errorMethod ? (
-          <p>
-            <b>Method:</b> {errorMethod}
-          </p>
+            {errorMethod ? (
+              <p>
+                <b>Method:</b> {errorMethod}
+              </p>
+            ) : null}
+          </>
         ) : null}
 
         {onRetry ? (

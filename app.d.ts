@@ -1,3 +1,4 @@
+export { default as Alert } from "./Alert";
 export { default as BackgroundImage } from "./BackgroundImage";
 export { default as Blockquote } from "./Blockquote";
 export { default as Breakpoint } from "./Breakpoint";

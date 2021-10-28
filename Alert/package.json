@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Alert",
+  "private": true,
+  "module": "Alert",
+  "types": "Alert.d.ts"
+}

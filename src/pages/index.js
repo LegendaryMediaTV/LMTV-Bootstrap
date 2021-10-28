@@ -11,6 +11,7 @@ import Nav from "react-bootstrap/Nav";
 import { formData } from "../../functions";
 
 // LegendaryMediaTV components
+import Alert from "../../Alert";
 import BackgroundImage from "../../BackgroundImage";
 import Blockquote from "../../Blockquote";
 import Breakpoint from "../../Breakpoint";
@@ -98,6 +99,45 @@ export default class HomePage extends React.Component {
           src="https://m.media-amazon.com/images/M/MV5BN2I5NGEyMTYtYTNjMC00YTBhLWE1NjYtYWNhM2I2ODMyZTEzXkEyXkFqcGdeQXVyNzgxMzc3OTc@._V1_SY1000_CR0,0,1671,1000_AL_.jpg"
           imageStyle={{ opacity: 0.25 }}
         />
+
+        <Display.Heading2>
+          <code>&lt;Alert&gt;</code>
+        </Display.Heading2>
+
+        <Alert
+          title="Alert Title"
+          subtitle="Alert subtitle"
+          variant="info"
+          onClose={() => {
+            alert("Insert dismiss logic here");
+          }}
+          dismissible
+        >
+          Some text with a <Alert.Link to="/full-page">link</Alert.Link>
+        </Alert>
+
+        <Alert
+          title="Intermittent Error"
+          error={
+            <>
+              Something went <em>wrong</em>
+            </>
+          }
+          onRetry={() => {
+            alert("Insert retry logic here");
+          }}
+          variant="warning"
+        />
+
+        <Alert
+          error={{
+            error: "Request failed with status code 401",
+            url: "/",
+            method: "GET",
+          }}
+        />
+
+        <Alert error={["Field 1 is required", "Field 2 is required"]} />
 
         <Display.Heading2>
           <code>&lt;Blockquote&gt;</code>

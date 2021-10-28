@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.3.0**
+  - added an `<Alert>` component with `title`, `subtitle`, and `error` properties
 - **v3.2.0**
   - added a `<ListGroup.Item>` component with `subitem` and `subactions` properties
   - added a `sleep()` function
@@ -154,6 +156,51 @@ import { Demo } from '@legendarymediatv/bootstrap';
 import Demo from '@legendarymediatv/bootstrap/Demo';
 ```
 
+### `<Alert>`
+
+An extension of [React Bootstrap’s `<Alert>`](https://react-bootstrap.github.io/components/alerts/) component, but with the ability to set a title, subtitle, and/or error. It provides `<Alert.Heading>` as is, but converts their `<Alert.Link>` to our Gatsby-friendly `<Link>` component.
+
+```JavaScript
+import Alert from '@legendarymediatv/bootstrap/Alert';
+
+…
+
+<Alert
+  title="Alert Title"
+  subtitle="Alert subtitle"
+  variant="info"
+  onClose={() => {
+    alert("Insert dismiss logic here");
+  }}
+  dismissible
+>
+  Some text with a <Alert.Link to="/sample">link</Alert.Link>
+</Alert>
+
+<Alert
+  error={{
+    error: "Request failed with status code 401",
+    url: "/",
+    method: "GET",
+  }}
+  onRetry={() => {
+    alert("Insert retry logic here");
+  }}
+/>
+
+<Alert error={["Field 1 is required", "Field 2 is required"]} />
+```
+
+In addition to the properties provided by [React Bootstrap’s `<Alert>`](https://react-bootstrap.github.io/components/alerts/) component, the following additional properties are available:
+
+| Name       | Type          | Default                                                                                                                                                                                          | Description                                                                                                    |
+| :--------- | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
+| `error`    | JSX \| object |                                                                                                                                                                                                  | either a JSX component or an object containing keys for `error`/`message` and optionally `url` and/or `method` |
+| `onRetry`  | function      |                                                                                                                                                                                                  | when defined, a retry `<Button>` is rendered with this as its `onClick`                                        |
+| `subtitle` | JSX           | if `error` is an array, then `'Please fix the following error(s):'`; if `error` is not an array, then `'The server has encountered a situation it doesn’t know how to handle'`; otherwise, blank | content that goes inside a `<p>` tag styled with a `lead` class                                                |
+| `title`    | JSX           | if `error` is an array, then `'Submission Error'`; if `error` is not an array, then `'Process Error'`; otherwise, blank                                                                          | content that goes inside an `<Alert.Heading>` styled as a `<div>` with an `h3` class                           |
+| `variant`  | string        | `'danger'` if `error` is defined, otherwise `'primary'` (inherited)                                                                                                                              | Bootstrap theme color name                                                                                     |
+
 ### `<BackgroundImage>`
 
 Set a background image so that it covers the whole screen without distorting and stays in place, regardless of scrolling.
@@ -192,6 +239,7 @@ import Blockquote from '@legendarymediatv/bootstrap/Blockquote';
     Success, meaningful success, begins when we take ownership and actively
     take responsibility for our part in the shortcomings of our life.
   </p>
+
   <Blockquote.Footer>
     Dr Eric Thomas,{" "}
     <cite>Greatness Is Upon You: Laying the Foundation</cite>
@@ -356,7 +404,7 @@ function flipHandler(event) => {
 
 ### `<FormGroup>`
 
-An extension of React Bootstrap’s [`<Form.Group>`](https://react-bootstrap.github.io/components/forms/#form-group-props), which automatically contains a React Bootstrap [`<Form.Label>`](https://react-bootstrap.github.io/components/forms/#form-label-props). The label then optionally includes a `<InfoIcon>` when the `info` property is set.
+An extension of [React Bootstrap’s `<Form.Group>`](https://react-bootstrap.github.io/components/forms/#form-group-props), which automatically contains a React Bootstrap [`<Form.Label>`](https://react-bootstrap.github.io/components/forms/#form-label-props). The label then optionally includes a `<InfoIcon>` when the `info` property is set.
 
 ```JavaScript
 import FormGroup from '@legendarymediatv/bootstrap/FormGroup';
@@ -475,7 +523,7 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
 
 ### `<InfoIcon>`
 
-An extension of React Bootstrap’s [`<Popover>`](https://react-bootstrap.netlify.app/components/overlays/#popovers) (with `rootClose` set to auto-close when it loses focus) that contains an `<Icon>`.
+An extension of [React Bootstrap’s `<Popover>`](https://react-bootstrap.netlify.app/components/overlays/#popovers) (with `rootClose` set to auto-close when it loses focus) that contains an `<Icon>`.
 
 ```JavaScript
 import InfoIcon from '@legendarymediatv/bootstrap/InfoIcon';
@@ -549,7 +597,7 @@ import Link from '@legendarymediatv/bootstrap/Link';
 
 ### `<ListGroup>`
 
-An extension of React Bootstrap’s [`<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as a `<Link>` component, otherwise it is rendered as our `<ListGroup.Item>` instead.
+An extension of [React Bootstrap’s `<ListGroup>`](https://react-bootstrap.netlify.app/components/list-group/) that has a title, accepting arrays of URL strings and arrays of obects as items. If the item has a URL, then it is rendered as our Gatsby-friendly `<Link>` component, otherwise it is rendered as our `<ListGroup.Item>` instead.
 
 ```JavaScript
 import ListGroup from '@legendarymediatv/bootstrap/ListGroup';
@@ -619,7 +667,7 @@ const objectArray = [
 
 ### `<ListGroup.Item>`
 
-An extension of React Bootstrap’s [`<ListGroup.Item>`](https://react-bootstrap.netlify.app/components/list-group/) that adds support for sub-items, sub-actions, auto-conversion to a Gatsby-friendly `<Link>` when a URL is provided, and auto-conversion to an action when a URL or click handler are defined.
+An extension of [React Bootstrap’s `<ListGroup.Item>`](https://react-bootstrap.netlify.app/components/list-group/) that adds support for sub-items, sub-actions, auto-conversion to a Gatsby-friendly `<Link>` when a URL is provided, and auto-conversion to an action when a URL or click handler are defined.
 
 The `subactions` property should be an array of objects corresponding containing `<ListGroup.Item>` properties.
 
@@ -787,7 +835,7 @@ import ScrollToTop from '@legendarymediatv/bootstrap/ScrollToTop';
 
 ### `<Spinner>`
 
-An extension of React Bootstrap’s [`<Spinner>`](https://react-bootstrap.github.io/components/spinners/) that automatically selects the `border` animation and adds the screen reader and ARIA role, so it can be self-closing and easily [ensure the maximum accessibility](https://react-bootstrap.github.io/components/spinners/#accessibility).
+An extension of [React Bootstrap’s `<Spinner>`](https://react-bootstrap.github.io/components/spinners/) that automatically selects the `border` animation and adds the screen reader and ARIA role, so it can be self-closing and easily [ensure the maximum accessibility](https://react-bootstrap.github.io/components/spinners/#accessibility).
 
 ```JavaScript
 import Spinner from '@legendarymediatv/bootstrap/Spinner';

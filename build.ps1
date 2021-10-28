@@ -1,3 +1,5 @@
+Write-Host "Building Alert..."
+tsc ./Alert/Alert.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building BackgroundImage..."
 tsc ./BackgroundImage/BackgroundImage.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Blockquote..."

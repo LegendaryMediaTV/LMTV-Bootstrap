@@ -1,0 +1,34 @@
+.FeatureContainer {
+  overflow-x: hidden;
+}
+
+.Feature {
+  background-position: center;
+  background-size: cover;
+  transition: all 0.2s ease-in-out;
+  z-index: 0;
+}
+
+.Feature.FeatureTextShadow {
+  text-shadow: 1px 1px 2px black;
+}
+
+.Feature:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25) !important;
+  transform: scale(1.04) translateY(-1px);
+  z-index: 1;
+}
+
+.Feature:active {
+  box-shadow: 0 0.35rem 0.75rem rgba(0, 0, 0, 0.35) !important;
+  transform: scale(1.01) translateY(-1px);
+}
+
+.Feature .FeatureItem {
+  background-color: inherit;
+  border: 0;
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+}

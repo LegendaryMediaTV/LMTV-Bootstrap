@@ -4,12 +4,13 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
-- **v3.3.1**
-  - bugfix for `<Alert>` to not show URL/method when the `error` is an array
-  - made the `<Demo>` utilize the new `<Alert>` component
-- **v3.3.0**
+- **v3.4.0**
+  - added a new `<Feature>` component with `title` and `subtitle` properties
+  - added `<Alert>` with `title`/`subtitle` to the `<Demo>`
+- **v3.3**
   - added an `<Alert>` component with `title`, `subtitle`, and `error` properties
-- **v3.2.0**
+  - made the `<Demo>` utilize the new `<Alert>` component
+- **v3.2**
   - added a `<ListGroup.Item>` component with `subitem` and `subactions` properties
   - added a `sleep()` function
 - **v3.1**
@@ -334,6 +335,73 @@ import Display from '@legendarymediatv/bootstrap/Display';
 | Name | Type        | Default                          | Description          |
 | :--- | :---------- | :------------------------------- | :------------------- |
 | `as` | elementType | `<h#>` corresponding to the size | changes the HTML tag |
+
+### `<Feature>`
+
+Quickly create a stylized hero link or button that uses scaling and shadows to grow on hover and appear as depressed when clicked.
+
+> _TIP: use in conjunction with grid layout components to have a wall effect_
+
+> _TIP: since this component uses scaling, to prevent horizontal scrollbars on smaller displays, you may want to wrap your content in a `<Feature.Container>` component or otherwise add `overflow-x: hidden;` styling to a fluid container, your `<body>` tag, etc._
+
+```JavaScript
+import Breakpoint from '@legendarymediatv/bootstrap/Feature';
+
+…
+
+<Feature
+  title="Featured Content"
+  subtitle="content to be featured"
+  to="/sample"
+  variant="info"
+  textShadow
+  className="text-white py-5"
+/>
+
+<Row className="text-white mt-3">
+  <Col sm className="p-0">
+    <Feature
+      title="Sample 1"
+      to="/sample-1"
+      variant="dark"
+      className="py-3"
+    />
+  </Col>
+
+  <Col sm className="p-0">
+    <Feature
+      title="Sample 2"
+      to="/sample-2"
+      variant="success"
+      className="py-3"
+    />
+  </Col>
+
+  <Col sm className="p-0">
+    <Feature
+      title="Sample 3"
+      onClick={() => {
+        alert("danger!");
+      }}
+      variant="danger"
+      className="py-3"
+    />
+  </Col>
+</Row>
+```
+
+> _NOTE: This component is intended to be used for development purposes and probably should be removed before deploying your app_
+
+| Name               | Type    | Default | Description                                                                                                                                                           |
+| :----------------- | :------ | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `href` \| `to`     | string  |         | URL or anchor target, making the feature item our Gatsby-friendly `<Link>` when set, otherwise it renders as a `<button>` and probably should have the `onClick` set  |
+| `id`               | string  |         | applied to the wrapper `<div>`                                                                                                                                        |
+| `subtitle`         | JSX     |         | content that goes inside a `<div>` tag styled with `fst-italic` between the `title` and `children`                                                                    |
+| `title`            | JSX     |         | content that goes inside an `<h2>` tag styled with `mb-0` above the `subtitle` and/or `children`                                                                      |
+| `textShadow`       | boolean | `false` | add a slight shadow to the feature’s text                                                                                                                             |
+| `variant`          | string  |         | Bootstrap theme color, if one is not provided, you should probably add background color and/or image using the provided `id` (images are set to `center` and `cover`) |
+| `wrapperClassName` | string  |         | `className` property for the wrapper `<div>`                                                                                                                          |
+| `wrapperStyle`     | object  |         | `style` property for the wrapper `<div>`                                                                                                                              |
 
 ### `<Flipper>`
 

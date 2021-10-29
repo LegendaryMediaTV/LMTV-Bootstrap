@@ -1,0 +1,6 @@
+{
+  "name": "@legendarymediatv/bootstrap/Feature",
+  "private": true,
+  "module": "Feature",
+  "types": "Feature.d.ts"
+}

@@ -3,9 +3,11 @@ import React from "react";
 
 // components
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/Layout";
 import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
 
 // LegendaryMediaTV functions
 import { formData } from "../../functions";
@@ -17,6 +19,7 @@ import Blockquote from "../../Blockquote";
 import Breakpoint from "../../Breakpoint";
 import DatePicker from "../../DatePicker";
 import Display from "../../Display";
+import Feature from "../../Feature";
 import Flipper from "../../Flipper";
 import FormGroup from "../../FormGroup";
 import InfoIcon from "../../InfoIcon";
@@ -192,6 +195,40 @@ export default class HomePage extends React.Component {
         <Display.Heading5>Display Heading 5</Display.Heading5>
 
         <Display.Heading6>Display Heading 6</Display.Heading6>
+
+        <Display.Heading2>
+          <code>&lt;Feature&gt;</code>
+        </Display.Heading2>
+
+        <Feature
+          title="Featured Content"
+          subtitle="content to be featured"
+          to="#"
+          variant="info"
+          textShadow
+          className="text-white py-5"
+        />
+
+        <Row className="text-white mt-3">
+          <Col sm className="p-0">
+            <Feature title="Tile 1" to="#" variant="dark" className="py-3" />
+          </Col>
+
+          <Col sm className="p-0">
+            <Feature title="Tile 2" to="#" variant="success" className="py-3" />
+          </Col>
+
+          <Col sm className="p-0">
+            <Feature
+              title="Tile 3"
+              onClick={() => {
+                alert("danger!");
+              }}
+              variant="danger"
+              className="py-3"
+            />
+          </Col>
+        </Row>
 
         <Display.Heading2>
           <code>&lt;Flipper&gt;</code>
@@ -428,7 +465,11 @@ export default class HomePage extends React.Component {
         </Display.Heading2>
 
         {["sm", "", "lg"].map((size) => (
-          <Pagination size={size} key={size}>
+          <Pagination
+            className={size !== "sm" ? "d-none d-lg-flex" : ""}
+            size={size}
+            key={size}
+          >
             <Pagination.First
               onClick={() => {
                 alert("first");

@@ -5,6 +5,7 @@ export { default as Breakpoint } from "./Breakpoint";
 export { default as DatePicker } from "./DatePicker";
 export { default as Demo } from "./Demo";
 export { default as Display } from "./Display";
+export { default as Feature } from "./Feature";
 export { default as Flipper } from "./Flipper";
 export { default as FormGroup } from "./FormGroup";
 export { default as FullPage } from "./FullPage";

@@ -153,6 +153,10 @@ export default class Demo extends React.Component {
                 <Alert.Link to="#">check it out!</Alert.Link>
               </Alert>
             ))}
+
+            <Alert title="Alert Title" subtitle="Alert Subtitle">
+              Alert Children
+            </Alert>
           </section>
 
           <section id="badge" className="mt-5">

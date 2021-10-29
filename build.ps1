@@ -10,6 +10,8 @@ Write-Host "Building DatePicker..."
 tsc ./DatePicker/DatePicker.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Display..."
 tsc ./Display/Display.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
+Write-Host "Building Feature..."
+tsc ./Feature/Feature.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building Flipper..."
 tsc ./Flipper/Flipper.js --allowJs --declaration --emitDeclarationOnly --esModuleInterop
 Write-Host "Building FormGroup..."

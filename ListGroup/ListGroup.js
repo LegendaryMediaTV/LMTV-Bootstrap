@@ -56,11 +56,15 @@ class Item extends React.Component {
     if (subactions) {
       return (
         <RBSListGroup.Item className="d-flex p-0">
-          <RBSListGroup.Item {...properties}>{children}</RBSListGroup.Item>
+          <RBSListGroup.Item {...properties}>
+            {children}
 
-          {subactions.map((subaction, subactionIndex) => (
+            {subitem ? <div className={subitemClassName}>{subitem}</div> : null}
+          </RBSListGroup.Item>
+
+          {subactions.map((subactionItem, subactionIndex) => (
             <Item
-              {...subaction}
+              {...subactionItem}
               subaction
               subactionLast={subactionIndex === subactions.length - 1}
               key={subactionIndex}
@@ -178,7 +182,9 @@ export default class ListGroup extends React.Component {
     return (
       <RBSListGroup {...properties}>
         {title}
+
         {items}
+
         {children}
       </RBSListGroup>
     );

@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.4.1**
+  - bugfix for `<ListGroup.Item>` component not showing `subitem` when `subactions` property is set
 - **v3.4.0**
   - added a new `<Feature>` component with `title` and `subtitle` properties
   - added `<Alert>` with `title`/`subtitle` to the `<Demo>`

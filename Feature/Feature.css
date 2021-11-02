@@ -26,6 +26,7 @@
 
 .Feature .FeatureItem {
   color: inherit;
+  display: block;
   text-decoration: none;
 }
 

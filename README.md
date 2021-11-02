@@ -359,10 +359,11 @@ import Feature from '@legendarymediatv/bootstrap/Feature';
   to="/sample"
   variant="info"
   textShadow
+  wrapperClassName="rounded-pill mb-3"
   className="text-white py-5"
 />
 
-<Row className="text-white mt-3">
+<Row className="text-white">
   <Col sm className="p-0">
     <Feature
       title="Sample 1"

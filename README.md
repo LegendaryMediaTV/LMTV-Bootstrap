@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.4.2**
+  - styling tweaks for `<Feature>` component
 - **v3.4.1**
   - bugfix for `<ListGroup.Item>` component not showing `subitem` when `subactions` property is set
 - **v3.4.0**
@@ -347,7 +349,7 @@ Quickly create a stylized hero link or button that uses scaling and shadows to g
 > _TIP: since this component uses scaling, to prevent horizontal scrollbars on smaller displays, you may want to wrap your content in a `<Feature.Container>` component or otherwise add `overflow-x: hidden;` styling to a fluid container, your `<body>` tag, etc._
 
 ```JavaScript
-import Breakpoint from '@legendarymediatv/bootstrap/Feature';
+import Feature from '@legendarymediatv/bootstrap/Feature';
 
 …
 
@@ -398,8 +400,8 @@ import Breakpoint from '@legendarymediatv/bootstrap/Feature';
 | :----------------- | :------ | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `href` \| `to`     | string  |         | URL or anchor target, making the feature item our Gatsby-friendly `<Link>` when set, otherwise it renders as a `<button>` and probably should have the `onClick` set  |
 | `id`               | string  |         | applied to the wrapper `<div>`                                                                                                                                        |
-| `subtitle`         | JSX     |         | content that goes inside a `<div>` tag styled with `fst-italic` between the `title` and `children`                                                                    |
-| `title`            | JSX     |         | content that goes inside an `<h2>` tag styled with `mb-0` above the `subtitle` and/or `children`                                                                      |
+| `subtitle`         | JSX     |         | content that goes inside a `<div>` tag styled with `lead fst-italic` between the `title` and `children`                                                               |
+| `title`            | JSX     |         | content that goes inside an `<h2>` tag styled with `display-4 mb-0` above the `subtitle` and/or `children`                                                            |
 | `textShadow`       | boolean | `false` | add a slight shadow to the feature’s text                                                                                                                             |
 | `variant`          | string  |         | Bootstrap theme color, if one is not provided, you should probably add background color and/or image using the provided `id` (images are set to `center` and `cover`) |
 | `wrapperClassName` | string  |         | `className` property for the wrapper `<div>`                                                                                                                          |

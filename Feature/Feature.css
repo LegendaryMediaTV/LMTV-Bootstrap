@@ -25,10 +25,16 @@
 }
 
 .Feature .FeatureItem {
-  background-color: inherit;
-  border: 0;
   color: inherit;
-  display: block;
   text-decoration: none;
+}
+
+.Feature a.FeatureItem *:hover {
+  text-decoration: none;
+}
+
+.Feature button.FeatureItem {
+  background-color: transparent;
+  border: 0;
   width: 100%;
 }

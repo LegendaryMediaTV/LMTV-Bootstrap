@@ -71,8 +71,8 @@ export default class Feature extends React.Component {
     return (
       <div id={id} className={combine(wrapperClassName)} style={wrapperStyle}>
         <Component {...properties}>
-          {title ? <h2 className="mb-0">{title}</h2> : null}
-          {subtitle ? <div className="fst-italic">{subtitle}</div> : null}
+          {title ? <h2 className="display-4 mb-0">{title}</h2> : null}
+          {subtitle ? <div className="lead fst-italic">{subtitle}</div> : null}
           {children}
         </Component>
       </div>

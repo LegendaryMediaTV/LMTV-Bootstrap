@@ -4,7 +4,9 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
-- **v3.4.2**
+- **v3.4.4**
+  - made `<ScrollToTop>` component not print
+- **v3.4.2 – v3.4.3**
   - styling tweaks for `<Feature>` component
 - **v3.4.1**
   - bugfix for `<ListGroup.Item>` component not showing `subitem` when `subactions` property is set

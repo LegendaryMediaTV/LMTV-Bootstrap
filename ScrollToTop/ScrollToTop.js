@@ -52,6 +52,7 @@ const ScrollToTop = (props) => {
 
   // add required properties
   properties.className.push("ScrollToTop");
+  properties.className.push("d-print-none");
   if (componentState) properties.className.push("show");
   properties.variant = "link";
   properties.onClick = scrollToTopHandler;

@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.4.5**
+  - made `<Feature.Container>` component hide all overflow (was getting a flagrant vertical scrollbar sometimes)
 - **v3.4.4**
   - made `<ScrollToTop>` component not print
 - **v3.4.2 – v3.4.3**
@@ -348,7 +350,7 @@ Quickly create a stylized hero link or button that uses scaling and shadows to g
 
 > _TIP: use in conjunction with grid layout components to have a wall effect_
 
-> _TIP: since this component uses scaling, to prevent horizontal scrollbars on smaller displays, you may want to wrap your content in a `<Feature.Container>` component or otherwise add `overflow-x: hidden;` styling to a fluid container, your `<body>` tag, etc._
+> _TIP: since this component uses scaling, to prevent horizontal scrollbars on smaller displays, you may want to wrap your content in a `<Feature.Container>` component or otherwise add `overflow: hidden;` styling to a fluid container, your `<body>` tag, etc._
 
 ```JavaScript
 import Feature from '@legendarymediatv/bootstrap/Feature';

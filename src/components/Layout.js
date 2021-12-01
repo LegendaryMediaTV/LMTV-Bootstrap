@@ -4,6 +4,7 @@ import React from "react";
 // components
 import Container from "react-bootstrap/Container";
 import Display from "../../Display";
+import Feature from "../../Feature/Feature";
 import { Helmet } from "react-helmet";
 import { title } from "../../functions";
 
@@ -34,13 +35,15 @@ const Layout = (props) => {
       {props.noContainer ? (
         props.children
       ) : (
-        <Container className="bg-white py-4">
-          {props.title ? (
-            <Display.Heading1>{props.title}</Display.Heading1>
-          ) : null}
+        <Feature.Container>
+          <Container className="bg-white py-4">
+            {props.title ? (
+              <Display.Heading1>{props.title}</Display.Heading1>
+            ) : null}
 
-          {props.children}
-        </Container>
+            {props.children}
+          </Container>
+        </Feature.Container>
       )}
     </>
   );

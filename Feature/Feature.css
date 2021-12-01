@@ -1,5 +1,5 @@
 .FeatureContainer {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .Feature {

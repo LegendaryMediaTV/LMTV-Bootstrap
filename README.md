@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v3.4.6**
+  - prevented `<Feature>` component’s `textShadow` property from becoming an HTML attribute
 - **v3.4.5**
   - made `<Feature.Container>` component hide all overflow (was getting a flagrant vertical scrollbar sometimes)
 - **v3.4.4**

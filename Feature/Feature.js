@@ -59,6 +59,7 @@ export default class Feature extends React.Component {
 
     // extract text shadow
     if (properties.textShadow) wrapperClassName.push("FeatureTextShadow");
+    delete properties.textShadow;
 
     // extract variant
     if (properties.variant) wrapperClassName.push(`bg-${properties.variant}`);

@@ -4,19 +4,13 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
-- **v3.4.6**
-  - prevented `<Feature>` component’s `textShadow` property from becoming an HTML attribute
-- **v3.4.5**
-  - made `<Feature.Container>` component hide all overflow (was getting a flagrant vertical scrollbar sometimes)
-- **v3.4.4**
-  - made `<ScrollToTop>` component not print
-- **v3.4.2 – v3.4.3**
-  - styling tweaks for `<Feature>` component
-- **v3.4.1**
-  - bugfix for `<ListGroup.Item>` component not showing `subitem` when `subactions` property is set
-- **v3.4.0**
+- **v3.5.0**
+  - updated the peer dependency for React to `17.x` or `18.x`
+- **v3.4**
   - added a new `<Feature>` component with `title` and `subtitle` properties
   - added `<Alert>` with `title`/`subtitle` to the `<Demo>`
+  - made `<ScrollToTop>` component not print
+  - bugfix for `<ListGroup.Item>` component not showing `subitem` when `subactions` property is set
 - **v3.3**
   - added an `<Alert>` component with `title`, `subtitle`, and `error` properties
   - made the `<Demo>` utilize the new `<Alert>` component

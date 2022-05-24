@@ -25,7 +25,7 @@ const FullPagePage = () => {
                 <Navbar.Brand className="px-2">LegendaryMediaTV</Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="navbar-nav">
-                  <Icon name="fas fa-bars" alt="menu bars" />
+                  <Icon name="fa-solid fa-bars" alt="menu bars" />
                 </Navbar.Toggle>
 
                 <Navbar.Collapse id="navbar-nav">

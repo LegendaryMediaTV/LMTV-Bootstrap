@@ -36,7 +36,7 @@ const InfoIcon = (props) => {
   // establish icon
   const icon = (
     <Icon
-      name={properties.name ?? "fas fa-info-circle"}
+      name={properties.name ?? "fa-solid fa-circle-info"}
       alt={properties.alt}
       variant={properties.variant != null ? properties.variant : "info"}
       className={properties.iconClassName}

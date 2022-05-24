@@ -250,7 +250,7 @@ export default class Demo extends React.Component {
                 </Button>
 
                 <Button variant={variant.toLowerCase()} className="me-1 mb-1">
-                  <Icon name="fas fa-camera" />
+                  <Icon name="fa-solid fa-camera" />
                 </Button>
 
                 <Button
@@ -691,7 +691,7 @@ export default class Demo extends React.Component {
                   <InputGroup.Text
                     className={variant ? `bg-${variant.toLowerCase()}` : null}
                   >
-                    <Icon name="fas fa-camera" />
+                    <Icon name="fa-solid fa-camera" />
                   </InputGroup.Text>
 
                   <Form.Control
@@ -935,12 +935,14 @@ export default class Demo extends React.Component {
                   {
                     to: "#list-group",
                     variant: "info",
-                    children: <Icon name="fab fa-bootstrap" alt="Bootstrap" />,
+                    children: (
+                      <Icon name="fa-brands fa-bootstrap" alt="Bootstrap" />
+                    ),
                   },
                   {
                     to: "#list-group",
                     variant: "danger",
-                    children: <Icon name="fas fa-heart" alt="Bootstrap" />,
+                    children: <Icon name="fa-solid fa-heart" />,
                   },
                 ]}
               >
@@ -1160,7 +1162,7 @@ export default class Demo extends React.Component {
                 <Navbar.Toggle
                   aria-controls={`navbar-nav-${variant || "Default"}`}
                 >
-                  <Icon name="fas fa-bars" alt="menu bars" />
+                  <Icon name="fa-solid fa-bars" alt="menu bars" />
                 </Navbar.Toggle>
 
                 <Navbar.Collapse id={`navbar-nav-${variant || "Default"}`}>
@@ -1244,16 +1246,16 @@ export default class Demo extends React.Component {
 
             <Pagination>
               <Pagination.First to="#pagination">
-                <Icon name="fas fa-angle-double-left" />
+                <Icon name="fa-solid fa-angles-left" />
               </Pagination.First>
               <Pagination.Prev to="#pagination">
-                <Icon name="fas fa-angle-left" />
+                <Icon name="fa-solid fa-angle-left" />
               </Pagination.Prev>
 
               <Pagination.Item to="#pagination">1</Pagination.Item>
 
               <Pagination.Ellipsis>
-                <Icon name="fas fa-ellipsis-h" alt="more" />
+                <Icon name="fa-solid fa-ellipsis" alt="more" />
               </Pagination.Ellipsis>
 
               <Pagination.Item to="#pagination">10</Pagination.Item>
@@ -1270,14 +1272,14 @@ export default class Demo extends React.Component {
               <Pagination.Item disabled>13</Pagination.Item>
 
               <Pagination.Ellipsis disabled>
-                <Icon name="fas fa-ellipsis-h" alt="more" />
+                <Icon name="fa-solid fa-ellipsis" alt="more" />
               </Pagination.Ellipsis>
 
               <Pagination.Next to="#pagination">
-                <Icon name="fas fa-angle-right" />
+                <Icon name="fa-solid fa-angle-right" />
               </Pagination.Next>
               <Pagination.Last to="#pagination">
-                <Icon name="fas fa-angle-double-right" />
+                <Icon name="fa-solid fa-angles-right" />
               </Pagination.Last>
             </Pagination>
           </section>

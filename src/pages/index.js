@@ -318,12 +318,12 @@ export default class HomePage extends React.Component {
           <code>&lt;Icon&gt;</code>
         </Display.Heading2>
 
-        <Icon name="fas fa-camera" />
+        <Icon name="fa-solid fa-camera" />
 
         <Icon name="bi bi-info-circle-fill" className="ms-2" />
 
         <Icon
-          name="fas fa-camera"
+          name="fa-solid fa-camera"
           alt="DSLR"
           variant="success"
           className="ms-2"
@@ -445,14 +445,14 @@ export default class HomePage extends React.Component {
               {
                 to: "/demo",
                 variant: "info",
-                children: <Icon name="fas fa-camera" />,
+                children: <Icon name="fa-solid fa-camera" />,
               },
               {
                 onClick: () => {
                   alert("deleted!");
                 },
                 variant: "danger",
-                children: <Icon name="fas fa-trash-alt" />,
+                children: <Icon name="fa-solid fa-trash-can" />,
               },
             ]}
           >
@@ -502,23 +502,23 @@ export default class HomePage extends React.Component {
 
         <Pagination size="sm">
           <Pagination.First>
-            <Icon name="fas fa-angle-double-left" alt="first" />
+            <Icon name="fa-solid fa-angles-left" alt="first" />
           </Pagination.First>
 
           <Pagination.Prev>
-            <Icon name="fas fa-angle-left" alt="previous" />
+            <Icon name="fa-solid fa-angle-left" alt="previous" />
           </Pagination.Prev>
 
           <Pagination.Ellipsis>
-            <Icon name="fas fa-ellipsis-h" alt="more" />
+            <Icon name="fa-solid fa-ellipsis" alt="more" />
           </Pagination.Ellipsis>
 
           <Pagination.Next>
-            <Icon name="fas fa-angle-right" alt="next" />
+            <Icon name="fa-solid fa-angle-right" alt="next" />
           </Pagination.Next>
 
           <Pagination.Last>
-            <Icon name="fas fa-angle-double-right" alt="last" />
+            <Icon name="fa-solid fa-angles-right" alt="last" />
           </Pagination.Last>
         </Pagination>
 
@@ -552,7 +552,7 @@ export default class HomePage extends React.Component {
           </Link>
         </div>
 
-        <ScrollToTop name="fas fa-caret-square-up" variant="success" />
+        <ScrollToTop name="fa-solid fa-square-caret-up" variant="success" />
       </Layout>
     );
   };

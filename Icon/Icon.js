@@ -15,7 +15,7 @@ const Icon = (props) => {
     else {
       properties["aria-label"] = properties.name
         .replace("-alt", "")
-        .replace(/^[a-z]+ [a-z]{2}-/, "")
+        .replace(/^[a-z-]+ [a-z]{2}-/, "")
         .replace(/-fill$/, "")
         .replace(/-/g, " ");
     }

@@ -4,7 +4,11 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
-- **v3.5.0**
+- **v4.0.0**
+  - upgrated to FontAwesome 6 for the default icon names
+  - updated FontAwesome reference to `6.1.1`
+  - updated Bootstrap Icons CSS reference to `1.8.2`
+- **v3.5**
   - updated the peer dependency for React to `17.x` or `18.x`
 - **v3.4**
   - added a new `<Feature>` component with `title` and `subtitle` properties
@@ -112,7 +116,10 @@ const Layout = (props) => {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
         />
       </Helmet>
       <Container className="py-4">
@@ -144,7 +151,7 @@ import Icon from "@legendarymediatv/bootstrap/Icon";
 const SamplePage = () => {
   return (
     <Layout title="Page Title" description="Page Description">
-      <Icon name="fas fa-camera" />
+      <Icon name="fa-solid fa-camera" />
     </Layout>
   );
 };
@@ -580,10 +587,10 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
 
 …
 
-<Icon name="fas fa-camera" />
+<Icon name="fa-solid fa-camera" />
 
 <Icon
-  name="fas fa-camera"
+  name="fa-solid fa-camera"
   alt="DSLR"
   variant="success"
   className="ms-3"
@@ -594,7 +601,7 @@ import Icon from '@legendarymediatv/bootstrap/Icon';
 | Name      | Type   | Default                                | Description                                                                                                     |
 | :-------- | :----- | :------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
 | `alt`     | string | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
-| `name`    | string | required                               | icon class name (e.g., `'fas fa-camera'`)                                                                       |
+| `name`    | string | required                               | icon class name (e.g., `'fa-solid fa-camera'`)                                                                  |
 | `variant` | string |                                        | Bootstrap theme color name (e.g., `'primary'`)                                                                  |
 
 ### `<InfoIcon>`
@@ -625,7 +632,7 @@ import InfoIcon from '@legendarymediatv/bootstrap/InfoIcon';
 | `alt`           | string      | variation of `name` (e.g., `'camera'`) | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the `<Icon>` (i.e., ends up in `aria-label`) |
 | `iconClassName` | string      |                                        | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                          |
 | `iconStyle`     | object      |                                        | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                              |
-| `name`          | string      | `'fas fa-question-circle'`             | icon class name                                                                                                     |
+| `name`          | string      | `'fa-solid fa-circle-info'`            | icon class name                                                                                                     |
 | `title`         | JSX         |                                        | popover title                                                                                                       |
 | `titleAs`       | elementType | `<h3>`                                 | `as` property for the popover title                                                                                 |
 | `variant`       | string      | `info`                                 | Bootstrap theme color name applied to the icon                                                                      |
@@ -665,7 +672,7 @@ import Link from '@legendarymediatv/bootstrap/Link';
 | `href` \| `to`      | URL             | required                                                                   | URL or anchor target                                                                                                        |
 | `external`          | boolean         | `true` if the URL starts with `http:` or `https:` or `externalIcon` is set | explicitly (un-)flag an external link icon (also forces an `<a>` tag when enabled), which goes inside its own `<small>` tag |
 | `externalNewTab`    | boolean         | `false`                                                                    | set `newTab` to `true` when `external` is `true`                                                                            |
-| `externalIcon`      | icon class name | `'fas fa-external-link-alt'`                                               | external icon class name                                                                                                    |
+| `externalIcon`      | icon class name | `'fa-solid fa-arrow-up-right-from-square'`                                 | external icon class name                                                                                                    |
 | `externalVariant`   | string          | `info`                                                                     | Bootstrap theme color name (e.g., `'primary'`) applied to the icon                                                          |
 | `externalClassName` | string          | `'small ps-1 align-text-top'`                                              | `className` property for the `<Icon>` (i.e., `className` is applied to the toggler button)                                  |
 | `externalStyle`     | object          |                                                                            | `style` property for the the `<Icon>` (i.e., `style` is applied to the toggler button)                                      |
@@ -778,14 +785,14 @@ import ListGroup from '@legendarymediatv/bootstrap/ListGroup';
       {
         to: "/sample",
         variant: "info",
-        children: <Icon name="fas fa-camera" />,
+        children: <Icon name="fa-solid fa-camera" />,
       },
       {
         onClick: () => {
           alert("deleted!");
         },
         variant: "danger",
-        children: <Icon name="fas fa-trash-alt" />,
+        children: <Icon name="fa-solid fa-trash-can" />,
       },
     ]}
   >
@@ -848,23 +855,23 @@ import Pagination from '@legendarymediatv/bootstrap/Pagination';
 
 <Pagination size="sm">
   <Pagination.First>
-    <Icon name="fas fa-angle-double-left" alt="first" />
+    <Icon name="fa-solid fa-angles-left" alt="first" />
   </Pagination.First>
 
   <Pagination.Prev>
-    <Icon name="fas fa-angle-left" alt="previous" />
+    <Icon name="fa-solid fa-angle-left" alt="previous" />
   </Pagination.Prev>
 
   <Pagination.Ellipsis>
-    <Icon name="fas fa-ellipsis-h" alt="more" />
+    <Icon name="fa-solid fa-ellipsis" alt="more" />
   </Pagination.Ellipsis>
 
   <Pagination.Next>
-    <Icon name="fas fa-angle-right" alt="next" />
+    <Icon name="fa-solid fa-angle-right" alt="next" />
   </Pagination.Next>
 
  <Pagination.Last>
-    <Icon name="fas fa-angle-double-right" alt="last" />
+    <Icon name="fa-solid fa-angles-right" alt="last" />
   </Pagination.Last>
 </Pagination>
 ```
@@ -896,18 +903,18 @@ import ScrollToTop from '@legendarymediatv/bootstrap/ScrollToTop';
 
 <ScrollToTop />
 
-<ScrollToTop name="fas fa-caret-square-up" variant="success" />
+<ScrollToTop name="fa-solid fa-square-caret-up" variant="success" />
 ```
 
 > _NOTE: the `scrollToTop()` handler function can be exported as well; see below for details_
 
-| Name            | Type   | Default                      | Description                                                                                                     |
-| :-------------- | :----- | :--------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `alt`           | string | `'up arrow'`                 | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
-| `name`          | string | `'fas fa-chevron-circle-up'` | icon class name                                                                                                 |
-| `variant`       | string | `'dark'`                     | Bootstrap theme color name                                                                                      |
-| `iconClassName` | string |                              | `className` property for the `<Icon>`                                                                           |
-| `iconStyle`     | object |                              | `style` property for the `<Icon>`                                                                               |
+| Name            | Type   | Default                           | Description                                                                                                     |
+| :-------------- | :----- | :-------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| `alt`           | string | `'up arrow'`                      | [alternate text](https://accessibility.psu.edu/images/imageshtml/) for the icon (i.e., ends up in `aria-label`) |
+| `name`          | string | `'fa-solid fa-circle-chevron-up'` | icon class name                                                                                                 |
+| `variant`       | string | `'dark'`                          | Bootstrap theme color name                                                                                      |
+| `iconClassName` | string |                                   | `className` property for the `<Icon>`                                                                           |
+| `iconStyle`     | object |                                   | `style` property for the `<Icon>`                                                                               |
 
 ### `<Spinner>`
 

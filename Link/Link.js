@@ -63,7 +63,10 @@ const Link = (props) => {
     external = (
       <small>
         <Icon
-          name={properties.externalIcon ?? "fas fa-external-link-alt"}
+          name={
+            properties.externalIcon ?? "fa-solid fa-arrow-up-right-from-square"
+          }
+          alt="external link"
           variant={properties.externalVariant ?? "muted"}
           className={
             properties.externalClassName ?? "small ps-1 align-text-top"

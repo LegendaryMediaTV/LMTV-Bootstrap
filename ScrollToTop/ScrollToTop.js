@@ -35,7 +35,7 @@ const ScrollToTop = (props) => {
   delete properties.alt;
 
   // extract name
-  const name = properties.name ?? "fas fa-chevron-circle-up";
+  const name = properties.name ?? "fa-solid fa-circle-chevron-up";
   delete properties.name;
 
   // extract variant

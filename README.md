@@ -4,6 +4,8 @@ This is a Node.js package for extending [React Bootstrap](https://react-bootstra
 
 ## Recent changes
 
+- **v4.1.0**
+  - updated the peer dependency for Gatsby to include `5.x`
 - **v4.0.0**
   - upgrated to FontAwesome 6 for the default icon names
   - updated FontAwesome reference to `6.1.1`
